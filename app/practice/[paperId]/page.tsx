@@ -197,16 +197,10 @@ export default function PracticePage() {
     questionStatus: {},
   });
 
-  // 根据模式过滤题目
+  // 显示所有题目（不再区分客观题和解答题）
   const filteredQuestions = useMemo(() => {
-    return allQuestions.filter(q => {
-      if (currentMode === 'objective') {
-        return q.type === 'choice' || q.type === 'fill';
-      } else {
-        return q.type === 'solution';
-      }
-    });
-  }, [allQuestions, currentMode]);
+    return allQuestions;
+  }, [allQuestions]);
 
   // 当前题目
   const currentQuestion = filteredQuestions[currentIndex];
@@ -231,10 +225,11 @@ export default function PracticePage() {
     setSubmitted(false);
     setIsCorrect(null);
 
-    // 更新对应模式的最后索引
+    // 更新最后访问的索引（不再区分模式）
     setProgress(prev => ({
       ...prev,
-      [currentMode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: index,
+      lastObjectiveIndex: index,
+      lastSolutionIndex: index,
     }));
 
     // 平滑滚动到顶部
@@ -309,8 +304,9 @@ export default function PracticePage() {
               ...parsed,
               totalQuestions: paperQuestions.length,
             }));
-            setCurrentMode(parsed.mode || 'objective');
-            setCurrentIndex(parsed.mode === 'objective' ? (parsed.lastObjectiveIndex || 0) : (parsed.lastSolutionIndex || 0));
+            // 不再区分模式，统一使用 lastObjectiveIndex 或 lastSolutionIndex（取较大的）
+            const lastIndex = Math.max(parsed.lastObjectiveIndex || 0, parsed.lastSolutionIndex || 0);
+            setCurrentIndex(lastIndex);
           } catch (e) {
             console.error('Failed to load progress:', e);
           }
@@ -393,36 +389,10 @@ export default function PracticePage() {
     }
   }, [currentQuestion?.questionId, progress.questionStatus]);
 
-  // 模式切换
+  // 模式切换（已合并，不再切换，保留函数以兼容）
   const handleModeChange = (mode: 'objective' | 'solution') => {
-    // 保存当前模式的索引
-    setProgress(prev => ({
-      ...prev,
-      mode,
-      [mode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: currentIndex,
-    }));
-
-    setCurrentMode(mode);
-
-    // 恢复新模式最后访问的题号
-    const lastIndex = mode === 'objective'
-      ? (progress.lastObjectiveIndex || 0)
-      : (progress.lastSolutionIndex || 0);
-
-    // 确保索引在有效范围内
-    const newFiltered = allQuestions.filter(q => {
-      if (mode === 'objective') {
-        return q.type === 'choice' || q.type === 'fill';
-      } else {
-        return q.type === 'solution';
-      }
-    });
-
-    const safeIndex = Math.min(lastIndex, newFiltered.length - 1);
-    setCurrentIndex(safeIndex);
-    setUserAnswer('');
-    setSubmitted(false);
-    setIsCorrect(null);
+    // 已合并所有题目，不再需要切换模式
+    // 保留函数以避免组件报错
   };
 
   // 答案判分逻辑（支持多解）
@@ -711,12 +681,6 @@ export default function PracticePage() {
                   onModifyAnswer={submitted ? handleModifyAnswer : undefined}
                   onSkip={!submitted ? handleSkip : undefined}
                 />
-                {/* 调试信息 */}
-                {!submitted && (
-                  <div className="text-xs text-gray-400 p-2">
-                    调试: submitted={String(submitted)}, handleSkip={typeof handleSkip}
-                  </div>
-                )}
 
                 {submitted && (
                   <SolutionPanel
