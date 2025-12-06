@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MathText from '@/components/MathText';
 import type { Question } from '@/types';
 
@@ -8,15 +8,27 @@ interface SolutionPanelProps {
   question: Question;
   isCorrect: boolean | null;
   correctAnswer: string;
+  userAnswer: string;
 }
 
-export default function SolutionPanel({ question, isCorrect, correctAnswer }: SolutionPanelProps) {
+export default function SolutionPanel({ question, isCorrect, correctAnswer, userAnswer }: SolutionPanelProps) {
   const [showDetailed, setShowDetailed] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  // 获取简短解析
+  // 提交后自动滚动到解析区
+  useEffect(() => {
+    if (isCorrect !== null && panelRef.current) {
+      setTimeout(() => {
+        panelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+  }, [isCorrect]);
+
+  // 获取简短解析（去除"关键思路："前缀）
   const getShortSolution = () => {
     if (question.shortSolution) {
-      return question.shortSolution;
+      // 如果包含"关键思路："，去掉它
+      return question.shortSolution.replace(/^关键思路[：:]\s*/, '');
     }
     // 如果没有 shortSolution，从 solution 截取前3行
     if (question.solution) {
@@ -31,7 +43,6 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
     if (question.detailedSolution) {
       return question.detailedSolution;
     }
-    // 如果没有 detailedSolution，使用完整的 solution
     return question.solution || '';
   };
 
@@ -42,36 +53,51 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
     return null;
   }
 
+  // 获取评价文案
+  const getEvaluation = () => {
+    if (isCorrect) {
+      return '基础计算掌握得不错';
+    } else {
+      // 根据知识点生成评价
+      if (question.knowledgePoints && question.knowledgePoints.length > 0) {
+        return `这题主要卡在「${question.knowledgePoints[0]}」`;
+      }
+      return '需要再仔细检查一下';
+    }
+  };
+
   return (
-    <div className="mt-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 p-4 space-y-3">
-      {/* 结果提示 - 浅色反馈卡 */}
-      <div
-        className={`p-3 rounded-lg ${
-          isCorrect
-            ? 'bg-green-50/80 dark:bg-green-900/30 border border-green-200/50 dark:border-green-800/50'
-            : 'bg-red-50/80 dark:bg-red-900/30 border border-red-200/50 dark:border-red-800/50'
-        }`}
-      >
-        <p className={`text-sm font-semibold mb-1 ${
-          isCorrect
-            ? 'text-green-700 dark:text-green-300'
-            : 'text-red-700 dark:text-red-300'
-        }`}>
-          {isCorrect ? '✅ 回答正确' : '❌ 回答错误'}
-        </p>
-        {!isCorrect && (
-          <p className="text-sm text-gray-700 dark:text-gray-300">
-            正确答案：<MathText content={correctAnswer} />
+    <div ref={panelRef} className="mt-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+      {/* 结果提示 - 白底 + 左侧色条 */}
+      <div className={`flex border-l-4 ${
+        isCorrect
+          ? 'border-l-green-500 dark:border-l-green-400'
+          : 'border-l-red-500 dark:border-l-red-400'
+      } pl-4 py-2 mb-3`}>
+        <div className="flex-1">
+          <p className={`text-sm font-semibold mb-1 ${
+            isCorrect
+              ? 'text-green-700 dark:text-green-300'
+              : 'text-red-700 dark:text-red-300'
+          }`}>
+            {isCorrect ? '✅ 回答正确' : '✗ 回答错误'} · {getEvaluation()}
           </p>
-        )}
+          {!isCorrect && (
+            <p className="text-sm text-gray-700 dark:text-gray-300">
+              正确答案：<MathText content={correctAnswer} />
+            </p>
+          )}
+          {isCorrect && (
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+              这类基础计算已经掌握得不错，可以稍微加快刷题速度。
+            </p>
+          )}
+        </div>
       </div>
 
-      {/* 简短解析（免费） */}
+      {/* 关键思路（免费） */}
       {shortSolution && (
-        <div>
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-            关键思路：
-          </p>
+        <div className="pl-4 mb-3">
           <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
             <MathText content={shortSolution} />
           </div>
@@ -80,7 +106,7 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
 
       {/* 详细解析（Pro功能） */}
       {detailedSolution && detailedSolution !== shortSolution && (
-        <div>
+        <div className="pl-4">
           <button
             onClick={() => setShowDetailed(!showDetailed)}
             className="text-primary-600 dark:text-primary-400 font-medium hover:underline text-sm"

@@ -33,7 +33,7 @@ export default function TopBar({
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const progressPercentage = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
+  const progressPercentage = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
 
   return (
     <>
@@ -49,8 +49,9 @@ export default function TopBar({
 
             <div className="hidden md:flex items-center space-x-3">
               <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                已用时 {formatTime(elapsedTime)}
+              <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
+                <span>⏱</span>
+                <span>{formatTime(elapsedTime)}</span>
               </div>
               <button
                 onClick={() => setShowExitConfirm(true)}
@@ -68,11 +69,16 @@ export default function TopBar({
             </p>
             <div className="flex-1 max-w-xs">
               <div className="flex items-center space-x-2">
-                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative group">
                   <div
                     className="h-full bg-primary-600 dark:bg-primary-400 transition-all duration-300"
                     style={{ width: `${progressPercentage}%` }}
                   />
+                  {progressPercentage > 10 && (
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-gray-500 dark:text-gray-400 font-medium pointer-events-none">
+                      {progressPercentage}%
+                    </span>
+                  )}
                 </div>
                 <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
                   已做 {answeredCount}/{totalQuestions}
@@ -85,8 +91,9 @@ export default function TopBar({
           <div className="md:hidden flex items-center justify-between mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
             <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
             <div className="flex items-center space-x-2">
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                {formatTime(elapsedTime)}
+              <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400">
+                <span>⏱</span>
+                <span>{formatTime(elapsedTime)}</span>
               </div>
               <button
                 onClick={() => setShowExitConfirm(true)}

@@ -5,10 +5,11 @@ import { useState } from 'react';
 interface BottomBarProps {
   currentIndex: number;
   totalQuestions: number;
-  questionStatus: 'unanswered' | 'answered' | 'wrong';
+  questionStatus: 'unanswered' | 'answered' | 'wrong' | 'skipped';
   onPrevious: () => void;
   onNext: () => void;
   onFinish: () => void;
+  onSkip?: () => void;
 }
 
 export default function BottomBar({
@@ -18,17 +19,20 @@ export default function BottomBar({
   onPrevious,
   onNext,
   onFinish,
+  onSkip,
 }: BottomBarProps) {
   const [showFinishConfirm, setShowFinishConfirm] = useState(false);
 
   const getStatusText = () => {
     switch (questionStatus) {
       case 'answered':
-        return '已作答';
+        return '已做 · 回答正确';
       case 'wrong':
-        return '回答错误';
+        return '已做 · 答案有问题';
+      case 'skipped':
+        return '已跳过';
       default:
-        return '未作答';
+        return '还没拿下';
     }
   };
 
@@ -49,6 +53,14 @@ export default function BottomBar({
           </div>
 
           <div className="flex space-x-2">
+            {onSkip && questionStatus !== 'answered' && questionStatus !== 'wrong' && (
+              <button
+                onClick={onSkip}
+                className="px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
+              >
+                跳过，下一题
+              </button>
+            )}
             {currentIndex < totalQuestions - 1 ? (
               <button
                 onClick={onNext}

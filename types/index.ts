@@ -157,7 +157,7 @@ export interface PaperProgress {
   mode?: 'objective' | 'solution'; // 当前模式
   lastObjectiveIndex?: number; // 客观题模式最后访问的题号
   lastSolutionIndex?: number; // 解答题模式最后访问的题号
-  questionStatus?: Record<string, 'unanswered' | 'answered' | 'wrong'>; // 每道题的状态
+  questionStatus?: Record<string, 'unanswered' | 'answered' | 'wrong' | 'skipped'>; // 每道题的状态
 }
 
 // 试卷结果
