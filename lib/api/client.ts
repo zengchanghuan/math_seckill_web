@@ -9,6 +9,8 @@ import type {
   RecommendationResponse,
   QuestionStats,
   QuestionBankStats,
+  ExamPaper,
+  PaperResult,
 } from '@/types';
 
 class ApiClient {
@@ -196,6 +198,49 @@ class ApiClient {
       return response.data;
     } catch (error) {
       console.error('Error getting question stats:', error);
+      return null;
+    }
+  }
+
+  // ==================== 试卷管理 ====================
+
+  async getExamPapers(): Promise<ExamPaper[]> {
+    try {
+      const response = await this.client.get<ExamPaper[]>('/api/papers');
+      return response.data || [];
+    } catch (error) {
+      console.log('Exam papers API not available, using local organization');
+      return [];
+    }
+  }
+
+  async getQuestionsByPaper(paperId: string): Promise<Question[]> {
+    try {
+      const response = await this.client.get<Question[]>(
+        `/api/papers/${paperId}/questions`
+      );
+      return response.data || [];
+    } catch (error) {
+      console.log('Paper questions API not available, will filter by paperId');
+      return [];
+    }
+  }
+
+  async submitPaperResult(
+    paperId: string,
+    answers: Record<string, string>
+  ): Promise<PaperResult | null> {
+    try {
+      const response = await this.client.post<PaperResult>(
+        `/api/papers/${paperId}/result`,
+        {
+          studentId: this.studentId,
+          answers,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Error submitting paper result:', error);
       return null;
     }
   }

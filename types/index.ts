@@ -8,6 +8,8 @@ export interface Question {
   options?: string[];
   answer: string;
   solution: string;
+  shortSolution?: string; // 简短解析（免费）
+  detailedSolution?: string; // 详细解析（Pro功能）
   tags?: string[];
   knowledgePoints?: string[];
   abilityTags?: string[];
@@ -152,6 +154,10 @@ export interface PaperProgress {
   accuracy: number;
   answers: Record<string, string>; // questionId -> userAnswer
   isCompleted: boolean;
+  mode?: 'objective' | 'solution'; // 当前模式
+  lastObjectiveIndex?: number; // 客观题模式最后访问的题号
+  lastSolutionIndex?: number; // 解答题模式最后访问的题号
+  questionStatus?: Record<string, 'unanswered' | 'answered' | 'wrong'>; // 每道题的状态
 }
 
 // 试卷结果
