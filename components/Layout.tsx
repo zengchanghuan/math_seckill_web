@@ -4,7 +4,7 @@ import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAppStore } from '@/lib/store/appStore';
-import { BookOpen, Target, User, Settings, Home } from 'lucide-react';
+import { Settings, Home } from 'lucide-react';
 import { clsx } from 'clsx';
 
 interface LayoutProps {
@@ -13,9 +13,6 @@ interface LayoutProps {
 
 const navItems = [
   { href: '/', icon: Home, label: '首页' },
-  { href: '/drill', icon: BookOpen, label: '刷题' },
-  { href: '/recommendation', icon: Target, label: '推荐' },
-  { href: '/profile', icon: User, label: '画像' },
   { href: '/settings', icon: Settings, label: '设置' },
 ];
 
@@ -43,7 +40,7 @@ export default function Layout({ children }: LayoutProps) {
                 href="/"
                 className="text-xl font-bold text-primary-600 dark:text-primary-400"
               >
-                数学秒杀
+                高数衔接刷题
               </Link>
               <div className="hidden md:flex space-x-1">
                 {navItems.map((item) => {
@@ -105,7 +102,7 @@ export default function Layout({ children }: LayoutProps) {
       </div>
 
       {/* 主内容区 */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 md:pb-8">
+      <main className="pb-20 md:pb-8">
         {children}
       </main>
     </div>

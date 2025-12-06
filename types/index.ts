@@ -14,6 +14,7 @@ export interface Question {
   templateId?: string;
   source?: 'generated' | 'real_exam' | 'manual';
   isRealExam?: boolean;
+  paperId?: string; // 关联的试卷ID
   totalAttempts?: number;
   correctRate?: number;
   discriminationIndex?: number;
@@ -120,4 +121,51 @@ export interface AppConfig {
   serverUrl: string;
   isOfflineMode: boolean;
   theme: 'light' | 'dark';
+}
+
+// 真题试卷
+export interface ExamPaper {
+  paperId: string;
+  name: string; // "2023年广东专升本高数真题（第1套）"
+  year: number;
+  region?: string; // "广东"
+  examType?: string; // "专升本"
+  subject?: string; // "高数"
+  questionIds: string[];
+  suggestedTime: number; // 建议用时（分钟）
+  description?: string;
+  totalQuestions?: number;
+  questionTypes?: {
+    choice: number;
+    fill: number;
+    solution: number;
+  };
+}
+
+// 试卷练习进度
+export interface PaperProgress {
+  paperId: string;
+  currentIndex: number;
+  totalQuestions: number;
+  answeredCount: number;
+  correctCount: number;
+  accuracy: number;
+  answers: Record<string, string>; // questionId -> userAnswer
+  isCompleted: boolean;
+}
+
+// 试卷结果
+export interface PaperResult {
+  paperId: string;
+  totalQuestions: number;
+  answeredCount: number;
+  correctCount: number;
+  accuracy: number;
+  questionTypeAccuracy: {
+    choice: number;
+    fill: number;
+    solution: number;
+  };
+  weakPoints: string[];
+  wrongQuestionIds: string[];
 }

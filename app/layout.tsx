@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: '数学秒杀 - 智能刷题系统',
-  description: '基于AI的个性化数学刷题平台',
+  title: '高数衔接刷题 - 高中→大学数学衔接',
+  description: '精选广东专升本/高数真题 + 关键基础知识，用最少的时间搞懂高数最常考的部分。你的私塾教练。',
 };
 
 export default function RootLayout({
