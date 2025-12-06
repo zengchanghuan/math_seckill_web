@@ -9,6 +9,29 @@ interface MathTextProps {
   className?: string;
 }
 
+// 清理和修复 LaTeX 代码中的常见问题
+function cleanLatex(latex: string): string {
+  // 移除 LaTeX 代码中的下划线（这些可能是占位符）
+  // 但保留 LaTeX 命令中的下划线（如 \int_0）
+  let cleaned = latex;
+  
+  // 修复连续的下划线（可能是占位符，替换为空格或移除）
+  cleaned = cleaned.replace(/_+/g, (match) => {
+    // 如果下划线在 LaTeX 命令中（如 \int_0），保留单个下划线
+    if (match.length === 1) {
+      return '_';
+    }
+    // 多个下划线可能是占位符，替换为空格
+    return ' ';
+  });
+  
+  // 修复其他常见问题
+  // 移除多余的空白
+  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+  
+  return cleaned;
+}
+
 export default function MathText({
   content,
   displayMode = false,
@@ -30,7 +53,7 @@ export default function MathText({
         // 块级数学 $$...$$
         if (inMath && isDisplay) {
           // 结束块级数学
-          const mathContent = content.substring(mathStart + 2, i);
+          const mathContent = cleanLatex(content.substring(mathStart + 2, i));
           parts.push({ type: 'math', content: mathContent, display: true });
           lastIndex = i + 2;
           inMath = false;
@@ -49,7 +72,7 @@ export default function MathText({
         // 行内数学 $...$
         if (inMath && !isDisplay) {
           // 结束行内数学
-          const mathContent = content.substring(mathStart + 1, i);
+          const mathContent = cleanLatex(content.substring(mathStart + 1, i));
           parts.push({ type: 'math', content: mathContent, display: false });
           lastIndex = i + 1;
           inMath = false;
@@ -77,11 +100,21 @@ export default function MathText({
         if (typeof part === 'string') {
           return <span key={index}>{part}</span>;
         } else {
-          return part.display ? (
-            <BlockMath key={index} math={part.content} />
-          ) : (
-            <InlineMath key={index} math={part.content} />
-          );
+          try {
+            return part.display ? (
+              <BlockMath key={index} math={part.content} />
+            ) : (
+              <InlineMath key={index} math={part.content} />
+            );
+          } catch (error) {
+            // 如果 LaTeX 渲染失败，显示原始文本
+            console.warn('LaTeX rendering error:', error, 'Content:', part.content);
+            return (
+              <span key={index} className="text-red-500" title="公式渲染错误">
+                ${part.content}$
+              </span>
+            );
+          }
         }
       })}
     </span>
