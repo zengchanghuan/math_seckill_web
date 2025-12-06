@@ -148,6 +148,42 @@ export default function PracticePage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // 跳转到指定题目
+  const handleQuestionClick = (index: number) => {
+    setCurrentIndex(index);
+    setUserAnswer('');
+    setSubmitted(false);
+    setIsCorrect(null);
+
+    // 更新对应模式的最后索引
+    setProgress(prev => ({
+      ...prev,
+      [currentMode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: index,
+    }));
+  };
+
+  // 键盘支持：方向键切换题目
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 只在非输入框时响应方向键
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft' && currentIndex > 0) {
+        e.preventDefault();
+        handleQuestionClick(currentIndex - 1);
+      } else if (e.key === 'ArrowRight' && currentIndex < filteredQuestions.length - 1) {
+        e.preventDefault();
+        handleQuestionClick(currentIndex + 1);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, filteredQuestions.length]);
+
   // 加载试卷和题目
   useEffect(() => {
     const loadPaper = async () => {
@@ -227,12 +263,12 @@ export default function PracticePage() {
     }));
 
     setCurrentMode(mode);
-    
+
     // 恢复新模式最后访问的题号
-    const lastIndex = mode === 'objective' 
+    const lastIndex = mode === 'objective'
       ? (progress.lastObjectiveIndex || 0)
       : (progress.lastSolutionIndex || 0);
-    
+
     // 确保索引在有效范围内
     const newFiltered = allQuestions.filter(q => {
       if (mode === 'objective') {
@@ -241,7 +277,7 @@ export default function PracticePage() {
         return q.type === 'solution';
       }
     });
-    
+
     const safeIndex = Math.min(lastIndex, newFiltered.length - 1);
     setCurrentIndex(safeIndex);
     setUserAnswer('');
@@ -254,7 +290,7 @@ export default function PracticePage() {
     if (!currentQuestion || !userAnswer.trim()) return;
 
     setSubmitted(true);
-    
+
     // 简单的答案检查（实际应该调用API）
     const correct = currentQuestion.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
     setIsCorrect(correct);
@@ -268,7 +304,7 @@ export default function PracticePage() {
       };
       const answeredQuestions = Object.values(newStatus).filter(s => s === 'answered' || s === 'wrong').length;
       const correctQuestions = Object.values(newStatus).filter(s => s === 'answered').length;
-      
+
       return {
         ...prev,
         answers: newAnswers,
@@ -280,18 +316,10 @@ export default function PracticePage() {
     });
   };
 
-  // 跳转到指定题目
-  const handleQuestionClick = (index: number) => {
-    setCurrentIndex(index);
-    setUserAnswer('');
+  // 修改答案
+  const handleModifyAnswer = () => {
     setSubmitted(false);
     setIsCorrect(null);
-    
-    // 更新对应模式的最后索引
-    setProgress(prev => ({
-      ...prev,
-      [currentMode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: index,
-    }));
   };
 
   // 上一题
@@ -331,11 +359,9 @@ export default function PracticePage() {
     );
   }
 
-  const currentQuestionStatus = currentQuestion 
+  const currentQuestionStatus = currentQuestion
     ? (progress.questionStatus?.[currentQuestion.questionId] || 'unanswered')
     : 'unanswered';
-  
-  const unansweredCount = progress.totalQuestions - progress.answeredCount;
 
   return (
     <Layout>
@@ -348,7 +374,7 @@ export default function PracticePage() {
           currentMode={currentMode}
           onModeChange={handleModeChange}
           elapsedTime={elapsedTime}
-          unansweredCount={unansweredCount}
+          answeredCount={progress.answeredCount}
           onExit={handleExit}
         />
 
@@ -369,34 +395,16 @@ export default function PracticePage() {
                   onAnswerChange={setUserAnswer}
                   submitted={submitted}
                   isCorrect={isCorrect}
+                  onSubmit={handleSubmit}
+                  onModifyAnswer={submitted ? handleModifyAnswer : undefined}
                 />
 
-                {!submitted && (
-                  <div className="flex justify-end">
-                    <button
-                      onClick={handleSubmit}
-                      disabled={!userAnswer.trim()}
-                      className="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      提交本题
-                    </button>
-                  </div>
-                )}
-
                 {submitted && (
-                  <>
-                    <SolutionPanel
-                      question={currentQuestion}
-                      isCorrect={isCorrect}
-                      correctAnswer={currentQuestion.answer}
-                    />
-                    <button
-                      onClick={handleNext}
-                      className="w-full px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
-                    >
-                      {currentIndex < filteredQuestions.length - 1 ? '下一题' : '查看结果'}
-                    </button>
-                  </>
+                  <SolutionPanel
+                    question={currentQuestion}
+                    isCorrect={isCorrect}
+                    correctAnswer={currentQuestion.answer}
+                  />
                 )}
               </>
             )}
@@ -418,19 +426,21 @@ export default function PracticePage() {
           </div>
         </div>
 
-        {/* 移动端题号导航 */}
-        <QuestionNav
-          questions={filteredQuestions}
-          currentIndex={currentIndex}
-          questionStatus={progress.questionStatus || {}}
-          onQuestionClick={handleQuestionClick}
-          filter={navFilter}
-          onFilterChange={setNavFilter}
-          answeredCount={progress.answeredCount}
-          correctCount={progress.correctCount}
-          totalQuestions={filteredQuestions.length}
-          isMobile={isMobile}
-        />
+        {/* 移动端题号导航（悬浮按钮） */}
+        {isMobile && (
+          <QuestionNav
+            questions={filteredQuestions}
+            currentIndex={currentIndex}
+            questionStatus={progress.questionStatus || {}}
+            onQuestionClick={handleQuestionClick}
+            filter={navFilter}
+            onFilterChange={setNavFilter}
+            answeredCount={progress.answeredCount}
+            correctCount={progress.correctCount}
+            totalQuestions={filteredQuestions.length}
+            isMobile={true}
+          />
+        )}
 
         {/* 底部操作条 */}
         <BottomBar
@@ -440,7 +450,6 @@ export default function PracticePage() {
           onPrevious={handlePrevious}
           onNext={handleNext}
           onFinish={handleFinish}
-          unansweredCount={unansweredCount}
         />
       </div>
     </Layout>

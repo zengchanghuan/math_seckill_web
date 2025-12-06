@@ -42,11 +42,11 @@ export default function QuestionNav({
     }
     switch (status) {
       case 'answered':
-        return 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300';
+        return 'bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300';
       case 'wrong':
-        return 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300';
+        return 'bg-red-50 dark:bg-red-900/30 border border-red-300 dark:border-red-700 text-red-700 dark:text-red-300';
       default:
-        return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400';
+        return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600';
     }
   };
 
@@ -58,7 +58,6 @@ export default function QuestionNav({
   });
 
   const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
-  const unansweredCount = totalQuestions - answeredCount;
 
   const navContent = (
     <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
@@ -120,16 +119,10 @@ export default function QuestionNav({
         })}
       </div>
 
-      {/* 统计信息 */}
-      <div className="border-t border-gray-200 dark:border-gray-700 pt-4 space-y-2 text-sm">
-        <div className="text-gray-700 dark:text-gray-300">
-          已作答：{answeredCount} / {totalQuestions}
-        </div>
-        <div className="text-gray-700 dark:text-gray-300">
-          正确：{correctCount} 题 · 正确率：{accuracy}%
-        </div>
-        <div className="text-gray-700 dark:text-gray-300">
-          剩余未作答：{unansweredCount} 题
+      {/* 统计信息 - 整合成一行 */}
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
+        <div className="text-xs text-gray-700 dark:text-gray-300 text-center">
+          已作答：{answeredCount} / {totalQuestions}　｜　正确：{correctCount} 题　｜　正确率：{accuracy}%
         </div>
       </div>
     </div>

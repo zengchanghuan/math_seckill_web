@@ -11,7 +11,7 @@ interface TopBarProps {
   currentMode: 'objective' | 'solution';
   onModeChange: (mode: 'objective' | 'solution') => void;
   elapsedTime: number;
-  unansweredCount: number;
+  answeredCount: number;
   onExit: () => void;
 }
 
@@ -22,7 +22,7 @@ export default function TopBar({
   currentMode,
   onModeChange,
   elapsedTime,
-  unansweredCount,
+  answeredCount,
   onExit,
 }: TopBarProps) {
   const [showExitConfirm, setShowExitConfirm] = useState(false);
@@ -33,33 +33,68 @@ export default function TopBar({
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const progressPercentage = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
+
   return (
     <>
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex-1 min-w-0">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white truncate">
-              {paper.name}
-            </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+        <div className="max-w-7xl mx-auto">
+          {/* 第一行：标题和右侧操作 */}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex-1 min-w-0">
+              <h2 className="text-base font-semibold text-gray-900 dark:text-white truncate">
+                {paper.name}
+              </h2>
+            </div>
+
+            <div className="hidden md:flex items-center space-x-3">
+              <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                已用时 {formatTime(elapsedTime)}
+              </div>
+              <button
+                onClick={() => setShowExitConfirm(true)}
+                className="px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              >
+                退出练习
+              </button>
+            </div>
+          </div>
+
+          {/* 第二行：进度信息 */}
+          <div className="flex items-center space-x-3">
+            <p className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
               共 {totalQuestions} 题 · 当前第 {currentIndex + 1} 题
             </p>
-          </div>
-
-          <div className="hidden md:flex items-center mx-4">
-            <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              已用时 {formatTime(elapsedTime)}
+            <div className="flex-1 max-w-xs">
+              <div className="flex items-center space-x-2">
+                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-primary-600 dark:bg-primary-400 transition-all duration-300"
+                    style={{ width: `${progressPercentage}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                  已做 {answeredCount}/{totalQuestions}
+                </span>
+              </div>
             </div>
-            <button
-              onClick={() => setShowExitConfirm(true)}
-              className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-            >
-              退出练习
-            </button>
+          </div>
+
+          {/* 移动端：模式切换和操作 */}
+          <div className="md:hidden flex items-center justify-between mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
+            <div className="flex items-center space-x-2">
+              <div className="text-xs text-gray-600 dark:text-gray-400">
+                {formatTime(elapsedTime)}
+              </div>
+              <button
+                onClick={() => setShowExitConfirm(true)}
+                className="px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              >
+                退出
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -71,7 +106,7 @@ export default function TopBar({
               确认结束本套练习？
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              还有 {unansweredCount} 道题未作答，结束后会生成本套的成绩统计。
+              还有 {totalQuestions - answeredCount} 道题未作答，结束后会生成本套的成绩统计。
             </p>
             <div className="flex justify-end space-x-3">
               <button

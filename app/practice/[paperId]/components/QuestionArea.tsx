@@ -50,28 +50,29 @@ export default function QuestionArea({ question, questionNumber }: QuestionAreaP
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-      {/* 题目头部信息 */}
-      <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex items-center space-x-3">
-          <span className="text-lg font-semibold text-gray-900 dark:text-white">
-            第 {questionNumber} 题
-          </span>
-          <span className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded text-sm font-medium">
-            {getTypeText(question.type)}
-          </span>
-          <span className={`px-2 py-1 rounded text-sm font-medium ${getDifficultyColor(question.difficulty)}`}>
-            {getDifficultyText(question.difficulty)}（{question.difficulty}）
-          </span>
-        </div>
+      {/* 题目头部信息 - 标签样式 */}
+      <div className="flex items-center flex-wrap gap-2 mb-4">
+        <span className="text-xl font-bold text-gray-900 dark:text-white">
+          第 {questionNumber} 题
+        </span>
+        <span className="text-gray-400 dark:text-gray-500">｜</span>
+        <span className="px-2.5 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium">
+          {getTypeText(question.type)}
+        </span>
+        <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${getDifficultyColor(question.difficulty)}`}>
+          {getDifficultyText(question.difficulty)} {question.difficulty}
+        </span>
         {question.knowledgePoints && question.knowledgePoints.length > 0 && (
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            考点：{question.knowledgePoints.join(' · ')}
-          </div>
+          <>
+            <span className="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+              考点：{question.knowledgePoints.join('·')}
+            </span>
+          </>
         )}
       </div>
 
       {/* 题干区域 */}
-      <div className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
+      <div className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mt-4">
         <MathText content={question.question} />
       </div>
     </div>

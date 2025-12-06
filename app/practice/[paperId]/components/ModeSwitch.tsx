@@ -7,10 +7,10 @@ interface ModeSwitchProps {
 
 export default function ModeSwitch({ currentMode, onModeChange }: ModeSwitchProps) {
   return (
-    <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
+    <div className="flex items-center bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
       <button
         onClick={() => onModeChange('objective')}
-        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+        className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
           currentMode === 'objective'
             ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm'
             : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
@@ -20,7 +20,7 @@ export default function ModeSwitch({ currentMode, onModeChange }: ModeSwitchProp
       </button>
       <button
         onClick={() => onModeChange('solution')}
-        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+        className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
           currentMode === 'solution'
             ? 'bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 shadow-sm'
             : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'

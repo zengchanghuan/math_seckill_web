@@ -43,34 +43,36 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 space-y-4">
-      {/* 结果提示 */}
+    <div className="mt-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 p-4 space-y-3">
+      {/* 结果提示 - 浅色反馈卡 */}
       <div
-        className={`p-4 rounded-lg ${
+        className={`p-3 rounded-lg ${
           isCorrect
-            ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
-            : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+            ? 'bg-green-50/80 dark:bg-green-900/30 border border-green-200/50 dark:border-green-800/50'
+            : 'bg-red-50/80 dark:bg-red-900/30 border border-red-200/50 dark:border-red-800/50'
         }`}
       >
-        <p className={`font-semibold ${
+        <p className={`text-sm font-semibold mb-1 ${
           isCorrect
             ? 'text-green-700 dark:text-green-300'
             : 'text-red-700 dark:text-red-300'
         }`}>
-          {isCorrect ? '✓ 回答正确' : '✗ 回答错误'}
+          {isCorrect ? '✅ 回答正确' : '❌ 回答错误'}
         </p>
-        <p className="mt-2 text-gray-700 dark:text-gray-300">
-          正确答案：<MathText content={correctAnswer} />
-        </p>
+        {!isCorrect && (
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            正确答案：<MathText content={correctAnswer} />
+          </p>
+        )}
       </div>
 
       {/* 简短解析（免费） */}
       {shortSolution && (
-        <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        <div>
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             关键思路：
           </p>
-          <div className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+          <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
             <MathText content={shortSolution} />
           </div>
         </div>
@@ -78,7 +80,7 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
 
       {/* 详细解析（Pro功能） */}
       {detailedSolution && detailedSolution !== shortSolution && (
-        <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg">
+        <div>
           <button
             onClick={() => setShowDetailed(!showDetailed)}
             className="text-primary-600 dark:text-primary-400 font-medium hover:underline text-sm"
@@ -86,7 +88,7 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer }: So
             {showDetailed ? '收起' : '展开'}完整解析
           </button>
           {showDetailed && (
-            <div className="mt-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+            <div className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
               <MathText content={detailedSolution} />
             </div>
           )}

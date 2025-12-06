@@ -9,7 +9,6 @@ interface BottomBarProps {
   onPrevious: () => void;
   onNext: () => void;
   onFinish: () => void;
-  unansweredCount: number;
 }
 
 export default function BottomBar({
@@ -19,7 +18,6 @@ export default function BottomBar({
   onPrevious,
   onNext,
   onFinish,
-  unansweredCount,
 }: BottomBarProps) {
   const [showFinishConfirm, setShowFinishConfirm] = useState(false);
 
@@ -28,7 +26,7 @@ export default function BottomBar({
       case 'answered':
         return '已作答';
       case 'wrong':
-        return '答错';
+        return '回答错误';
       default:
         return '未作答';
     }
@@ -78,7 +76,7 @@ export default function BottomBar({
               确认结束本套练习？
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              还有 {unansweredCount} 道题未作答，结束后会生成本套的成绩统计。
+              结束后会生成本套的成绩统计。
             </p>
             <div className="flex justify-end space-x-3">
               <button

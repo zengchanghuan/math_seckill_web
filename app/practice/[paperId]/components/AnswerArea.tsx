@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import MathText from '@/components/MathText';
 import type { Question } from '@/types';
 
@@ -9,6 +10,8 @@ interface AnswerAreaProps {
   onAnswerChange: (answer: string) => void;
   submitted: boolean;
   isCorrect: boolean | null;
+  onSubmit: () => void;
+  onModifyAnswer?: () => void;
 }
 
 export default function AnswerArea({
@@ -17,9 +20,34 @@ export default function AnswerArea({
   onAnswerChange,
   submitted,
   isCorrect,
+  onSubmit,
+  onModifyAnswer,
 }: AnswerAreaProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // 键盘支持：Enter 提交
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && !submitted && userAnswer.trim() && question.type === 'fill') {
+        e.preventDefault();
+        onSubmit();
+      }
+    };
+
+    if (question.type === 'fill' && inputRef.current) {
+      inputRef.current.addEventListener('keydown', handleKeyDown);
+      return () => {
+        inputRef.current?.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [submitted, userAnswer, question.type, onSubmit]);
+
   const handleOptionClick = (optionValue: string) => {
-    if (submitted) return;
+    if (submitted && !onModifyAnswer) return;
+    if (submitted && onModifyAnswer) {
+      onModifyAnswer();
+      return;
+    }
     const newValue = userAnswer === optionValue ? '' : optionValue;
     onAnswerChange(newValue);
   };
@@ -39,7 +67,7 @@ export default function AnswerArea({
               <button
                 key={idx}
                 onClick={() => handleOptionClick(optionValue)}
-                disabled={submitted}
+                disabled={submitted && !onModifyAnswer}
                 className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                   isSelected
                     ? 'border-primary-600 dark:border-primary-400 bg-primary-50 dark:bg-primary-900/20'
@@ -66,24 +94,30 @@ export default function AnswerArea({
         </div>
 
         {!submitted && !userAnswer && (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
             请选择一个选项，然后点击「提交本题」
           </p>
         )}
 
-        {submitted && userAnswer && (
-          <div className={`p-3 rounded-lg ${
-            isCorrect
-              ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
-              : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
-          }`}>
-            <p className={`text-sm font-medium ${
-              isCorrect
-                ? 'text-green-700 dark:text-green-300'
-                : 'text-red-700 dark:text-red-300'
-            }`}>
-              你的选择：{userAnswer} {isCorrect ? '（正确）' : '（错误）'}
-            </p>
+        {!submitted && userAnswer && (
+          <div className="flex justify-end">
+            <button
+              onClick={onSubmit}
+              className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm"
+            >
+              提交本题
+            </button>
+          </div>
+        )}
+
+        {submitted && onModifyAnswer && (
+          <div className="flex justify-end">
+            <button
+              onClick={onModifyAnswer}
+              className="px-5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm"
+            >
+              已提交 · 修改答案
+            </button>
           </div>
         )}
       </div>
@@ -94,23 +128,44 @@ export default function AnswerArea({
   if (question.type === 'fill') {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
-        <div className="mb-2">
+        <div className="mb-3">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
             (1) 填写答案：
           </label>
           <input
+            ref={inputRef}
             type="text"
             value={userAnswer}
             onChange={(e) => onAnswerChange(e.target.value)}
-            disabled={submitted}
-            placeholder="请输入数字或简单的式子，如 1/2, e, ln2 等"
+            disabled={submitted && !onModifyAnswer}
+            placeholder="例如：1/2、e、ln2 等"
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white disabled:opacity-60"
           />
         </div>
         {!submitted && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            请输入数字或简单的式子，如 1/2, e, ln2 等
-          </p>
+          <div className="flex items-start justify-between">
+            <p className="text-xs text-gray-500 dark:text-gray-400 flex-1">
+              请输入数字或简单的式子，系统会自动判断等价形式
+            </p>
+            <button
+              onClick={onSubmit}
+              disabled={!userAnswer.trim()}
+              className="ml-4 px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              title={!userAnswer.trim() ? '请先作答再提交' : ''}
+            >
+              提交本题
+            </button>
+          </div>
+        )}
+        {submitted && onModifyAnswer && (
+          <div className="flex justify-end">
+            <button
+              onClick={onModifyAnswer}
+              className="px-5 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm"
+            >
+              已提交 · 修改答案
+            </button>
+          </div>
         )}
       </div>
     );
@@ -126,10 +181,20 @@ export default function AnswerArea({
         <textarea
           value={userAnswer}
           onChange={(e) => onAnswerChange(e.target.value)}
-          disabled={submitted}
+          disabled={submitted && !onModifyAnswer}
           placeholder="请输入解答过程（可选）"
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-[150px] disabled:opacity-60"
         />
+        {!submitted && (
+          <div className="flex justify-end mt-3">
+            <button
+              onClick={onSubmit}
+              className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm"
+            >
+              查看参考解答
+            </button>
+          </div>
+        )}
       </div>
     );
   }
