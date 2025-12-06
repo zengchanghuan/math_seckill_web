@@ -18,13 +18,15 @@ class ApiClient {
 
   constructor() {
     // 默认配置
-    this.baseUrl = typeof window !== 'undefined'
-      ? localStorage.getItem('serverUrl') || 'http://localhost:8000'
-      : 'http://localhost:8000';
+    this.baseUrl =
+      typeof window !== 'undefined'
+        ? localStorage.getItem('serverUrl') || 'http://localhost:8000'
+        : 'http://localhost:8000';
 
-    this.studentId = typeof window !== 'undefined'
-      ? localStorage.getItem('studentId') || 'student_001'
-      : 'student_001';
+    this.studentId =
+      typeof window !== 'undefined'
+        ? localStorage.getItem('studentId') || 'student_001'
+        : 'student_001';
 
     this.client = axios.create({
       baseURL: this.baseUrl,
@@ -89,7 +91,9 @@ class ApiClient {
 
   async getQuestionBankStats(): Promise<QuestionBankStats | null> {
     try {
-      const response = await this.client.get<QuestionBankStats>('/api/questions/stats');
+      const response = await this.client.get<QuestionBankStats>(
+        '/api/questions/stats'
+      );
       return response.data;
     } catch (error) {
       console.error('Error getting question bank stats:', error);
@@ -99,7 +103,9 @@ class ApiClient {
 
   async getQuestion(questionId: string): Promise<Question | null> {
     try {
-      const response = await this.client.get<Question>(`/api/questions/${questionId}`);
+      const response = await this.client.get<Question>(
+        `/api/questions/${questionId}`
+      );
       return response.data;
     } catch (error) {
       console.error('Error getting question:', error);
@@ -109,7 +115,10 @@ class ApiClient {
 
   async createQuestion(question: Question): Promise<Question | null> {
     try {
-      const response = await this.client.post<Question>('/api/questions', question);
+      const response = await this.client.post<Question>(
+        '/api/questions',
+        question
+      );
       return response.data;
     } catch (error) {
       console.error('Error creating question:', error);
@@ -119,7 +128,9 @@ class ApiClient {
 
   // ==================== 作答记录 ====================
 
-  async submitAnswer(request: SubmitAnswerRequest): Promise<SubmitAnswerResponse | null> {
+  async submitAnswer(
+    request: SubmitAnswerRequest
+  ): Promise<SubmitAnswerResponse | null> {
     try {
       const response = await this.client.post<SubmitAnswerResponse>(
         '/api/answers/submit',

@@ -7,10 +7,13 @@ import { apiClient } from '@/lib/api/client';
 import { CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 
 export default function SettingsPage() {
-  const { config, setStudentId, setServerUrl, setOfflineMode, setTheme } = useAppStore();
+  const { config, setStudentId, setServerUrl, setOfflineMode, setTheme } =
+    useAppStore();
   const [studentIdInput, setStudentIdInput] = useState(config.studentId);
   const [serverUrlInput, setServerUrlInput] = useState(config.serverUrl);
-  const [connectionStatus, setConnectionStatus] = useState<'idle' | 'checking' | 'success' | 'error'>('idle');
+  const [connectionStatus, setConnectionStatus] = useState<
+    'idle' | 'checking' | 'success' | 'error'
+  >('idle');
 
   useEffect(() => {
     setStudentIdInput(config.studentId);
@@ -43,11 +46,15 @@ export default function SettingsPage() {
   return (
     <Layout>
       <div className="max-w-2xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">设置</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          设置
+        </h1>
 
         {/* 用户设置 */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">用户设置</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            用户设置
+          </h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -74,7 +81,9 @@ export default function SettingsPage() {
 
         {/* 服务器配置 */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">服务器配置</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            服务器配置
+          </h2>
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -129,7 +138,9 @@ export default function SettingsPage() {
 
         {/* 应用设置 */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">应用设置</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            应用设置
+          </h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
@@ -164,7 +175,9 @@ export default function SettingsPage() {
                 <input
                   type="checkbox"
                   checked={config.theme === 'dark'}
-                  onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
+                  onChange={(e) =>
+                    setTheme(e.target.checked ? 'dark' : 'light')
+                  }
                   className="sr-only peer"
                 />
                 <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
@@ -175,18 +188,28 @@ export default function SettingsPage() {
 
         {/* 当前配置信息 */}
         <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">当前配置</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+            当前配置
+          </h2>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-gray-600 dark:text-gray-400">学生ID：</span>
-              <span className="text-gray-900 dark:text-white font-mono">{config.studentId}</span>
+              <span className="text-gray-900 dark:text-white font-mono">
+                {config.studentId}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">服务器地址：</span>
-              <span className="text-gray-900 dark:text-white font-mono">{config.serverUrl}</span>
+              <span className="text-gray-600 dark:text-gray-400">
+                服务器地址：
+              </span>
+              <span className="text-gray-900 dark:text-white font-mono">
+                {config.serverUrl}
+              </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-600 dark:text-gray-400">离线模式：</span>
+              <span className="text-gray-600 dark:text-gray-400">
+                离线模式：
+              </span>
               <span className="text-gray-900 dark:text-white">
                 {config.isOfflineMode ? '开启' : '关闭'}
               </span>

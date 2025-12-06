@@ -9,9 +9,16 @@ interface MathTextProps {
   className?: string;
 }
 
-export default function MathText({ content, displayMode = false, className = '' }: MathTextProps) {
+export default function MathText({
+  content,
+  displayMode = false,
+  className = '',
+}: MathTextProps) {
   // 提取 LaTeX 表达式（支持 $...$ 和 $$...$$）
-  const parts: (string | { type: 'math'; content: string; display: boolean })[] = [];
+  const parts: (
+    | string
+    | { type: 'math'; content: string; display: boolean }
+  )[] = [];
   let lastIndex = 0;
   let inMath = false;
   let mathStart = -1;

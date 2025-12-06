@@ -26,7 +26,9 @@ export default function HomePage() {
               <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
                 <BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">刷题训练</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                刷题训练
+              </h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400">
               按主题和难度筛选题目，进行针对性练习
@@ -41,7 +43,9 @@ export default function HomePage() {
               <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
                 <Target className="w-6 h-6 text-green-600 dark:text-green-400" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">智能推荐</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                智能推荐
+              </h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400">
               基于学习画像，个性化推荐最适合的题目
@@ -56,7 +60,9 @@ export default function HomePage() {
               <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
                 <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">学习画像</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                学习画像
+              </h2>
             </div>
             <p className="text-gray-600 dark:text-gray-400">
               查看学习数据，了解掌握情况和薄弱点

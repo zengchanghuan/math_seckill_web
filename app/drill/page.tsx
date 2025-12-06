@@ -6,7 +6,13 @@ import MathText from '@/components/MathText';
 import { apiClient } from '@/lib/api/client';
 import { useAppStore } from '@/lib/store/appStore';
 import type { Question } from '@/types';
-import { Loader2, CheckCircle2, XCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Loader2,
+  CheckCircle2,
+  XCircle,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
 export default function DrillPage() {
   const { config } = useAppStore();
@@ -174,10 +180,11 @@ export default function DrillPage() {
                       key={index}
                       onClick={() => !isSubmitted && setUserAnswer(optionLabel)}
                       disabled={isSubmitted}
-                      className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${isSelected
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${
+                        isSelected
                           ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
                           : 'border-gray-200 dark:border-gray-700 hover:border-primary-300'
-                        } ${isSubmitted ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                      } ${isSubmitted ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                     >
                       <span className="font-medium">{optionLabel}. </span>
                       <MathText content={option} />
@@ -219,10 +226,11 @@ export default function DrillPage() {
             {isSubmitted && (
               <div className="space-y-4">
                 <div
-                  className={`p-4 rounded-lg flex items-center space-x-2 ${isCorrect
+                  className={`p-4 rounded-lg flex items-center space-x-2 ${
+                    isCorrect
                       ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300'
                       : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300'
-                    }`}
+                  }`}
                 >
                   {isCorrect ? (
                     <CheckCircle2 className="w-5 h-5" />
@@ -236,7 +244,9 @@ export default function DrillPage() {
 
                 {!isCorrect && (
                   <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">正确答案：</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      正确答案：
+                    </p>
                     <MathText content={currentQuestion.answer} />
                   </div>
                 )}

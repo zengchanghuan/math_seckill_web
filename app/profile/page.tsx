@@ -53,14 +53,18 @@ export default function ProfilePage() {
   return (
     <Layout>
       <div className="max-w-6xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">学习画像</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          学习画像
+        </h1>
 
         {/* 预测分数 */}
         <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-6 rounded-lg shadow-md text-white">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-primary-100 mb-2">预测考试分数</p>
-              <p className="text-4xl font-bold">{profile.predictedScore.toFixed(1)}</p>
+              <p className="text-4xl font-bold">
+                {profile.predictedScore.toFixed(1)}
+              </p>
             </div>
             <TrendingUp className="w-12 h-12 text-primary-200" />
           </div>
@@ -96,7 +100,9 @@ export default function ProfilePage() {
               return (
                 <div key={difficulty}>
                   <div className="flex justify-between mb-1">
-                    <span className="text-gray-700 dark:text-gray-300">{difficulty}</span>
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {difficulty}
+                    </span>
                     <span className="text-gray-600 dark:text-gray-400">
                       {(rate * 100).toFixed(1)}%
                     </span>
@@ -125,12 +131,13 @@ export default function ProfilePage() {
                 <div className="flex items-center space-x-2">
                   <div className="w-24 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <div
-                      className={`h-2 rounded-full transition-all ${rate >= 0.75
+                      className={`h-2 rounded-full transition-all ${
+                        rate >= 0.75
                           ? 'bg-green-500'
                           : rate >= 0.6
                             ? 'bg-yellow-500'
                             : 'bg-red-500'
-                        }`}
+                      }`}
                       style={{ width: `${rate * 100}%` }}
                     />
                   </div>
@@ -174,24 +181,30 @@ export default function ProfilePage() {
             题型正确率
           </h2>
           <div className="space-y-4">
-            {Object.entries(profile.questionTypeAccuracy).map(([type, rate]) => (
-              <div key={type}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-gray-700 dark:text-gray-300">
-                    {type === 'choice' ? '选择题' : type === 'fill' ? '填空题' : '解答题'}
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-400">
-                    {(rate * 100).toFixed(1)}%
-                  </span>
+            {Object.entries(profile.questionTypeAccuracy).map(
+              ([type, rate]) => (
+                <div key={type}>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {type === 'choice'
+                        ? '选择题'
+                        : type === 'fill'
+                          ? '填空题'
+                          : '解答题'}
+                    </span>
+                    <span className="text-gray-600 dark:text-gray-400">
+                      {(rate * 100).toFixed(1)}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div
+                      className="bg-primary-600 h-2 rounded-full transition-all"
+                      style={{ width: `${rate * 100}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-primary-600 h-2 rounded-full transition-all"
-                    style={{ width: `${rate * 100}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       </div>
@@ -212,8 +225,12 @@ function StatCard({
     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{title}</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{value}</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+            {title}
+          </p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">
+            {value}
+          </p>
         </div>
         <div className="text-primary-600 dark:text-primary-400">{icon}</div>
       </div>

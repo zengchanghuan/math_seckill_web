@@ -39,7 +39,10 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
-              <Link href="/" className="text-xl font-bold text-primary-600 dark:text-primary-400">
+              <Link
+                href="/"
+                className="text-xl font-bold text-primary-600 dark:text-primary-400"
+              >
                 数学秒杀
               </Link>
               <div className="hidden md:flex space-x-1">
@@ -65,7 +68,9 @@ export default function Layout({ children }: LayoutProps) {
               </div>
             </div>
             <button
-              onClick={() => setTheme(config.theme === 'light' ? 'dark' : 'light')}
+              onClick={() =>
+                setTheme(config.theme === 'light' ? 'dark' : 'light')
+              }
               className="p-2 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               {config.theme === 'light' ? '🌙' : '☀️'}
