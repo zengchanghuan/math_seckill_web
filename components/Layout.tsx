@@ -36,11 +36,13 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
-              <Link
-                href="/"
-                className="text-xl font-bold text-primary-600 dark:text-primary-400"
-              >
-                高数衔接刷题
+              <Link href="/" className="flex flex-col">
+                <span className="text-xl font-bold text-primary-600 dark:text-primary-400">
+                  高数衔接刷题
+                </span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  你的私塾教练
+                </span>
               </Link>
               <div className="hidden md:flex space-x-1">
                 {navItems.map((item) => {
