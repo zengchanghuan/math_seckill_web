@@ -11,19 +11,15 @@ interface MathTextProps {
 
 // 清理和修复 LaTeX 代码中的常见问题
 function cleanLatex(latex: string): string {
-  // 移除 LaTeX 代码中的下划线（这些可能是占位符）
-  // 但保留 LaTeX 命令中的下划线（如 \int_0）
   let cleaned = latex;
   
-  // 修复连续的下划线（可能是占位符，替换为空格或移除）
-  cleaned = cleaned.replace(/_+/g, (match) => {
-    // 如果下划线在 LaTeX 命令中（如 \int_0），保留单个下划线
-    if (match.length === 1) {
-      return '_';
-    }
-    // 多个下划线可能是占位符，替换为空格
-    return ' ';
-  });
+  // 移除题目文本中的 ** 标记（Markdown 加粗标记）
+  cleaned = cleaned.replace(/\*\*/g, '');
+  
+  // 修复 LaTeX 代码中的占位符下划线
+  // 保留 LaTeX 命令中的下划线（如 \int_0, x_1），但移除占位符下划线
+  // 匹配不在 LaTeX 命令中的连续下划线（如 \______）
+  cleaned = cleaned.replace(/\\_+/g, ''); // 移除 \______ 这种占位符
   
   // 修复其他常见问题
   // 移除多余的空白
@@ -100,11 +96,13 @@ export default function MathText({
         if (typeof part === 'string') {
           return <span key={index}>{part}</span>;
         } else {
+          // 使用 ErrorBoundary 或 try-catch 包装，但 react-katex 内部会处理错误
+          // 如果 LaTeX 语法错误，react-katex 会显示错误信息，我们可以捕获并显示更友好的提示
           try {
             return part.display ? (
-              <BlockMath key={index} math={part.content} />
+              <BlockMath key={index} math={part.content} errorColor="#cc0000" />
             ) : (
-              <InlineMath key={index} math={part.content} />
+              <InlineMath key={index} math={part.content} errorColor="#cc0000" />
             );
           } catch (error) {
             // 如果 LaTeX 渲染失败，显示原始文本
