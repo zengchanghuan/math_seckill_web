@@ -1,52 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import Link from 'next/link';
+import { apiClient } from '@/lib/api/client';
 import type { ExamPaper } from '@/types';
 
-// 模拟真题数据（如果后端API未就绪）
-const mockExamPapers: ExamPaper[] = [
-  {
-    paperId: 'paper_2023_1',
-    name: '2023年广东专升本高数真题（第1套）',
-    year: 2023,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-  {
-    paperId: 'paper_2022_1',
-    name: '2022年广东专升本高数真题（第1套）',
-    year: 2022,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-  {
-    paperId: 'paper_2021_1',
-    name: '2021年广东专升本高数真题（第1套）',
-    year: 2021,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-];
-
 export default function HomePage() {
-  const [examPapers] = useState<ExamPaper[]>(mockExamPapers);
+  const [examPapers, setExamPapers] = useState<ExamPaper[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // 从 API 加载试卷列表
+  useEffect(() => {
+    const loadPapers = async () => {
+      try {
+        setIsLoading(true);
+        const papers = await apiClient.getExamPapers();
+        setExamPapers(papers);
+      } catch (error) {
+        console.error('加载试卷列表失败:', error);
+        // 如果 API 失败，使用空数组，不显示试卷
+        setExamPapers([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPapers();
+  }, []);
   const [formData, setFormData] = useState({
     willingToPay: '',
     priceRange: '',
@@ -171,27 +152,38 @@ export default function HomePage() {
               后续会持续更新更多年份与相近难度的题目。
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {examPapers.map((paper) => (
-                <div
-                  key={paper.paperId}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow flex flex-col min-h-[180px]"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {paper.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm flex-1">
-                    共 {paper.totalQuestions} 题 · 选择 + 填空 + 解答 · 建议用时 {paper.suggestedTime} 分钟
-                  </p>
-                  <Link
-                    href={`/practice/${paper.paperId}`}
-                    className="inline-block px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm text-center"
+            {isLoading ? (
+              <div className="text-center py-8">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                <p className="mt-4 text-gray-600 dark:text-gray-400">正在加载试卷列表...</p>
+              </div>
+            ) : examPapers.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-gray-600 dark:text-gray-400">暂无试卷数据</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {examPapers.map((paper) => (
+                  <div
+                    key={paper.paperId}
+                    className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow flex flex-col min-h-[180px]"
                   >
-                    开始练习
-                  </Link>
-                </div>
-              ))}
-            </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      {paper.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm flex-1">
+                      共 {paper.totalQuestions} 题 · 选择 + 填空 + 解答 · 建议用时 {paper.suggestedTime} 分钟
+                    </p>
+                    <Link
+                      href={`/practice/${paper.paperId}`}
+                      className="inline-block px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm text-center"
+                    >
+                      开始练习
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
