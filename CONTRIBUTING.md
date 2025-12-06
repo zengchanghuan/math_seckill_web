@@ -42,6 +42,7 @@ git commit -m "描述你的更改"
 ```
 
 提交信息格式：
+
 - `feat: 添加新功能`
 - `fix: 修复 bug`
 - `docs: 更新文档`
@@ -80,6 +81,7 @@ math_seckill_web/
 ## 问题报告
 
 如果发现 bug 或有功能建议，请创建 Issue：
+
 - Bug 报告：使用 bug report 模板
 - 功能请求：使用 feature request 模板
 

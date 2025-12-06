@@ -36,7 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 # IDE
-.vscode/
+# .vscode/  # 保留 .vscode 配置以便团队共享
 .idea/
 *.swp
 *.swo
