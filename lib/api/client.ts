@@ -115,6 +115,29 @@ class ApiClient {
     }
   }
 
+  async getQuestions(paperId?: string, topic?: string, difficulty?: string): Promise<Question[]> {
+    try {
+      const params = new URLSearchParams();
+      if (paperId) params.append('paperId', paperId);
+      if (topic) params.append('topic', topic);
+      if (difficulty) params.append('difficulty', difficulty);
+
+      const url = `/api/questions?${params.toString()}`;
+      console.log('API Request:', this.baseUrl + url);
+
+      const response = await this.client.get<Question[]>(url);
+      console.log('API Response status:', response.status, 'data length:', response.data?.length || 0);
+      return response.data || [];
+    } catch (error: any) {
+      console.error('Error getting questions:', error.message || error);
+      if (error.response) {
+        console.error('Response status:', error.response.status);
+        console.error('Response data:', error.response.data);
+      }
+      return [];
+    }
+  }
+
   async createQuestion(question: Question): Promise<Question | null> {
     try {
       const response = await this.client.post<Question>(
@@ -216,12 +239,10 @@ class ApiClient {
 
   async getQuestionsByPaper(paperId: string): Promise<Question[]> {
     try {
-      const response = await this.client.get<Question[]>(
-        `/api/papers/${paperId}/questions`
-      );
-      return response.data || [];
+      // 使用新的 getQuestions API，按 paperId 过滤
+      return await this.getQuestions(paperId);
     } catch (error) {
-      console.log('Paper questions API not available, will filter by paperId');
+      console.error('Error getting questions by paper:', error);
       return [];
     }
   }

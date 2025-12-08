@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import ModeSwitch from './ModeSwitch';
 import type { ExamPaper } from '@/types';
 
 interface TopBarProps {
   paper: ExamPaper;
   currentIndex: number;
   totalQuestions: number;
-  currentMode?: 'objective' | 'solution'; // 保留以兼容，但不再使用
-  onModeChange?: (mode: 'objective' | 'solution') => void; // 保留以兼容，但不再使用
+  currentMode: 'objective' | 'solution';
+  onModeChange: (mode: 'objective' | 'solution') => void;
   elapsedTime: number;
   answeredCount: number;
   onExit: () => void;
@@ -47,6 +48,7 @@ export default function TopBar({
             </div>
 
             <div className="hidden md:flex items-center space-x-3">
+              <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
               <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
                 <span>⏱</span>
                 <span>{formatTime(elapsedTime)}</span>
@@ -67,13 +69,13 @@ export default function TopBar({
             </p>
             <div className="flex-1 max-w-xs">
               <div className="flex items-center space-x-2">
-                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative group">
+                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
                   <div
                     className="h-full bg-primary-600 dark:bg-primary-400 transition-all duration-300"
                     style={{ width: `${progressPercentage}%` }}
                   />
-                  {progressPercentage > 10 && (
-                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-gray-500 dark:text-gray-400 font-medium pointer-events-none">
+                  {progressPercentage > 0 && (
+                    <span className="absolute inset-0 flex items-center justify-center text-[10px] text-gray-500 dark:text-gray-400 font-medium">
                       {progressPercentage}%
                     </span>
                   )}
@@ -85,8 +87,9 @@ export default function TopBar({
             </div>
           </div>
 
-          {/* 移动端：操作 */}
-          <div className="md:hidden flex items-center justify-end mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+          {/* 移动端：模式切换和操作 */}
+          <div className="md:hidden flex items-center justify-between mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+            <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400">
                 <span>⏱</span>

@@ -6,7 +6,7 @@ import type { Question } from '@/types';
 interface QuestionNavProps {
   questions: Question[];
   currentIndex: number;
-  questionStatus: Record<string, 'unanswered' | 'answered' | 'wrong' | 'skipped'>;
+  questionStatus: Record<string, 'unanswered' | 'answered' | 'wrong'>;
   onQuestionClick: (index: number) => void;
   filter: 'all' | 'unanswered' | 'wrong';
   onFilterChange: (filter: 'all' | 'unanswered' | 'wrong') => void;
@@ -30,13 +30,13 @@ export default function QuestionNav({
 }: QuestionNavProps) {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  const getQuestionStatus = (index: number): 'unanswered' | 'answered' | 'wrong' | 'skipped' => {
+  const getQuestionStatus = (index: number): 'unanswered' | 'answered' | 'wrong' => {
     const question = questions[index];
     if (!question) return 'unanswered';
     return questionStatus[question.questionId] || 'unanswered';
   };
 
-  const getStatusColor = (status: 'unanswered' | 'answered' | 'wrong' | 'skipped', isCurrent: boolean) => {
+  const getStatusColor = (status: 'unanswered' | 'answered' | 'wrong', isCurrent: boolean) => {
     if (isCurrent) {
       return 'bg-primary-600 dark:bg-primary-400 text-white border-2 border-primary-700 dark:border-primary-300';
     }
@@ -45,8 +45,6 @@ export default function QuestionNav({
         return 'bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300';
       case 'wrong':
         return 'bg-red-50 dark:bg-red-900/30 border border-red-300 dark:border-red-700 text-red-700 dark:text-red-300';
-      case 'skipped':
-        return 'bg-orange-50 dark:bg-orange-900/30 border border-orange-300 dark:border-orange-700 text-orange-700 dark:text-orange-300';
       default:
         return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600';
     }
@@ -54,7 +52,7 @@ export default function QuestionNav({
 
   const filteredQuestions = questions.filter((q, idx) => {
     const status = getQuestionStatus(idx);
-    if (filter === 'unanswered') return status === 'unanswered' || status === 'skipped';
+    if (filter === 'unanswered') return status === 'unanswered';
     if (filter === 'wrong') return status === 'wrong';
     return true;
   });
@@ -67,29 +65,32 @@ export default function QuestionNav({
       <div className="flex space-x-2 mb-4">
         <button
           onClick={() => onFilterChange('all')}
-          className={`px-3 py-1 text-xs font-medium rounded ${filter === 'all'
-            ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-            : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-            }`}
+          className={`px-3 py-1 text-xs font-medium rounded ${
+            filter === 'all'
+              ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+          }`}
         >
           全部题目
         </button>
         <button
           onClick={() => onFilterChange('unanswered')}
-          className={`px-3 py-1 text-xs font-medium rounded ${filter === 'unanswered'
-            ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-            : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-            }`}
+          className={`px-3 py-1 text-xs font-medium rounded ${
+            filter === 'unanswered'
+              ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+          }`}
         >
           未作答
         </button>
         {answeredCount > 0 && (
           <button
             onClick={() => onFilterChange('wrong')}
-            className={`px-3 py-1 text-xs font-medium rounded ${filter === 'wrong'
-              ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-              }`}
+            className={`px-3 py-1 text-xs font-medium rounded ${
+              filter === 'wrong'
+                ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+            }`}
           >
             答错题
           </button>
@@ -110,13 +111,9 @@ export default function QuestionNav({
                 onQuestionClick(originalIndex);
                 if (isMobile) setShowMobileNav(false);
               }}
-              className={`w-10 h-10 rounded text-sm font-medium transition-all relative ${getStatusColor(status, isCurrent)}`}
-              title={status === 'skipped' ? '已跳过' : ''}
+              className={`w-10 h-10 rounded text-sm font-medium transition-all ${getStatusColor(status, isCurrent)}`}
             >
               {originalIndex + 1}
-              {status === 'skipped' && !isCurrent && (
-                <span className="absolute -top-1 -right-1 text-[10px] text-orange-600 dark:text-orange-400">跳</span>
-              )}
             </button>
           );
         })}

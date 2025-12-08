@@ -12,7 +12,6 @@ interface AnswerAreaProps {
   isCorrect: boolean | null;
   onSubmit: () => void;
   onModifyAnswer?: () => void;
-  onSkip?: () => void;
 }
 
 export default function AnswerArea({
@@ -23,7 +22,6 @@ export default function AnswerArea({
   isCorrect,
   onSubmit,
   onModifyAnswer,
-  onSkip,
 }: AnswerAreaProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -72,16 +70,17 @@ export default function AnswerArea({
                 key={idx}
                 onClick={() => handleOptionClick(optionValue)}
                 disabled={submitted && !onModifyAnswer}
-                className={`w-full text-left p-4 rounded-lg border-2 transition-all relative ${!submitted
-                  ? isSelected
-                    ? 'border-primary-600 dark:border-primary-400 bg-primary-50 dark:bg-primary-900/20'
-                    : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
-                  : isCorrectOption
+                className={`w-full text-left p-4 rounded-lg border-2 transition-all relative ${
+                  !submitted
+                    ? isSelected
+                      ? 'border-primary-600 dark:border-primary-400 bg-primary-50 dark:bg-primary-900/20'
+                      : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'
+                    : isCorrectOption
                     ? 'border-green-300 dark:border-green-600 bg-green-50 dark:bg-green-900/20'
                     : isUserWrong
-                      ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/20'
-                      : 'border-gray-200 dark:border-gray-700 opacity-60'
-                  }`}
+                    ? 'border-red-300 dark:border-red-600 bg-red-50 dark:bg-red-900/20'
+                    : 'border-gray-200 dark:border-gray-700 opacity-60'
+                }`}
               >
                 <div className="flex items-start">
                   {submitted && (isCorrectOption || isUserWrong) && (
@@ -107,27 +106,11 @@ export default function AnswerArea({
           </p>
         )}
 
-        {/* 方案二：提交和跳过按钮并排 */}
-        {!submitted && (
-          <div className="flex items-center justify-end gap-3">
-            {onSkip && (
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log('选择题跳过按钮被点击，onSkip:', typeof onSkip);
-                  if (onSkip) {
-                    onSkip();
-                  }
-                }}
-                className="px-4 py-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors border border-primary-200 dark:border-primary-800"
-              >
-                不会 · 先跳过
-              </button>
-            )}
+        {!submitted && userAnswer && (
+          <div className="flex justify-end">
             <button
               onClick={onSubmit}
-              disabled={!userAnswer}
-              className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm"
             >
               提交本题
             </button>
@@ -167,33 +150,18 @@ export default function AnswerArea({
           />
         </div>
         {!submitted && (
-          <div className="space-y-3">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+          <div className="flex items-start justify-between">
+            <p className="text-xs text-gray-500 dark:text-gray-400 flex-1">
               请输入数字或简单的式子，系统会自动判断等价形式
             </p>
-            {/* 方案二：提交和跳过按钮并排 */}
-            <div className="flex items-center justify-end gap-3">
-              {onSkip && (
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log('填空题跳过按钮被点击');
-                    onSkip();
-                  }}
-                  className="px-4 py-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors border border-primary-200 dark:border-primary-800"
-                >
-                  不会 · 先跳过
-                </button>
-              )}
-              <button
-                onClick={onSubmit}
-                disabled={!userAnswer.trim()}
-                className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-                title={!userAnswer.trim() ? '请先作答再提交' : ''}
-              >
-                提交本题
-              </button>
-            </div>
+            <button
+              onClick={onSubmit}
+              disabled={!userAnswer.trim()}
+              className="ml-4 px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              title={!userAnswer.trim() ? '请先作答再提交' : ''}
+            >
+              提交本题
+            </button>
           </div>
         )}
         {submitted && onModifyAnswer && (
@@ -224,23 +192,8 @@ export default function AnswerArea({
           placeholder="请输入解答过程（可选）"
           className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-[150px] disabled:opacity-60"
         />
-        {/* 方案二：提交和跳过按钮并排 */}
         {!submitted && (
-          <div className="flex items-center justify-end gap-3 mt-3">
-            {onSkip && (
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log('解答题跳过按钮被点击，onSkip:', typeof onSkip);
-                  if (onSkip) {
-                    onSkip();
-                  }
-                }}
-                className="px-4 py-2 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors border border-primary-200 dark:border-primary-800"
-              >
-                不会 · 先跳过
-              </button>
-            )}
+          <div className="flex justify-end mt-3">
             <button
               onClick={onSubmit}
               className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm"
