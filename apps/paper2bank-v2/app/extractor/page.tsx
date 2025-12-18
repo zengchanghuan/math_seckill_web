@@ -15,7 +15,7 @@ const katexOptions = {
   trust: true,
 };
 
-const CACHE_KEY = 'paper2bank_ocr_cache_v4'; // 再次升级缓存，确保新渲染规则生效
+const CACHE_KEY = 'paper2bank_ocr_cache_v5'; // 升级缓存版本，包含题型中文映射
 
 type CacheData = {
   images: string[];
@@ -143,8 +143,8 @@ export default function ExtractorPage() {
     setOcrText('');
     setBusy(true);
     try {
-      // 生成基于文件的缓存键（文件名+大小+修改时间）
-      const fileCacheKey = `ocr_file_${file.name}_${file.size}_${file.lastModified}`;
+      // 生成基于文件的缓存键（文件名+大小+修改时间+版本）
+      const fileCacheKey = `ocr_v5_${file.name}_${file.size}_${file.lastModified}`;
       
       // 先检查文件级缓存
       const cachedText = localStorage.getItem(fileCacheKey);
