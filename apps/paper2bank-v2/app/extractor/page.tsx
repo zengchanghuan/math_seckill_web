@@ -109,11 +109,11 @@ export default function ExtractorPage() {
     }
   }, []);
 
-  // 保存到缓存
+  // 保存到缓存（仅保存文本，不保存图片以节省空间）
   function saveCache(imgs: string[], text: string) {
     try {
       const data: CacheData = {
-        images: imgs,
+        images: [], // 不保存图片数据，节省localStorage空间
         ocrText: text,
         timestamp: Date.now(),
       };
@@ -124,13 +124,13 @@ export default function ExtractorPage() {
     }
   }
 
-  // 从缓存恢复
+  // 从缓存恢复（只恢复文本，图片需要重新上传）
   function loadCache() {
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       if (!cached) return;
       const data: CacheData = JSON.parse(cached);
-      setImages(data.images);
+      // 注意：缓存中没有图片数据，用户需要重新选择文件
       setOcrText(data.ocrText);
     } catch (e) {
       setErr('缓存读取失败');
@@ -225,27 +225,6 @@ export default function ExtractorPage() {
       setErr(e instanceof Error ? e.message : 'OCR 识别失败');
     } finally {
       setBusy(false);
-    }
-  }
-
-  // 生成缓存 key
-  function cacheKeyForImages(imgs: string[]): string {
-    return `ocr_${imgs.map((s) => s.slice(0, 64)).join('_')}`;
-  }
-
-  // 根据 key 获取缓存
-  function getCacheByKey(key: string): CacheData | null {
-    try {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (!cached) return null;
-      const data: CacheData = JSON.parse(cached);
-      // 简单判断：如果图片数量和前64字符一致，认为是同一批
-      if (data.images.length === images.length) {
-        return data;
-      }
-      return null;
-    } catch (e) {
-      return null;
     }
   }
 
