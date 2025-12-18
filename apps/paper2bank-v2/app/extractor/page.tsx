@@ -433,34 +433,36 @@ export default function ExtractorPage() {
                   ) : null}
                 </div>
 
-                {/* 缓存状态和管理 */}
-                {cacheStats.count > 0 && (
-                  <div className="mt-6 rounded-lg border border-slate-200 bg-white p-4">
-                    <div className="mb-3 flex items-center justify-between">
-                      <div className="text-sm font-medium text-slate-700">
-                        💾 OCR缓存状态
-                      </div>
+                {/* 缓存状态和管理 - 始终显示 */}
+                <div className="mt-6 rounded-lg border border-slate-200 bg-white p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <div className="text-sm font-medium text-slate-700">
+                      💾 OCR缓存状态
+                    </div>
+                    {cacheStats.count > 0 && (
                       <button
                         onClick={clearAllOcrCache}
                         className="rounded px-3 py-1 text-xs font-medium text-red-600 hover:bg-red-50 transition-colors"
                       >
                         🗑️ 清除全部
                       </button>
+                    )}
+                  </div>
+                  <div className="space-y-1 text-xs text-slate-600">
+                    <div className="flex justify-between">
+                      <span>缓存文件数：</span>
+                      <span className="font-mono font-medium">
+                        {cacheStats.count} 个
+                      </span>
                     </div>
-                    <div className="space-y-1 text-xs text-slate-600">
-                      <div className="flex justify-between">
-                        <span>缓存文件数：</span>
-                        <span className="font-mono font-medium">{cacheStats.count} 个</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>占用空间：</span>
-                        <span className="font-mono font-medium">
-                          {(cacheStats.size / 1024).toFixed(1)} KB
-                        </span>
-                      </div>
+                    <div className="flex justify-between">
+                      <span>占用空间：</span>
+                      <span className="font-mono font-medium">
+                        {(cacheStats.size / 1024).toFixed(1)} KB
+                      </span>
                     </div>
                   </div>
-                )}
+                </div>
 
                 {hasCache ? (
                   <button
