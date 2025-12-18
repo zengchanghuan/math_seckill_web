@@ -7,8 +7,15 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
+import { formatLatexForMarkdown } from '../../lib/latexUtils';
 
-const CACHE_KEY = 'paper2bank_ocr_cache_v2'; // 升级缓存版本，旧数据自动失效
+// KaTeX 全局配置：移除 macros 宏，改由预处理完成，避免冲突
+const katexOptions = {
+  strict: false,
+  trust: true,
+};
+
+const CACHE_KEY = 'paper2bank_ocr_cache_v4'; // 再次升级缓存，确保新渲染规则生效
 
 type CacheData = {
   images: string[];
@@ -46,7 +53,11 @@ export default function ExtractorPage() {
   // 保存到缓存
   function saveCache(imgs: string[], text: string) {
     try {
-      const data: CacheData = { images: imgs, ocrText: text, timestamp: Date.now() };
+      const data: CacheData = {
+        images: imgs,
+        ocrText: text,
+        timestamp: Date.now(),
+      };
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
       setHasCache(true);
     } catch (e) {
@@ -73,8 +84,12 @@ export default function ExtractorPage() {
     setOcrText('');
     setBusy(true);
     try {
-      const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
-      const imgs = isPdf ? await pdfToImages(file) : [await fileToDataUrl(file)];
+      const isPdf =
+        file.type === 'application/pdf' ||
+        file.name.toLowerCase().endsWith('.pdf');
+      const imgs = isPdf
+        ? await pdfToImages(file)
+        : [await fileToDataUrl(file)];
       setImages(imgs);
 
       // 检查是否有缓存
@@ -97,10 +112,12 @@ export default function ExtractorPage() {
 
       const text = json.questions
         .map((q, idx) => {
-          let block = `**${idx + 1}.** ${q.stem}\n\n`;
+          const stem = formatLatexForMarkdown(q.stem);
+          let block = `**${idx + 1}.** ${stem}\n\n`;
           if (q.options?.length) {
             q.options.forEach((opt, i) => {
-              block += `${String.fromCharCode(65 + i)}. ${opt}\n\n`;
+              const formattedOpt = formatLatexForMarkdown(opt);
+              block += `${String.fromCharCode(65 + i)}. ${formattedOpt}\n\n`;
             });
           }
           return block;
@@ -178,7 +195,9 @@ export default function ExtractorPage() {
           <div className="w-full max-w-3xl">
             <div className="mb-8 text-center">
               <h1 className="text-4xl font-bold text-slate-800">文档解析</h1>
-              <p className="mt-3 text-base text-slate-500">全格式兼容 · 精准提取 · 极速输出</p>
+              <p className="mt-3 text-base text-slate-500">
+                全格式兼容 · 精准提取 · 极速输出
+              </p>
             </div>
 
             <div
@@ -195,7 +214,12 @@ export default function ExtractorPage() {
               <div className="flex flex-col items-center">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
-                    <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-8 w-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -205,7 +229,11 @@ export default function ExtractorPage() {
                     </svg>
                   </div>
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-600 shadow-lg">
-                    <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <svg
+                      className="h-8 w-8 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path
                         fillRule="evenodd"
                         d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
@@ -214,7 +242,12 @@ export default function ExtractorPage() {
                     </svg>
                   </div>
                   <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 shadow-lg">
-                    <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="h-8 w-8 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -258,12 +291,16 @@ export default function ExtractorPage() {
                 ) : null}
 
                 <p className="text-sm text-slate-400">点击或拖拽上传</p>
-                <p className="mt-2 text-xs text-slate-400">支持 PDF、JPG、PNG 格式</p>
+                <p className="mt-2 text-xs text-slate-400">
+                  支持 PDF、JPG、PNG 格式
+                </p>
               </div>
             </div>
 
             {err ? (
-              <div className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">{err}</div>
+              <div className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
+                {err}
+              </div>
             ) : null}
           </div>
         </div>
@@ -300,7 +337,9 @@ export default function ExtractorPage() {
         <div className="grid flex-1 grid-cols-3 overflow-hidden">
           {/* 左侧：原始文件 */}
           <div className="overflow-auto border-r border-slate-200 bg-white p-6">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">原始文件</div>
+            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              原始文件
+            </div>
             <div className="space-y-4">
               {images.map((img, idx) => (
                 <img
@@ -315,9 +354,14 @@ export default function ExtractorPage() {
 
           {/* 中间：渲染预览 */}
           <div className="flex flex-col overflow-auto border-r border-slate-200 bg-white p-6">
-            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">渲染预览</div>
+            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              渲染预览
+            </div>
             <div className="prose prose-sm max-w-none">
-              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[[rehypeKatex, katexOptions]]}
+              >
                 {ocrText}
               </ReactMarkdown>
             </div>
@@ -340,5 +384,3 @@ export default function ExtractorPage() {
     );
   }
 }
-
-

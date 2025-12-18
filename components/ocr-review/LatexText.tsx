@@ -2,6 +2,7 @@
 
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+import { fixLatexLimits } from '@/lib/latexUtils';
 
 type Segment =
   | { kind: 'text'; text: string }
@@ -78,10 +79,11 @@ function TextWithNewlines({ text }: { text: string }) {
 
 function LatexRender({ kind, tex }: { kind: 'inline' | 'block'; tex: string }) {
   try {
+    const processedTex = fixLatexLimits(tex);
     return kind === 'block' ? (
-      <BlockMath math={tex} errorColor="#ef4444" />
+      <BlockMath math={processedTex} errorColor="#ef4444" />
     ) : (
-      <InlineMath math={tex} errorColor="#ef4444" />
+      <InlineMath math={processedTex} errorColor="#ef4444" />
     );
   } catch (e) {
     const msg = e instanceof Error ? e.message : 'katex render error';

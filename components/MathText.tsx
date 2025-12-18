@@ -2,6 +2,7 @@
 
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+import { fixLatexLimits } from '@/lib/latexUtils';
 
 interface MathTextProps {
   content: string;
@@ -77,10 +78,11 @@ export default function MathText({
         if (typeof part === 'string') {
           return <span key={index}>{part}</span>;
         } else {
+          const processedContent = fixLatexLimits(part.content);
           return part.display ? (
-            <BlockMath key={index} math={part.content} />
+            <BlockMath key={index} math={processedContent} />
           ) : (
-            <InlineMath key={index} math={part.content} />
+            <InlineMath key={index} math={processedContent} />
           );
         }
       })}
