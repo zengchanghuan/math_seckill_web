@@ -32,6 +32,19 @@ async function fileToDataUrl(file: File): Promise<string> {
   });
 }
 
+// 题型映射表
+const TYPE_MAP: Record<string, string> = {
+  'multiple-choice': '选择题',
+  'fill-in-the-blank': '填空题',
+  calculation: '计算题',
+  'problem-solving': '解答题',
+  'true-or-false': '判断题',
+};
+
+function formatTypeName(type: string): string {
+  return TYPE_MAP[type.toLowerCase()] || type;
+}
+
 export default function ExtractorPage() {
   const [images, setImages] = useState<string[]>([]);
   const [ocrText, setOcrText] = useState('');
@@ -110,19 +123,30 @@ export default function ExtractorPage() {
       if (!res.ok) throw new Error(await res.text());
       const json = (await res.json()) as ParseResult;
 
+      let lastType = '';
       const text = json.questions
         .map((q, idx) => {
+          let block = '';
+
+          // 如果题目类型发生变化，添加类型标题
+          if (q.type && q.type !== lastType) {
+            const typeName = formatTypeName(q.type);
+            block += `### ${typeName}\n\n`;
+            lastType = q.type;
+          }
+
           const stem = formatLatexForMarkdown(q.stem);
-          let block = `**${idx + 1}.** ${stem}\n\n`;
+          block += `**${idx + 1}.** ${stem}\n\n`;
+
           if (q.options?.length) {
             q.options.forEach((opt, i) => {
               const formattedOpt = formatLatexForMarkdown(opt);
               block += `${String.fromCharCode(65 + i)}. ${formattedOpt}\n\n`;
             });
           }
-          return block.trim(); // 移除块末尾多余换行
+          return block.trim();
         })
-        .join('\n\n---\n\n'); // 统一分隔符间距
+        .join('\n\n---\n\n');
 
       setOcrText(text);
       saveCache(imgs, text); // 保存到缓存
