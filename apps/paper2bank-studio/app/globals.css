@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground-rgb: 15, 23, 42; /* slate-900 */
+    --background-rgb: 248, 250, 252; /* slate-50 */
+  }
+
+  .dark {
+    --foreground-rgb: 248, 250, 252;
+    --background-rgb: 15, 23, 42;
+  }
+
+  body {
+    @apply bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-slate-50;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-family: 'Inter', system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+/* KaTeX 样式调整 - 数学公式使用 Serif 字体 */
+.katex {
+  font-size: 1.1em;
+  color: inherit;
+  font-family: 'KaTeX_Main', 'Times New Roman', serif;
+}
+
+.katex-display {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display > .katex {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

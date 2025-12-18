@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "projectId": "proj_demo_001",
+    "importId": "IMP-DEMO-001",
+    "status": "done",
+    "updatedAt": "2025-12-17T10:30:00+08:00"
+  },
+  "questions": [
+    {
+      "id": "q_001",
+      "type": "single_choice",
+      "stem": "已知集合 $A=[-1,0)\\cup(0,1]$，则 $0$ 与 $A$ 的关系是（  ）",
+      "options": ["$0\\in A$", "$0\\notin A$", "$0\\subset A$", "$A\\subset 0$"],
+      "answer": "B",
+      "analysis": "因为区间写成 $[-1,0)\\cup(0,1]$，端点 $0$ 不包含在内。"
+    },
+    {
+      "id": "q_002",
+      "type": "fill_blank",
+      "stem": "求极限：$\\lim_{x\\to 0}\\frac{\\sin x}{x}=$",
+      "options": [],
+      "answer": "1",
+      "analysis": "利用基本极限 $\\lim_{x\\to 0}\\frac{\\sin x}{x}=1$。"
+    },
+    {
+      "id": "q_003",
+      "type": "short_answer",
+      "stem": "求导：$f(x)=x^2+0x$，写出 $f'(x)$。",
+      "options": [],
+      "answer": "$2x$",
+      "analysis": "幂函数求导：$\\frac{d}{dx}x^n=nx^{n-1}$。"
+    }
+  ],
+  "solutions": {
+    "q_001": {
+      "deepseek": { "answer": "B", "analysis": "0 不属于开区间 (0,1] 也不属于 [-1,0)，所以选 B。" },
+      "sympy": { "answer": "B", "analysis": "区间不含 0。" },
+      "final": { "answer": "B", "analysis": "由 $[-1,0)\\cup(0,1]$ 可知 $0\\notin A$，选 B。" },
+      "consistent": true,
+      "equiv": true
+    },
+    "q_002": {
+      "deepseek": { "answer": "1", "analysis": "基本极限。" },
+      "sympy": { "answer": "1", "analysis": "limit(sin(x)/x, x, 0) = 1" },
+      "final": { "answer": "1", "analysis": "基本极限：$\\lim_{x\\to 0}\\frac{\\sin x}{x}=1$。" },
+      "consistent": true,
+      "equiv": true
+    },
+    "q_003": {
+      "deepseek": { "answer": "$2x$", "analysis": "对 $x^2$ 求导得 $2x$，$0x$ 求导为 0。" },
+      "sympy": { "answer": "2*x", "analysis": "diff(x**2 + 0*x, x) = 2*x" },
+      "final": { "answer": "$2x$", "analysis": "幂函数求导：$\\frac{d}{dx}x^2=2x$。" },
+      "consistent": true,
+      "equiv": true
+    }
+  },
+  "ocrTextById": {
+    "q_001": "已知集合 A=[-1,0)∪(0,1]，则 0 与 A 的关系是（ ） A.0∈A  B.0∉A  C.0⊂A  D.A⊂0",
+    "q_002": "求极限：lim_{x→0} sin x / x =",
+    "q_003": "求导：f(x)=x^2+0x，写出 f'(x)。"
+  },
+  "imageUrlById": {
+    "q_001": "",
+    "q_002": "",
+    "q_003": ""
+  }
+}
+
+
+

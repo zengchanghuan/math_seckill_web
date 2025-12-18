@@ -1,0 +1,99 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "type": "fill-in-the-blank",
+      "stem": "函数 $y = \\frac{1}{x} - \\sqrt{1 - x^2}$ 的定义域是 ______ 。",
+      "options": []
+    },
+    {
+      "id": "2",
+      "type": "multiple-choice",
+      "stem": "下列函数中是偶函数的是______。",
+      "options": [
+        "A. $f(x) = 2\\ln x^3$",
+        "B. $f(x) = x$",
+        "C. $f(x) = 2\\sin x\\cos x$",
+        "D. $F(x) = f(x) + f(-x)$"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "fill-in-the-blank",
+      "stem": "若 $\\sin dx = dF(x)$，则 $F(x)$______ 。",
+      "options": []
+    },
+    {
+      "id": "4",
+      "type": "fill-in-the-blank",
+      "stem": "$\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{ax}\\right)^{x+1} = $______ ，其中 $a \\neq 0$。",
+      "options": []
+    },
+    {
+      "id": "5",
+      "type": "fill-in-the-blank",
+      "stem": "$\\lim_{x \\to \\infty} \\left(\\frac{\\sin x^2}{x} + x\\sin \\frac{1}{x}\\right)$______ 。",
+      "options": []
+    },
+    {
+      "id": "6",
+      "type": "fill-in-the-blank",
+      "stem": "微分方程 $y'' - 3y' = 0$ 通解为______ 。",
+      "options": []
+    },
+    {
+      "id": "7",
+      "type": "fill-in-the-blank",
+      "stem": "$\\int_0^1 \\left(\\frac{1}{1+x}\\right)^2 dx = $______ 。",
+      "options": []
+    },
+    {
+      "id": "8",
+      "type": "fill-in-the-blank",
+      "stem": "设 $f(x)$ 的一个原函数为 $xe^{-x}$，则 $f(x)$ ______ 。",
+      "options": []
+    },
+    {
+      "id": "9",
+      "type": "fill-in-the-blank",
+      "stem": "已知 $f(x)$ 和 $g(x)$ 在 $(a,b)$ 上连续，若 $\\int_a^b f(x)dx = \\int_b^a g(x)dx$，则 $f(x)$ 和 $g(x)$ 的关系为______ 。",
+      "options": []
+    },
+    {
+      "id": "10",
+      "type": "fill-in-the-blank",
+      "stem": "幂级数 $\\sum_{n=1}^{\\infty} (-1)^{n-1} \\frac{x^n}{n}$ 的收敛半径为______ 。",
+      "options": []
+    },
+    {
+      "id": "11",
+      "type": "calculation",
+      "stem": "已知 $\\ln(x+y) = x^3 y + \\sin x$，求 $\\left.\\frac{dy}{dx}\\right|_{x=0}$。",
+      "options": []
+    },
+    {
+      "id": "12",
+      "type": "calculation",
+      "stem": "$\\int_{-\\pi}^{\\pi} |\\sin x| dx$。",
+      "options": []
+    },
+    {
+      "id": "13",
+      "type": "calculation",
+      "stem": "$\\int \\frac{\\sin x}{\\cos^2 x} dx$。",
+      "options": []
+    },
+    {
+      "id": "14",
+      "type": "calculation",
+      "stem": "$\\int_0^1 x^2 e^x dx$。",
+      "options": []
+    },
+    {
+      "id": "15",
+      "type": "calculation",
+      "stem": "已知 $z = x \\ln u, u = xy$，求 $\\frac{\\partial z}{\\partial x}, \\frac{\\partial^2 z}{\\partial x^2}$。",
+      "options": []
+    }
+  ]
+}

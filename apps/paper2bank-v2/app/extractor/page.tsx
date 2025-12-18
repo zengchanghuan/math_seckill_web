@@ -1,0 +1,344 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { pdfToImages } from '@/lib/pdfToImages';
+import type { ParseResult } from '@/lib/types';
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
+
+const CACHE_KEY = 'paper2bank_ocr_cache_v2'; // 升级缓存版本，旧数据自动失效
+
+type CacheData = {
+  images: string[];
+  ocrText: string;
+  timestamp: number;
+};
+
+async function fileToDataUrl(file: File): Promise<string> {
+  return await new Promise((resolve, reject) => {
+    const fr = new FileReader();
+    fr.onerror = () => reject(new Error('FileReader failed'));
+    fr.onload = () => resolve(String(fr.result));
+    fr.readAsDataURL(file);
+  });
+}
+
+export default function ExtractorPage() {
+  const [images, setImages] = useState<string[]>([]);
+  const [ocrText, setOcrText] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const [dragActive, setDragActive] = useState(false);
+  const [hasCache, setHasCache] = useState(false);
+
+  // 检查是否有缓存
+  useEffect(() => {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      setHasCache(!!cached);
+    } catch (e) {
+      // localStorage 不可用
+    }
+  }, []);
+
+  // 保存到缓存
+  function saveCache(imgs: string[], text: string) {
+    try {
+      const data: CacheData = { images: imgs, ocrText: text, timestamp: Date.now() };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      setHasCache(true);
+    } catch (e) {
+      console.warn('缓存失败:', e);
+    }
+  }
+
+  // 从缓存恢复
+  function loadCache() {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (!cached) return;
+      const data: CacheData = JSON.parse(cached);
+      setImages(data.images);
+      setOcrText(data.ocrText);
+    } catch (e) {
+      setErr('缓存读取失败');
+    }
+  }
+
+  // 上传文件并自动识别（先检查缓存）
+  async function handleFile(file: File) {
+    setErr('');
+    setOcrText('');
+    setBusy(true);
+    try {
+      const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+      const imgs = isPdf ? await pdfToImages(file) : [await fileToDataUrl(file)];
+      setImages(imgs);
+
+      // 检查是否有缓存
+      const key = cacheKeyForImages(imgs);
+      const cached = getCacheByKey(key);
+      if (cached) {
+        setOcrText(cached.ocrText);
+        setBusy(false);
+        return;
+      }
+
+      // 无缓存，调用 OCR API
+      const res = await fetch('/api/ocr', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imagesBase64: imgs }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const json = (await res.json()) as ParseResult;
+
+      const text = json.questions
+        .map((q, idx) => {
+          let block = `**${idx + 1}.** ${q.stem}\n\n`;
+          if (q.options?.length) {
+            q.options.forEach((opt, i) => {
+              block += `${String.fromCharCode(65 + i)}. ${opt}\n\n`;
+            });
+          }
+          return block;
+        })
+        .join('\n---\n\n');
+
+      setOcrText(text);
+      saveCache(imgs, text); // 保存到缓存
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : 'OCR 识别失败');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  // 生成缓存 key
+  function cacheKeyForImages(imgs: string[]): string {
+    return `ocr_${imgs.map((s) => s.slice(0, 64)).join('_')}`;
+  }
+
+  // 根据 key 获取缓存
+  function getCacheByKey(key: string): CacheData | null {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (!cached) return null;
+      const data: CacheData = JSON.parse(cached);
+      // 简单判断：如果图片数量和前64字符一致，认为是同一批
+      if (data.images.length === images.length) {
+        return data;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function handleDrag(e: React.DragEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true);
+    } else if (e.type === 'dragleave') {
+      setDragActive(false);
+    }
+  }
+
+  function handleDrop(e: React.DragEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) void handleFile(file);
+  }
+
+  function reset() {
+    setImages([]);
+    setOcrText('');
+    setErr('');
+  }
+
+  function clearCache() {
+    try {
+      localStorage.removeItem(CACHE_KEY);
+      setHasCache(false);
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  // 初始上传界面
+  if (!images.length && !busy) {
+    return (
+      <div className="flex min-h-screen flex-col bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200">
+        <div className="flex flex-1 items-center justify-center px-6 py-12">
+          <div className="w-full max-w-3xl">
+            <div className="mb-8 text-center">
+              <h1 className="text-4xl font-bold text-slate-800">文档解析</h1>
+              <p className="mt-3 text-base text-slate-500">全格式兼容 · 精准提取 · 极速输出</p>
+            </div>
+
+            <div
+              onDragEnter={handleDrag}
+              onDragLeave={handleDrag}
+              onDragOver={handleDrag}
+              onDrop={handleDrop}
+              className={`rounded-2xl border-2 border-dashed bg-white p-16 shadow-sm transition-all ${
+                dragActive
+                  ? 'border-blue-400 bg-blue-50/50 shadow-lg'
+                  : 'border-slate-300 hover:border-slate-400 hover:shadow-md'
+              }`}
+            >
+              <div className="flex flex-col items-center">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 shadow-lg">
+                    <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="mb-6 flex gap-3">
+                  <label className="cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-6 py-2.5 text-sm font-medium text-slate-700 transition-all hover:border-slate-400 hover:bg-slate-50">
+                    <input
+                      type="file"
+                      accept="application/pdf,image/*"
+                      className="hidden"
+                      onChange={(e) => {
+                        const f = e.target.files?.[0];
+                        if (f) void handleFile(f);
+                      }}
+                    />
+                    📎 本地上传
+                  </label>
+                  {hasCache ? (
+                    <button
+                      onClick={loadCache}
+                      className="rounded-lg border-2 border-blue-300 bg-blue-50 px-6 py-2.5 text-sm font-medium text-blue-700 transition-all hover:border-blue-400 hover:bg-blue-100"
+                    >
+                      🔄 使用上次输入
+                    </button>
+                  ) : null}
+                </div>
+
+                {hasCache ? (
+                  <button
+                    onClick={clearCache}
+                    className="mb-4 text-xs text-slate-400 hover:text-red-500"
+                  >
+                    清除缓存
+                  </button>
+                ) : null}
+
+                <p className="text-sm text-slate-400">点击或拖拽上传</p>
+                <p className="mt-2 text-xs text-slate-400">支持 PDF、JPG、PNG 格式</p>
+              </div>
+            </div>
+
+            {err ? (
+              <div className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">{err}</div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 处理中
+  if (busy) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
+        <div className="text-center">
+          <div className="mb-4 inline-flex h-16 w-16 animate-spin items-center justify-center rounded-full border-4 border-slate-200 border-t-blue-500"></div>
+          <p className="text-sm text-slate-600">识别中，请稍候…</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 对比界面
+  if (images.length && ocrText) {
+    return (
+      <div className="flex h-screen flex-col bg-slate-50">
+        <div className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-3 shadow-sm">
+          <div className="text-sm font-medium text-slate-700">OCR 校对</div>
+          <button
+            onClick={reset}
+            className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            ← 返回上传
+          </button>
+        </div>
+
+        <div className="grid flex-1 grid-cols-3 overflow-hidden">
+          {/* 左侧：原始文件 */}
+          <div className="overflow-auto border-r border-slate-200 bg-white p-6">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">原始文件</div>
+            <div className="space-y-4">
+              {images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={`page ${idx + 1}`}
+                  className="w-full rounded-lg border border-slate-200 shadow-sm"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 中间：渲染预览 */}
+          <div className="flex flex-col overflow-auto border-r border-slate-200 bg-white p-6">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">渲染预览</div>
+            <div className="prose prose-sm max-w-none">
+              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                {ocrText}
+              </ReactMarkdown>
+            </div>
+          </div>
+
+          {/* 右侧：OCR 文本（可编辑） */}
+          <div className="flex flex-col overflow-hidden bg-slate-50 p-6">
+            <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+              OCR 识别结果（可编辑）
+            </div>
+            <textarea
+              value={ocrText}
+              onChange={(e) => setOcrText(e.target.value)}
+              className="flex-1 resize-none rounded-lg border border-slate-200 bg-white p-4 font-mono text-sm leading-relaxed text-slate-800 shadow-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+              placeholder="OCR 结果将显示在这里..."
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+
