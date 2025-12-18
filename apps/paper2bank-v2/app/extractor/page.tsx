@@ -120,9 +120,9 @@ export default function ExtractorPage() {
               block += `${String.fromCharCode(65 + i)}. ${formattedOpt}\n\n`;
             });
           }
-          return block;
+          return block.trim(); // 移除块末尾多余换行
         })
-        .join('\n---\n\n');
+        .join('\n\n---\n\n'); // 统一分隔符间距
 
       setOcrText(text);
       saveCache(imgs, text); // 保存到缓存
@@ -357,7 +357,7 @@ export default function ExtractorPage() {
             <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
               渲染预览
             </div>
-            <div className="prose prose-sm max-w-none">
+            <div className="prose prose-sm max-w-none prose-p:my-1.5 prose-hr:my-4 prose-headings:mb-2">
               <ReactMarkdown
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[[rehypeKatex, katexOptions]]}

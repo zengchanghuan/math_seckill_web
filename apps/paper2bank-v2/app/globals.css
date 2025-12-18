@@ -14,5 +14,16 @@ body {
   color: #e5e7eb;
 }
 
+/* 优化 LaTeX 公式间距 */
+.katex-display {
+  margin: 0.5em 0 !important;
+}
+
+.prose hr {
+  margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important;
+}
+
+
 
 
