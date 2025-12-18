@@ -215,6 +215,30 @@ export default function ExtractorPage() {
   if (!images.length && !busy) {
     return (
       <div className="flex min-h-screen flex-col bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200">
+        {/* Header */}
+        <div className="flex w-full items-center justify-between px-8 py-4">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 shadow-md">
+              <svg
+                className="h-5 w-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+            </div>
+            <span className="text-xl font-bold text-slate-800">
+              paper<span className="text-blue-600">Bank</span>
+            </span>
+          </div>
+        </div>
+
         <div className="flex flex-1 items-center justify-center px-6 py-12">
           <div className="w-full max-w-3xl">
             <div className="mb-8 text-center">
@@ -349,7 +373,26 @@ export default function ExtractorPage() {
     return (
       <div className="flex h-screen flex-col bg-slate-50">
         <div className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-3 shadow-sm">
-          <div className="text-sm font-medium text-slate-700">OCR 校对</div>
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 shadow-md">
+              <svg
+                className="h-5 w-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+            </div>
+            <span className="text-xl font-bold text-slate-800">
+              paper<span className="text-blue-600">Bank</span>
+            </span>
+          </div>
           <button
             onClick={reset}
             className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
