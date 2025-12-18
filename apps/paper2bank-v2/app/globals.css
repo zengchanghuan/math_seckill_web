@@ -9,11 +9,6 @@ html, body {
   height: 100%;
 }
 
-body {
-  background: #0b1220;
-  color: #e5e7eb;
-}
-
 /* 优化 LaTeX 公式间距 */
 .katex-display {
   margin: 0.5em 0 !important;
