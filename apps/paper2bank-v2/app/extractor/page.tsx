@@ -98,16 +98,68 @@ export default function ExtractorPage() {
   const [err, setErr] = useState('');
   const [dragActive, setDragActive] = useState(false);
   const [hasCache, setHasCache] = useState(false);
+  const [cacheStats, setCacheStats] = useState({ count: 0, size: 0 });
 
-  // 检查是否有缓存
+  // 检查是否有缓存并计算缓存统计
   useEffect(() => {
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       setHasCache(!!cached);
+      
+      // 计算缓存统计
+      updateCacheStats();
     } catch (e) {
       // localStorage 不可用
     }
   }, []);
+
+  // 更新缓存统计信息
+  function updateCacheStats() {
+    try {
+      let count = 0;
+      let totalSize = 0;
+      
+      // 遍历localStorage，统计ocr_v5_开头的缓存
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('ocr_v5_')) {
+          count++;
+          const value = localStorage.getItem(key);
+          if (value) {
+            totalSize += new Blob([value]).size;
+          }
+        }
+      }
+      
+      setCacheStats({ count, size: totalSize });
+    } catch (e) {
+      console.warn('缓存统计失败:', e);
+    }
+  }
+
+  // 清除所有OCR缓存
+  function clearAllOcrCache() {
+    try {
+      const keysToRemove: string[] = [];
+      
+      // 收集所有OCR缓存键
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('ocr_v5_') || key === CACHE_KEY)) {
+          keysToRemove.push(key);
+        }
+      }
+      
+      // 删除所有OCR缓存
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+      
+      setHasCache(false);
+      updateCacheStats();
+      console.log(`🗑️ 已清除 ${keysToRemove.length} 个OCR缓存`);
+    } catch (e) {
+      console.warn('清除缓存失败:', e);
+    }
+  }
 
   // 保存到缓存（仅保存文本，不保存图片以节省空间）
   function saveCache(imgs: string[], text: string) {
@@ -119,6 +171,7 @@ export default function ExtractorPage() {
       };
       localStorage.setItem(CACHE_KEY, JSON.stringify(data));
       setHasCache(true);
+      updateCacheStats(); // 更新统计
     } catch (e) {
       console.warn('缓存失败:', e);
     }
@@ -215,6 +268,7 @@ export default function ExtractorPage() {
       try {
         localStorage.setItem(fileCacheKey, text);
         console.log('✅ OCR结果已缓存');
+        updateCacheStats(); // 更新统计
       } catch (e) {
         console.warn('缓存保存失败:', e);
       }
@@ -378,6 +432,35 @@ export default function ExtractorPage() {
                     </button>
                   ) : null}
                 </div>
+
+                {/* 缓存状态和管理 */}
+                {cacheStats.count > 0 && (
+                  <div className="mt-6 rounded-lg border border-slate-200 bg-white p-4">
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="text-sm font-medium text-slate-700">
+                        💾 OCR缓存状态
+                      </div>
+                      <button
+                        onClick={clearAllOcrCache}
+                        className="rounded px-3 py-1 text-xs font-medium text-red-600 hover:bg-red-50 transition-colors"
+                      >
+                        🗑️ 清除全部
+                      </button>
+                    </div>
+                    <div className="space-y-1 text-xs text-slate-600">
+                      <div className="flex justify-between">
+                        <span>缓存文件数：</span>
+                        <span className="font-mono font-medium">{cacheStats.count} 个</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>占用空间：</span>
+                        <span className="font-mono font-medium">
+                          {(cacheStats.size / 1024).toFixed(1)} KB
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {hasCache ? (
                   <button
