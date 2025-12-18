@@ -34,15 +34,61 @@ async function fileToDataUrl(file: File): Promise<string> {
 
 // 题型映射表
 const TYPE_MAP: Record<string, string> = {
+  // 选择题类型（支持连字符和下划线）
   'multiple-choice': '选择题',
+  'multiple_choice': '选择题',
+  'single-choice': '单选题',
+  'single_choice': '单选题',
+  'multi-choice': '多选题',
+  'multi_choice': '多选题',
+  choice: '选择题',
+  
+  // 填空题类型
   'fill-in-the-blank': '填空题',
+  'fill_in_the_blank': '填空题',
+  'fill-in': '填空题',
+  'fill_in': '填空题',
+  blank: '填空题',
+  
+  // 计算题类型
   calculation: '计算题',
+  compute: '计算题',
+  
+  // 解答题类型
   'problem-solving': '解答题',
+  'problem_solving': '解答题',
+  solving: '解答题',
+  answer: '解答题',
+  
+  // 判断题类型
   'true-or-false': '判断题',
+  'true_or_false': '判断题',
+  'true-false': '判断题',
+  'true_false': '判断题',
+  judge: '判断题',
+  judgment: '判断题',
+  
+  // 综合题类型
+  comprehensive: '综合题',
+  synthesis: '综合题',
+  
+  // 证明题类型
+  proof: '证明题',
+  prove: '证明题',
+  
+  // 应用题类型
+  application: '应用题',
+  
+  // 简答题类型
+  'short-answer': '简答题',
+  'short_answer': '简答题',
+  essay: '简答题',
 };
 
 function formatTypeName(type: string): string {
-  return TYPE_MAP[type.toLowerCase()] || type;
+  // 标准化：转小写，并将下划线转为连字符
+  const normalized = type.toLowerCase().replace(/_/g, '-');
+  return TYPE_MAP[normalized] || type;
 }
 
 export default function ExtractorPage() {
@@ -97,6 +143,26 @@ export default function ExtractorPage() {
     setOcrText('');
     setBusy(true);
     try {
+      // 生成基于文件的缓存键（文件名+大小+修改时间）
+      const fileCacheKey = `ocr_file_${file.name}_${file.size}_${file.lastModified}`;
+      
+      // 先检查文件级缓存
+      const cachedText = localStorage.getItem(fileCacheKey);
+      if (cachedText) {
+        console.log('💾 使用缓存的OCR结果，节省token');
+        // 仍需要解析PDF/图片以显示在左侧
+        const isPdf =
+          file.type === 'application/pdf' ||
+          file.name.toLowerCase().endsWith('.pdf');
+        const imgs = isPdf
+          ? await pdfToImages(file)
+          : [await fileToDataUrl(file)];
+        setImages(imgs);
+        setOcrText(cachedText);
+        setBusy(false);
+        return;
+      }
+
       const isPdf =
         file.type === 'application/pdf' ||
         file.name.toLowerCase().endsWith('.pdf');
@@ -105,16 +171,8 @@ export default function ExtractorPage() {
         : [await fileToDataUrl(file)];
       setImages(imgs);
 
-      // 检查是否有缓存
-      const key = cacheKeyForImages(imgs);
-      const cached = getCacheByKey(key);
-      if (cached) {
-        setOcrText(cached.ocrText);
-        setBusy(false);
-        return;
-      }
-
       // 无缓存，调用 OCR API
+      console.log('🔄 调用OCR API识别...');
       const res = await fetch('/api/ocr', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -122,6 +180,8 @@ export default function ExtractorPage() {
       });
       if (!res.ok) throw new Error(await res.text());
       const json = (await res.json()) as ParseResult;
+
+      console.log('OCR API返回的数据:', json);
 
       let lastType = '';
       const text = json.questions
@@ -131,6 +191,7 @@ export default function ExtractorPage() {
           // 如果题目类型发生变化，添加类型标题
           if (q.type && q.type !== lastType) {
             const typeName = formatTypeName(q.type);
+            console.log(`题型映射: ${q.type} -> ${typeName}`);
             block += `### ${typeName}\n\n`;
             lastType = q.type;
           }
@@ -149,7 +210,17 @@ export default function ExtractorPage() {
         .join('\n\n---\n\n');
 
       setOcrText(text);
-      saveCache(imgs, text); // 保存到缓存
+      
+      // 保存到文件级缓存
+      try {
+        localStorage.setItem(fileCacheKey, text);
+        console.log('✅ OCR结果已缓存');
+      } catch (e) {
+        console.warn('缓存保存失败:', e);
+      }
+      
+      // 同时保存到旧的缓存系统（用于"使用上次输入"功能）
+      saveCache(imgs, text);
     } catch (e) {
       setErr(e instanceof Error ? e.message : 'OCR 识别失败');
     } finally {

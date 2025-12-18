@@ -1,0 +1,149 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "type": "single_choice",
+      "stem": "设 $\\lim_{x \\to 0}[\\cos x - f(x)] = 1$，则下列等式正确的是",
+      "options": [
+        "A. $\\lim_{x \\to 0} f(x) = 1$",
+        "B. $\\lim_{x \\to 0} f(x)\\cos x = 1$",
+        "C. $\\lim_{x \\to 0} f(x) = -1$",
+        "D. $\\lim_{x \\to 0}[f(x) + \\cos x] = 1$"
+      ]
+    },
+    {
+      "id": "2",
+      "type": "single_choice",
+      "stem": "函数 $f(x) = 2x^3 - 3x^2$ 的极小值点是",
+      "options": [
+        "A. $x = -1$",
+        "B. $x = 0$",
+        "C. $x = 1$",
+        "D. $x = 2$"
+      ]
+    },
+    {
+      "id": "3",
+      "type": "single_choice",
+      "stem": "已知 $3^x$ 是函数 $f(x)$ 的一个原函数，则 $f(x) =$",
+      "options": [
+        "A. $3^x$",
+        "B. $3^x \\ln 3$",
+        "C. $x^{3^{x-1}}$",
+        "D. $\\frac{3^x}{\\ln 3}$"
+      ]
+    },
+    {
+      "id": "4",
+      "type": "single_choice",
+      "stem": "设平面区域 $D = \\{(x, y) | x^2 + y^2 \\leq 1, y \\geq 0\\}$，则 $\\iint_D (x^2 + y^2)^4 \\, d\\sigma =$",
+      "options": [
+        "A. $\\frac{\\pi}{10}$",
+        "B. $\\frac{\\pi}{9}$",
+        "C. $\\frac{\\pi}{5}$",
+        "D. $\\frac{2\\pi}{9}$"
+      ]
+    },
+    {
+      "id": "5",
+      "type": "single_choice",
+      "stem": "设级数 $\\sum_{n=1}^{\\infty} a_n$ 满足 $0 \\leq a_n \\leq \\frac{1}{5^n}$，则下列级数发散的是",
+      "options": [
+        "A. $\\sum_{n=1}^{\\infty} 3a_n$",
+        "B. $\\sum_{n=1}^{\\infty} a_{n+3}$",
+        "C. $\\sum_{n=1}^{\\infty} \\left(a_n + \\frac{1}{\\sqrt[3]{n^2}}\\right)$",
+        "D. $\\sum_{n=1}^{\\infty} \\left(a_n - \\frac{1}{\\sqrt{n^2}}\\right)$"
+      ]
+    },
+    {
+      "id": "6",
+      "type": "fill_in_the_blank",
+      "stem": "若函数 $f(x) = \\begin{cases} (1+a)x^2, & x \\leq 1 \\\\ a(x-2)^3 + 3, & x > 1 \\end{cases}$ 在 $x=1$ 处连续，则常数 $a =$ _________.",
+      "options": []
+    },
+    {
+      "id": "7",
+      "type": "fill_in_the_blank",
+      "stem": "曲线 $\\frac{x^2}{2} + y^2 = 3$ 在点 $(2, -1)$ 处的切线方程为 $y =$ _________.",
+      "options": []
+    },
+    {
+      "id": "8",
+      "type": "fill_in_the_blank",
+      "stem": "微分方程 $y'' + 3y' - 4y = 0$ 的通解为 $y =$ _________.",
+      "options": []
+    },
+    {
+      "id": "9",
+      "type": "fill_in_the_blank",
+      "stem": "设二元函数 $f(x,y)$ 在点 $(0,0)$ 的某个邻域内有定义，且当 $x \\neq 0$ 时，$\\frac{f(x,0) - f(0,0)}{x} = 3x + 2$，则 $f'_x(0,0) =$ _________.",
+      "options": []
+    },
+    {
+      "id": "10",
+      "type": "fill_in_the_blank",
+      "stem": "设函数 $f(x)$ 在 $(-\\infty, +\\infty)$ 内可导，且满足 $f(x) = f'(x)$，$f(0) = m$。如果 $\\int_1^e \\frac{f(x)}{e^x} dx = 8$，则 $m =$ _________.",
+      "options": []
+    },
+    {
+      "id": "11",
+      "type": "calculation",
+      "stem": "求极限 $\\lim_{x \\to 0} \\frac{\\int_0^x t \\arctan t \\, dt}{x^3}$.",
+      "options": []
+    },
+    {
+      "id": "12",
+      "type": "calculation",
+      "stem": "已知 $y$ 是 $x$ 的函数，且 $y' = \\ln \\sqrt{x} + \\sqrt{\\ln x} + 2 \\ln 2$，求 $\\left. \\frac{d^2 y}{dx^2} \\right|_{x=e}$.",
+      "options": []
+    },
+    {
+      "id": "13",
+      "type": "calculation",
+      "stem": "求不定积分 $\\int (\\cos 2x - x \\sin x^2) \\, dx$.",
+      "options": []
+    },
+    {
+      "id": "14",
+      "type": "calculation",
+      "stem": "设函数 $f(x) = \\begin{cases} \\frac{x^3}{1+x^2}, & x \\leq 1 \\\\ x, & x > 1 \\end{cases}$，求定积分 $\\int_{-1}^0 f(x+2) \\, dx$.",
+      "options": []
+    },
+    {
+      "id": "15",
+      "type": "calculation",
+      "stem": "求二元函数 $z = 3xy^2 + \\frac{x^2}{y}$ 的全微分 $dz$，并求 $\\frac{\\partial^2 z}{\\partial x \\partial y}$.",
+      "options": []
+    },
+    {
+      "id": "16",
+      "type": "calculation",
+      "stem": "计算 $\\iint_D y \\, d\\sigma$，其中 $D$ 是由直线 $y = x$, $y = x - 2$, $y = 0$, $y = 2$ 围成的有界闭区域.",
+      "options": []
+    },
+    {
+      "id": "17",
+      "type": "calculation",
+      "stem": "求微分方程 $\\frac{dy}{dx} = \\frac{\\sec^2 x}{y^3}$ 满足初始条件 $y|_{x=0} = 1$ 的特解.",
+      "options": []
+    },
+    {
+      "id": "18",
+      "type": "calculation",
+      "stem": "判定级数 $\\sum_{n=1}^{\\infty} \\frac{n^n}{2^n n!}$ 的收敛性.",
+      "options": []
+    },
+    {
+      "id": "19",
+      "type": "comprehensive",
+      "stem": "设有界平面图形 $G$ 由曲线 $y = e^{ax}$ 和直线 $y = e$, $x = 0$ 围成，其中常数 $a > 0$。若 $G$ 的面积等于 1。\n（1）求 $a$ 的值；\n（2）求 $G$ 绕 $y$ 轴旋转一周而成的旋转体的体积 $V$。",
+      "options": []
+    },
+    {
+      "id": "20",
+      "type": "comprehensive",
+      "stem": "设函数 $f(x) = \\frac{a}{1 + e^{bx}}$，其中 $a,b$ 为常数，且 $ab \\neq 0$。\n（1）判别 $f(x)$ 在区间 $(-\\infty, +\\infty)$ 内的单调性；\n（2）求曲线 $y = f(x)$ 的拐点；\n（3）求曲线 $y = f(x)$ 的水平渐近线方程。",
+      "options": []
+    }
+  ]
+}
