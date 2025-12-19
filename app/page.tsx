@@ -36,16 +36,29 @@ export default function HomePage() {
         setLoading(true);
         setError(null);
         
-        // 直接从public目录加载JSON文件
-        const years = [2023, 2022, 2021];
-        const paperPromises = years.map(year => 
-          fetch(`/papers/广东_高数_${year}.json`).then(res => res.json())
-        );
+        // 所有可用的年份（按倒序排列）
+        // 只保留2020-2023年的完整数据
+        const allYears = [
+          2023, 2022, 2021, 2020
+        ];
+        
+        // 加载所有JSON文件
+        const paperPromises = allYears.map(async (year) => {
+          try {
+            const response = await fetch(`/papers/广东_高数_${year}.json`);
+            if (!response.ok) throw new Error(`${year}年数据不可用`);
+            return await response.json();
+          } catch (err) {
+            console.warn(`跳过 ${year} 年:`, err);
+            return null;
+          }
+        });
         
         const papers = await Promise.all(paperPromises);
+        const validPapers = papers.filter(p => p !== null);
         
         // 转换为ExamPaper格式
-        const examPaperData: ExamPaper[] = papers.map((paperData) => {
+        const examPaperData: ExamPaper[] = validPapers.map((paperData) => {
           const { meta, paper } = paperData;
           return {
             paperId: `paper_${meta.year}_1`,
@@ -61,6 +74,7 @@ export default function HomePage() {
           };
         });
         
+        console.log(`✅ 成功加载 ${examPaperData.length} 套试卷（${examPaperData.map(p => p.year).join(', ')}）`);
         setExamPapers(examPaperData);
       } catch (err) {
         console.error('加载试卷失败:', err);
@@ -223,10 +237,13 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-3">
               选择一套真题，开始练习
             </h2>
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-2 text-sm">
+              已收录 <strong className="text-primary-600 dark:text-primary-400">{examPapers.length} 套</strong> 广东专升本高数真题（2020-2023）
+            </p>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-sm">
-              当前内测版本已收录部分广东专升本高数真题，
+              当前内测版本已收录2020-2023年广东专升本高数真题，
               <br />
-              后续会持续更新更多年份与相近难度的题目。
+              所有题目均包含完整的题目、答案和详细解析。
             </p>
 
             {/* 加载状态 */}
@@ -248,25 +265,23 @@ export default function HomePage() {
 
             {/* 试卷列表 */}
             {!loading && examPapers.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {examPapers.map((paper) => (
-                  <div
+                  <Link
                     key={paper.paperId}
-                    className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow flex flex-col min-h-[180px]"
+                    href={`/practice/${paper.paperId}`}
+                    className="bg-white dark:bg-gray-800 p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all text-center group"
                   >
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                      {paper.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm flex-1">
-                      共 {paper.totalQuestions} 题 · 选择 + 填空 + 解答 · 建议用时 {paper.suggestedTime} 分钟
-                    </p>
-                    <Link
-                      href={`/practice/${paper.paperId}`}
-                      className="inline-block px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm text-center"
-                    >
-                      开始练习
-                    </Link>
-                  </div>
+                    <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1 group-hover:scale-110 transition-transform">
+                      {paper.year}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                      共 {paper.totalQuestions} 题
+                    </div>
+                    <div className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                      开始练习 →
+                    </div>
+                  </Link>
                 ))}
               </div>
             )}

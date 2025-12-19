@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2020,
+    "exam_type": "专插本",
+    "total_sections": 4,
+    "total_questions": 20,
+    "total_images": 2
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2020,
+    "exam_type": "专插本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单项选择题",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "设  $\\lim_{x \\to 0}[\\cos x - f(x)] = 1$ ，则下列等式正确的是\nA.  $\\lim_{x\\to 0}f(x) = 1$\nB.  $\\lim_{x \\to 0} f(x) \\cos x = 1$\nC.  $\\lim_{x\\to 0}f(x) = -1$\nD.  $\\lim_{x \\to 0} [f(x) + \\cos x] = 1$",
+            "answer": "D",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "函数  $f(x) = 2x^{3} - 3x^{2}$  的极小值点是\nA.  $x = -1$\nB.  $x = 0$\nC.  $x = 1$\nD.  $x = 2$",
+            "answer": "C",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "已知  $3^x$  是函数  $f(x)$  的一个原函数，则  $f(x) =$\nA.  ${3}^{ \\circ  }$\nB.  $3^{x} \\ln 3$\nC.  $x 3^{x - 1}$\nD.  $\\frac{3^{x}}{\\ln 3}$",
+            "answer": "B",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "设平面区域  $D = \\{(x, y) | x^2 + y^2 \\leqslant 1, y \\geqslant 0\\}$ ，则  $\\iint_{D} (x^2 + y^2)^4 \\, \\mathrm{d}\\sigma =$\nA.  $\\frac{\\pi}{10}$\nB.  $\\frac{\\pi}{9}$\nC.  $\\frac{\\pi}{5}$\nD.  $\\frac{2 \\pi}{9}$",
+            "answer": "A",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "设级数  $\\sum_{n=1}^{\\infty} a_n$  满足  $0 \\leqslant a_n \\leqslant \\frac{1}{5^n}$ ，则下列级数发散的是\nA.  $\\sum_{n=1}^{\\infty} 3a_{n}$\nB.  $\\sum_{n=1}^{\\infty} a_{n+3}$\nC.  $\\sum_{n=1}^{\\infty}\\left(a_{n}+\\frac{1}{\\sqrt[3]{n^{2}}}\\right)$\nD.  $\\sum_{n=1}^{\\infty}\\left(a_{n}-\\frac{1}{\\sqrt{n^{3}}}\\right)$",
+            "answer": "C",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填空题",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "若函数  $f(x) = \\begin{cases} (1 + a)x^2, & x \\leqslant 1, \\\\ a(x - 2)^3 + 3, & x > 1 \\end{cases}$  在  $x = 1$  处连续，则常数  $a =$  ________.",
+            "answer": "1",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "曲线  $\\frac{x^2}{2} + y^2 = 3$  在点  $(2, -1)$  处的切线方程为  $y = $",
+            "answer": "$x - 3$",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "微分方程  $y'' + 3y' - 4y = 0$  的通解为  $y =$",
+            "answer": "$C_1\\mathrm{e}^{-4x} + C_2\\mathrm{e}^x$",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "设二元函数  $f(x, y)$  在点 (0,0) 的某个邻域内有定义，且当  $x \\neq 0$  时， $\\frac{f(x,0) - f(0,0)}{x} = 3x + 2$ ，则  $f_x'(0,0) =$  ________.",
+            "answer": "2",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "设函数  $f(x)$  在  $(- \\infty, + \\infty)$  内可导，且满足  $f(x) = f'(x)$ ， $f(0) = m$ 。如果  $\\int_{-1}^{1} \\frac{f(x)}{e^x} \\mathrm{d}x = 8$ ，则  $m =$  ________.",
+            "answer": "4",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计算题",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "求极限  $\\lim_{x\\to 0}\\frac{\\int_0^x t\\arctan t\\mathrm{d}t}{x^3}$",
+            "answer": "解：原式  $= \\lim_{x\\to 0}\\frac{x\\arctan{x}}{3x^2} = \\lim_{x \\rightarrow 0} \\frac{\\arctan x}{3 x} = \\lim_{x \\rightarrow 0} \\frac{\\frac{1}{1 + x^{2}}}{3} = \\frac{1}{3}.$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "已知  $y$  是  $x$  的函数，且  $y' = \\ln \\sqrt{x} + \\sqrt{\\ln x} + 2\\ln 2$ ，求  $\\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2}\\Bigg|_{x = e}$ .",
+            "answer": "解：  $\\because \\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2} = \\left(\\frac{1}{2}\\ln x + \\sqrt{\\ln x} + 2\\ln 2\\right)^2 = \\frac{1}{2 x} + \\frac{1}{2 x \\sqrt{\\ln x}}, \\therefore \\frac{\\mathrm{d}^{2} y}{\\mathrm{d} x^{2}} \\Bigg|_{x = \\mathrm{e}} = \\frac{1}{2 \\mathrm{e}} + \\frac{1}{2 \\mathrm{e}} = \\frac{1}{\\mathrm{e}}.$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "求不定积分  $\\int (\\cos 2x - x\\sin x^2)\\mathrm{d}x$",
+            "answer": "解：原式  $= \\int \\cos 2x \\, \\mathrm{d}x - \\int x \\sin x^2 \\, \\mathrm{d}x = \\frac{1}{2} \\int \\cos 2 x d (2 x) - \\frac{1}{2} \\int \\sin x^{2} d x^{2} = \\frac{1}{2} \\sin 2 x + \\frac{1}{2} \\cos x^{2} + C.$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "设函数  $f(x) = \\begin{cases} \\frac{x^3}{1 + x^2}, & x \\leqslant 1, \\\\ x, & x > 1. \\end{cases}$  求定积分  $\\int_{3}^{0} f(x + 2) \\, \\mathrm{d}x$ .",
+            "answer": "解：设  $x + 2 = t$ ，则 $\\int_{-3}^{0} f(x + 2) \\mathrm{d} x = \\int_{-1}^{2} f(t) \\mathrm{d} t = \\int_{-1}^{1} f(t) d t + \\int_{1}^{2} f(t) d t = \\int_{-1}^{1} \\frac{x^{3}}{1 + x^{2}} d x + \\int_{1}^{2} x d x = 0 + \\int_{1}^{2} x d x = \\frac{x^{2}}{2} \\Bigg|_{1}^{2} = 2 - \\frac{1}{2} = \\frac{3}{2}.$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "求二元函数  $z = 3xy^{2} + \\frac{x^{2}}{y}$  的全微分  $\\mathrm{d}z$ ，并求  $\\frac{\\partial^2z}{\\partial x\\partial y}$ .",
+            "answer": "解：  $\\frac{\\partial z}{\\partial x} = 3y^2 + \\frac{2x}{y}, \\frac{\\partial z}{\\partial y} = 6xy - \\frac{x^2}{y^2}$，$\\therefore \\mathrm{d} z = \\left(3 y^{2} + \\frac{2 x}{y}\\right) \\mathrm{d} x + \\left(6 x y - \\frac{x^{2}}{y^{2}}\\right) \\mathrm{d} y.$， $\\frac{\\partial^{2} z}{\\partial x \\partial y} = \\left(3 y^{2} + \\frac{2 x}{y}\\right)_{y}^{\\prime} = 6 y - \\frac{2 x}{y^{2}}.$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "计算  $\\iint_{D} y \\, \\mathrm{d}\\sigma$ ，其中  $D$  是由直线  $y = x, y = x - 2$  与  $y = 0, y = 2$  围成的有界闭区域。",
+            "answer": "解：积分区域  $D$  如图 1， $\\iint_{D} y \\, \\mathrm{d}\\sigma = \\int_{0}^{2} \\, \\mathrm{d}y \\int_{r}^{r+2} y \\, \\mathrm{d}x = \\int_{0}^{2} (y x|_{y}^{y + 2}) d y = \\int_{0}^{2} [ y (y + 2) - y^{2} ] d y = \\int_{0}^{2} 2 y d y = y^{2} \\Big|_{0}^{2} = 4.$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/f4364f18f6297c3ebf65cdee53396017f97177d173845f33c14607605a06fdf3.jpg)\n\n图1",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/f4364f18f6297c3ebf65cdee53396017f97177d173845f33c14607605a06fdf3.jpg",
+                "position": "inline",
+                "caption": "图1"
+              }
+            ]
+          },
+          {
+            "question_number": 17,
+            "content": "求微分方程  $\\frac{\\mathrm{dy}}{\\mathrm{dx}} = \\frac{\\sec^2 x}{y^2}$  满足初始条件  $y|_{x=0} = 1$  的特解",
+            "answer": "解：  $\\because y^{2} \\mathrm{~d}y = \\sec^{2} x \\mathrm{~d}x$，$\\therefore \\int y^{2} d y = \\int \\sec^{2} x d x,$，$\\frac{y^{3}}{3} = \\tan x + C,$，又：当  $x = 0$  时，  $y = 1,\\quad \\therefore C = \\frac{1}{3},$，故特解为  $\\frac{y^3}{3} = \\tan x + \\frac{1}{3}$  （或  $y = \\sqrt[3]{3\\tan x + 1}$ ）",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "判定级数  $\\sum_{n=1}^{\\infty} \\frac{n^n}{2^n n!}$  的收敛性",
+            "answer": "解：该级数为正项级数，用比值审敛法判别。$\\because \\lim_{n \\rightarrow \\infty} \\frac{u_{n + 1}}{u_{n}} = \\lim_{n \\rightarrow \\infty} \\frac{(n + 1)^{n + 1}}{2^{n + 1} (n + 1)!} \\cdot \\frac{2^{n} n!}{n^{n}} = \\lim_{n \\rightarrow \\infty} \\frac{(n + 1)^{n + 1}}{2 (n + 1) n^{n}} = \\lim_{n \\rightarrow \\infty} \\frac{1}{2} \\left(1 + \\frac{1}{n}\\right)^{n} = \\frac{e}{2} > 1,$，$\\therefore \\sum_{n=1}^{\\infty} \\frac{n^n}{2^n n!}$  发散.",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综合题",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "设有界平面图形  $G$  由曲线  $y = \\mathrm{e}^{ax}$  和直线  $y = \\mathrm{e}$ ， $x = 0$  围成，其中常数  $a > 0$ 。若  $G$  的面积等于 1.\n（1）求  $a$  的值；\n（2）求  $G$  绕  $y$  轴旋转一周而成的旋转体的体积  $V$",
+            "answer": "解：平面图形  $G$  如图2，\n（1）由  $\\left\\{ \\begin{array}{l} y = \\mathrm{e}^{ax} \\\\ y = \\mathrm{e} \\end{array} \\right.$  得  $ax = 1$  ， $x = \\frac{1}{a}$ . 因此，  $G$  的面积 $S_{G} = \\int_{0}^{\\frac{1}{\\sigma}} \\left(\\mathrm{e} - \\mathrm{e}^{\\sigma \\tau}\\right) \\mathrm{d} x = \\left. \\left(\\mathrm{e} x - \\frac{1}{a} \\mathrm{e}^{\\alpha x}\\right) \\right|_{0}^{\\frac{1}{a}} = \\frac{\\mathrm{e}}{a} - \\frac{\\mathrm{e}}{a} + \\frac{1}{a} = \\frac{1}{a}.$ 由题设得  $\\frac{1}{a} = 1$  ，所以  $a = 1$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/65b2e3f5205ddb8fbc865115ddb8ae62c8a6e7dc8bca315b9499505022063c05.jpg)\n\n图2\n\n（2）由（1）知  $a = 1$  ，所以 $V = \\pi \\int_{1}^{\\circ} (\\ln y)^{2} d y = \\pi \\left[ y (\\ln y)^{2} \\right|_{1}^{\\infty} - 2 \\int_{1}^{\\infty} \\ln y d y \\Bigg ] = \\pi \\left(e - 2 \\int_{1}^{c} \\ln y d y\\right) = \\pi \\left[ e - 2 \\left(y \\ln y \\bigg|_{1}^{e} - \\int_{1}^{e} d y\\right) \\right] = \\pi [ e - 2 (e - e + 1) ] = \\pi (e - 2).$",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/65b2e3f5205ddb8fbc865115ddb8ae62c8a6e7dc8bca315b9499505022063c05.jpg",
+                "position": "inline",
+                "caption": "图2"
+              }
+            ]
+          },
+          {
+            "question_number": 20,
+            "content": "设函数  $f(x) = \\frac{a}{1 + \\mathrm{e}^{bx}}$ ，其中  $a, b$  为常数，且  $ab \\neq 0$\n（1）判别  $f(x)$  在区间  $(- \\infty, + \\infty)$  内的单调性；\n（2）求曲线  $y = f(x)$  的拐点；\n（3）求曲线  $y = f(x)$  的水平渐近线方程",
+            "answer": "解：（1）  $\\because f^{\\prime}(x) = \\frac{-a b e^{bx}}{(1 + e^{bx})^{2}}$  且  $\\frac{e^{bx}}{(1 + e^{bx})^2} > 0$，当  $ab < 0$  时， $f(x)$  在  $(- \\infty, + \\infty)$  内单调递增，当  $ab > 0$  时， $f(x)$  在  $(- \\infty, +\\infty)$  内单调递减\n（2）  $f^{\\prime \\prime}(x) = \\frac{-ab^{2}\\mathrm{e}^{b\\cdot x}\\left(1 - \\mathrm{e}^{b\\cdot x}\\right)}{\\left(1 + \\mathrm{e}^{b\\cdot x}\\right)^{3}},$，令  $f''(x) = 0$  ，得  $x = 0$，在  $x = 0$  的左、右邻域内， $f''(x)$  异号，点  $\\left(0, \\frac{a}{2}\\right)$  为曲线的拐点.\n（3）因为当  $b > 0$  时，  $\\lim_{t\\to +\\infty}f(x) = \\lim_{t\\to +\\infty}\\frac{a}{1 + e^{bx}} = 0,$，$\\lim_{x \\rightarrow - \\infty} f (x) = \\lim_{x \\rightarrow - \\infty} \\frac{a}{1 + e^{b x}} = a;$，当  $b < 0$  时，  $\\lim_{x\\to +\\infty}f(x) = \\lim_{x\\to +\\infty}\\frac{a}{1 + e^{bx}} = a,$，$\\lim_{x \\rightarrow - \\infty} f (x) = \\lim_{x \\rightarrow - \\infty} \\frac{a}{1 + e^{h x}} = 0,$，所以，  $y = f(x)$  的水平渐近线方程为  $y = 0$  和  $y = a$",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}
+
