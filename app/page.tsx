@@ -36,29 +36,30 @@ export default function HomePage() {
         setLoading(true);
         setError(null);
         
-        // 从题库服务获取试卷列表（按年份倒序，只取前3个）
-        // 使用API代理路径避免CORS问题
-        const response = await fetch('/api/question-bank/papers?limit=3');
+        // 直接从public目录加载JSON文件
+        const years = [2023, 2022, 2021];
+        const paperPromises = years.map(year => 
+          fetch(`/papers/广东_高数_${year}.json`).then(res => res.json())
+        );
         
-        if (!response.ok) {
-          throw new Error('获取试卷列表失败');
-        }
-        
-        const papers: PaperSummary[] = await response.json();
+        const papers = await Promise.all(paperPromises);
         
         // 转换为ExamPaper格式
-        const examPaperData: ExamPaper[] = papers.map((paper) => ({
-          paperId: `paper_${paper.year}_1`,
-          name: `${paper.year}年${paper.province}${paper.exam_type}${paper.subject}真题（第1套）`,
-          year: paper.year,
-          region: paper.province,
-          examType: paper.exam_type,
-          subject: paper.subject,
-          questionIds: [], // 后续需要时再加载具体题目
-          suggestedTime: 90,
-          totalQuestions: paper.total_questions,
-          questionTypes: { choice: 0, fill: 0, solution: 0 }, // 可以从sections推断
-        }));
+        const examPaperData: ExamPaper[] = papers.map((paperData) => {
+          const { meta, paper } = paperData;
+          return {
+            paperId: `paper_${meta.year}_1`,
+            name: `${meta.year}年${meta.province}${meta.exam_type}${meta.subject}真题`,
+            year: meta.year,
+            region: meta.province,
+            examType: meta.exam_type,
+            subject: meta.subject,
+            questionIds: [], // 后续需要时再加载具体题目
+            suggestedTime: 90,
+            totalQuestions: meta.total_questions,
+            questionTypes: { choice: 0, fill: 0, solution: 0 }, // 可以从sections推断
+          };
+        });
         
         setExamPapers(examPaperData);
       } catch (err) {
@@ -69,39 +70,39 @@ export default function HomePage() {
         const fallbackPapers: ExamPaper[] = [
           {
             paperId: 'paper_2023_1',
-            name: '2023年广东专升本高等数学真题（第1套）',
+            name: '2023年广东专升本高等数学真题',
             year: 2023,
             region: '广东',
             examType: '专升本',
             subject: '高等数学',
             questionIds: [],
             suggestedTime: 90,
-            totalQuestions: 25,
-            questionTypes: { choice: 10, fill: 7, solution: 8 },
+            totalQuestions: 20,
+            questionTypes: { choice: 5, fill: 5, solution: 10 },
           },
           {
             paperId: 'paper_2022_1',
-            name: '2022年广东专升本高等数学真题（第1套）',
+            name: '2022年广东专升本高等数学真题',
             year: 2022,
             region: '广东',
             examType: '专升本',
             subject: '高等数学',
             questionIds: [],
             suggestedTime: 90,
-            totalQuestions: 25,
-            questionTypes: { choice: 10, fill: 7, solution: 8 },
+            totalQuestions: 20,
+            questionTypes: { choice: 5, fill: 5, solution: 10 },
           },
           {
             paperId: 'paper_2021_1',
-            name: '2021年广东专升本高等数学真题（第1套）',
+            name: '2021年广东专升本高等数学真题',
             year: 2021,
             region: '广东',
             examType: '专升本',
             subject: '高等数学',
             questionIds: [],
             suggestedTime: 90,
-            totalQuestions: 25,
-            questionTypes: { choice: 10, fill: 7, solution: 8 },
+            totalQuestions: 20,
+            questionTypes: { choice: 5, fill: 5, solution: 10 },
           },
         ];
         setExamPapers(fallbackPapers);

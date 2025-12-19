@@ -31,9 +31,18 @@ export function formatLatexForMarkdown(text: string): string {
 }
 
 /**
- * 旧函数保留兼容性
+ * 修复 LaTeX 中的 limits，确保下标显示在符号下方
  */
 export function fixLatexLimits(latex: string): string {
-  return formatLatexForMarkdown(latex);
+  if (!latex) return '';
+  
+  // 只添加 \limits，不做其他处理
+  return latex
+    .replace(/\\lim(?![a-zA-Z])/g, '\\lim\\limits')
+    .replace(/\\max(?![a-zA-Z])/g, '\\max\\limits')
+    .replace(/\\min(?![a-zA-Z])/g, '\\min\\limits')
+    .replace(/\\sum(?![a-zA-Z])/g, '\\sum\\limits')
+    .replace(/\\prod(?![a-zA-Z])/g, '\\prod\\limits')
+    .replace(/\\int(?![a-zA-Z])/g, '\\int\\limits');
 }
 

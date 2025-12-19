@@ -62,9 +62,11 @@ const mockQuestions: Question[] = [
     question: '已知函数 $f(x) = x^2 + 2x + 1$，则 $f(2) = $（    ）',
     options: ['A. 5', 'B. 7', 'C. 9', 'D. 11'],
     answer: 'C',
-    solution: '将 $x = 2$ 代入函数：$f(2) = 2^2 + 2 \\times 2 + 1 = 4 + 4 + 1 = 9$',
+    solution:
+      '将 $x = 2$ 代入函数：$f(2) = 2^2 + 2 \\times 2 + 1 = 4 + 4 + 1 = 9$',
     shortSolution: '关键思路：直接代入计算。将 $x = 2$ 代入函数表达式即可。',
-    detailedSolution: '详细步骤：\n1. 原式：$f(x) = x^2 + 2x + 1$\n2. 代入 $x = 2$：$f(2) = 2^2 + 2 \\times 2 + 1$\n3. 计算：$= 4 + 4 + 1 = 9$\n4. 因此答案为 C',
+    detailedSolution:
+      '详细步骤：\n1. 原式：$f(x) = x^2 + 2x + 1$\n2. 代入 $x = 2$：$f(2) = 2^2 + 2 \\times 2 + 1$\n3. 计算：$= 4 + 4 + 1 = 9$\n4. 因此答案为 C',
     knowledgePoints: ['函数', '函数值计算'],
     paperId: 'paper_2023_1',
   },
@@ -77,7 +79,8 @@ const mockQuestions: Question[] = [
     answer: '2 或 3',
     solution: '因式分解：$(x-2)(x-3) = 0$，所以 $x = 2$ 或 $x = 3$',
     shortSolution: '关键思路：因式分解法。将二次方程因式分解后求解。',
-    detailedSolution: '详细步骤：\n1. 原方程：$x^2 - 5x + 6 = 0$\n2. 因式分解：$(x-2)(x-3) = 0$\n3. 由因式分解可得：$x-2=0$ 或 $x-3=0$\n4. 解得：$x = 2$ 或 $x = 3$',
+    detailedSolution:
+      '详细步骤：\n1. 原方程：$x^2 - 5x + 6 = 0$\n2. 因式分解：$(x-2)(x-3) = 0$\n3. 由因式分解可得：$x-2=0$ 或 $x-3=0$\n4. 解得：$x = 2$ 或 $x = 3$',
     knowledgePoints: ['方程', '因式分解'],
     paperId: 'paper_2023_1',
   },
@@ -88,9 +91,11 @@ const mockQuestions: Question[] = [
     type: 'solution',
     question: '求函数 $y = \\sin x + \\cos x$ 的最大值。',
     answer: '$\\sqrt{2}$',
-    solution: '利用辅助角公式：$y = \\sin x + \\cos x = \\sqrt{2}\\sin(x + \\frac{\\pi}{4})$，最大值为 $\\sqrt{2}$',
+    solution:
+      '利用辅助角公式：$y = \\sin x + \\cos x = \\sqrt{2}\\sin(x + \\frac{\\pi}{4})$，最大值为 $\\sqrt{2}$',
     shortSolution: '关键思路：使用辅助角公式将两个三角函数合并为一个。',
-    detailedSolution: '详细步骤：\n1. 原函数：$y = \\sin x + \\cos x$\n2. 提取系数：$= \\sqrt{2}(\\frac{1}{\\sqrt{2}}\\sin x + \\frac{1}{\\sqrt{2}}\\cos x)$\n3. 应用辅助角公式：$= \\sqrt{2}\\sin(x + \\frac{\\pi}{4})$\n4. 由于 $\\sin(x + \\frac{\\pi}{4})$ 的最大值为 1\n5. 因此 $y$ 的最大值为 $\\sqrt{2}$',
+    detailedSolution:
+      '详细步骤：\n1. 原函数：$y = \\sin x + \\cos x$\n2. 提取系数：$= \\sqrt{2}(\\frac{1}{\\sqrt{2}}\\sin x + \\frac{1}{\\sqrt{2}}\\cos x)$\n3. 应用辅助角公式：$= \\sqrt{2}\\sin(x + \\frac{\\pi}{4})$\n4. 由于 $\\sin(x + \\frac{\\pi}{4})$ 的最大值为 1\n5. 因此 $y$ 的最大值为 $\\sqrt{2}$',
     knowledgePoints: ['三角函数', '辅助角公式'],
     paperId: 'paper_2023_1',
   },
@@ -103,13 +108,17 @@ export default function PracticePage() {
 
   const [paper, setPaper] = useState<ExamPaper | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-  const [currentMode, setCurrentMode] = useState<'objective' | 'solution'>('objective');
+  const [currentMode, setCurrentMode] = useState<'objective' | 'solution'>(
+    'objective'
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [navFilter, setNavFilter] = useState<'all' | 'unanswered' | 'wrong'>('all');
+  const [navFilter, setNavFilter] = useState<'all' | 'unanswered' | 'wrong'>(
+    'all'
+  );
   const [isMobile, setIsMobile] = useState(false);
   const [progress, setProgress] = useState<PaperProgress>({
     paperId,
@@ -128,7 +137,7 @@ export default function PracticePage() {
 
   // 根据模式过滤题目
   const filteredQuestions = useMemo(() => {
-    return allQuestions.filter(q => {
+    return allQuestions.filter((q) => {
       if (currentMode === 'objective') {
         return q.type === 'choice' || q.type === 'fill';
       } else {
@@ -152,14 +161,20 @@ export default function PracticePage() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // 只在非输入框时响应方向键
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
         return;
       }
 
       if (e.key === 'ArrowLeft' && currentIndex > 0) {
         e.preventDefault();
         handleQuestionClick(currentIndex - 1);
-      } else if (e.key === 'ArrowRight' && currentIndex < filteredQuestions.length - 1) {
+      } else if (
+        e.key === 'ArrowRight' &&
+        currentIndex < filteredQuestions.length - 1
+      ) {
         e.preventDefault();
         handleQuestionClick(currentIndex + 1);
       }
@@ -179,109 +194,135 @@ export default function PracticePage() {
           console.error('无效的试卷ID格式');
           return;
         }
-        
+
         const year = parseInt(yearMatch[1]);
-        
-        // 从题库API加载真实试卷数据
-        const response = await fetch(`/api/question-bank/papers/${year}`);
-        
+
+        // 直接从public目录加载JSON文件
+        const response = await fetch(`/papers/广东_高数_${year}.json`);
+
         if (!response.ok) {
           throw new Error('加载试卷失败');
         }
-        
-        const paperData = await response.json();
-        
-        // 转换API数据为ExamPaper格式
+
+        const jsonData = await response.json();
+        const { meta, paper: paperData } = jsonData;
+
+        // 转换为ExamPaper格式
         const examPaper: ExamPaper = {
           paperId: paperId,
-          name: `${paperData.year}年${paperData.province}${paperData.exam_type}${paperData.subject}真题（第1套）`,
-          year: paperData.year,
-          region: paperData.province,
-          examType: paperData.exam_type,
-          subject: paperData.subject,
+          name: `${meta.year}年${meta.province}${meta.exam_type}${meta.subject}真题`,
+          year: meta.year,
+          region: meta.province,
+          examType: meta.exam_type,
+          subject: meta.subject,
           questionIds: [],
           suggestedTime: 90,
-          totalQuestions: paperData.sections.reduce((sum: number, s: any) => sum + s.questions.length, 0),
+          totalQuestions: meta.total_questions,
           questionTypes: { choice: 0, fill: 0, solution: 0 },
         };
-        
+
         setPaper(examPaper);
 
         // 转换sections和questions为Question[]格式
         let paperQuestions: Question[] = [];
         let questionCounter = 1;
-        
+
         // 遍历sections和questions，转换为Question[]格式
         for (const section of paperData.sections) {
           for (const q of section.questions) {
-            // 判断题型（根据章节名或章节顺序）
+            // 判断题型（根据章节名）
             let questionType: 'choice' | 'fill' | 'solution' = 'solution';
-            const sectionName = section.section_name.toLowerCase();
-            
+            const sectionName = section.section_name;
+
             // 优先根据章节名判断
-            if (sectionName.includes('选择') || sectionName.includes('choice') || 
-                sectionName === '单' || sectionName === '多') {
+            if (sectionName.includes('选择')) {
               questionType = 'choice';
-            } else if (sectionName.includes('填空') || sectionName.includes('fill') || 
-                       sectionName.includes('blank') || sectionName === '填') {
+            } else if (sectionName.includes('填空')) {
               questionType = 'fill';
             }
-            // 其他情况（计、综等）默认为solution
-            
+            // 其他情况（计算题、综合题等）默认为solution
+
             const question: Question = {
               questionId: `${paperId}_q${questionCounter}`,
               topic: section.section_name,
               difficulty: 'L1', // 默认难度
               type: questionType,
-              question: q.content || '',
+              question:
+                questionType === 'choice'
+                  ? extractQuestionStem(q.content)
+                  : q.content,
               answer: q.answer || '',
               solution: q.answer || '',
-              shortSolution: q.answer ? `答案: ${q.answer}` : '',
+              shortSolution: q.answer ? `答案：${q.answer}` : '',
               detailedSolution: q.answer || '',
               knowledgePoints: [section.section_name],
               paperId: paperId,
-              options: questionType === 'choice' ? extractOptions(q.content) : undefined,
+              options:
+                questionType === 'choice'
+                  ? extractOptions(q.content)
+                  : undefined,
+              images: q.images || [],
             };
-            
+
             paperQuestions.push(question);
             questionCounter++;
           }
         }
-        
+
         setAllQuestions(paperQuestions);
-        console.log(`加载了 ${paperQuestions.length} 道题目`);
-        
+        console.log(
+          `✅ 成功加载 ${year}年试卷，共 ${paperQuestions.length} 道题目`
+        );
       } catch (error) {
-        console.error('加载试卷失败:', error);
+        console.error('❌ 加载试卷失败:', error);
         // 降级使用模拟数据
         const fallbackPaper = mockPapers[paperId] || null;
         setPaper(fallbackPaper);
-        
+
         if (fallbackPaper) {
-          const fallbackQuestions = mockQuestions.filter(q => q.paperId === paperId);
+          const fallbackQuestions = mockQuestions.filter(
+            (q) => q.paperId === paperId
+          );
           setAllQuestions(fallbackQuestions);
         }
       }
     };
-    
+
     loadPaper();
   }, [paperId]);
-  
+
   // 从题目内容中提取选项（用于选择题）
+  // 从content中提取纯题干（去除选项）
+  function extractQuestionStem(content: string): string {
+    // 找到第一个选项的位置（A. 或 A、）
+    const firstOptionMatch = content.match(/[A-D][\.、]/);
+    if (firstOptionMatch && firstOptionMatch.index !== undefined) {
+      // 返回选项之前的内容作为题干
+      return content.substring(0, firstOptionMatch.index).trim();
+    }
+    // 如果没有找到选项，返回全部内容
+    return content.trim();
+  }
+
+  // 从content中提取选项（保留字母标识）
   function extractOptions(content: string): string[] {
     const options: string[] = [];
-    // 匹配 A. B. C. D. 格式的选项
-    const optionMatches = content.match(/[A-D][\.、]\s*[^A-D]+/g);
-    if (optionMatches) {
-      return optionMatches.map(opt => opt.trim());
+    // 匹配 A. B. C. D. 格式的选项（支持换行）
+    const lines = content.split('\n');
+    for (const line of lines) {
+      const optionMatch = line.match(/^([A-D])[\.、]\s*(.+)$/);
+      if (optionMatch) {
+        // 保留完整的选项格式 "A. xxx"
+        options.push(`${optionMatch[1]}. ${optionMatch[2].trim()}`);
+      }
     }
-    return [];
+    return options;
   }
 
   // 计时器
   useEffect(() => {
     const timer = setInterval(() => {
-      setElapsedTime(prev => prev + 1);
+      setElapsedTime((prev) => prev + 1);
     }, 1000);
 
     return () => clearInterval(timer);
@@ -290,7 +331,10 @@ export default function PracticePage() {
   // 保存进度到localStorage
   useEffect(() => {
     if (paperId && progress.totalQuestions > 0) {
-      localStorage.setItem(`paper_progress_${paperId}`, JSON.stringify(progress));
+      localStorage.setItem(
+        `paper_progress_${paperId}`,
+        JSON.stringify(progress)
+      );
     }
   }, [progress, paperId]);
 
@@ -313,21 +357,23 @@ export default function PracticePage() {
   // 模式切换
   const handleModeChange = (mode: 'objective' | 'solution') => {
     // 保存当前模式的索引
-    setProgress(prev => ({
+    setProgress((prev) => ({
       ...prev,
       mode,
-      [mode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: currentIndex,
+      [mode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']:
+        currentIndex,
     }));
 
     setCurrentMode(mode);
 
     // 恢复新模式最后访问的题号
-    const lastIndex = mode === 'objective'
-      ? (progress.lastObjectiveIndex || 0)
-      : (progress.lastSolutionIndex || 0);
+    const lastIndex =
+      mode === 'objective'
+        ? progress.lastObjectiveIndex || 0
+        : progress.lastSolutionIndex || 0;
 
     // 确保索引在有效范围内
-    const newFiltered = allQuestions.filter(q => {
+    const newFiltered = allQuestions.filter((q) => {
       if (mode === 'objective') {
         return q.type === 'choice' || q.type === 'fill';
       } else {
@@ -349,18 +395,27 @@ export default function PracticePage() {
     setSubmitted(true);
 
     // 简单的答案检查（实际应该调用API）
-    const correct = currentQuestion.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
+    const correct =
+      currentQuestion.answer.toLowerCase().trim() ===
+      userAnswer.toLowerCase().trim();
     setIsCorrect(correct);
 
     // 更新进度
-    setProgress(prev => {
-      const newAnswers = { ...prev.answers, [currentQuestion.questionId]: userAnswer };
+    setProgress((prev) => {
+      const newAnswers = {
+        ...prev.answers,
+        [currentQuestion.questionId]: userAnswer,
+      };
       const newStatus: Record<string, 'unanswered' | 'answered' | 'wrong'> = {
         ...(prev.questionStatus || {}),
         [currentQuestion.questionId]: correct ? 'answered' : 'wrong',
       };
-      const answeredQuestions = Object.values(newStatus).filter(s => s === 'answered' || s === 'wrong').length;
-      const correctQuestions = Object.values(newStatus).filter(s => s === 'answered').length;
+      const answeredQuestions = Object.values(newStatus).filter(
+        (s) => s === 'answered' || s === 'wrong'
+      ).length;
+      const correctQuestions = Object.values(newStatus).filter(
+        (s) => s === 'answered'
+      ).length;
 
       return {
         ...prev,
@@ -368,7 +423,10 @@ export default function PracticePage() {
         questionStatus: newStatus,
         answeredCount: answeredQuestions,
         correctCount: correctQuestions,
-        accuracy: answeredQuestions > 0 ? (correctQuestions / answeredQuestions) * 100 : 0,
+        accuracy:
+          answeredQuestions > 0
+            ? (correctQuestions / answeredQuestions) * 100
+            : 0,
       };
     });
   };
@@ -387,9 +445,11 @@ export default function PracticePage() {
     setIsCorrect(null);
 
     // 更新对应模式的最后索引
-    setProgress(prev => ({
+    setProgress((prev) => ({
       ...prev,
-      [currentMode === 'objective' ? 'lastObjectiveIndex' : 'lastSolutionIndex']: index,
+      [currentMode === 'objective'
+        ? 'lastObjectiveIndex'
+        : 'lastSolutionIndex']: index,
     }));
   };
 
@@ -424,14 +484,16 @@ export default function PracticePage() {
     return (
       <Layout>
         <div className="max-w-4xl mx-auto px-4 py-8">
-          <p className="text-center text-gray-600 dark:text-gray-400">加载中...</p>
+          <p className="text-center text-gray-600 dark:text-gray-400">
+            加载中...
+          </p>
         </div>
       </Layout>
     );
   }
 
   const currentQuestionStatus = currentQuestion
-    ? (progress.questionStatus?.[currentQuestion.questionId] || 'unanswered')
+    ? progress.questionStatus?.[currentQuestion.questionId] || 'unanswered'
     : 'unanswered';
 
   return (
@@ -518,7 +580,9 @@ export default function PracticePage() {
         <BottomBar
           currentIndex={currentIndex}
           totalQuestions={filteredQuestions.length}
-          questionStatus={currentQuestionStatus as 'unanswered' | 'answered' | 'wrong'}
+          questionStatus={
+            currentQuestionStatus as 'unanswered' | 'answered' | 'wrong'
+          }
           onPrevious={handlePrevious}
           onNext={handleNext}
           onFinish={handleFinish}

@@ -36,52 +36,52 @@ async function fileToDataUrl(file: File): Promise<string> {
 const TYPE_MAP: Record<string, string> = {
   // 选择题类型（支持连字符和下划线）
   'multiple-choice': '选择题',
-  'multiple_choice': '选择题',
+  multiple_choice: '选择题',
   'single-choice': '单选题',
-  'single_choice': '单选题',
+  single_choice: '单选题',
   'multi-choice': '多选题',
-  'multi_choice': '多选题',
+  multi_choice: '多选题',
   choice: '选择题',
-  
+
   // 填空题类型
   'fill-in-the-blank': '填空题',
-  'fill_in_the_blank': '填空题',
+  fill_in_the_blank: '填空题',
   'fill-in': '填空题',
-  'fill_in': '填空题',
+  fill_in: '填空题',
   blank: '填空题',
-  
+
   // 计算题类型
   calculation: '计算题',
   compute: '计算题',
-  
+
   // 解答题类型
   'problem-solving': '解答题',
-  'problem_solving': '解答题',
+  problem_solving: '解答题',
   solving: '解答题',
   answer: '解答题',
-  
+
   // 判断题类型
   'true-or-false': '判断题',
-  'true_or_false': '判断题',
+  true_or_false: '判断题',
   'true-false': '判断题',
-  'true_false': '判断题',
+  true_false: '判断题',
   judge: '判断题',
   judgment: '判断题',
-  
+
   // 综合题类型
   comprehensive: '综合题',
   synthesis: '综合题',
-  
+
   // 证明题类型
   proof: '证明题',
   prove: '证明题',
-  
+
   // 应用题类型
   application: '应用题',
-  
+
   // 简答题类型
   'short-answer': '简答题',
-  'short_answer': '简答题',
+  short_answer: '简答题',
   essay: '简答题',
 };
 
@@ -105,7 +105,7 @@ export default function ExtractorPage() {
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       setHasCache(!!cached);
-      
+
       // 计算缓存统计
       updateCacheStats();
     } catch (e) {
@@ -118,7 +118,7 @@ export default function ExtractorPage() {
     try {
       let count = 0;
       let totalSize = 0;
-      
+
       // 遍历localStorage，统计ocr_v5_开头的缓存
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -130,7 +130,7 @@ export default function ExtractorPage() {
           }
         }
       }
-      
+
       setCacheStats({ count, size: totalSize });
     } catch (e) {
       console.warn('缓存统计失败:', e);
@@ -141,7 +141,7 @@ export default function ExtractorPage() {
   function clearAllOcrCache() {
     try {
       const keysToRemove: string[] = [];
-      
+
       // 收集所有OCR缓存键
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -149,10 +149,10 @@ export default function ExtractorPage() {
           keysToRemove.push(key);
         }
       }
-      
+
       // 删除所有OCR缓存
-      keysToRemove.forEach(key => localStorage.removeItem(key));
-      
+      keysToRemove.forEach((key) => localStorage.removeItem(key));
+
       setHasCache(false);
       updateCacheStats();
       console.log(`🗑️ 已清除 ${keysToRemove.length} 个OCR缓存`);
@@ -198,7 +198,7 @@ export default function ExtractorPage() {
     try {
       // 生成基于文件的缓存键（文件名+大小+修改时间+版本）
       const fileCacheKey = `ocr_v5_${file.name}_${file.size}_${file.lastModified}`;
-      
+
       // 先检查文件级缓存
       const cachedText = localStorage.getItem(fileCacheKey);
       if (cachedText) {
@@ -263,7 +263,7 @@ export default function ExtractorPage() {
         .join('\n\n---\n\n');
 
       setOcrText(text);
-      
+
       // 保存到文件级缓存
       try {
         localStorage.setItem(fileCacheKey, text);
@@ -272,7 +272,7 @@ export default function ExtractorPage() {
       } catch (e) {
         console.warn('缓存保存失败:', e);
       }
-      
+
       // 同时保存到旧的缓存系统（用于"使用上次输入"功能）
       saveCache(imgs, text);
     } catch (e) {

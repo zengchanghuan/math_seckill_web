@@ -15,58 +15,72 @@ export default function MathText({
   displayMode = false,
   className = '',
 }: MathTextProps) {
+  if (!content) return null;
+
   // 提取 LaTeX 表达式（支持 $...$ 和 $$...$$）
   const parts: (
     | string
     | { type: 'math'; content: string; display: boolean }
   )[] = [];
-  let lastIndex = 0;
-  let inMath = false;
-  let mathStart = -1;
-  let isDisplay = false;
-
-  for (let i = 0; i < content.length; i++) {
-    if (content[i] === '$') {
-      if (i + 1 < content.length && content[i + 1] === '$') {
-        // 块级数学 $$...$$
-        if (inMath && isDisplay) {
-          // 结束块级数学
-          const mathContent = content.substring(mathStart + 2, i);
-          parts.push({ type: 'math', content: mathContent, display: true });
-          lastIndex = i + 2;
-          inMath = false;
-          i++; // 跳过第二个 $
-        } else {
-          // 开始块级数学
-          if (i > lastIndex) {
-            parts.push(content.substring(lastIndex, i));
-          }
-          mathStart = i;
-          inMath = true;
-          isDisplay = true;
-          i++; // 跳过第二个 $
-        }
-      } else {
-        // 行内数学 $...$
-        if (inMath && !isDisplay) {
-          // 结束行内数学
-          const mathContent = content.substring(mathStart + 1, i);
-          parts.push({ type: 'math', content: mathContent, display: false });
-          lastIndex = i + 1;
-          inMath = false;
-        } else {
-          // 开始行内数学
-          if (i > lastIndex) {
-            parts.push(content.substring(lastIndex, i));
-          }
-          mathStart = i;
-          inMath = true;
-          isDisplay = false;
-        }
-      }
+  
+  // 使用正则表达式匹配数学公式
+  // 先匹配 $$...$$ （块级），再匹配 $...$ （行内）
+  const blockMathRegex = /\$\$([\s\S]*?)\$\$/g;
+  const inlineMathRegex = /\$((?:[^\$]|\\\$)*?)\$/g;
+  
+  // 先处理块级数学公式
+  let processedContent = content;
+  const blockMatches: Array<{ start: number; end: number; content: string }> = [];
+  let match;
+  
+  while ((match = blockMathRegex.exec(content)) !== null) {
+    blockMatches.push({
+      start: match.index,
+      end: match.index + match[0].length,
+      content: match[1],
+    });
+  }
+  
+  // 再处理行内数学公式（跳过块级数学公式的位置）
+  const inlineMatches: Array<{ start: number; end: number; content: string }> = [];
+  blockMathRegex.lastIndex = 0;
+  
+  while ((match = inlineMathRegex.exec(content)) !== null) {
+    // 检查是否在块级数学公式内
+    const isInBlock = blockMatches.some(
+      (block) => match.index >= block.start && match.index < block.end
+    );
+    if (!isInBlock) {
+      inlineMatches.push({
+        start: match.index,
+        end: match.index + match[0].length,
+        content: match[1],
+      });
     }
   }
-
+  
+  // 合并所有匹配并排序
+  const allMatches = [
+    ...blockMatches.map((m) => ({ ...m, display: true })),
+    ...inlineMatches.map((m) => ({ ...m, display: false })),
+  ].sort((a, b) => a.start - b.start);
+  
+  // 构建parts数组
+  let lastIndex = 0;
+  for (const match of allMatches) {
+    // 添加数学公式前的文本
+    if (match.start > lastIndex) {
+      parts.push(content.substring(lastIndex, match.start));
+    }
+    // 添加数学公式
+    parts.push({
+      type: 'math',
+      content: match.content,
+      display: match.display,
+    });
+    lastIndex = match.end;
+  }
+  
   // 添加剩余文本
   if (lastIndex < content.length) {
     parts.push(content.substring(lastIndex));
@@ -78,12 +92,19 @@ export default function MathText({
         if (typeof part === 'string') {
           return <span key={index}>{part}</span>;
         } else {
-          const processedContent = fixLatexLimits(part.content);
-          return part.display ? (
-            <BlockMath key={index} math={processedContent} />
-          ) : (
-            <InlineMath key={index} math={processedContent} />
-          );
+          try {
+            // 添加 \limits 确保下标显示在符号下方
+            const processedContent = fixLatexLimits(part.content);
+            return part.display ? (
+              <BlockMath key={index} math={processedContent} />
+            ) : (
+              <InlineMath key={index} math={processedContent} />
+            );
+          } catch (error) {
+            console.error('LaTeX渲染错误:', part.content, error);
+            // 渲染失败时显示原始内容
+            return <span key={index} className="text-red-500">${part.content}$</span>;
+          }
         }
       })}
     </span>

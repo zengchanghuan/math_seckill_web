@@ -1,3 +1,12 @@
+// 图片信息类型
+export interface QuestionImage {
+  alt_text: string;
+  url: string;
+  position: string;
+  caption?: string;
+  question_ref?: number;
+}
+
 // 题目类型
 export interface Question {
   questionId: string;
@@ -23,6 +32,7 @@ export interface Question {
   avgTimeSeconds?: number;
   reviewStatus?: 'pending' | 'approved' | 'rejected' | 'revision';
   createdAt?: string;
+  images?: QuestionImage[]; // 题目中的图片
 }
 
 // 作答记录

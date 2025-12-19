@@ -6,14 +6,14 @@ export const metadata: Metadata = {
   description: 'Extractor UI (Qwen OCR) + DeepSeek vs SymPy solve compare.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="zh-CN">
       <body>{children}</body>
     </html>
   );
 }
-
-
-
-

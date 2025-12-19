@@ -15,7 +15,10 @@ function getTextFromQwen(resp: QwenResponse): string {
   const content = resp.output?.choices?.[0]?.message?.content;
   if (!content) return '';
   if (typeof content === 'string') return content;
-  const t = content.map((c) => c.text ?? '').join('\n').trim();
+  const t = content
+    .map((c) => c.text ?? '')
+    .join('\n')
+    .trim();
   return t;
 }
 
@@ -48,21 +51,26 @@ export async function qwenOcrQuestionsFromImages(args: {
     },
   };
 
-  const res = await fetch('https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
+  const res = await fetch(
+    'https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    }
+  );
   if (!res.ok) {
     const t = await res.text();
     throw new Error(`Qwen OCR failed: ${res.status} ${t}`);
   }
   const json = (await res.json()) as QwenResponse;
   const text = getTextFromQwen(json);
-  const parsed = tryParseJsonFromText<{ questions?: Array<Partial<Question> & { id?: string | number }> }>(text);
+  const parsed = tryParseJsonFromText<{
+    questions?: Array<Partial<Question> & { id?: string | number }>;
+  }>(text);
   const qs = (parsed?.questions ?? []).map((q, idx) => ({
     id: `${q.id ?? idx + 1}`,
     type: q.type ?? 'unknown',
@@ -80,11 +88,7 @@ type QwenTextResponse = {
 };
 
 function getTextFromQwenText(resp: QwenTextResponse): string {
-  return (
-    resp.output?.text ??
-    resp.output?.choices?.[0]?.message?.content ??
-    ''
-  );
+  return resp.output?.text ?? resp.output?.choices?.[0]?.message?.content ?? '';
 }
 
 export async function qwenSolveOnce(args: {
@@ -110,14 +114,17 @@ export async function qwenSolveOnce(args: {
     parameters: { temperature: 0.2 },
   };
 
-  const res = await fetch('https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
+  const res = await fetch(
+    'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    }
+  );
   if (!res.ok) {
     const t = await res.text();
     throw new Error(`Qwen solve failed: ${res.status} ${t}`);
@@ -125,12 +132,12 @@ export async function qwenSolveOnce(args: {
   const json = (await res.json()) as QwenTextResponse;
   const rawText = getTextFromQwenText(json).trim();
 
-  const parsed = tryParseJsonFromText<{ answer?: string; analysis?: string }>(rawText);
+  const parsed = tryParseJsonFromText<{ answer?: string; analysis?: string }>(
+    rawText
+  );
   return {
     answer: parsed?.answer ?? '',
     analysis: parsed?.analysis ?? '',
     rawText,
   };
 }
-
-

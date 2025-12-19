@@ -19,5 +19,3 @@ npm run dev
 - **解题**：DeepSeek 一次输出结构化 JSON（plan + candidate）
 - **备选解题**：Qwen 文本模型（qwen-plus）
 - **对比展示**：DeepSeek vs Qwen；若一致，Final 区域仅展示 DeepSeek（但仍保留 Qwen 记录）
-
-

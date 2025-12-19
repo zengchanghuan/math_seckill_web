@@ -68,5 +68,3 @@ export type DeepseekTaskPlan = {
   candidate_answer?: string;
   candidate_analysis?: string;
 };
-
-

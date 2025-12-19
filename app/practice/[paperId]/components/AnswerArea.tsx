@@ -60,9 +60,13 @@ export default function AnswerArea({
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
         <div className="space-y-3 mb-4">
           {question.options.map((option, idx) => {
-            const optionValue = option[0];
+            // 从选项中提取字母和内容 (格式: "A. xxx")
+            const optionMatch = option.match(/^([A-D])[\.、]\s*(.+)$/);
+            const optionValue = optionMatch ? optionMatch[1] : String.fromCharCode(65 + idx); // A, B, C, D
+            const optionContent = optionMatch ? optionMatch[2] : option;
+            
             const isSelected = userAnswer === optionValue;
-            const isCorrectOption = question.answer === optionValue;
+            const isCorrectOption = question.answer.startsWith(optionValue);
             const isUserWrong = submitted && isSelected && !isCorrect;
 
             return (
@@ -92,7 +96,7 @@ export default function AnswerArea({
                     {optionValue}.
                   </span>
                   <span className="flex-1 text-gray-800 dark:text-gray-200">
-                    <MathText content={option.substring(2)} />
+                    <MathText content={optionContent} />
                   </span>
                 </div>
               </button>
