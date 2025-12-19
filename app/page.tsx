@@ -1,58 +1,117 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import Link from 'next/link';
 import type { ExamPaper } from '@/types';
 
-// 模拟真题数据（如果后端API未就绪）
-const mockExamPapers: ExamPaper[] = [
-  {
-    paperId: 'paper_2023_1',
-    name: '2023年广东专升本高数真题（第1套）',
-    year: 2023,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-  {
-    paperId: 'paper_2022_1',
-    name: '2022年广东专升本高数真题（第1套）',
-    year: 2022,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-  {
-    paperId: 'paper_2021_1',
-    name: '2021年广东专升本高数真题（第1套）',
-    year: 2021,
-    region: '广东',
-    examType: '专升本',
-    subject: '高数',
-    questionIds: [],
-    suggestedTime: 90,
-    totalQuestions: 25,
-    questionTypes: { choice: 10, fill: 7, solution: 8 },
-  },
-];
+// 题库API响应类型
+interface PaperSummary {
+  id: number;
+  year: number;
+  province: string;
+  subject: string;
+  exam_type: string;
+  total_sections: number;
+  total_questions: number;
+  total_images: number;
+  created_at: string;
+}
 
 export default function HomePage() {
-  const [examPapers] = useState<ExamPaper[]>(mockExamPapers);
+  const [examPapers, setExamPapers] = useState<ExamPaper[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     willingToPay: '',
     priceRange: '',
     contact: '',
   });
   const [submitted, setSubmitted] = useState(false);
+
+  // 加载题库数据
+  useEffect(() => {
+    const fetchPapers = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // 从题库服务获取试卷列表（按年份倒序，只取前3个）
+        // 使用API代理路径避免CORS问题
+        const response = await fetch('/api/question-bank/papers?limit=3');
+        
+        if (!response.ok) {
+          throw new Error('获取试卷列表失败');
+        }
+        
+        const papers: PaperSummary[] = await response.json();
+        
+        // 转换为ExamPaper格式
+        const examPaperData: ExamPaper[] = papers.map((paper) => ({
+          paperId: `paper_${paper.year}_1`,
+          name: `${paper.year}年${paper.province}${paper.exam_type}${paper.subject}真题（第1套）`,
+          year: paper.year,
+          region: paper.province,
+          examType: paper.exam_type,
+          subject: paper.subject,
+          questionIds: [], // 后续需要时再加载具体题目
+          suggestedTime: 90,
+          totalQuestions: paper.total_questions,
+          questionTypes: { choice: 0, fill: 0, solution: 0 }, // 可以从sections推断
+        }));
+        
+        setExamPapers(examPaperData);
+      } catch (err) {
+        console.error('加载试卷失败:', err);
+        setError(err instanceof Error ? err.message : '加载失败');
+        
+        // 降级使用模拟数据
+        const fallbackPapers: ExamPaper[] = [
+          {
+            paperId: 'paper_2023_1',
+            name: '2023年广东专升本高等数学真题（第1套）',
+            year: 2023,
+            region: '广东',
+            examType: '专升本',
+            subject: '高等数学',
+            questionIds: [],
+            suggestedTime: 90,
+            totalQuestions: 25,
+            questionTypes: { choice: 10, fill: 7, solution: 8 },
+          },
+          {
+            paperId: 'paper_2022_1',
+            name: '2022年广东专升本高等数学真题（第1套）',
+            year: 2022,
+            region: '广东',
+            examType: '专升本',
+            subject: '高等数学',
+            questionIds: [],
+            suggestedTime: 90,
+            totalQuestions: 25,
+            questionTypes: { choice: 10, fill: 7, solution: 8 },
+          },
+          {
+            paperId: 'paper_2021_1',
+            name: '2021年广东专升本高等数学真题（第1套）',
+            year: 2021,
+            region: '广东',
+            examType: '专升本',
+            subject: '高等数学',
+            questionIds: [],
+            suggestedTime: 90,
+            totalQuestions: 25,
+            questionTypes: { choice: 10, fill: 7, solution: 8 },
+          },
+        ];
+        setExamPapers(fallbackPapers);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchPapers();
+  }, []);
 
   const scrollToPapers = () => {
     document.getElementById('papers-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -169,27 +228,54 @@ export default function HomePage() {
               后续会持续更新更多年份与相近难度的题目。
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {examPapers.map((paper) => (
-                <div
-                  key={paper.paperId}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow flex flex-col min-h-[180px]"
-                >
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                    {paper.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm flex-1">
-                    共 {paper.totalQuestions} 题 · 选择 + 填空 + 解答 · 建议用时 {paper.suggestedTime} 分钟
-                  </p>
-                  <Link
-                    href={`/practice/${paper.paperId}`}
-                    className="inline-block px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm text-center"
+            {/* 加载状态 */}
+            {loading && (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+                <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">加载中...</p>
+              </div>
+            )}
+
+            {/* 错误提示 */}
+            {error && !loading && (
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-4">
+                <p className="text-yellow-800 dark:text-yellow-300 text-sm">
+                  ⚠️ {error}（已切换到离线模式）
+                </p>
+              </div>
+            )}
+
+            {/* 试卷列表 */}
+            {!loading && examPapers.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {examPapers.map((paper) => (
+                  <div
+                    key={paper.paperId}
+                    className="bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow flex flex-col min-h-[180px]"
                   >
-                    开始练习
-                  </Link>
-                </div>
-              ))}
-            </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                      {paper.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 text-sm flex-1">
+                      共 {paper.totalQuestions} 题 · 选择 + 填空 + 解答 · 建议用时 {paper.suggestedTime} 分钟
+                    </p>
+                    <Link
+                      href={`/practice/${paper.paperId}`}
+                      className="inline-block px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm text-center"
+                    >
+                      开始练习
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 空状态 */}
+            {!loading && examPapers.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-600 dark:text-gray-400 text-sm">暂无试卷数据</p>
+              </div>
+            )}
           </div>
         </section>
 
