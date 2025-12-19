@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A.  $\\lim_{n\\to \\infty}e^{-n} = 0$\nB.  $\\lim_{n\\to \\infty}e^{\\frac{1}{n}} = 1$\nC.  $\\lim_{x \\to 1} \\frac{x - 1}{x^2 - 1} = 0$\nD.  $\\lim_{x \\to 0} x \\sin \\frac{1}{x} = 0$",
+            "content": "下列极限等式不正确的是\nA.  $\\lim_{n\\to \\infty}e^{-n} = 0$\nB.  $\\lim_{n\\to \\infty}e^{\\frac{1}{n}} = 1$\nC.  $\\lim_{x \\to 1} \\frac{x - 1}{x^2 - 1} = 0$\nD.  $\\lim_{x \\to 0} x \\sin \\frac{1}{x} = 0$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. In 2\nB.  $2 \\ln 2$\nC. 1\nD. 4",
+            "content": "若  $\\lim_{x\\to \\infty}(1 + \\frac{a}{x})^x = 4$  ，则常数  $a =$\nA. In 2\nB.  $2 \\ln 2$\nC. 1\nD. 4",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  $\\int f^{\\prime}(x)dx = f(x) + C$\nB.  $\\left[\\int f(x) dx\\right]' = f(x)$\nC.  $\\int f(x) dx = F(x) + C$\nD.  $\\int F(x) d x = f(x) + C$",
+            "content": "设  $F(x)$  是可导函数  $f(x)$  的一个原函数， $C$  为任意常数，则等式不正确的是\nA.  $\\int f^{\\prime}(x)dx = f(x) + C$\nB.  $\\left[\\int f(x) dx\\right]' = f(x)$\nC.  $\\int f(x) dx = F(x) + C$\nD.  $\\int F(x) d x = f(x) + C$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A. 2\nB. 4\nC. 6\nD. 8",
+            "content": "已知函数  $f(x)$  在区间  $[0, 2]$  上连续，且  $\\int_{0}^{2} x f(x) dx = 4$ ，则  $\\int_{0}^{4} f(\\sqrt{x}) dx =$\nA. 2\nB. 4\nC. 6\nD. 8",
             "images": []
           },
           {
@@ -128,7 +128,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "（1）求曲线  $y = f(x)$  的水平渐近线方程；\n(2) 求由曲线  $y = f(x)$  和直线  $x = 0, x = 1$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的旋转体体积  $V$",
+            "content": "设函数  $f(x) = \\frac{1 + x}{\\sqrt{1 + x^2}}$\n（1）求曲线  $y = f(x)$  的水平渐近线方程；\n(2) 求由曲线  $y = f(x)$  和直线  $x = 0, x = 1$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的旋转体体积  $V$",
             "images": []
           },
           {
@@ -176,22 +176,22 @@
           },
           {
             "question_number": 13,
-            "content": "令  $f''(x) = 0$  ，解得  $x = 1$\n当  $x > 1$  时， $f''(x) > 0$ ；当  $x < 1$  时， $f''(x) < 0$\n故函数  $f(x)$  的凹区间为  $(1, +\\infty)$ ，凸区间为  $(- \\infty, 1)$ ；\n拐点为  $(1,0)$  。",
+            "content": "$f^{\\prime}(x) = \\sqrt{(x - 1)^{2} + 1}, f^{\\prime \\prime}(x) = \\frac{2(x - 1)}{2\\sqrt{(x - 1)^{2} + 1}} = \\frac{x - 1}{\\sqrt{(x - 1)^{2} + 1}},$\n令  $f''(x) = 0$  ，解得  $x = 1$\n当  $x > 1$  时， $f''(x) > 0$ ；当  $x < 1$  时， $f''(x) < 0$\n故函数  $f(x)$  的凹区间为  $(1, +\\infty)$ ，凸区间为  $(- \\infty, 1)$ ；\n拐点为  $(1,0)$  。",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n= x \\sin (x + 2) + \\cos (x + 2) + C\n$$",
+            "content": "$\\int x\\cos (x + 2)dx = \\int xd\\sin (x + 2) = x\\sin (x + 2) - \\int \\sin (x + 2)dx$\n$$\n= x \\sin (x + 2) + \\cos (x + 2) + C\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "$$\nF _ {x} = 3 (x - y) ^ {2}, F _ {y} = - 3 (x - y) ^ {2}, F _ {z} = 1 + \\sec^ {2} z,\n$$\n故  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z} = \\frac{-(x - y)^2}{1 + \\sec^2z},\\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z} = \\frac{3(x - y)^2}{\\sec^2z + 1},$\n因此  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y} = -\\frac{3(x - y)^2}{1 + \\sec^2 z} + \\frac{3(x - y)^2}{\\sec^2 1} = 0$ 。",
+            "content": "令  $F(x, y, z) = (x - y)^{3} + z + \\tan z$ ，则\n$$\nF _ {x} = 3 (x - y) ^ {2}, F _ {y} = - 3 (x - y) ^ {2}, F _ {z} = 1 + \\sec^ {2} z,\n$$\n故  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z} = \\frac{-(x - y)^2}{1 + \\sec^2z},\\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z} = \\frac{3(x - y)^2}{\\sec^2z + 1},$\n因此  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y} = -\\frac{3(x - y)^2}{1 + \\sec^2 z} + \\frac{3(x - y)^2}{\\sec^2 1} = 0$ 。",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "即  $D:0\\leq X\\leq 1,0\\leq y\\leq x^{2}$  。则\n$$\n\\begin{array}{l} \\iint_ {D} e ^ {x ^ {3}} d \\sigma = \\int_ {0} ^ {1} d x \\int_ {0} ^ {x ^ {2}} e ^ {x ^ {3}} d y = \\int_ {0} ^ {1} e ^ {x ^ {3}} \\bullet y \\left| \\begin{array}{l} x ^ {2} \\\\ 0 \\end{array} \\right. d x \\\\ = \\int_ {0} ^ {1} x ^ {2} e ^ {x ^ {3}} d x = \\frac {1}{3} e ^ {x ^ {3}} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. \\\\ = \\frac {1}{3} (e - 1) \\\\ \\end{array}\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg)",
+            "content": "积分区域  $D$  如图所示，由被积函数的特点选择先  $y$  后  $x$  的积分，\n即  $D:0\\leq X\\leq 1,0\\leq y\\leq x^{2}$  。则\n$$\n\\begin{array}{l} \\iint_ {D} e ^ {x ^ {3}} d \\sigma = \\int_ {0} ^ {1} d x \\int_ {0} ^ {x ^ {2}} e ^ {x ^ {3}} d y = \\int_ {0} ^ {1} e ^ {x ^ {3}} \\bullet y \\left| \\begin{array}{l} x ^ {2} \\\\ 0 \\end{array} \\right. d x \\\\ = \\int_ {0} ^ {1} x ^ {2} e ^ {x ^ {3}} d x = \\frac {1}{3} e ^ {x ^ {3}} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. \\\\ = \\frac {1}{3} (e - 1) \\\\ \\end{array}\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg)",
             "images": [
               {
                 "alt_text": "image",
@@ -202,7 +202,7 @@
           },
           {
             "question_number": 17,
-            "content": "$$\n\\begin{array}{l} y = e ^ {- \\int - 2 d x} \\left(\\int e ^ {x} e ^ {- \\int 2 d x} d x + C\\right) \\\\ = e ^ {2 x} \\left(\\int e ^ {- x} d x + C\\right) \\\\ = e ^ {2 x} \\left(- e ^ {- x} + C\\right) \\\\ = - e ^ {x} + C e ^ {2 x} \\quad (C \\text {为 任 意 常 数}), \\\\ \\end{array}\n$$\n又由  $y(0) = 1$ ，可知  $C = 2$ ，即  $y = -e^{x} + 2e^{2x}$ 。",
+            "content": "设曲线  $D$  的方程为  $y = y(x)$ ，由题可知  $y' = 2y + e^x$ ，变换为  $y' - 2y = e^x$ ，这是一个一阶线性微分方程，由其通解公式得\n$$\n\\begin{array}{l} y = e ^ {- \\int - 2 d x} \\left(\\int e ^ {x} e ^ {- \\int 2 d x} d x + C\\right) \\\\ = e ^ {2 x} \\left(\\int e ^ {- x} d x + C\\right) \\\\ = e ^ {2 x} \\left(- e ^ {- x} + C\\right) \\\\ = - e ^ {x} + C e ^ {2 x} \\quad (C \\text {为 任 意 常 数}), \\\\ \\end{array}\n$$\n又由  $y(0) = 1$ ，可知  $C = 2$ ，即  $y = -e^{x} + 2e^{2x}$ 。",
             "images": []
           },
           {
@@ -218,7 +218,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "$$\n\\lim  _ {x \\rightarrow - \\infty} f (x) = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{\\sqrt {1 + x ^ {2}}} = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{- x \\sqrt {\\frac {1}{x ^ {2}} + 1}} = - 1\n$$\n故函数  $y = f(x)$  有两条水平渐近线，方程分别为  $y = 1, y = -1$\n(2) 当  $0 \\leq x \\leq 1$  时,  $f(x) > 0$ , 故所求旋转体体积为\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {1} \\left(\\frac {1 + x}{\\sqrt {1 + x ^ {2}}}\\right) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {1} \\frac {1 + x ^ {2} + 2 x}{1 + x ^ {2}} d x \\\\ = \\pi \\left(\\int_ {0} ^ {1} 1 d x + \\int_ {0} ^ {1} \\frac {2 x}{1 + x ^ {2}} d x\\right) \\\\ = \\pi \\left(1 + \\ln (1 + x ^ {2}) \\Bigg | _ {0} ^ {1}\\right) \\\\ = (1 + \\ln 2) \\pi \\\\ \\end{array}\n$$",
+            "content": "(1)  $\\lim_{x\\to +\\infty}f(x) = \\lim_{x\\to +\\infty}\\frac{1 + x}{\\sqrt{1 + x^2}} = \\lim_{x\\to +\\infty}\\frac{\\frac{1}{x} + 1}{\\sqrt{\\frac{1}{x^2} + 1}} = 1,$\n$$\n\\lim  _ {x \\rightarrow - \\infty} f (x) = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{\\sqrt {1 + x ^ {2}}} = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{- x \\sqrt {\\frac {1}{x ^ {2}} + 1}} = - 1\n$$\n故函数  $y = f(x)$  有两条水平渐近线，方程分别为  $y = 1, y = -1$\n(2) 当  $0 \\leq x \\leq 1$  时,  $f(x) > 0$ , 故所求旋转体体积为\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {1} \\left(\\frac {1 + x}{\\sqrt {1 + x ^ {2}}}\\right) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {1} \\frac {1 + x ^ {2} + 2 x}{1 + x ^ {2}} d x \\\\ = \\pi \\left(\\int_ {0} ^ {1} 1 d x + \\int_ {0} ^ {1} \\frac {2 x}{1 + x ^ {2}} d x\\right) \\\\ = \\pi \\left(1 + \\ln (1 + x ^ {2}) \\Bigg | _ {0} ^ {1}\\right) \\\\ = (1 + \\ln 2) \\pi \\\\ \\end{array}\n$$",
             "images": []
           },
           {

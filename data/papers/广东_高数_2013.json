@@ -20,17 +20,17 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A.  $\\ln (x + 1)$\nB.  $\\arcsin x$\nB.  $1 - \\cos x$\nD.  $\\sqrt{1 + 2 x} - 1$",
+            "content": "当  $x \\to 0$  时，下列无穷小量中，与  $x$  不等价的无穷小量是 （）\nA.  $\\ln (x + 1)$\nB.  $\\arcsin x$\nB.  $1 - \\cos x$\nD.  $\\sqrt{1 + 2 x} - 1$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. 只有水平渐近线\nB. 只有铅垂渐进线\nC. 既有水平渐近线也有铅垂渐近线\nD. 无渐近线",
+            "content": "曲线  $y = \\frac{x^2}{x^2 - 1}$  （）\nA. 只有水平渐近线\nB. 只有铅垂渐进线\nC. 既有水平渐近线也有铅垂渐近线\nD. 无渐近线",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  $y = x^{\\frac{2}{3}}$\nB.  $y = |x|$\nC.  $y = x^{\\frac{4}{3}}$\nD.  $y = x^{\\frac{5}{3}}$",
+            "content": "下列函数中，在区间  $[-1,1]$  上满足罗尔（Rolle）定理条件的是 （）\nA.  $y = x^{\\frac{2}{3}}$\nB.  $y = |x|$\nC.  $y = x^{\\frac{4}{3}}$\nD.  $y = x^{\\frac{5}{3}}$",
             "images": []
           },
           {
@@ -156,32 +156,32 @@
         "questions": [
           {
             "question_number": 11,
-            "content": "12．由题意知：  $a f(0) + b f(0) - f(0) = 0, a f'(0) + 2 b f'(0) = 0$\n因为  $f(0)\\cdot f^{\\prime}(0)\\neq 0$  ，即  $f(0)\\neq 0$  且  $f^{\\prime}(0)\\neq 0$\n由此解得  $a = 2, b = -1$ 。",
+            "content": "原式  $= \\lim_{x\\to \\infty}\\frac{\\sin(e^{\\frac{1}{x}} - 1)}{\\frac{1}{x}} = \\lim_{x\\to \\infty}\\frac{\\cos(e^{\\frac{1}{x}} - 1)\\cdot e^{\\frac{1}{x}}\\cdot(-\\frac{1}{x^{2}})}{-\\frac{1}{x^{2}}} = \\lim_{x\\to \\infty}\\cos (e^{\\frac{1}{x}} - 1)e^{\\frac{1}{x}} = 1$\n12．由题意知：  $a f(0) + b f(0) - f(0) = 0, a f'(0) + 2 b f'(0) = 0$\n因为  $f(0)\\cdot f^{\\prime}(0)\\neq 0$  ，即  $f(0)\\neq 0$  且  $f^{\\prime}(0)\\neq 0$\n由此解得  $a = 2, b = -1$ 。",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "等式两边对  $x$  求导数得：  $(y + xy')\\ln y + xy' + y' = 2e^{2x}$\n即  $y^\\prime (1 + x + x\\ln y) = 2e^{2x} - y\\ln y$\n所以  $y^\\prime = \\frac{dy}{dx} = \\frac{2e^{2x} - y\\ln ny}{1 + x + x\\ln y}$\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。\n方法二\n设  $F(x) = xy\\ln y + y - e^{2x}$ ，则\n$$\nF _ {x} ^ {\\prime} = y \\ln y - 2 e ^ {2 x}, \\quad F _ {y} ^ {\\prime} = x \\ln y + x + 1,\n$$\n所以  $\\frac{dy}{dx} = -\\frac{F_x'}{F_y'} = -\\frac{y \\ln y - 2e^{2x}}{x \\ln y + x + 1} = \\frac{2e^{2x} - y \\ln y}{x \\ln y + x + 1}$ 。\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。",
+            "content": "方法一\n等式两边对  $x$  求导数得：  $(y + xy')\\ln y + xy' + y' = 2e^{2x}$\n即  $y^\\prime (1 + x + x\\ln y) = 2e^{2x} - y\\ln y$\n所以  $y^\\prime = \\frac{dy}{dx} = \\frac{2e^{2x} - y\\ln ny}{1 + x + x\\ln y}$\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。\n方法二\n设  $F(x) = xy\\ln y + y - e^{2x}$ ，则\n$$\nF _ {x} ^ {\\prime} = y \\ln y - 2 e ^ {2 x}, \\quad F _ {y} ^ {\\prime} = x \\ln y + x + 1,\n$$\n所以  $\\frac{dy}{dx} = -\\frac{F_x'}{F_y'} = -\\frac{y \\ln y - 2e^{2x}}{x \\ln y + x + 1} = \\frac{2e^{2x} - y \\ln y}{x \\ln y + x + 1}$ 。\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n\\begin{array}{l} y ^ {\\prime} = \\frac {1}{\\sqrt {x ^ {2} + 4} + x} (\\frac {x}{\\sqrt {x ^ {2} + 4}} + 1) = \\frac {1}{\\sqrt {x ^ {2} + 4}}, \\\\ y ^ {\\prime \\prime} = \\frac {- x}{(x ^ {2} + 4) ^ {\\frac {3}{2}}} 。 \\\\ \\end{array}\n$$\n令  $y'' = 0$  ，解得  $x = 0$\n当  $x < 0$  时  $y'' > 0$ ；当  $x > 0$  时  $y'' < 0$ 。\n故曲线的凹区间为  $(- \\infty, 0)$ ；曲线的凸区间为  $(0, +\\infty)$ ；\n曲线的拐点为  $(0, \\ln 2)$  。",
+            "content": "函数的定义域为  $(- \\infty, + \\infty)$ ,\n$$\n\\begin{array}{l} y ^ {\\prime} = \\frac {1}{\\sqrt {x ^ {2} + 4} + x} (\\frac {x}{\\sqrt {x ^ {2} + 4}} + 1) = \\frac {1}{\\sqrt {x ^ {2} + 4}}, \\\\ y ^ {\\prime \\prime} = \\frac {- x}{(x ^ {2} + 4) ^ {\\frac {3}{2}}} 。 \\\\ \\end{array}\n$$\n令  $y'' = 0$  ，解得  $x = 0$\n当  $x < 0$  时  $y'' > 0$ ；当  $x > 0$  时  $y'' < 0$ 。\n故曲线的凹区间为  $(- \\infty, 0)$ ；曲线的凸区间为  $(0, +\\infty)$ ；\n曲线的拐点为  $(0, \\ln 2)$  。",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "$$\n\\begin{array}{l} = - \\int \\frac {1}{\\cos^ {2} x} d (\\cos x) + \\int d (\\cos x) \\\\ = \\frac {1}{\\cos x} + \\cos x + C 。 \\\\ \\end{array}\n$$",
+            "content": "原式  $= -\\int \\frac{\\sin^2 x}{\\cos^2 x} d(\\cos x) = -\\int \\frac{1 - \\cos^2 x}{\\cos^2 x} d(\\cos x)$\n$$\n\\begin{array}{l} = - \\int \\frac {1}{\\cos^ {2} x} d (\\cos x) + \\int d (\\cos x) \\\\ = \\frac {1}{\\cos x} + \\cos x + C 。 \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "原式  $= \\int_{1}^{\\sqrt{3}}\\frac{t^{2} - 1}{(t^{2} + 1)t}\\cdot 2tdt = 2\\int_{1}^{\\sqrt{3}}(1 - \\frac{2}{t^{2} + 1})dt$\n$$\n= 2 (t - 2 \\arctan t) \\left| \\begin{array}{l} \\sqrt {3} \\\\ 1 \\end{array} \\right. = 2 (\\sqrt {3} - 1) - \\frac {\\pi}{3} 。\n$$",
+            "content": "令  $\\sqrt{x + 1} = t$ ，则  $x = t^2 - 1, dx = 2t dt$\n原式  $= \\int_{1}^{\\sqrt{3}}\\frac{t^{2} - 1}{(t^{2} + 1)t}\\cdot 2tdt = 2\\int_{1}^{\\sqrt{3}}(1 - \\frac{2}{t^{2} + 1})dt$\n$$\n= 2 (t - 2 \\arctan t) \\left| \\begin{array}{l} \\sqrt {3} \\\\ 1 \\end{array} \\right. = 2 (\\sqrt {3} - 1) - \\frac {\\pi}{3} 。\n$$",
             "images": []
           },
           {
             "question_number": 17,
-            "content": "所以  $dz = \\frac{\\partial z}{\\partial x} dx + \\frac{\\partial z}{\\partial y} dy = ye^{-x^2 y^2}dx + xe^{-x^2 y^2}dy$\n$$\n\\frac {\\partial^ {2} z}{\\partial x \\partial y} = e ^ {- x ^ {2} y ^ {2}} + y e ^ {- x ^ {2} y ^ {2}} (- 2 x ^ {2} y) = e ^ {- x ^ {2} y ^ {2}} (1 - 2 x ^ {2} y ^ {2}) 。\n$$",
+            "content": "因为  $\\frac{\\partial z}{\\partial x} = y e^{-x^2 y^2}, \\frac{\\partial z}{\\partial y} = x e^{-x^2 y^2}$\n所以  $dz = \\frac{\\partial z}{\\partial x} dx + \\frac{\\partial z}{\\partial y} dy = ye^{-x^2 y^2}dx + xe^{-x^2 y^2}dy$\n$$\n\\frac {\\partial^ {2} z}{\\partial x \\partial y} = e ^ {- x ^ {2} y ^ {2}} + y e ^ {- x ^ {2} y ^ {2}} (- 2 x ^ {2} y) = e ^ {- x ^ {2} y ^ {2}} (1 - 2 x ^ {2} y ^ {2}) 。\n$$",
             "images": []
           },
           {

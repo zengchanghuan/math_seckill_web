@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "（ ）\nA. 有界\nB. 无界\nC. 收敛\nD. 发散",
+            "content": "已知三个数列  $\\left\\{a_{n}\\right\\}$  、  $\\left\\{b_{n}\\right\\}$  和  $\\left\\{c_{n}\\right\\}$  满足  $a_{n} \\leq b_{n} \\leq c_{n} (n \\in \\mathbb{N}^{+})$  ，且  $\\lim_{n \\to \\infty} a_{n}, \\lim_{n \\to \\infty} c_{n}$  （ $a$  、 $b$  为常数，且  $a < c$ ），则数列  $\\left\\{b_{n}\\right\\}$  必定\n（ ）\nA. 有界\nB. 无界\nC. 收敛\nD. 发散",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. 连续点\nB. 可去间断点\nC. 跳跃间断点\nD. 第二类间断点",
+            "content": "$x = 0$  是函数  $f(x) = \\left\\{ \\begin{array}{ll}(1 - 2x)^{\\frac{1}{x}}, & x <   0\\\\ e^{2} + x, & x\\geq 0 \\end{array} \\right.$  的\nA. 连续点\nB. 可去间断点\nC. 跳跃间断点\nD. 第二类间断点",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "（ ）\nA. 0\nB. 2\nC. 3\nD. 6",
+            "content": "极限  $\\lim_{x\\to \\infty}2x\\sin{\\frac{3}{x}} =$\n（ ）\nA. 0\nB. 2\nC. 3\nD. 6",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A. 2\nB. 1\nC. 0\nD. -1",
+            "content": "如果曲线  $y = ax - \\frac{x^2}{x + 1}$  的水平渐近线存在，则常数  $a =$  （）\nA. 2\nB. 1\nC. 0\nD. -1",
             "images": []
           },
           {
@@ -122,7 +122,7 @@
           },
           {
             "question_number": 19,
-            "content": "（1）求曲线  $C$  的方程；\n(2) 试确定  $a$  的值, 使曲线  $C$  与直线  $y = ax$  围成的平面图形的面积等于  $\\frac{3}{8}$  。",
+            "content": "已知  $C$  经过点  $M(1,0)$ , 且曲线  $C$  上任意点  $P(x, \\nu) (x \\neq 0)$  处的切线斜率与直线  $OP$  ( $O$ 为坐标原点) 的斜率之差等于  $ax$  (常数  $a > 0$ )。\n（1）求曲线  $C$  的方程；\n(2) 试确定  $a$  的值, 使曲线  $C$  与直线  $y = ax$  围成的平面图形的面积等于  $\\frac{3}{8}$  。",
             "images": []
           },
           {
@@ -160,32 +160,32 @@
         "questions": [
           {
             "question_number": 11,
-            "content": "$$\n\\begin{array}{l} \\because \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\ln (1 + x)}{\\ln x} = \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\frac {1}{1 + x}}{\\frac {1}{x}} \\tag {4分} \\\\ = \\lim  _ {x \\rightarrow + \\infty} \\frac {- x}{1 + x} \\\\ = - 1, \\\\ \\end{array}\n$$\n$\\therefore$  原式  $= e^{-1}$  (6分)",
+            "content": "解：原式  $= \\lim_{x \\to +\\infty} e^{\\frac{-\\ln(1 + x)}{\\ln x}}$  (2 分)\n$$\n\\begin{array}{l} \\because \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\ln (1 + x)}{\\ln x} = \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\frac {1}{1 + x}}{\\frac {1}{x}} \\tag {4分} \\\\ = \\lim  _ {x \\rightarrow + \\infty} \\frac {- x}{1 + x} \\\\ = - 1, \\\\ \\end{array}\n$$\n$\\therefore$  原式  $= e^{-1}$  (6分)",
             "images": []
           },
           {
             "question_number": 12,
-            "content": "$$\n\\frac {d y}{d t} = \\frac {t}{\\sqrt {3 + t ^ {2}}} \\tag {3分}\n$$\n$$\n\\therefore \\frac {d y}{d x} = \\frac {y _ {t} ^ {\\prime}}{x _ {t} ^ {\\prime}} = t \\text {(结 果 没 有 化 简 扣 2 分)} \\tag {6分}\n$$",
+            "content": "解:  $\\because \\frac{dx}{dt} = \\frac{1}{\\sqrt{3 + t^2} + t} \\left( \\frac{t}{\\sqrt{3 + t^2}} + 1 \\right) = \\frac{1}{\\sqrt{3 + t^2}}$ ;\n$$\n\\frac {d y}{d t} = \\frac {t}{\\sqrt {3 + t ^ {2}}} \\tag {3分}\n$$\n$$\n\\therefore \\frac {d y}{d x} = \\frac {y _ {t} ^ {\\prime}}{x _ {t} ^ {\\prime}} = t \\text {(结 果 没 有 化 简 扣 2 分)} \\tag {6分}\n$$",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "$$\n\\begin{array}{l} f ^ {\\prime} (x) = e ^ {\\frac {\\pi}{4} + \\arctan x} + (x - 1) e ^ {\\frac {\\pi}{4} + \\arctan x} \\cdot \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {x (1 + x)}{1 + x ^ {2}} e ^ {\\frac {\\pi}{4} + \\arctan x}, \\quad (2 \\text {分}) \\\\ \\end{array}\n$$\n令  $f^{\\prime}(x) = 0$  ，解得  $x = 0,x = -1$\n因为在区间  $(- \\infty, -1)$  内， $f'(x) > 0$ ；在区间  $(-1, 0)$  内， $f'(x) < 0$ ；\n在区间  $(0, +\\infty)$  内，  $f^{\\prime}(x) > 0$\n所以  $f(x)$  的递增区间是  $(- \\infty, -1)$  及  $(0, +\\infty)$ ，递减区间是  $(-1, 0)$  （4分）\n$$\nf (x) \\text {的 极 大 值 是} f (- 1) = - 2, f (x) \\text {的 极 小 值} f (0) = - e ^ {\\frac {\\pi}{4}} \\tag {6分}\n$$",
+            "content": "解：函数  $f(x)$  的定义域为  $(- \\infty, + \\infty)$ ，\n$$\n\\begin{array}{l} f ^ {\\prime} (x) = e ^ {\\frac {\\pi}{4} + \\arctan x} + (x - 1) e ^ {\\frac {\\pi}{4} + \\arctan x} \\cdot \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {x (1 + x)}{1 + x ^ {2}} e ^ {\\frac {\\pi}{4} + \\arctan x}, \\quad (2 \\text {分}) \\\\ \\end{array}\n$$\n令  $f^{\\prime}(x) = 0$  ，解得  $x = 0,x = -1$\n因为在区间  $(- \\infty, -1)$  内， $f'(x) > 0$ ；在区间  $(-1, 0)$  内， $f'(x) < 0$ ；\n在区间  $(0, +\\infty)$  内，  $f^{\\prime}(x) > 0$\n所以  $f(x)$  的递增区间是  $(- \\infty, -1)$  及  $(0, +\\infty)$ ，递减区间是  $(-1, 0)$  （4分）\n$$\nf (x) \\text {的 极 大 值 是} f (- 1) = - 2, f (x) \\text {的 极 小 值} f (0) = - e ^ {\\frac {\\pi}{4}} \\tag {6分}\n$$",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n= x \\ln (1 + x ^ {2}) - 2 \\int \\left(1 - \\frac {1}{1 + x ^ {2}}\\right) d x\n$$\n$$\n= x \\ln (1 + x ^ {2}) - 2 x + 2 \\arctan x + C \\quad (6 \\text {分})\n$$",
+            "content": "解：  $\\int \\ln (1 + x^2)dx = x\\ln (1 + x^2) - \\int \\frac{2x^2}{1 + x^2} dx$  （3分）\n$$\n= x \\ln (1 + x ^ {2}) - 2 \\int \\left(1 - \\frac {1}{1 + x ^ {2}}\\right) d x\n$$\n$$\n= x \\ln (1 + x ^ {2}) - 2 x + 2 \\arctan x + C \\quad (6 \\text {分})\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "$$\n\\begin{array}{l} = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (t) d t + \\int_ {\\frac {1}{2}} ^ {1} f (t) d t \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (x) d x + \\int_ {\\frac {1}{2}} ^ {1} f (x) d x \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} x ^ {3} e ^ {x ^ {4} + 1} d x + \\int_ {\\frac {1}{2}} ^ {1} \\frac {1}{x ^ {2}} d x \\tag {4分} \\\\ = 0 - \\frac {1}{x} \\left| \\begin{array}{c} \\frac {1}{2} \\\\ 1 \\end{array} \\right. \\\\ = 1 \\quad (6 \\text {分}) \\\\ \\end{array}\n$$",
+            "content": "解:  $\\int_{\\frac{1}{2}}^{2} f(x - 1) dx = \\int_{-\\frac{1}{2}}^{1} f(t) dt$  (2 分)\n$$\n\\begin{array}{l} = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (t) d t + \\int_ {\\frac {1}{2}} ^ {1} f (t) d t \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (x) d x + \\int_ {\\frac {1}{2}} ^ {1} f (x) d x \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} x ^ {3} e ^ {x ^ {4} + 1} d x + \\int_ {\\frac {1}{2}} ^ {1} \\frac {1}{x ^ {2}} d x \\tag {4分} \\\\ = 0 - \\frac {1}{x} \\left| \\begin{array}{c} \\frac {1}{2} \\\\ 1 \\end{array} \\right. \\\\ = 1 \\quad (6 \\text {分}) \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "所以此微分方程的通解为\n$$\ny = e ^ {2 x} \\left(C _ {1} \\cos 3 x + C _ {2} \\sin 3 x\\right) \\quad (4 \\text {分})\n$$\n因为  $y^\\prime = 2e^{2x}(C_1\\cos 3x + C_2\\sin 3x) + e^{2x}(-3C_1\\sin 3x + 3C_2\\cos 3x)$\n由  $y \\big|_{x=0} = C_1 = 1$  及  $y' \\big|_{x=0} = 2C_1 + 3C_2 = 8$\n解得  $C_1 = 1, C_2 = 2$\n故所求特解为  $y = e^{2x}(\\cos 3x + 2\\sin 3x)$  （6分）",
+            "content": "解：由微分方程的特征方程  $r^2 - 4r + 13 = 0$  解得  $r = 2 \\pm 3i$  （2分）\n所以此微分方程的通解为\n$$\ny = e ^ {2 x} \\left(C _ {1} \\cos 3 x + C _ {2} \\sin 3 x\\right) \\quad (4 \\text {分})\n$$\n因为  $y^\\prime = 2e^{2x}(C_1\\cos 3x + C_2\\sin 3x) + e^{2x}(-3C_1\\sin 3x + 3C_2\\cos 3x)$\n由  $y \\big|_{x=0} = C_1 = 1$  及  $y' \\big|_{x=0} = 2C_1 + 3C_2 = 8$\n解得  $C_1 = 1, C_2 = 2$\n故所求特解为  $y = e^{2x}(\\cos 3x + 2\\sin 3x)$  （6分）",
             "images": []
           },
           {
@@ -207,7 +207,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "$$\ny ^ {\\prime} - \\frac {y}{x} = a x, \\quad \\text {且} y \\big | _ {x = 1} = 0 \\tag {2分}\n$$\n由  $y^\\prime -\\frac{y}{x} = ax$  得\n$$\n\\begin{array}{l} y = e ^ {\\int_ {x} ^ {1} d x} \\left(\\int a x e ^ {- \\int_ {x} ^ {1} d x} d x + C\\right) = e ^ {\\ln x} \\left(\\int a x e ^ {- \\ln x} d x + C\\right) \\tag {4分} \\\\ = x (\\int a d x + C) = x (a x + C), \\\\ \\end{array}\n$$\n因为  $y \\big|_{x=1} = a + C = 0$ ，解得  $C = -a$\n故曲线  $C$  的方程为  $y = ax^{2} - ax = ax(x - 1)$  （6分）\n（2）如图，\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg)\n由  $ax^2 - ax = ax$  解得  $x = 0, x = 2$  （10分）由题\n意知  $\\int_0^2 (ax - ax^2 + ax) dx = \\frac{8}{3}$\n即  $(ax^2 -\\frac{a}{3} x^3)\\Bigg|_0^2 = 4a - \\frac{8a}{3} = \\frac{8}{3},$\n解得  $a = 2$  （12分）",
+            "content": "解：（1）设曲线  $C$  的方程为  $y = f(x)$  由题意知\n$$\ny ^ {\\prime} - \\frac {y}{x} = a x, \\quad \\text {且} y \\big | _ {x = 1} = 0 \\tag {2分}\n$$\n由  $y^\\prime -\\frac{y}{x} = ax$  得\n$$\n\\begin{array}{l} y = e ^ {\\int_ {x} ^ {1} d x} \\left(\\int a x e ^ {- \\int_ {x} ^ {1} d x} d x + C\\right) = e ^ {\\ln x} \\left(\\int a x e ^ {- \\ln x} d x + C\\right) \\tag {4分} \\\\ = x (\\int a d x + C) = x (a x + C), \\\\ \\end{array}\n$$\n因为  $y \\big|_{x=1} = a + C = 0$ ，解得  $C = -a$\n故曲线  $C$  的方程为  $y = ax^{2} - ax = ax(x - 1)$  （6分）\n（2）如图，\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg)\n由  $ax^2 - ax = ax$  解得  $x = 0, x = 2$  （10分）由题\n意知  $\\int_0^2 (ax - ax^2 + ax) dx = \\frac{8}{3}$\n即  $(ax^2 -\\frac{a}{3} x^3)\\Bigg|_0^2 = 4a - \\frac{8a}{3} = \\frac{8}{3},$\n解得  $a = 2$  （12分）",
             "images": [
               {
                 "alt_text": "image",

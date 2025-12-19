@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A. 偶函数\nB. 奇函数\nC. 周期函数\nD. 有界函数",
+            "content": "设函数  $y = f(x)$  的定义域为  $(- \\infty, + \\infty)$ ，则函数  $y = \\frac{1}{2} [f(x) - f(-x)]$  在其定义域上是\nA. 偶函数\nB. 奇函数\nC. 周期函数\nD. 有界函数",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. 连续点\nB. 第一类可去间断点\nC. 第一类跳跃间断点\nD. 第二类间断点",
+            "content": "$x = 0$  是函数  $f(x) = \\left\\{ \\begin{array}{ll}e^{\\frac{1}{x}}, & x <   0\\\\ 0, & x\\geq 0 \\end{array} \\right.$  的\nA. 连续点\nB. 第一类可去间断点\nC. 第一类跳跃间断点\nD. 第二类间断点",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  $1 - \\cos x$\nB.  $\\sqrt{1 + x^{2}} - 1$\nC.  $\\ln (1 + x) + x^{2}$\nD.  $e^{x^{2}} - 1$",
+            "content": "当  $x \\to 0$  时, 下列无穷小量中, 与  $x$  等价的是\nA.  $1 - \\cos x$\nB.  $\\sqrt{1 + x^{2}} - 1$\nC.  $\\ln (1 + x) + x^{2}$\nD.  $e^{x^{2}} - 1$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(\\xi) = 0$\nB. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f^{\\prime}(\\xi) = 0$\nC. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(a) - f(b) = f'(\\xi)(b - a)$\nD. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $\\int_{a}^{b} f(x) d x = f(\\xi)(b - a)$",
+            "content": "若函数  $f(x)$  在区间  $[a,b]$  上连续，则下列结论中正确的是\nA. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(\\xi) = 0$\nB. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f^{\\prime}(\\xi) = 0$\nC. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(a) - f(b) = f'(\\xi)(b - a)$\nD. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $\\int_{a}^{b} f(x) d x = f(\\xi)(b - a)$",
             "images": []
           },
           {
@@ -166,32 +166,32 @@
         "questions": [
           {
             "question_number": 11,
-            "content": "$$\n= \\lim  _ {x \\rightarrow \\frac {\\pi}{2}} \\frac {- \\csc^ {2} x}{8} = - \\frac {1}{8}\n$$",
+            "content": "解：原式  $= \\lim_{x \\to \\frac{\\pi}{2}} \\frac{\\cot x}{-4(\\pi - 2x)}$\n$$\n= \\lim  _ {x \\rightarrow \\frac {\\pi}{2}} \\frac {- \\csc^ {2} x}{8} = - \\frac {1}{8}\n$$",
             "images": []
           },
           {
             "question_number": 12,
-            "content": "$$\n\\begin{array}{l} = \\lim  _ {\\Delta x \\rightarrow 0} (\\Delta x \\sin \\frac {2}{\\Delta x} + \\frac {\\sin 2 \\Delta x}{\\Delta x}) = 0 + \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{\\Delta x} \\\\ = 2 \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{2 \\Delta x} = 2 \\\\ \\end{array}\n$$\n13．解：由题意知  $ae + b = 1$  ①\n又因为  $y^\\prime = -\\frac{a}{x^2} e^{\\frac{1}{x}} + 2bx,y'' = \\frac{2a}{x^3} e^{\\frac{1}{x}} + \\frac{a}{x^4} e^{\\frac{1}{x}} + 2b$\n所以，由题意知  $2ae + ae + 2b = 3ae + 2b = 0$  (2)\n由①和②解得  $a = -\\frac{2}{e}, b = 3$",
+            "content": "解:  $f^{\\prime}(0) = \\lim_{\\Delta x \\to 0} \\frac{f(\\Delta x) - f(0)}{\\Delta x} = \\lim_{\\Delta x \\to 0} \\frac{\\Delta x^{2} \\sin \\frac{2}{\\Delta x} + \\sin 2\\Delta x}{\\Delta x}$\n$$\n\\begin{array}{l} = \\lim  _ {\\Delta x \\rightarrow 0} (\\Delta x \\sin \\frac {2}{\\Delta x} + \\frac {\\sin 2 \\Delta x}{\\Delta x}) = 0 + \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{\\Delta x} \\\\ = 2 \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{2 \\Delta x} = 2 \\\\ \\end{array}\n$$\n13．解：由题意知  $ae + b = 1$  ①\n又因为  $y^\\prime = -\\frac{a}{x^2} e^{\\frac{1}{x}} + 2bx,y'' = \\frac{2a}{x^3} e^{\\frac{1}{x}} + \\frac{a}{x^4} e^{\\frac{1}{x}} + 2b$\n所以，由题意知  $2ae + ae + 2b = 3ae + 2b = 0$  (2)\n由①和②解得  $a = -\\frac{2}{e}, b = 3$",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n\\begin{array}{l} = \\int \\frac {1}{\\sin^ {2} x} d \\sin x + \\int (\\csc^ {2} x - 1) d x \\\\ = - \\frac {1}{\\sin x} - \\cot x - x + C \\\\ \\end{array}\n$$\n解二：原式  $= \\int \\frac{1 - 2\\sin^2\\frac{x}{2}}{2\\sin^2\\frac{x}{2}} dx$\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int \\csc^ {2} \\frac {x}{2} d x - \\int d x = \\int \\csc^ {2} \\frac {x}{2} d (\\frac {x}{2}) - \\int d x \\\\ = - \\cot \\frac {x}{2} - x + C \\\\ \\end{array}\n$$",
+            "content": "解一：原式  $= \\int \\frac{\\cos x(1 + \\cos x)}{\\sin^2 x} dx = \\int \\frac{\\cos x}{\\sin^2 x} dx + \\int \\cot^2 x dx$\n$$\n\\begin{array}{l} = \\int \\frac {1}{\\sin^ {2} x} d \\sin x + \\int (\\csc^ {2} x - 1) d x \\\\ = - \\frac {1}{\\sin x} - \\cot x - x + C \\\\ \\end{array}\n$$\n解二：原式  $= \\int \\frac{1 - 2\\sin^2\\frac{x}{2}}{2\\sin^2\\frac{x}{2}} dx$\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int \\csc^ {2} \\frac {x}{2} d x - \\int d x = \\int \\csc^ {2} \\frac {x}{2} d (\\frac {x}{2}) - \\int d x \\\\ = - \\cot \\frac {x}{2} - x + C \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "所以  $\\int_{\\ln 5}^{\\ln 10}\\sqrt{e^x - 1} dx = \\int_2^3\\frac{2t^2dt}{1 + t^2} = 2\\int_2^3 dt - 2\\int_2^3\\frac{dt}{1 + t^2}$\n$$\n= 2 - 2 (\\arctan 3 - \\arctan 2)\n$$",
+            "content": "解：令  $\\sqrt{e^x - 1} = t$ ，则  $x = \\ln (1 + t^2), dx = \\frac{2t}{1 + t^2} dt$\n所以  $\\int_{\\ln 5}^{\\ln 10}\\sqrt{e^x - 1} dx = \\int_2^3\\frac{2t^2dt}{1 + t^2} = 2\\int_2^3 dt - 2\\int_2^3\\frac{dt}{1 + t^2}$\n$$\n= 2 - 2 (\\arctan 3 - \\arctan 2)\n$$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "$$\n\\begin{array}{l} = e ^ {- \\ln x} \\left(\\int \\sin x e ^ {\\ln x} d x + C\\right) \\\\ = \\frac {1}{x} (- x \\cos x + \\int \\cos x d x + C) \\\\ = - \\cos x + \\frac {\\sin x}{x} + \\frac {C}{x} \\\\ \\end{array}\n$$",
+            "content": "解:  $y = e^{-\\int \\frac{1}{x} dx} \\left( \\int \\sin x e^{\\int \\frac{1}{x} dx} dx + C \\right)$\n$$\n\\begin{array}{l} = e ^ {- \\ln x} \\left(\\int \\sin x e ^ {\\ln x} d x + C\\right) \\\\ = \\frac {1}{x} (- x \\cos x + \\int \\cos x d x + C) \\\\ = - \\cos x + \\frac {\\sin x}{x} + \\frac {C}{x} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 17,
-            "content": "$$\nF _ {x} ^ {\\prime} = z x ^ {z - 1} - y ^ {2}, F _ {y} ^ {\\prime} = - 2 x y, F _ {z} ^ {\\prime} = x ^ {z} \\ln x + 3 z ^ {2}\n$$\n所以  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x'}{F_z'} = \\frac{y^2 - zx^{z-1}}{x^z\\ln x + 3z^2}, \\frac{\\partial x}{\\partial y} = -\\frac{F_y'}{F_z'} = \\frac{2xy}{x^z\\ln x + 3z^2}$",
+            "content": "解：设  $F(x, y, z) = x^{z} - xy^{2} + z^{3} - 1$ ，则\n$$\nF _ {x} ^ {\\prime} = z x ^ {z - 1} - y ^ {2}, F _ {y} ^ {\\prime} = - 2 x y, F _ {z} ^ {\\prime} = x ^ {z} \\ln x + 3 z ^ {2}\n$$\n所以  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x'}{F_z'} = \\frac{y^2 - zx^{z-1}}{x^z\\ln x + 3z^2}, \\frac{\\partial x}{\\partial y} = -\\frac{F_y'}{F_z'} = \\frac{2xy}{x^z\\ln x + 3z^2}$",
             "images": []
           },
           {
@@ -207,7 +207,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "$$\n\\Phi^ {\\prime} (x) = x (x - 1)\n$$\n令  $\\Phi'(x) = x(x - 1) = 0$\n得驻点  $x_{1} = 0, x_{2} = 1$\n列表\n<table><tr><td>x</td><td>(−∞,0)</td><td>0</td><td>(0,1)</td><td>1</td><td>(1,+∞)</td></tr><tr><td>Φ&#x27;(x)</td><td>+</td><td>0</td><td>-</td><td>0</td><td>+</td></tr><tr><td>Φ(x)</td><td>单调增</td><td>极大值</td><td>单调减</td><td>极小值</td><td>单调增</td></tr></table>\n极大值  $\\Phi (0) = 0$\n极小值  $\\Phi(1) = \\int_{0}^{1} x(x - 1) dx = -\\frac{1}{6}$",
+            "content": "解： $\\Phi(x) = \\int_{0}^{x} t(t - 1) dt$  在  $(- \\infty, + \\infty)$  上可导\n$$\n\\Phi^ {\\prime} (x) = x (x - 1)\n$$\n令  $\\Phi'(x) = x(x - 1) = 0$\n得驻点  $x_{1} = 0, x_{2} = 1$\n列表\n<table><tr><td>x</td><td>(−∞,0)</td><td>0</td><td>(0,1)</td><td>1</td><td>(1,+∞)</td></tr><tr><td>Φ&#x27;(x)</td><td>+</td><td>0</td><td>-</td><td>0</td><td>+</td></tr><tr><td>Φ(x)</td><td>单调增</td><td>极大值</td><td>单调减</td><td>极小值</td><td>单调增</td></tr></table>\n极大值  $\\Phi (0) = 0$\n极小值  $\\Phi(1) = \\int_{0}^{1} x(x - 1) dx = -\\frac{1}{6}$",
             "images": []
           },
           {

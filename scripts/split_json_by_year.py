@@ -87,18 +87,21 @@ def create_index_file(output_dir: str):
     }
     
     for json_file in json_files:
+        if json_file.name == 'index.json':
+            continue
         # 读取文件元数据
         with open(json_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
+        meta = data.get('meta', data.get('paper', {}))
         index_data["files"].append({
             "filename": json_file.name,
-            "year": data['meta']['year'],
-            "province": data['meta']['province'],
-            "subject": data['meta']['subject'],
-            "exam_type": data['meta']['exam_type'],
-            "total_questions": data['meta']['total_questions'],
-            "total_images": data['meta']['total_images']
+            "year": meta.get('year', 0),
+            "province": meta.get('province', ''),
+            "subject": meta.get('subject', ''),
+            "exam_type": meta.get('exam_type', ''),
+            "total_questions": data['meta']['total_questions'] if 'meta' in data else sum(len(s['questions']) for s in data['paper']['sections']),
+            "total_images": data['meta']['total_images'] if 'meta' in data else sum(len(q.get('images', [])) for s in data['paper']['sections'] for q in s['questions'])
         })
     
     # 写入索引文件

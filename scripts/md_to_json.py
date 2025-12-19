@@ -71,7 +71,11 @@ def parse_markdown_content(content: str, year: int) -> Dict[str, Any]:
         if question_match and current_section:
             # 保存上一个问题
             if current_question and current_content:
-                current_question['content'] = '\n'.join(current_content).strip()
+                # 追加内容，而不是覆盖
+                if current_question['content']:
+                    current_question['content'] += '\n' + '\n'.join(current_content).strip()
+                else:
+                    current_question['content'] = '\n'.join(current_content).strip()
                 current_content = []
             
             question_num = int(question_match.group(1))
@@ -162,7 +166,11 @@ def parse_markdown_content(content: str, year: int) -> Dict[str, Any]:
         if in_answer_section and 'answer' in current_question:
             current_question['answer'] += '\n'.join(current_content).strip()
         else:
-            current_question['content'] += '\n' + '\n'.join(current_content).strip()
+            # 追加内容，而不是覆盖
+            if current_question['content']:
+                current_question['content'] += '\n' + '\n'.join(current_content).strip()
+            else:
+                current_question['content'] = '\n'.join(current_content).strip()
     
     if current_section:
         paper_data['sections'].append(current_section)

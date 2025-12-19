@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A.  $\\lim_{x\\to 0}f(x) = 1$\nB.  $\\lim_{x \\to 0} f(x) \\cos x = 1$\nC.  $\\lim_{x\\to 0}f(x) = -1$\nD.  $\\lim_{x \\to 0} [f(x) + \\cos x] = 1$",
+            "content": "设  $\\lim_{x \\to 0}[\\cos x - f(x)] = 1$ ，则下列等式正确的是\nA.  $\\lim_{x\\to 0}f(x) = 1$\nB.  $\\lim_{x \\to 0} f(x) \\cos x = 1$\nC.  $\\lim_{x\\to 0}f(x) = -1$\nD.  $\\lim_{x \\to 0} [f(x) + \\cos x] = 1$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A.  $x = -1$\nB.  $x = 0$\nC.  $x = 1$\nD.  $x = 2$",
+            "content": "函数  $f(x) = 2x^{3} - 3x^{2}$  的极小值点是\nA.  $x = -1$\nB.  $x = 0$\nC.  $x = 1$\nD.  $x = 2$",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  ${3}^{ \\circ  }$\nB.  $3^{x} \\ln 3$\nC.  $x 3^{x - 1}$\nD.  $\\frac{3^{x}}{\\ln 3}$",
+            "content": "已知  $3^x$  是函数  $f(x)$  的一个原函数，则  $f(x) =$\nA.  ${3}^{ \\circ  }$\nB.  $3^{x} \\ln 3$\nC.  $x 3^{x - 1}$\nD.  $\\frac{3^{x}}{\\ln 3}$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A.  $\\frac{\\pi}{10}$\nB.  $\\frac{\\pi}{9}$\nC.  $\\frac{\\pi}{5}$\nD.  $\\frac{2 \\pi}{9}$",
+            "content": "设平面区域  $D = \\{(x, y) | x^2 + y^2 \\leqslant 1, y \\geqslant 0\\}$ ，则  $\\iint_{D} (x^2 + y^2)^4 \\, \\mathrm{d}\\sigma =$\nA.  $\\frac{\\pi}{10}$\nB.  $\\frac{\\pi}{9}$\nC.  $\\frac{\\pi}{5}$\nD.  $\\frac{2 \\pi}{9}$",
             "images": []
           },
           {
@@ -128,7 +128,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "（1）求  $a$  的值；\n（2）求  $G$  绕  $y$  轴旋转一周而成的旋转体的体积  $V$",
+            "content": "设有界平面图形  $G$  由曲线  $y = \\mathrm{e}^{ax}$  和直线  $y = \\mathrm{e}$ ， $x = 0$  围成，其中常数  $a > 0$ 。若  $G$  的面积等于 1.\n（1）求  $a$  的值；\n（2）求  $G$  绕  $y$  轴旋转一周而成的旋转体的体积  $V$",
             "images": []
           },
           {
@@ -185,27 +185,27 @@
           },
           {
             "question_number": 12,
-            "content": "$$\n\\begin{array}{l} = \\lim  _ {x \\rightarrow 0} \\frac {\\arctan x}{3 x} = \\lim  _ {x \\rightarrow 0} \\frac {\\frac {1}{1 + x ^ {2}}}{3} = \\frac {1}{3}. \\\\ = \\frac {1}{2 x} + \\frac {1}{2 x \\sqrt {\\ln x}}, \\\\ \\therefore \\frac {\\mathrm {d} ^ {2} y}{\\mathrm {d} x ^ {2}} \\Bigg | _ {x = \\mathrm {e}} = \\frac {1}{2 \\mathrm {e}} + \\frac {1}{2 \\mathrm {e}} = \\frac {1}{\\mathrm {e}}. \\\\ \\end{array}\n$$",
+            "content": "解：  $\\because \\frac{\\mathrm{d}^2y}{\\mathrm{d}x^2} = \\left(\\frac{1}{2}\\ln x + \\sqrt{\\ln x} + 2\\ln 2\\right)^2$\n$$\n\\begin{array}{l} = \\lim  _ {x \\rightarrow 0} \\frac {\\arctan x}{3 x} = \\lim  _ {x \\rightarrow 0} \\frac {\\frac {1}{1 + x ^ {2}}}{3} = \\frac {1}{3}. \\\\ = \\frac {1}{2 x} + \\frac {1}{2 x \\sqrt {\\ln x}}, \\\\ \\therefore \\frac {\\mathrm {d} ^ {2} y}{\\mathrm {d} x ^ {2}} \\Bigg | _ {x = \\mathrm {e}} = \\frac {1}{2 \\mathrm {e}} + \\frac {1}{2 \\mathrm {e}} = \\frac {1}{\\mathrm {e}}. \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "$$\n\\begin{array}{l} = \\frac {1}{2} \\int \\cos 2 x d (2 x) - \\frac {1}{2} \\int \\sin x ^ {2} d x ^ {2} \\\\ = \\frac {1}{2} \\sin 2 x + \\frac {1}{2} \\cos x ^ {2} + C. \\\\ \\end{array}\n$$\n高等数学试题参考答案 第1页（共4页）",
+            "content": "解：原式  $= \\int \\cos 2x \\, \\mathrm{d}x - \\int x \\sin x^2 \\, \\mathrm{d}x$\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int \\cos 2 x d (2 x) - \\frac {1}{2} \\int \\sin x ^ {2} d x ^ {2} \\\\ = \\frac {1}{2} \\sin 2 x + \\frac {1}{2} \\cos x ^ {2} + C. \\\\ \\end{array}\n$$\n高等数学试题参考答案 第1页（共4页）",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n\\begin{array}{l} \\int_ {- 3} ^ {0} f (x + 2) \\mathrm {d} x = \\int_ {- 1} ^ {2} f (t) \\mathrm {d} t \\\\ = \\int_ {- 1} ^ {1} f (t) d t + \\int_ {1} ^ {2} f (t) d t = \\int_ {- 1} ^ {1} \\frac {x ^ {3}}{1 + x ^ {2}} d x + \\int_ {1} ^ {2} x d x \\\\ = 0 + \\int_ {1} ^ {2} x d x \\\\ = \\frac {x ^ {2}}{2} \\Bigg | _ {1} ^ {2} = 2 - \\frac {1}{2} = \\frac {3}{2}. \\\\ \\end{array}\n$$",
+            "content": "解：设  $x + 2 = t$ ，则\n$$\n\\begin{array}{l} \\int_ {- 3} ^ {0} f (x + 2) \\mathrm {d} x = \\int_ {- 1} ^ {2} f (t) \\mathrm {d} t \\\\ = \\int_ {- 1} ^ {1} f (t) d t + \\int_ {1} ^ {2} f (t) d t = \\int_ {- 1} ^ {1} \\frac {x ^ {3}}{1 + x ^ {2}} d x + \\int_ {1} ^ {2} x d x \\\\ = 0 + \\int_ {1} ^ {2} x d x \\\\ = \\frac {x ^ {2}}{2} \\Bigg | _ {1} ^ {2} = 2 - \\frac {1}{2} = \\frac {3}{2}. \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "$$\n\\therefore \\mathrm {d} z = \\left(3 y ^ {2} + \\frac {2 x}{y}\\right) \\mathrm {d} x + \\left(6 x y - \\frac {x ^ {2}}{y ^ {2}}\\right) \\mathrm {d} y.\n$$\n$$\n\\frac {\\partial^ {2} z}{\\partial x \\partial y} = \\left(3 y ^ {2} + \\frac {2 x}{y}\\right) _ {y} ^ {\\prime} = 6 y - \\frac {2 x}{y ^ {2}}.\n$$",
+            "content": "解：  $\\frac{\\partial z}{\\partial x} = 3y^2 + \\frac{2x}{y}, \\frac{\\partial z}{\\partial y} = 6xy - \\frac{x^2}{y^2}$\n$$\n\\therefore \\mathrm {d} z = \\left(3 y ^ {2} + \\frac {2 x}{y}\\right) \\mathrm {d} x + \\left(6 x y - \\frac {x ^ {2}}{y ^ {2}}\\right) \\mathrm {d} y.\n$$\n$$\n\\frac {\\partial^ {2} z}{\\partial x \\partial y} = \\left(3 y ^ {2} + \\frac {2 x}{y}\\right) _ {y} ^ {\\prime} = 6 y - \\frac {2 x}{y ^ {2}}.\n$$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "$$\n\\begin{array}{l} = \\int_ {0} ^ {2} (y x | _ {y} ^ {y + 2}) d y \\\\ = \\int_ {0} ^ {2} [ y (y + 2) - y ^ {2} ] d y \\\\ = \\int_ {0} ^ {2} 2 y d y = y ^ {2} \\Big | _ {0} ^ {2} = 4. \\\\ \\end{array}\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/f4364f18f6297c3ebf65cdee53396017f97177d173845f33c14607605a06fdf3.jpg)\n图1",
+            "content": "解：积分区域  $D$  如图 1， $\\iint_{D} y \\, \\mathrm{d}\\sigma = \\int_{0}^{2} \\, \\mathrm{d}y \\int_{r}^{r+2} y \\, \\mathrm{d}x$\n$$\n\\begin{array}{l} = \\int_ {0} ^ {2} (y x | _ {y} ^ {y + 2}) d y \\\\ = \\int_ {0} ^ {2} [ y (y + 2) - y ^ {2} ] d y \\\\ = \\int_ {0} ^ {2} 2 y d y = y ^ {2} \\Big | _ {0} ^ {2} = 4. \\\\ \\end{array}\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/f4364f18f6297c3ebf65cdee53396017f97177d173845f33c14607605a06fdf3.jpg)\n图1",
             "images": [
               {
                 "alt_text": "image",
@@ -216,7 +216,7 @@
           },
           {
             "question_number": 17,
-            "content": "$$\n\\therefore \\int y ^ {2} d y = \\int \\sec^ {2} x d x,\n$$\n$$\n\\frac {y ^ {3}}{3} = \\tan x + C,\n$$\n又：当  $x = 0$  时，  $y = 1,\\quad \\therefore C = \\frac{1}{3},$\n故特解为  $\\frac{y^3}{3} = \\tan x + \\frac{1}{3}$  （或  $y = \\sqrt[3]{3\\tan x + 1}$ ）\n高等数学试题参考答案 第2页（共4页）",
+            "content": "解：  $\\because y^{2} \\mathrm{~d}y = \\sec^{2} x \\mathrm{~d}x$\n$$\n\\therefore \\int y ^ {2} d y = \\int \\sec^ {2} x d x,\n$$\n$$\n\\frac {y ^ {3}}{3} = \\tan x + C,\n$$\n又：当  $x = 0$  时，  $y = 1,\\quad \\therefore C = \\frac{1}{3},$\n故特解为  $\\frac{y^3}{3} = \\tan x + \\frac{1}{3}$  （或  $y = \\sqrt[3]{3\\tan x + 1}$ ）\n高等数学试题参考答案 第2页（共4页）",
             "images": []
           },
           {
@@ -232,7 +232,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "（1）由  $\\left\\{ \\begin{array}{l} y = \\mathrm{e}^{ax} \\\\ y = \\mathrm{e} \\end{array} \\right.$  得  $ax = 1$  ， $x = \\frac{1}{a}$ .\n因此，  $G$  的面积\n$$\n\\begin{array}{l} S _ {G} = \\int_ {0} ^ {\\frac {1}{\\sigma}} \\left(\\mathrm {e} - \\mathrm {e} ^ {\\sigma \\tau}\\right) \\mathrm {d} x \\\\ = \\left. \\left(\\mathrm {e} x - \\frac {1}{a} \\mathrm {e} ^ {\\alpha x}\\right) \\right| _ {0} ^ {\\frac {1}{a}} = \\frac {\\mathrm {e}}{a} - \\frac {\\mathrm {e}}{a} + \\frac {1}{a} = \\frac {1}{a}. \\\\ \\end{array}\n$$\n由题设得  $\\frac{1}{a} = 1$  ，所以  $a = 1$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/65b2e3f5205ddb8fbc865115ddb8ae62c8a6e7dc8bca315b9499505022063c05.jpg)\n图2\n（2）由（1）知  $a = 1$  ，所以\n$$\n\\begin{array}{l} V = \\pi \\int_ {1} ^ {\\circ} (\\ln y) ^ {2} d y \\\\ = \\pi \\left[ y (\\ln y) ^ {2} \\right| _ {1} ^ {\\infty} - 2 \\int_ {1} ^ {\\infty} \\ln y d y \\Bigg ] \\\\ = \\pi \\left(e - 2 \\int_ {1} ^ {c} \\ln y d y\\right) \\\\ = \\pi \\left[ e - 2 \\left(y \\ln y \\bigg | _ {1} ^ {e} - \\int_ {1} ^ {e} d y\\right) \\right] \\\\ = \\pi [ e - 2 (e - e + 1) ] = \\pi (e - 2). \\\\ \\end{array}\n$$\n高等数学试题参考答案\n第3页（共4页）",
+            "content": "解：平面图形  $G$  如图2，\n（1）由  $\\left\\{ \\begin{array}{l} y = \\mathrm{e}^{ax} \\\\ y = \\mathrm{e} \\end{array} \\right.$  得  $ax = 1$  ， $x = \\frac{1}{a}$ .\n因此，  $G$  的面积\n$$\n\\begin{array}{l} S _ {G} = \\int_ {0} ^ {\\frac {1}{\\sigma}} \\left(\\mathrm {e} - \\mathrm {e} ^ {\\sigma \\tau}\\right) \\mathrm {d} x \\\\ = \\left. \\left(\\mathrm {e} x - \\frac {1}{a} \\mathrm {e} ^ {\\alpha x}\\right) \\right| _ {0} ^ {\\frac {1}{a}} = \\frac {\\mathrm {e}}{a} - \\frac {\\mathrm {e}}{a} + \\frac {1}{a} = \\frac {1}{a}. \\\\ \\end{array}\n$$\n由题设得  $\\frac{1}{a} = 1$  ，所以  $a = 1$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/70aecc0e-f873-46a9-8aea-e670e8d658cb/65b2e3f5205ddb8fbc865115ddb8ae62c8a6e7dc8bca315b9499505022063c05.jpg)\n图2\n（2）由（1）知  $a = 1$  ，所以\n$$\n\\begin{array}{l} V = \\pi \\int_ {1} ^ {\\circ} (\\ln y) ^ {2} d y \\\\ = \\pi \\left[ y (\\ln y) ^ {2} \\right| _ {1} ^ {\\infty} - 2 \\int_ {1} ^ {\\infty} \\ln y d y \\Bigg ] \\\\ = \\pi \\left(e - 2 \\int_ {1} ^ {c} \\ln y d y\\right) \\\\ = \\pi \\left[ e - 2 \\left(y \\ln y \\bigg | _ {1} ^ {e} - \\int_ {1} ^ {e} d y\\right) \\right] \\\\ = \\pi [ e - 2 (e - e + 1) ] = \\pi (e - 2). \\\\ \\end{array}\n$$\n高等数学试题参考答案\n第3页（共4页）",
             "images": [
               {
                 "alt_text": "image",

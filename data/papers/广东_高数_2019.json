@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A.  $x = -2$  和  $x = 0$\nB.  $x = -2$  和  $x = 1$\nC.  $x = -1$  和  $x = 2$\nD.  $x = 0$  和  $x = 1$",
+            "content": "函数  $f(x) = \\frac{x^2 - x}{x^2 + x - 2}$  的间断点是\nA.  $x = -2$  和  $x = 0$\nB.  $x = -2$  和  $x = 1$\nC.  $x = -1$  和  $x = 2$\nD.  $x = 0$  和  $x = 1$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. 等于1\nB. 等于 2\nC. 等于1或2\nD. 不存在",
+            "content": "设函数  $f(x) = \\begin{cases} x + 1, & x < 0 \\\\ 2, & x = 0 \\\\ \\cos x, & x > 0 \\end{cases}$ ，则  $\\lim_{x\\to 0}f(x)$\nA. 等于1\nB. 等于 2\nC. 等于1或2\nD. 不存在",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  $\\int [f(x) + g(x)] dx = 2^x \\tan x + C$\nB.  $\\int \\frac{f(x)}{g(x)} dx = 2^{-x} + \\tan x + C$\nC.  $\\int f[g(x)]dx = \\tan (2^x) + C$\nD.  $\\int [f(x) + g(x)] dx = \\tan x + 2^x + C$",
+            "content": "已知  $\\int f(x) dx = \\tan x + C, \\int g(x) dx = 2^x + C$ $C$  为任意常数，则下列等式正确的是\nA.  $\\int [f(x) + g(x)] dx = 2^x \\tan x + C$\nB.  $\\int \\frac{f(x)}{g(x)} dx = 2^{-x} + \\tan x + C$\nC.  $\\int f[g(x)]dx = \\tan (2^x) + C$\nD.  $\\int [f(x) + g(x)] dx = \\tan x + 2^x + C$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A.  $\\sum_{n=1}^{\\infty} e^{\\frac{1}{n}}$\nB.  $\\sum_{n=1}^{\\infty}\\left(\\frac{3}{2}\\right)^{n}$\nC.  $\\sum_{n=1}^{\\infty}\\left(\\frac{2}{3^n}-\\frac{1}{n^3}\\right)$\nD.  $\\sum_{n=1}^{\\infty}\\left[\\left(\\frac{2}{3}\\right)^{n} + \\frac{1}{n}\\right]$ .",
+            "content": "下列级数收敛的是\nA.  $\\sum_{n=1}^{\\infty} e^{\\frac{1}{n}}$\nB.  $\\sum_{n=1}^{\\infty}\\left(\\frac{3}{2}\\right)^{n}$\nC.  $\\sum_{n=1}^{\\infty}\\left(\\frac{2}{3^n}-\\frac{1}{n^3}\\right)$\nD.  $\\sum_{n=1}^{\\infty}\\left[\\left(\\frac{2}{3}\\right)^{n} + \\frac{1}{n}\\right]$ .",
             "images": []
           },
           {
@@ -61,7 +61,7 @@
           },
           {
             "question_number": 8,
-            "content": "$$\n\\frac {\\partial^ {2} z}{\\partial y \\partial x} =\n$$",
+            "content": "若二元函数  $z = f(x, y)$  的全微分  $dz = e^{x} \\sin y \\, dx + e^{x} \\cos y \\, dy$ ，则\n$$\n\\frac {\\partial^ {2} z}{\\partial y \\partial x} =\n$$",
             "images": []
           },
           {
@@ -128,7 +128,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "（1）求  $\\varphi (x)$\n(2) 求由曲线  $y = \\varphi(x)$  和  $x = 0, x = \\frac{\\pi}{2}$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的立体的体积",
+            "content": "已知函数  $\\varphi(x)$  满足  $\\varphi(x) = 1 + x + \\int_{0}^{x} t \\varphi(t) dt + x \\int_{x}^{0} \\varphi(t) dt$\n（1）求  $\\varphi (x)$\n(2) 求由曲线  $y = \\varphi(x)$  和  $x = 0, x = \\frac{\\pi}{2}$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的立体的体积",
             "images": []
           },
           {
@@ -171,42 +171,42 @@
           },
           {
             "question_number": 12,
-            "content": "$$\n\\begin{array}{l} \\because y = \\frac {x ^ {x}}{2 x + 1} \\\\ \\therefore \\ln y = x \\ln x - \\ln (2 x + 1) \\\\ \\therefore \\frac {1}{y} y ^ {\\prime} = \\ln x + 1 - \\frac {2}{2 x + 1} \\\\ \\therefore \\frac {d y}{d x} = (\\ln x + 1 - \\frac {2}{2 x + 1}) \\frac {x ^ {x}}{2 x + 1} \\\\ \\end{array}\n$$",
+            "content": "解：\n$$\n\\begin{array}{l} \\because y = \\frac {x ^ {x}}{2 x + 1} \\\\ \\therefore \\ln y = x \\ln x - \\ln (2 x + 1) \\\\ \\therefore \\frac {1}{y} y ^ {\\prime} = \\ln x + 1 - \\frac {2}{2 x + 1} \\\\ \\therefore \\frac {d y}{d x} = (\\ln x + 1 - \\frac {2}{2 x + 1}) \\frac {x ^ {x}}{2 x + 1} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "$$\n\\begin{array}{l} \\int \\frac {2 + x}{1 + x ^ {2}} d x \\\\ = 2 \\int \\frac {1}{1 + x ^ {2}} d x + \\frac {1}{2} \\int \\frac {1}{1 + x ^ {2}} d \\left(1 + x ^ {2}\\right) \\\\ = 2 \\arctan x + \\frac {1}{2} \\ln \\left(1 + x ^ {2}\\right) + C \\\\ \\end{array}\n$$",
+            "content": "解：\n$$\n\\begin{array}{l} \\int \\frac {2 + x}{1 + x ^ {2}} d x \\\\ = 2 \\int \\frac {1}{1 + x ^ {2}} d x + \\frac {1}{2} \\int \\frac {1}{1 + x ^ {2}} d \\left(1 + x ^ {2}\\right) \\\\ = 2 \\arctan x + \\frac {1}{2} \\ln \\left(1 + x ^ {2}\\right) + C \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n\\begin{array}{l} \\sqrt {2 x + 1} = t, x = \\frac {1}{2} t ^ {2} - \\frac {1}{2}, d x = t d t \\\\ \\int_ {- \\frac {1}{2}} ^ {0} x \\sqrt {2 x + 1} d x = \\int_ {0} ^ {1} t \\left(\\frac {1}{2} t ^ {2} - \\frac {1}{2}\\right) \\cdot t d t \\\\ = \\frac {1}{2} \\int_ {0} ^ {1} \\left(t ^ {4} - t ^ {2}\\right) d t \\\\ = \\frac {1}{2} \\left(\\frac {1}{5} t ^ {5} - \\frac {1}{3} t ^ {3}\\right) \\Bigg | _ {0} ^ {1} \\\\ = - \\frac {1}{1 5} \\\\ \\end{array}\n$$",
+            "content": "解：令  $\\sqrt{2x + 1} = t$  ，则  $x = \\frac{1}{2} t^2 -\\frac{1}{2},dx = tdt$\n$$\n\\begin{array}{l} \\sqrt {2 x + 1} = t, x = \\frac {1}{2} t ^ {2} - \\frac {1}{2}, d x = t d t \\\\ \\int_ {- \\frac {1}{2}} ^ {0} x \\sqrt {2 x + 1} d x = \\int_ {0} ^ {1} t \\left(\\frac {1}{2} t ^ {2} - \\frac {1}{2}\\right) \\cdot t d t \\\\ = \\frac {1}{2} \\int_ {0} ^ {1} \\left(t ^ {4} - t ^ {2}\\right) d t \\\\ = \\frac {1}{2} \\left(\\frac {1}{5} t ^ {5} - \\frac {1}{3} t ^ {3}\\right) \\Bigg | _ {0} ^ {1} \\\\ = - \\frac {1}{1 5} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "$$\n\\begin{array}{l} \\therefore f _ {x} (x, y, z) = 1 - y z e ^ {x y z} \\\\ f _ {y} (x, y, z) = - x z e ^ {x y z} \\\\ f _ {z} (x, y, z) = - 1 - x y e ^ {x y z} \\\\ \\therefore \\frac {\\partial z}{\\partial x} = \\frac {1 - y z e ^ {x y z}}{1 + x y e ^ {x y z}}, \\frac {\\partial z}{\\partial y} = - \\frac {x z e ^ {x y z}}{1 + x y e ^ {x y z}} \\\\ \\end{array}\n$$",
+            "content": "解：设  $f(x,y,z) = x - z - e^{xyz}$\n$$\n\\begin{array}{l} \\therefore f _ {x} (x, y, z) = 1 - y z e ^ {x y z} \\\\ f _ {y} (x, y, z) = - x z e ^ {x y z} \\\\ f _ {z} (x, y, z) = - 1 - x y e ^ {x y z} \\\\ \\therefore \\frac {\\partial z}{\\partial x} = \\frac {1 - y z e ^ {x y z}}{1 + x y e ^ {x y z}}, \\frac {\\partial z}{\\partial y} = - \\frac {x z e ^ {x y z}}{1 + x y e ^ {x y z}} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "$$\n\\begin{array}{l} \\therefore \\iint_ {D} \\ln (x ^ {2} + y ^ {2}) d \\sigma = \\\\ = \\int_ {0} ^ {2 \\pi} (4 \\ln 2 - \\frac {3}{2}) d \\theta \\\\ = (4 \\ln 2 - \\frac {3}{2}) \\theta | _ {0} ^ {2 \\pi} \\\\ = \\pi (8 \\ln 2 - 3) \\\\ \\end{array}\n$$",
+            "content": "解：由题意得  $1 \\leq r \\leq 2, 0 \\leq \\theta \\leq \\pi$\n$$\n\\begin{array}{l} \\therefore \\iint_ {D} \\ln (x ^ {2} + y ^ {2}) d \\sigma = \\\\ = \\int_ {0} ^ {2 \\pi} (4 \\ln 2 - \\frac {3}{2}) d \\theta \\\\ = (4 \\ln 2 - \\frac {3}{2}) \\theta | _ {0} ^ {2 \\pi} \\\\ = \\pi (8 \\ln 2 - 3) \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 17,
-            "content": "$$\n\\therefore \\lim  _ {x \\rightarrow \\infty} \\frac {b _ {n + 1}}{b _ {n}} = \\lim  _ {x \\rightarrow \\infty} \\frac {(n + 1) ^ {4}}{3 n ^ {4} + 2 n - 1} = \\frac {1}{3} <   1,\n$$\n由比值判别法可知  $\\sum_{n=1}^{\\infty} b_n$  收敛\n$\\because 0 \\leq a_{n} \\leq b_{n}$ , 由比较判别法可知  $\\sum_{n=1}^{\\infty} a_{n}$  也收敛",
+            "content": "解：由题意得  $\\frac{b_{n+1}}{b_n} = \\frac{(n+1)^4}{3n^4 + 2n - 1}$ ,\n$$\n\\therefore \\lim  _ {x \\rightarrow \\infty} \\frac {b _ {n + 1}}{b _ {n}} = \\lim  _ {x \\rightarrow \\infty} \\frac {(n + 1) ^ {4}}{3 n ^ {4} + 2 n - 1} = \\frac {1}{3} <   1,\n$$\n由比值判别法可知  $\\sum_{n=1}^{\\infty} b_n$  收敛\n$\\because 0 \\leq a_{n} \\leq b_{n}$ , 由比较判别法可知  $\\sum_{n=1}^{\\infty} a_{n}$  也收敛",
             "images": []
           },
           {
             "question_number": 18,
-            "content": "$$\n\\because \\frac {d f (x)}{d e ^ {- x}} = x\n$$\n$$\n\\therefore d f (x) = x d e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime} (x) = - x e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime \\prime} (x) = e ^ {- x} (x - 1)\n$$\n$\\therefore f(x)$  的凹区间为  $(1, + \\infty)$  ，凸区间为  $(- \\infty ,1)$",
+            "content": "解\n$$\n\\because \\frac {d f (x)}{d e ^ {- x}} = x\n$$\n$$\n\\therefore d f (x) = x d e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime} (x) = - x e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime \\prime} (x) = e ^ {- x} (x - 1)\n$$\n$\\therefore f(x)$  的凹区间为  $(1, + \\infty)$  ，凸区间为  $(- \\infty ,1)$",
             "images": []
           },
           {
             "question_number": 19,
-            "content": "$$\n\\begin{array}{l} \\therefore \\varphi^ {\\prime \\prime} (x) = - \\varphi (x) \\\\ \\therefore \\varphi^ {\\prime \\prime} (x) + \\varphi (x) = 0 \\\\ \\end{array}\n$$\n特征方程  $r^2 + 1 = 0$  ，解得  $r = \\pm i$\n通解为  $\\varphi (x) = \\cos x + \\sin x + C$\n$$\n\\begin{array}{l} \\because \\varphi (0) = 1, \\therefore C = 0 \\\\ \\therefore \\varphi (x) = \\cos x + \\sin x \\\\ \\end{array}\n$$\n(2)由题意得\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (\\cos x + \\sin x) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (1 + \\sin 2 x) d x \\\\ = \\pi (x - \\frac {1}{2} \\cos 2 x) \\Bigg | _ {0} ^ {\\frac {\\pi}{2}} = \\frac {\\pi^ {2}}{2} + \\pi \\\\ \\end{array}\n$$",
+            "content": "（1）由题意得  $\\varphi^{\\prime}(x) = 1 + x\\varphi (x) + \\int_{x}^{0}\\varphi (t)dt - x\\varphi (x) = 1 + \\int_{x}^{0}\\varphi (t)dt$\n$$\n\\begin{array}{l} \\therefore \\varphi^ {\\prime \\prime} (x) = - \\varphi (x) \\\\ \\therefore \\varphi^ {\\prime \\prime} (x) + \\varphi (x) = 0 \\\\ \\end{array}\n$$\n特征方程  $r^2 + 1 = 0$  ，解得  $r = \\pm i$\n通解为  $\\varphi (x) = \\cos x + \\sin x + C$\n$$\n\\begin{array}{l} \\because \\varphi (0) = 1, \\therefore C = 0 \\\\ \\therefore \\varphi (x) = \\cos x + \\sin x \\\\ \\end{array}\n$$\n(2)由题意得\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (\\cos x + \\sin x) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (1 + \\sin 2 x) d x \\\\ = \\pi (x - \\frac {1}{2} \\cos 2 x) \\Bigg | _ {0} ^ {\\frac {\\pi}{2}} = \\frac {\\pi^ {2}}{2} + \\pi \\\\ \\end{array}\n$$",
             "images": []
           },
           {

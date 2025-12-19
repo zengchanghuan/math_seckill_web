@@ -51,22 +51,22 @@
         "questions": [
           {
             "question_number": 6,
-            "content": "(A)  $\\frac{1}{2} \\ln |3 + 2x| + C$\n(B)  $\\frac{1}{2} \\ln (3 + 2x) + C$\n(C)  $\\ln |3 + 2x| + C$\n（D）  $\\ln (3 + 2x) + C$",
+            "content": "若  $I = \\int \\frac{1}{3 + 2x} dx$  ，则  $I =$  （\n(A)  $\\frac{1}{2} \\ln |3 + 2x| + C$\n(B)  $\\frac{1}{2} \\ln (3 + 2x) + C$\n(C)  $\\ln |3 + 2x| + C$\n（D）  $\\ln (3 + 2x) + C$",
             "images": []
           },
           {
             "question_number": 7,
-            "content": "(A) 0,\n(B) 1,\n(C) 2,\n(D)  $\\frac{1}{2}$",
+            "content": "设  $f(x, y) = \\ln \\left( x + \\frac{y}{2x} \\right)$ ，则  $f_{y}'(1, 0) = (\\quad)$\n(A) 0,\n(B) 1,\n(C) 2,\n(D)  $\\frac{1}{2}$",
             "images": []
           },
           {
             "question_number": 8,
-            "content": "(A)  $\\int_{1}^{2}\\left(\\frac{1}{x} - x\\right) dx$\n(B)  $\\int_{1}^{2}\\left(x - \\frac{1}{x}\\right)dx$\n(C)  $\\int_{1}^{2}\\left(2 - \\frac{1}{y}\\right)dx + \\int_{1}^{2}\\left(2 - y\\right)dx$\n(D)  $\\int_{1}^{2}\\left(2 - \\frac{1}{x}\\right)dx + \\int_{1}^{2}(2 - x)dx$",
+            "content": "曲线  $y = \\frac{1}{x}, y = x, x = 2$  所围成的图形面积为 S，则 S=（）\n(A)  $\\int_{1}^{2}\\left(\\frac{1}{x} - x\\right) dx$\n(B)  $\\int_{1}^{2}\\left(x - \\frac{1}{x}\\right)dx$\n(C)  $\\int_{1}^{2}\\left(2 - \\frac{1}{y}\\right)dx + \\int_{1}^{2}\\left(2 - y\\right)dx$\n(D)  $\\int_{1}^{2}\\left(2 - \\frac{1}{x}\\right)dx + \\int_{1}^{2}(2 - x)dx$",
             "images": []
           },
           {
             "question_number": 9,
-            "content": "(A)  $x\\succ 1$\n(B)  $x \\prec 1$\n（C）  $x\\succ 1$  及  $x\\succ 3$\n(D)  $1 \\prec x \\prec 3$",
+            "content": "函数项级数  $\\sum_{n=1}^{\\infty} \\frac{\\sqrt{n}}{(x-2)^n}$  的收敛区间是（ ）\n(A)  $x\\succ 1$\n(B)  $x \\prec 1$\n（C）  $x\\succ 1$  及  $x\\succ 3$\n(D)  $1 \\prec x \\prec 3$",
             "images": []
           },
           {
@@ -108,7 +108,7 @@
         "questions": [
           {
             "question_number": 15,
-            "content": "![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/96a9b78e14bb7981d987c45c84fef1c44d78ad4bbc7b65cf7a188ea3f3813bbe.jpg)",
+            "content": "由  $y = 0, x = 8, y = x^{2}$  所围成的曲边三角形 OAB（如图所示），在曲边  $\\overline{OB}$  上，求一点 C，使得过此点所作  $y = x^{2}$  之切线与 OA、AB 所围成的三角形面积最大。\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/96a9b78e14bb7981d987c45c84fef1c44d78ad4bbc7b65cf7a188ea3f3813bbe.jpg)",
             "images": [
               {
                 "alt_text": "image",
@@ -187,22 +187,22 @@
         "questions": [
           {
             "question_number": 11,
-            "content": "$$\n= \\lim  _ {x \\rightarrow 0} \\frac {x e ^ {x}}{6 x}\n$$\n$$\n= \\frac {1}{6}\n$$",
+            "content": "【解析】原式  $= \\lim_{x\\to 0}\\frac{e^{x}(x - 2) + e^{x} + 1}{3x^{2}}$\n$$\n= \\lim  _ {x \\rightarrow 0} \\frac {x e ^ {x}}{6 x}\n$$\n$$\n= \\frac {1}{6}\n$$",
             "images": []
           },
           {
             "question_number": 12,
-            "content": "$$",
+            "content": "【解析】把  $y$  看成  $x$  的函数并对和方程关于  $x$  求导，得\n$$",
             "images": []
           },
           {
             "question_number": 1,
-            "content": "$$\n再一次求导，得\n$$\n\\begin{array}{l} - y ^ {\\prime \\prime} (x) + \\frac {1}{2} \\cos y \\bullet y ^ {\\prime \\prime} (x) - \\frac {1}{2} \\sin y \\bullet \\left(y ^ {\\prime} (x)\\right) ^ {2} = 0 \\Rightarrow y ^ {\\prime \\prime} (x) = - \\frac {1}{2} \\frac {\\sin y \\bullet \\left(y ^ {\\prime} (x)\\right) ^ {2}}{1 - \\frac {1}{2} \\cos y} \\\\ = - \\frac {1}{2} \\frac {\\sin y}{\\left(1 - \\frac {1}{2} \\cos y\\right) ^ {3}} = \\frac {x - y}{\\left(1 - \\frac {1}{2} \\cos y\\right) ^ {3}} \\\\ \\end{array}\n$$",
+            "content": "- y ^ {\\prime} (x) + \\frac {1}{2} \\cos y \\bullet y ^ {\\prime} (x) = 0 \\Rightarrow y ^ {\\prime} (x) = \\frac {1}{1 - \\frac {1}{2} \\cos y}\n$$\n再一次求导，得\n$$\n\\begin{array}{l} - y ^ {\\prime \\prime} (x) + \\frac {1}{2} \\cos y \\bullet y ^ {\\prime \\prime} (x) - \\frac {1}{2} \\sin y \\bullet \\left(y ^ {\\prime} (x)\\right) ^ {2} = 0 \\Rightarrow y ^ {\\prime \\prime} (x) = - \\frac {1}{2} \\frac {\\sin y \\bullet \\left(y ^ {\\prime} (x)\\right) ^ {2}}{1 - \\frac {1}{2} \\cos y} \\\\ = - \\frac {1}{2} \\frac {\\sin y}{\\left(1 - \\frac {1}{2} \\cos y\\right) ^ {3}} = \\frac {x - y}{\\left(1 - \\frac {1}{2} \\cos y\\right) ^ {3}} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "$$\n\\begin{array}{l} = \\frac {1}{6} \\int_ {- \\infty} ^ {0} t ^ {2} d \\left(e ^ {6 t}\\right) = \\frac {1}{6} t ^ {2} e ^ {6 t} \\Big | _ {- \\infty} ^ {0} - \\frac {1}{6} \\int_ {- \\infty} ^ {0} e ^ {6 t} d \\left(t ^ {2}\\right) = - \\frac {1}{3} \\int_ {- \\infty} ^ {0} e ^ {6 t} \\bullet t d t \\\\ = - \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} t d \\left(e ^ {6 t}\\right) = - \\frac {1}{1 8} t e ^ {6 t} \\Big | _ {- \\infty} ^ {0} + \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} e ^ {6 t} d t = \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} e ^ {6 t} d t = \\frac {1}{1 0 8} e ^ {6 t} \\Big | _ {- \\infty} ^ {0} \\\\ = \\frac {1}{1 0 8} \\\\ \\end{array}\n$$",
+            "content": "【解析】  $\\int_0^1 x^5\\ln^2 xdx$  令  $e^{t} = x\\int_{-\\infty}^{0}e^{6t}\\bullet t^{2}dt$\n$$\n\\begin{array}{l} = \\frac {1}{6} \\int_ {- \\infty} ^ {0} t ^ {2} d \\left(e ^ {6 t}\\right) = \\frac {1}{6} t ^ {2} e ^ {6 t} \\Big | _ {- \\infty} ^ {0} - \\frac {1}{6} \\int_ {- \\infty} ^ {0} e ^ {6 t} d \\left(t ^ {2}\\right) = - \\frac {1}{3} \\int_ {- \\infty} ^ {0} e ^ {6 t} \\bullet t d t \\\\ = - \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} t d \\left(e ^ {6 t}\\right) = - \\frac {1}{1 8} t e ^ {6 t} \\Big | _ {- \\infty} ^ {0} + \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} e ^ {6 t} d t = \\frac {1}{1 8} \\int_ {- \\infty} ^ {0} e ^ {6 t} d t = \\frac {1}{1 0 8} e ^ {6 t} \\Big | _ {- \\infty} ^ {0} \\\\ = \\frac {1}{1 0 8} \\\\ \\end{array}\n$$",
             "images": []
           },
           {
@@ -218,7 +218,7 @@
         "questions": [
           {
             "question_number": 15,
-            "content": "$$\n\\begin{array}{l} y (x) = x ^ {2} \\\\ \\therefore \\quad y ^ {\\prime} (x) = 2 x \\\\ \\end{array}\n$$\n于是过点 c 的切线斜率为  $2x_{0}$ , 其中  $0 \\leq x_{0} \\leq 8$\n$\\cdot \\cdot$  切线方程为:  $S - x_{0}^{2} = 2x_{0}\\left(t - x_{0}\\right)$ ,\n即  $S = 2x_{0}t - x_{0}^{2}$\n此切线与  $y = 0$  和  $x = 8$  分别交于点  $P\\left(\\frac{x_0}{2}, 0\\right)$  和  $Q\\left(8, 16x_0 - x_0^2\\right)$\n$\\cdot \\cdot$  所围三角形面积  $h$  为\n$$\nh \\left(x _ {0}\\right) = \\frac {1}{2} \\left(8 - \\frac {x _ {0}}{2}\\right) \\left(1 6 x _ {0} - x _ {0} ^ {2}\\right)\n$$\n即  $h(x_0) = \\frac{1}{4} x_0 (16 - x_0^2), 0 \\leq x_0 \\leq 8$\n对  $h$  求导，得\n$$\nh ^ {\\prime} \\left(x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) ^ {2} - \\frac {1}{2} x _ {0} \\left(1 6 - x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) \\left(1 6 - 3 x _ {0}\\right)\n$$\n令  $h'(x_0) = 0$  ，得\n$$\nx _ {0} = \\frac {1 6}{3}, x _ {0} = 1 6 (\\text {舍 去}, \\text {因} 0 \\leq x _ {0} \\leq 8)\n$$\n又  $h^{\\prime}(x_0) = 0, h(8) = 128, h(\\frac{16}{3}) = \\frac{128 \\times 32}{27} \\succ h(8) \\succ h(0)$\n$\\therefore$  当过点  $(\\frac{16}{3}, \\frac{256}{9})$  作切线，所围三角形面积最大。\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/3ab8970c4cafbea497b8d32e25571e0c67ebe163ee64d0be3dca28a91abee9c5.jpg)",
+            "content": "【解析】先过点  $C(x_0, y_0)$  的切线方程\n$$\n\\begin{array}{l} y (x) = x ^ {2} \\\\ \\therefore \\quad y ^ {\\prime} (x) = 2 x \\\\ \\end{array}\n$$\n于是过点 c 的切线斜率为  $2x_{0}$ , 其中  $0 \\leq x_{0} \\leq 8$\n$\\cdot \\cdot$  切线方程为:  $S - x_{0}^{2} = 2x_{0}\\left(t - x_{0}\\right)$ ,\n即  $S = 2x_{0}t - x_{0}^{2}$\n此切线与  $y = 0$  和  $x = 8$  分别交于点  $P\\left(\\frac{x_0}{2}, 0\\right)$  和  $Q\\left(8, 16x_0 - x_0^2\\right)$\n$\\cdot \\cdot$  所围三角形面积  $h$  为\n$$\nh \\left(x _ {0}\\right) = \\frac {1}{2} \\left(8 - \\frac {x _ {0}}{2}\\right) \\left(1 6 x _ {0} - x _ {0} ^ {2}\\right)\n$$\n即  $h(x_0) = \\frac{1}{4} x_0 (16 - x_0^2), 0 \\leq x_0 \\leq 8$\n对  $h$  求导，得\n$$\nh ^ {\\prime} \\left(x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) ^ {2} - \\frac {1}{2} x _ {0} \\left(1 6 - x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) \\left(1 6 - 3 x _ {0}\\right)\n$$\n令  $h'(x_0) = 0$  ，得\n$$\nx _ {0} = \\frac {1 6}{3}, x _ {0} = 1 6 (\\text {舍 去}, \\text {因} 0 \\leq x _ {0} \\leq 8)\n$$\n又  $h^{\\prime}(x_0) = 0, h(8) = 128, h(\\frac{16}{3}) = \\frac{128 \\times 32}{27} \\succ h(8) \\succ h(0)$\n$\\therefore$  当过点  $(\\frac{16}{3}, \\frac{256}{9})$  作切线，所围三角形面积最大。\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/3ab8970c4cafbea497b8d32e25571e0c67ebe163ee64d0be3dca28a91abee9c5.jpg)",
             "images": [
               {
                 "alt_text": "image",

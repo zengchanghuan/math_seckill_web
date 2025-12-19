@@ -20,22 +20,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "A. 0\nB. 1\nC. 2\nD. 3",
+            "content": "$\\lim_{x\\to 0}(2^x +1) =$  （\nA. 0\nB. 1\nC. 2\nD. 3",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "A. 0\nB. 1\nC.e\nD. e²",
+            "content": "若函数  $f(x) = \\left\\{ \\begin{array}{ll} (1 + x^2)^{\\frac{1}{x^2}}, & x \\neq 0, \\\\ a, & x = 0 \\end{array} \\right.$ ，在  $x = 0$  处连续，则  $a =$  （）\nA. 0\nB. 1\nC.e\nD. e²",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "A.  $-\\mathrm{e}^{-1}$\nB. 0\nC.  ${\\mathrm{e}}^{-1}$\nD.  $2 \\mathrm{e}^{- 1}$",
+            "content": "曲线  $y = x\\mathrm{e}^{-x}$  在点  $(1,\\mathrm{e}^{-1})$  处的切线斜率是 （）\nA.  $-\\mathrm{e}^{-1}$\nB. 0\nC.  ${\\mathrm{e}}^{-1}$\nD.  $2 \\mathrm{e}^{- 1}$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "A.  $\\pi - 1$\nB.  $\\pi + 1$\nC.  $\\frac{\\pi^2}{4} - 1$\nD.  $\\frac{\\pi^2}{4} + 1$",
+            "content": "设  $2x$  是  $f(x)$  的一个原函数，则  $\\int_0^{\\frac{\\pi}{2}}[f(x) - \\sin x]\\mathrm{d}x =$  （ ）\nA.  $\\pi - 1$\nB.  $\\pi + 1$\nC.  $\\frac{\\pi^2}{4} - 1$\nD.  $\\frac{\\pi^2}{4} + 1$",
             "images": []
           },
           {
@@ -128,7 +128,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "(1)  $\\arctan x = \\frac{\\pi}{2} -\\arctan \\frac{1}{x};$\n(2)  $\\arctan x < \\ln (x + \\sqrt{1 + x^2})$ .",
+            "content": "证明：当  $x > 0$  时，\n(1)  $\\arctan x = \\frac{\\pi}{2} -\\arctan \\frac{1}{x};$\n(2)  $\\arctan x < \\ln (x + \\sqrt{1 + x^2})$ .",
             "images": []
           },
           {
@@ -144,22 +144,22 @@
         "questions": [
           {
             "question_number": 1,
-            "content": "【精析】  $\\lim_{x\\to 0}(2^x +1) = 2^0 +1 = 2.$",
+            "content": "[答案]C\n【精析】  $\\lim_{x\\to 0}(2^x +1) = 2^0 +1 = 2.$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "【精析】因为  $f(x)$  在  $x = 0$  处连续，所以  $\\lim_{x\\to 0}f(x) = f(0)$ ，又  $\\lim_{x\\to 0}f(x) = \\lim_{x\\to 0}(1 + x^2)^{\\frac{1}{x^2}} = e, f(0) = a$ ，故  $a = e$",
+            "content": "[答案] C\n【精析】因为  $f(x)$  在  $x = 0$  处连续，所以  $\\lim_{x\\to 0}f(x) = f(0)$ ，又  $\\lim_{x\\to 0}f(x) = \\lim_{x\\to 0}(1 + x^2)^{\\frac{1}{x^2}} = e, f(0) = a$ ，故  $a = e$",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "【精析】  $y^\\prime = \\mathrm{e}^{-x} - x\\mathrm{e}^{-x} = (1 - x)\\mathrm{e}^{-x}$  ，则曲线在点  $(1,\\mathrm{e}^{-1})$  处的切线斜率为  $y^\\prime (1) = 0$",
+            "content": "[答案] B\n【精析】  $y^\\prime = \\mathrm{e}^{-x} - x\\mathrm{e}^{-x} = (1 - x)\\mathrm{e}^{-x}$  ，则曲线在点  $(1,\\mathrm{e}^{-1})$  处的切线斜率为  $y^\\prime (1) = 0$",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "【精析】 由题意知  $\\int_{0}^{\\frac{\\pi}{2}}[f(x) - \\sin x]\\mathrm{d}x = \\int_{0}^{\\frac{\\pi}{2}}f(x)\\mathrm{d}x - \\int_{0}^{\\frac{\\pi}{2}}\\sin x\\mathrm{d}x = 2x\\left|\\limits_{0}^{\\frac{\\pi}{2}} + \\cos x\\right|_{0}^{\\frac{\\pi}{2}} = \\pi -1.$",
+            "content": "[答案] A\n【精析】 由题意知  $\\int_{0}^{\\frac{\\pi}{2}}[f(x) - \\sin x]\\mathrm{d}x = \\int_{0}^{\\frac{\\pi}{2}}f(x)\\mathrm{d}x - \\int_{0}^{\\frac{\\pi}{2}}\\sin x\\mathrm{d}x = 2x\\left|\\limits_{0}^{\\frac{\\pi}{2}} + \\cos x\\right|_{0}^{\\frac{\\pi}{2}} = \\pi -1.$",
             "images": []
           },
           {
@@ -175,22 +175,22 @@
         "questions": [
           {
             "question_number": 6,
-            "content": "【精析】因为无穷小与有界函数之积仍为无穷小，且  $|\\sin x| \\leqslant 1$ ，则  $\\lim_{x \\to \\infty} \\frac{\\sin x}{x} = \\lim_{x \\to \\infty} \\frac{1}{x}$ $\\sin x = 0$ ，故所求水平渐近线为  $y = 0$ .",
+            "content": "[答案] 0\n【精析】因为无穷小与有界函数之积仍为无穷小，且  $|\\sin x| \\leqslant 1$ ，则  $\\lim_{x \\to \\infty} \\frac{\\sin x}{x} = \\lim_{x \\to \\infty} \\frac{1}{x}$ $\\sin x = 0$ ，故所求水平渐近线为  $y = 0$ .",
             "images": []
           },
           {
             "question_number": 7,
-            "content": "【精析】  $\\int_{k}^{+\\infty}\\frac{1}{x^2}\\mathrm{d}x = -\\frac{1}{x}\\Big|_{k}^{+\\infty} = -\\lim_{x\\to +\\infty}\\frac{1}{x} -\\left(-\\frac{1}{k}\\right) = \\frac{1}{k} = 1$  ，则  $k = 1$",
+            "content": "[答案]1\n【精析】  $\\int_{k}^{+\\infty}\\frac{1}{x^2}\\mathrm{d}x = -\\frac{1}{x}\\Big|_{k}^{+\\infty} = -\\lim_{x\\to +\\infty}\\frac{1}{x} -\\left(-\\frac{1}{k}\\right) = \\frac{1}{k} = 1$  ，则  $k = 1$",
             "images": []
           },
           {
             "question_number": 8,
-            "content": "【精析】  $\\frac{\\partial z}{\\partial y} = 2(x - y) \\cdot (x - y)' = -2(x - y)$ ，则  $\\frac{\\partial^2 z}{\\partial y \\partial x} = [-2(x - y)]'_x = -2.$",
+            "content": "[答案] -2\n【精析】  $\\frac{\\partial z}{\\partial y} = 2(x - y) \\cdot (x - y)' = -2(x - y)$ ，则  $\\frac{\\partial^2 z}{\\partial y \\partial x} = [-2(x - y)]'_x = -2.$",
             "images": []
           },
           {
             "question_number": 9,
-            "content": "【精析】由题意可得积分区域为：  $0\\leqslant x\\leqslant 1,\\sqrt{x}\\leqslant y\\leqslant 1$  ，如图阴影部分所示，积分区域还可表示为：  $0\\leqslant x\\leqslant y^{2},0\\leqslant y\\leqslant 1$  ，故  $\\int_0^1\\mathrm{d}x\\int_{\\sqrt{x}}^1 f(x,y)\\mathrm{d}y = \\int_0^1\\mathrm{d}y\\int_0^{y^2}f(x,y)\\mathrm{d}x.$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c19fe2ff-8b40-4e8f-882d-69916b9a3933/fe3c0897fd5410df193d5ff38f0ce662ce98cf0a6c88f07c176bbdae4395b55b.jpg)\n第9题图",
+            "content": "[答案]  $\\int_0^1\\mathrm{d}y\\int_0^{y^2}f(x,y)\\mathrm{d}x$\n【精析】由题意可得积分区域为：  $0\\leqslant x\\leqslant 1,\\sqrt{x}\\leqslant y\\leqslant 1$  ，如图阴影部分所示，积分区域还可表示为：  $0\\leqslant x\\leqslant y^{2},0\\leqslant y\\leqslant 1$  ，故  $\\int_0^1\\mathrm{d}x\\int_{\\sqrt{x}}^1 f(x,y)\\mathrm{d}y = \\int_0^1\\mathrm{d}y\\int_0^{y^2}f(x,y)\\mathrm{d}x.$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c19fe2ff-8b40-4e8f-882d-69916b9a3933/fe3c0897fd5410df193d5ff38f0ce662ce98cf0a6c88f07c176bbdae4395b55b.jpg)\n第9题图",
             "images": [
               {
                 "alt_text": "image",
@@ -217,32 +217,32 @@
           },
           {
             "question_number": 12,
-            "content": "则  $y^\\prime \\Big|_{x = 0} = \\frac{1}{2}$  故  $\\mathrm{dy}\\Big|_{x = 0} = \\frac{1}{2}\\mathrm{dx}$",
+            "content": "【精析】  $y^\\prime = \\frac{1}{2\\sqrt{x + \\cos x}}\\cdot (x + \\cos x)^\\prime = \\frac{1 - \\sin x}{2\\sqrt{x + \\cos x}},$\n则  $y^\\prime \\Big|_{x = 0} = \\frac{1}{2}$  故  $\\mathrm{dy}\\Big|_{x = 0} = \\frac{1}{2}\\mathrm{dx}$",
             "images": []
           },
           {
             "question_number": 13,
-            "content": "令  $f^{\\prime \\prime}(x) = 0$  ，解得  $x = \\mathrm{e}$  ，当  $0 < x < \\mathrm{e}$  时， $f^{\\prime \\prime}(x) > 0$ ；当  $x > \\mathrm{e}$  时， $f^{\\prime \\prime}(x) < 0$  故  $f(x)$  的凹区间为  $(0, \\mathrm{e}]$ ，凸区间为  $[\\mathrm{e}, +\\infty)$ .",
+            "content": "【精析】  $f^{\\prime}(x) = \\frac{\\ln x}{x}, f^{\\prime \\prime}(x) = \\frac{\\frac{1}{x} \\cdot x - \\ln x}{x^{2}} = \\frac{1 - \\ln x}{x^{2}},$\n令  $f^{\\prime \\prime}(x) = 0$  ，解得  $x = \\mathrm{e}$  ，当  $0 < x < \\mathrm{e}$  时， $f^{\\prime \\prime}(x) > 0$ ；当  $x > \\mathrm{e}$  时， $f^{\\prime \\prime}(x) < 0$  故  $f(x)$  的凹区间为  $(0, \\mathrm{e}]$ ，凸区间为  $[\\mathrm{e}, +\\infty)$ .",
             "images": []
           },
           {
             "question_number": 14,
-            "content": "$$\n\\begin{array}{l} = \\mathrm {e} ^ {x} (2 x - 1) - 2 \\mathrm {e} ^ {x} + C \\\\ = (2 x - 3) \\mathrm {e} ^ {x} + C. \\\\ \\end{array}\n$$",
+            "content": "【精析】  $\\int (2x - 1)\\mathrm{e}^x\\mathrm{d}x = \\int (2x - 1)\\mathrm{d}\\mathrm{e}^x = \\mathrm{e}^x (2x - 1) - \\int 2\\mathrm{e}^x\\mathrm{d}x$\n$$\n\\begin{array}{l} = \\mathrm {e} ^ {x} (2 x - 1) - 2 \\mathrm {e} ^ {x} + C \\\\ = (2 x - 3) \\mathrm {e} ^ {x} + C. \\\\ \\end{array}\n$$",
             "images": []
           },
           {
             "question_number": 15,
-            "content": "因为  $\\frac{2x^3}{1 + x^2}$  是  $[-1, 1]$  上的奇函数，则  $\\int_{-1}^{1} \\frac{2x^3}{1 + x^2} \\mathrm{d}x = 0$\n故  $\\int_{-1}^{4} f(x) \\, \\mathrm{d}x = \\int_{-1}^{1} \\frac{2x^3}{1 + x^2} \\, \\mathrm{d}x + \\int_{1}^{4} \\, \\mathrm{d}x = 0 + x\\Big|_{1}^{4} = 3.$",
+            "content": "【精析】  $\\int_{-1}^{4}f(x)\\mathrm{d}x = \\int_{-1}^{1}f(x)\\mathrm{d}x + \\int_{1}^{4}f(x)\\mathrm{d}x = \\int_{-1}^{1}\\frac{2x^3}{1 + x^2}\\mathrm{d}x + \\int_{1}^{4}\\mathrm{d}x,$\n因为  $\\frac{2x^3}{1 + x^2}$  是  $[-1, 1]$  上的奇函数，则  $\\int_{-1}^{1} \\frac{2x^3}{1 + x^2} \\mathrm{d}x = 0$\n故  $\\int_{-1}^{4} f(x) \\, \\mathrm{d}x = \\int_{-1}^{1} \\frac{2x^3}{1 + x^2} \\, \\mathrm{d}x + \\int_{1}^{4} \\, \\mathrm{d}x = 0 + x\\Big|_{1}^{4} = 3.$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "$$\n\\frac {\\partial z}{\\partial x} = - \\frac {F _ {x}}{F _ {z}} = - \\frac {- 2 x e ^ {y ^ {2} z}}{- x ^ {2} y ^ {2} e ^ {y ^ {2} z} - 1} = \\frac {- 2 x e ^ {y ^ {2} z}}{x ^ {2} y ^ {2} e ^ {y ^ {2} z} + 1},\n$$\n$$\n\\frac {\\partial z}{\\partial y} = - \\frac {F _ {y}}{F _ {z}} = - \\frac {- 2 x ^ {2} y z e ^ {y ^ {2} z}}{- x ^ {2} y ^ {2} e ^ {y ^ {2} z} - 1} = \\frac {- 2 x ^ {2} y z e ^ {y ^ {2} z}}{x ^ {2} y ^ {2} e ^ {y ^ {2} z} + 1}.\n$$",
+            "content": "【精析】设  $F(x,y,z) = \\ln 3 - x^{2}\\mathrm{e}^{y^{2}z} - z$  ，则  $F_{x} = -2x\\mathrm{e}^{y^{2}x},F_{y} = -2x^{2}yz\\mathrm{e}^{y^{2}z},F_{z} = -x^{2}y^{2}\\mathrm{e}^{y^{2}z} - 1$  ，故\n$$\n\\frac {\\partial z}{\\partial x} = - \\frac {F _ {x}}{F _ {z}} = - \\frac {- 2 x e ^ {y ^ {2} z}}{- x ^ {2} y ^ {2} e ^ {y ^ {2} z} - 1} = \\frac {- 2 x e ^ {y ^ {2} z}}{x ^ {2} y ^ {2} e ^ {y ^ {2} z} + 1},\n$$\n$$\n\\frac {\\partial z}{\\partial y} = - \\frac {F _ {y}}{F _ {z}} = - \\frac {- 2 x ^ {2} y z e ^ {y ^ {2} z}}{- x ^ {2} y ^ {2} e ^ {y ^ {2} z} - 1} = \\frac {- 2 x ^ {2} y z e ^ {y ^ {2} z}}{x ^ {2} y ^ {2} e ^ {y ^ {2} z} + 1}.\n$$",
             "images": []
           },
           {
             "question_number": 17,
-            "content": "$$\n\\begin{array}{l} \\iint_ {D} (x ^ {2} + y ^ {2}) ^ {2} d \\sigma = \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {4} \\cdot r d r = \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {5} d r \\\\ = \\theta \\left| _ {0} ^ {2 \\pi} \\cdot \\frac {1}{6} r ^ {6} \\right| _ {0} ^ {1} = 2 \\pi \\times \\frac {1}{6} = \\frac {\\pi}{3}. \\\\ \\end{array}\n$$",
+            "content": "【精析】令  $x = r\\cos \\theta, y = r\\sin \\theta$ ，积分区域在极坐标系下可表示为： $0 \\leqslant \\theta \\leqslant 2\\pi, 0 \\leqslant r \\leqslant 1$ ，故\n$$\n\\begin{array}{l} \\iint_ {D} (x ^ {2} + y ^ {2}) ^ {2} d \\sigma = \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {4} \\cdot r d r = \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {5} d r \\\\ = \\theta \\left| _ {0} ^ {2 \\pi} \\cdot \\frac {1}{6} r ^ {6} \\right| _ {0} ^ {1} = 2 \\pi \\times \\frac {1}{6} = \\frac {\\pi}{3}. \\\\ \\end{array}\n$$",
             "images": []
           },
           {
@@ -258,7 +258,7 @@
         "questions": [
           {
             "question_number": 19,
-            "content": "$$\nf ^ {\\prime} (x) = \\frac {1}{1 + x ^ {2}} + \\frac {1}{1 + \\frac {1}{x ^ {2}}} \\cdot \\left(- \\frac {1}{x ^ {2}}\\right) - 0 = \\frac {1}{1 + x ^ {2}} - \\frac {1}{1 + x ^ {2}} = 0,\n$$\n则  $f(x)$  在  $(0, +\\infty)$  内是一个常数，令  $x = 1$  ，得  $f(1) = \\frac{\\pi}{4} + \\frac{\\pi}{4} - \\frac{\\pi}{2} = 0$  ，即  $f(x) = 0$  故当  $x > 0$  时，  $\\arctan x = \\frac{\\pi}{2} - \\arctan \\frac{1}{x}$\n(2) 设  $g(x) = \\ln (x + \\sqrt{1 + x^2}) - \\arctan x, x \\geqslant 0$ ，则\n$$\n\\begin{array}{l} g ^ {\\prime} (x) = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot (x + \\sqrt {1 + x ^ {2}}) ^ {\\prime} - \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot \\left(1 + \\frac {x}{\\sqrt {1 + x ^ {2}}}\\right) - \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot \\frac {x + \\sqrt {1 + x ^ {2}}}{\\sqrt {1 + x ^ {2}}} - \\frac {1}{1 + x ^ {2}} = \\frac {\\sqrt {1 + x ^ {2}} - 1}{1 + x ^ {2}}, \\\\ \\end{array}\n$$\n当  $x > 0$  时， $g'(x) > 0$ ，则  $g(x)$  是  $[0, +\\infty)$  上的单调递增函数，\n故当  $x > 0$  时， $g(x) > g(0) = 0$ ，即  $\\arctan x < \\ln (x + \\sqrt{1 + x^2})$ .",
+            "content": "【证明】（1）设  $f(x) = \\arctan x + \\arctan \\frac{1}{x} -\\frac{\\pi}{2},$\n$$\nf ^ {\\prime} (x) = \\frac {1}{1 + x ^ {2}} + \\frac {1}{1 + \\frac {1}{x ^ {2}}} \\cdot \\left(- \\frac {1}{x ^ {2}}\\right) - 0 = \\frac {1}{1 + x ^ {2}} - \\frac {1}{1 + x ^ {2}} = 0,\n$$\n则  $f(x)$  在  $(0, +\\infty)$  内是一个常数，令  $x = 1$  ，得  $f(1) = \\frac{\\pi}{4} + \\frac{\\pi}{4} - \\frac{\\pi}{2} = 0$  ，即  $f(x) = 0$  故当  $x > 0$  时，  $\\arctan x = \\frac{\\pi}{2} - \\arctan \\frac{1}{x}$\n(2) 设  $g(x) = \\ln (x + \\sqrt{1 + x^2}) - \\arctan x, x \\geqslant 0$ ，则\n$$\n\\begin{array}{l} g ^ {\\prime} (x) = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot (x + \\sqrt {1 + x ^ {2}}) ^ {\\prime} - \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot \\left(1 + \\frac {x}{\\sqrt {1 + x ^ {2}}}\\right) - \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {1}{x + \\sqrt {1 + x ^ {2}}} \\cdot \\frac {x + \\sqrt {1 + x ^ {2}}}{\\sqrt {1 + x ^ {2}}} - \\frac {1}{1 + x ^ {2}} = \\frac {\\sqrt {1 + x ^ {2}} - 1}{1 + x ^ {2}}, \\\\ \\end{array}\n$$\n当  $x > 0$  时， $g'(x) > 0$ ，则  $g(x)$  是  $[0, +\\infty)$  上的单调递增函数，\n故当  $x > 0$  时， $g(x) > g(0) = 0$ ，即  $\\arctan x < \\ln (x + \\sqrt{1 + x^2})$ .",
             "images": []
           },
           {
