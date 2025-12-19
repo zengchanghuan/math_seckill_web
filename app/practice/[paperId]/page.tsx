@@ -242,6 +242,18 @@ export default function PracticePage() {
             }
             // 其他情况（计算题、综合题等）默认为solution
 
+            // 从answer字段提取答案和解析
+            // 格式通常是: "C\n【精析】解析内容" 或 "答案内容\n【解析】解析内容"
+            let extractedAnswer = q.answer || '';
+            let extractedSolution = '';
+
+            if (q.answer) {
+              const answerParts = q.answer.split(/\n【[精解][析析]】/);
+              extractedAnswer = answerParts[0].trim();
+              extractedSolution =
+                answerParts.length > 1 ? answerParts[1].trim() : '';
+            }
+
             const question: Question = {
               questionId: `${paperId}_q${questionCounter}`,
               topic: section.section_name,
@@ -251,10 +263,10 @@ export default function PracticePage() {
                 questionType === 'choice'
                   ? extractQuestionStem(q.content)
                   : q.content,
-              answer: q.answer || '',
-              solution: q.answer || '',
-              shortSolution: q.answer ? `答案：${q.answer}` : '',
-              detailedSolution: q.answer || '',
+              answer: extractedAnswer,
+              solution: extractedSolution || extractedAnswer,
+              shortSolution: extractedSolution || extractedAnswer,
+              detailedSolution: extractedSolution || extractedAnswer,
               knowledgePoints: [section.section_name],
               paperId: paperId,
               options:
@@ -390,15 +402,39 @@ export default function PracticePage() {
 
   // 提交答案
   const handleSubmit = async () => {
-    if (!currentQuestion || !userAnswer.trim()) return;
+    console.log('handleSubmit 被调用', {
+      currentQuestion: currentQuestion?.questionId,
+      questionType: currentQuestion?.type,
+      userAnswer,
+      hasAnswer: !!userAnswer.trim(),
+    });
 
+    if (!currentQuestion) return;
+
+    // 对于解答题，允许不填写答案直接查看解析
+    // 对于选择题和填空题，必须填写答案才能提交
+    if (currentQuestion.type !== 'solution' && !userAnswer.trim()) {
+      console.log('提交被阻止：选择题/填空题需要填写答案');
+      return;
+    }
+
+    console.log('设置 submitted = true');
     setSubmitted(true);
 
     // 简单的答案检查（实际应该调用API）
+    // 解答题默认为正确（因为没有自动判分）
     const correct =
-      currentQuestion.answer.toLowerCase().trim() ===
-      userAnswer.toLowerCase().trim();
+      currentQuestion.type === 'solution'
+        ? true
+        : currentQuestion.answer.toLowerCase().trim() ===
+          userAnswer.toLowerCase().trim();
     setIsCorrect(correct);
+
+    console.log('答案检查结果:', {
+      correct,
+      answer: currentQuestion.answer,
+      userAnswer,
+    });
 
     // 更新进度
     setProgress((prev) => {

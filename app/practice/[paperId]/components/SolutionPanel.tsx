@@ -55,6 +55,9 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
 
   // 获取评价文案
   const getEvaluation = () => {
+    if (question.type === 'solution') {
+      return '参考解答如下';
+    }
     if (isCorrect) {
       return '基础计算掌握得不错';
     } else {
@@ -70,24 +73,31 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
     <div ref={panelRef} className="mt-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
       {/* 结果提示 - 白底 + 左侧色条 */}
       <div className={`flex border-l-4 ${
-        isCorrect
+        question.type === 'solution' 
+          ? 'border-l-blue-500 dark:border-l-blue-400'
+          : isCorrect
           ? 'border-l-green-500 dark:border-l-green-400'
           : 'border-l-red-500 dark:border-l-red-400'
       } pl-4 py-2 mb-3`}>
         <div className="flex-1">
           <p className={`text-sm font-semibold mb-1 ${
-            isCorrect
+            question.type === 'solution'
+              ? 'text-blue-700 dark:text-blue-300'
+              : isCorrect
               ? 'text-green-700 dark:text-green-300'
               : 'text-red-700 dark:text-red-300'
           }`}>
-            {isCorrect ? '✅ 回答正确' : '✗ 回答错误'} · {getEvaluation()}
+            {question.type === 'solution' 
+              ? '📖 参考解答' 
+              : isCorrect ? '✅ 回答正确' : '✗ 回答错误'
+            } · {getEvaluation()}
           </p>
-          {!isCorrect && (
+          {!isCorrect && question.type !== 'solution' && (
             <p className="text-sm text-gray-700 dark:text-gray-300">
               正确答案：<MathText content={correctAnswer} />
             </p>
           )}
-          {isCorrect && (
+          {isCorrect && question.type !== 'solution' && (
             <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
               这类基础计算已经掌握得不错，可以稍微加快刷题速度。
             </p>
