@@ -172,60 +172,107 @@ export default function PracticePage() {
   // 加载试卷和题目
   useEffect(() => {
     const loadPaper = async () => {
-      const paperData = mockPapers[paperId] || null;
-      setPaper(paperData);
-
-      if (paperData) {
-        let paperQuestions: Question[] = [];
-
-        // 从后端 API 加载题目
-        try {
-          console.log('Loading questions for paperId:', paperId);
-          const questions = await apiClient.getQuestionsByPaper(paperId);
-          console.log('Received questions:', questions?.length || 0);
-          if (questions && questions.length > 0) {
-            paperQuestions = questions;
-            setAllQuestions(questions);
-            console.log('Successfully loaded', questions.length, 'questions from API');
-          } else {
-            // 如果 API 失败，回退到 mock 数据
-            console.warn('Failed to load questions from API (empty result), using mock data');
-            paperQuestions = mockQuestions.filter(q => q.paperId === paperId);
-            setAllQuestions(paperQuestions);
-          }
-        } catch (error) {
-          console.error('Error loading questions from API:', error);
-          // 回退到 mock 数据
-          paperQuestions = mockQuestions.filter(q => q.paperId === paperId);
-          setAllQuestions(paperQuestions);
+      try {
+        // 从paperId提取年份（格式：paper_2023_1）
+        const yearMatch = paperId.match(/paper_(\d{4})_/);
+        if (!yearMatch) {
+          console.error('无效的试卷ID格式');
+          return;
         }
+        
+        const year = parseInt(yearMatch[1]);
+        
+        // 从题库API加载真实试卷数据
+        const response = await fetch(`/api/question-bank/papers/${year}`);
+        
+        if (!response.ok) {
+          throw new Error('加载试卷失败');
+        }
+        
+        const paperData = await response.json();
+        
+        // 转换API数据为ExamPaper格式
+        const examPaper: ExamPaper = {
+          paperId: paperId,
+          name: `${paperData.year}年${paperData.province}${paperData.exam_type}${paperData.subject}真题（第1套）`,
+          year: paperData.year,
+          region: paperData.province,
+          examType: paperData.exam_type,
+          subject: paperData.subject,
+          questionIds: [],
+          suggestedTime: 90,
+          totalQuestions: paperData.sections.reduce((sum: number, s: any) => sum + s.questions.length, 0),
+          questionTypes: { choice: 0, fill: 0, solution: 0 },
+        };
+        
+        setPaper(examPaper);
 
-        // 从localStorage加载进度
-        const savedProgress = localStorage.getItem(`paper_progress_${paperId}`);
-        if (savedProgress) {
-          try {
-            const parsed = JSON.parse(savedProgress);
-            setProgress(prev => ({
-              ...prev,
-              ...parsed,
-              totalQuestions: paperQuestions.length,
-            }));
-            setCurrentMode(parsed.mode || 'objective');
-            setCurrentIndex(parsed.mode === 'objective' ? (parsed.lastObjectiveIndex || 0) : (parsed.lastSolutionIndex || 0));
-          } catch (e) {
-            console.error('Failed to load progress:', e);
+        // 转换sections和questions为Question[]格式
+        let paperQuestions: Question[] = [];
+        let questionCounter = 1;
+        
+        // 遍历sections和questions，转换为Question[]格式
+        for (const section of paperData.sections) {
+          for (const q of section.questions) {
+            // 判断题型
+            let questionType: 'choice' | 'fill' | 'solution' = 'solution';
+            const sectionName = section.section_name.toLowerCase();
+            
+            if (sectionName.includes('选择') || sectionName.includes('choice')) {
+              questionType = 'choice';
+            } else if (sectionName.includes('填空') || sectionName.includes('fill') || sectionName.includes('blank')) {
+              questionType = 'fill';
+            }
+            
+            const question: Question = {
+              questionId: `${paperId}_q${questionCounter}`,
+              topic: section.section_name,
+              difficulty: 'L1', // 默认难度
+              type: questionType,
+              question: q.content || '',
+              answer: q.answer || '',
+              solution: q.answer || '',
+              shortSolution: q.answer ? `答案: ${q.answer}` : '',
+              detailedSolution: q.answer || '',
+              knowledgePoints: [section.section_name],
+              paperId: paperId,
+              options: questionType === 'choice' ? extractOptions(q.content) : undefined,
+            };
+            
+            paperQuestions.push(question);
+            questionCounter++;
           }
-        } else {
-          setProgress(prev => ({
-            ...prev,
-            totalQuestions: paperQuestions.length,
-          }));
+        }
+        
+        setAllQuestions(paperQuestions);
+        console.log(`加载了 ${paperQuestions.length} 道题目`);
+        
+      } catch (error) {
+        console.error('加载试卷失败:', error);
+        // 降级使用模拟数据
+        const fallbackPaper = mockPapers[paperId] || null;
+        setPaper(fallbackPaper);
+        
+        if (fallbackPaper) {
+          const fallbackQuestions = mockQuestions.filter(q => q.paperId === paperId);
+          setAllQuestions(fallbackQuestions);
         }
       }
     };
-
+    
     loadPaper();
   }, [paperId]);
+  
+  // 从题目内容中提取选项（用于选择题）
+  function extractOptions(content: string): string[] {
+    const options: string[] = [];
+    // 匹配 A. B. C. D. 格式的选项
+    const optionMatches = content.match(/[A-D][\.、]\s*[^A-D]+/g);
+    if (optionMatches) {
+      return optionMatches.map(opt => opt.trim());
+    }
+    return [];
+  }
 
   // 计时器
   useEffect(() => {
