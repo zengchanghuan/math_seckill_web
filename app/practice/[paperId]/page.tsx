@@ -214,15 +214,19 @@ export default function PracticePage() {
         // 遍历sections和questions，转换为Question[]格式
         for (const section of paperData.sections) {
           for (const q of section.questions) {
-            // 判断题型
+            // 判断题型（根据章节名或章节顺序）
             let questionType: 'choice' | 'fill' | 'solution' = 'solution';
             const sectionName = section.section_name.toLowerCase();
             
-            if (sectionName.includes('选择') || sectionName.includes('choice')) {
+            // 优先根据章节名判断
+            if (sectionName.includes('选择') || sectionName.includes('choice') || 
+                sectionName === '单' || sectionName === '多') {
               questionType = 'choice';
-            } else if (sectionName.includes('填空') || sectionName.includes('fill') || sectionName.includes('blank')) {
+            } else if (sectionName.includes('填空') || sectionName.includes('fill') || 
+                       sectionName.includes('blank') || sectionName === '填') {
               questionType = 'fill';
             }
+            // 其他情况（计、综等）默认为solution
             
             const question: Question = {
               questionId: `${paperId}_q${questionCounter}`,
