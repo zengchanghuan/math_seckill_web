@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2019,
+    "exam_type": "专升本",
+    "total_sections": 7,
+    "total_questions": 32,
+    "total_images": 0
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2019,
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "A.  $x = -2$  和  $x = 0$\nB.  $x = -2$  和  $x = 1$\nC.  $x = -1$  和  $x = 2$\nD.  $x = 0$  和  $x = 1$",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A. 等于1\nB. 等于 2\nC. 等于1或2\nD. 不存在",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "A.  $\\int [f(x) + g(x)] dx = 2^x \\tan x + C$\nB.  $\\int \\frac{f(x)}{g(x)} dx = 2^{-x} + \\tan x + C$\nC.  $\\int f[g(x)]dx = \\tan (2^x) + C$\nD.  $\\int [f(x) + g(x)] dx = \\tan x + 2^x + C$",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "A.  $\\sum_{n=1}^{\\infty} e^{\\frac{1}{n}}$\nB.  $\\sum_{n=1}^{\\infty}\\left(\\frac{3}{2}\\right)^{n}$\nC.  $\\sum_{n=1}^{\\infty}\\left(\\frac{2}{3^n}-\\frac{1}{n^3}\\right)$\nD.  $\\sum_{n=1}^{\\infty}\\left[\\left(\\frac{2}{3}\\right)^{n} + \\frac{1}{n}\\right]$ .",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "A.  $a - b = 0, b < 0$\nB.  $a - b = 0, b > 0$\nC.  $a + b = 0, b < 0$\nD.  $a + b = 0, b > 0$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "曲线  $\\left\\{ \\begin{array}{l} x = t^3 + 3t \\\\ y = \\arctan t \\end{array} \\right.$ ，则  $t = 0$  的对应点处切线方程为  $y =$",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "微分方程  $y \\, dx + x \\, dy = 0$  满足初始条件的  $y \\big|_{x=1} = 2$  特解为  $y =$",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "$$\n\\frac {\\partial^ {2} z}{\\partial y \\partial x} =\n$$",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "设平面区域  $D = \\{(x, y) \\mid 0 \\leq y \\leq x, 0 \\leq x \\leq 1\\}$ ，则  $\\iint_{D} x \\, dx \\, dy =$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "已知  $\\int_{1}^{t} f(x) dx = t \\sin \\frac{\\pi}{t} (t > 1)$ ，则  $\\int_{1}^{+\\infty} f(x) dx =$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "求  $\\lim_{x\\to 0}\\frac{e^x - \\sin x - 1}{x^2}$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "设  $y = \\frac{x^x}{2x + 1} (x > 0)$ ，求  $\\frac{dy}{dx}$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "求不定积分  $\\int \\frac{2 + x}{1 + x^2} dx$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "计算定积分  $\\int_{-\\frac{1}{2}}^{0} x \\sqrt{2x + 1} dx$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "设  $x - z = e^{xyz}$ ，求  $\\frac{\\partial z}{\\partial x}$  和  $\\frac{\\partial z}{\\partial y}$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "计算二重积分  $\\iint_{D} \\ln (x^{2} + y^{2}) d\\sigma$ ，其中平面区域  $D = \\{(x, y) | 1 \\leq x^{2} + y^{2} \\leq 4\\}$",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "已知级数  $\\sum_{n=1}^{\\infty} a_n$  和  $\\sum_{n=1}^{\\infty} b_n$  满足  $0 \\leq a_n \\leq b_n$ , 且  $\\frac{b_{n+1}}{b_n} = \\frac{(n+1)^4}{3n^4 + 2n - 1}$ , 判定级数  $\\sum_{n=1}^{\\infty} a_n$  的收敛性",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "设函数  $f(x)$  满足  $\\frac{df(x)}{de^{-x}} = x$ ，求曲线  $y = f(x)$  的凹凸区间",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "（1）求  $\\varphi (x)$\n(2) 求由曲线  $y = \\varphi(x)$  和  $x = 0, x = \\frac{\\pi}{2}$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的立体的体积",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "（1）证明：  $f(x)$  在区间  $(0, +\\infty)$  内单调减少；\n（2）比较数值  $2018^{2019}$  与  $2019^{2018}$  的大小，并说明理由；\n---\n# 2019年广东省普通高校本科插班生招生考试\n# 《高等数学》参考答案及评分标准",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "B 2.A 3.D 4.C 5.B",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "$\\frac{1}{3} x$  7.  $\\frac{2}{x}$  8.  $e^x\\cos y$  9.  $\\frac{1}{3}$  10.  $\\pi$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "原式  $= \\lim_{x \\to 0} \\frac{e^x - \\cos x}{2x} = \\lim_{x \\to 0} \\frac{e^x + \\sin x}{2} = \\frac{1}{2}$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "$$\n\\begin{array}{l} \\because y = \\frac {x ^ {x}}{2 x + 1} \\\\ \\therefore \\ln y = x \\ln x - \\ln (2 x + 1) \\\\ \\therefore \\frac {1}{y} y ^ {\\prime} = \\ln x + 1 - \\frac {2}{2 x + 1} \\\\ \\therefore \\frac {d y}{d x} = (\\ln x + 1 - \\frac {2}{2 x + 1}) \\frac {x ^ {x}}{2 x + 1} \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "$$\n\\begin{array}{l} \\int \\frac {2 + x}{1 + x ^ {2}} d x \\\\ = 2 \\int \\frac {1}{1 + x ^ {2}} d x + \\frac {1}{2} \\int \\frac {1}{1 + x ^ {2}} d \\left(1 + x ^ {2}\\right) \\\\ = 2 \\arctan x + \\frac {1}{2} \\ln \\left(1 + x ^ {2}\\right) + C \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "$$\n\\begin{array}{l} \\sqrt {2 x + 1} = t, x = \\frac {1}{2} t ^ {2} - \\frac {1}{2}, d x = t d t \\\\ \\int_ {- \\frac {1}{2}} ^ {0} x \\sqrt {2 x + 1} d x = \\int_ {0} ^ {1} t \\left(\\frac {1}{2} t ^ {2} - \\frac {1}{2}\\right) \\cdot t d t \\\\ = \\frac {1}{2} \\int_ {0} ^ {1} \\left(t ^ {4} - t ^ {2}\\right) d t \\\\ = \\frac {1}{2} \\left(\\frac {1}{5} t ^ {5} - \\frac {1}{3} t ^ {3}\\right) \\Bigg | _ {0} ^ {1} \\\\ = - \\frac {1}{1 5} \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "$$\n\\begin{array}{l} \\therefore f _ {x} (x, y, z) = 1 - y z e ^ {x y z} \\\\ f _ {y} (x, y, z) = - x z e ^ {x y z} \\\\ f _ {z} (x, y, z) = - 1 - x y e ^ {x y z} \\\\ \\therefore \\frac {\\partial z}{\\partial x} = \\frac {1 - y z e ^ {x y z}}{1 + x y e ^ {x y z}}, \\frac {\\partial z}{\\partial y} = - \\frac {x z e ^ {x y z}}{1 + x y e ^ {x y z}} \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "$$\n\\begin{array}{l} \\therefore \\iint_ {D} \\ln (x ^ {2} + y ^ {2}) d \\sigma = \\\\ = \\int_ {0} ^ {2 \\pi} (4 \\ln 2 - \\frac {3}{2}) d \\theta \\\\ = (4 \\ln 2 - \\frac {3}{2}) \\theta | _ {0} ^ {2 \\pi} \\\\ = \\pi (8 \\ln 2 - 3) \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "$$\n\\therefore \\lim  _ {x \\rightarrow \\infty} \\frac {b _ {n + 1}}{b _ {n}} = \\lim  _ {x \\rightarrow \\infty} \\frac {(n + 1) ^ {4}}{3 n ^ {4} + 2 n - 1} = \\frac {1}{3} <   1,\n$$\n由比值判别法可知  $\\sum_{n=1}^{\\infty} b_n$  收敛\n$\\because 0 \\leq a_{n} \\leq b_{n}$ , 由比较判别法可知  $\\sum_{n=1}^{\\infty} a_{n}$  也收敛",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "$$\n\\because \\frac {d f (x)}{d e ^ {- x}} = x\n$$\n$$\n\\therefore d f (x) = x d e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime} (x) = - x e ^ {- x}\n$$\n$$\n\\therefore f ^ {\\prime \\prime} (x) = e ^ {- x} (x - 1)\n$$\n$\\therefore f(x)$  的凹区间为  $(1, + \\infty)$  ，凸区间为  $(- \\infty ,1)$",
+            "images": []
+          },
+          {
+            "question_number": 19,
+            "content": "$$\n\\begin{array}{l} \\therefore \\varphi^ {\\prime \\prime} (x) = - \\varphi (x) \\\\ \\therefore \\varphi^ {\\prime \\prime} (x) + \\varphi (x) = 0 \\\\ \\end{array}\n$$\n特征方程  $r^2 + 1 = 0$  ，解得  $r = \\pm i$\n通解为  $\\varphi (x) = \\cos x + \\sin x + C$\n$$\n\\begin{array}{l} \\because \\varphi (0) = 1, \\therefore C = 0 \\\\ \\therefore \\varphi (x) = \\cos x + \\sin x \\\\ \\end{array}\n$$\n(2)由题意得\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (\\cos x + \\sin x) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {\\frac {\\pi}{2}} (1 + \\sin 2 x) d x \\\\ = \\pi (x - \\frac {1}{2} \\cos 2 x) \\Bigg | _ {0} ^ {\\frac {\\pi}{2}} = \\frac {\\pi^ {2}}{2} + \\pi \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "证明（1）\n$$\n\\begin{array}{l} \\because f (x) = x \\ln (1 + x) - (1 + x) \\ln x \\\\ \\therefore f ^ {\\prime} (x) = \\ln (1 + x) - \\ln x + \\frac {x}{1 + x} - \\frac {1 + x}{x} \\\\ = \\ln (1 + x) - \\ln x - (\\frac {1}{1 + x} + \\frac {1}{x}) \\\\ \\end{array}\n$$\n证明  $\\ln (1 + x) - \\ln x - \\left(\\frac{1}{1 + x} +\\frac{1}{x}\\right) < 0$  即可\n即证  $\\ln (1 + x) - \\ln x < \\left(\\frac{1}{1 + x} +\\frac{1}{x}\\right)$\n令  $g(x) = \\ln x$\n$\\because g(x) = \\ln x$  在  $(0, + \\infty)$  连续可导，由拉格朗日中值定理得\n$$\n$$\n$\\therefore \\ln (1 + x) - \\ln x < \\left(\\frac{1}{1 + x} + \\frac{1}{x}\\right)$  成立\n$$\n\\therefore \\ln (1 + x) - \\ln x - (\\frac {1}{1 + x} + \\frac {1}{x}) <   0\n$$\n$\\therefore f(x)$  在  $(0, + \\infty)$  单调递减\n(2) 设  $a = 2019, b = 2018$  则  $a^{b} = 2019^{2018}, b^{a} = 2018^{2019}$ .\n比较  $b^{a}, a^{b}$  即可，假设  $b^{a} > a^{b}$\n即  $a\\ln b > b\\ln a$\n即  $\\frac{\\ln b}{b} >\\frac{\\ln a}{a}$\n设  $g(x) = \\frac{\\ln x}{x}$ ，则  $g'(x) = \\frac{1 - \\ln x}{x^2}$\n$\\because g(x)$  在  $(0, + \\infty)$  单调递减即  $\\therefore g(b) > g(a)$  即  $b^{a} > a^{b}$  成立\n即  $2018^{2019} > 2019^{2018}$",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

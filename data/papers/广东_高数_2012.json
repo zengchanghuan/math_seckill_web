@@ -1,0 +1,228 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2012,
+    "exam_type": "专升本",
+    "total_sections": 7,
+    "total_questions": 31,
+    "total_images": 2
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2012,
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "（ ）\nA. 有界\nB. 无界\nC. 收敛\nD. 发散",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A. 连续点\nB. 可去间断点\nC. 跳跃间断点\nD. 第二类间断点",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "（ ）\nA. 0\nB. 2\nC. 3\nD. 6",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "A. 2\nB. 1\nC. 0\nD. -1",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "A.  $\\int_{0}^{\\frac{\\sqrt{2}}{2}} dx \\int_{x}^{\\sqrt{1 - x^{2}}} f(x, y) dy$\nB.  $\\int_0^{\\frac{\\sqrt{2}}{2}}dy\\int_x^{\\sqrt{1 - x^2}}f(x,y)dx$\nC.  $\\int_{0}^{\\frac{\\sqrt{2}}{2}} dy \\int_{y}^{\\sqrt{1 - y^2}} f(x, y) dx$\nD.  $\\int_{0}^{\\frac{\\sqrt{2}}{2}} dy \\int_{x}^{\\sqrt{1 - y^{2}}} f(x, y) dx$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "设  $f(x)$  在点  $x_0$  处可导，且  $f'(x_0) = 3$ ，则  $\\lim_{\\Delta x \\to 0} \\frac{f(x_0 - 2\\Delta x) - f(x_0)}{\\Delta x} =$  ________。",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "若  $f(x) = \\int \\frac{\\tan x}{x} dx$ ，则  $f''(\\pi) =$  ________。",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "若曲线  $y = x^{3} + ax^{2} + bx + 1$  有拐点  $(-1,0)$ ，则常数  $b =$  ________。",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "广义积分  $\\int_{-\\infty}^{0} \\frac{e^x}{1 + e^x} dx =$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "设函数  $f(u)$  可微，且  $f'(0) = \\frac{1}{2}$ ，则  $z = f(4x^2 - y^2)$  在点 (1,2) 处的全微分  $dz|_{(1,2)} =$  ______。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "计算  $\\lim_{x\\to +\\infty}\\left(\\frac{1}{1 + x}\\right)^{\\frac{1}{\\ln{x}}}$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "设函数  $y = f(x)$  由参数方程  $\\left\\{ \\begin{array}{l} x = \\ln (\\sqrt{3 + t^2} + t) \\\\ y = \\sqrt{3 + t^2} \\end{array} \\right.$  所确定，求  $\\frac{dy}{dx}$  （结果要化为最简形式）",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "确定函数  $f(x) = (x - 1)^{e^{\\frac{\\pi}{4} + \\arctan x}}$  的单调区间和极值",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "求不定积分  $\\int \\ln (1 + x^2) dx$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "设  $f(x) = \\begin{cases} x^3 e^{x^4 + 1}, & -\\frac{1}{2} \\leq x \\leq \\frac{1}{2} \\\\ \\frac{1}{x^2}, & x > \\frac{1}{2} \\end{cases}$ ，利用定积分的换元法求定积分  $\\int_{\\frac{1}{2}}^{2} f(x - 1) dx$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "求微积分方程  $y'' - 4y' + 13y = 0$  满足初始条件  $y\\big|_{x=0} = 1$ ， $y'\\big|_{x=0} = 8$  的特解",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "已知二元函数  $z = x(2y + 1)^x$ ，求  $\\frac{\\partial^2z}{\\partial y\\partial x}\\bigg|_{\\substack{x = 1\\\\ y = 1}}$",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "计算二重积分  $\\iint_{D} \\sqrt{y^2 - xd}\\sigma$ ，其中 D 是由曲线  $y = \\sqrt{x}$  及直线  $y = 1, x = 0$  围成的闭区域四、综合题（本大题共 2 小题，第 19 小题 12 分，第 20 小题 10 分，共 22 分）",
+            "images": []
+          },
+          {
+            "question_number": 19,
+            "content": "（1）求曲线  $C$  的方程；\n(2) 试确定  $a$  的值, 使曲线  $C$  与直线  $y = ax$  围成的平面图形的面积等于  $\\frac{3}{8}$  。",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "（1）求常数  $a$  的值；\n(2) 证明:  $\\frac{1}{2} \\leq f(2) \\leq 8$  。\n2012年高等数学参考答案与评分标准",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "A 2. C 3. D 4. B 5. C",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "-6 7.  $\\frac{1}{\\pi}$  8. 3 9.  $\\ln 2$  10.  $4dx - 2dy$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "$$\n\\begin{array}{l} \\because \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\ln (1 + x)}{\\ln x} = \\lim  _ {x \\rightarrow + \\infty} \\frac {- \\frac {1}{1 + x}}{\\frac {1}{x}} \\tag {4分} \\\\ = \\lim  _ {x \\rightarrow + \\infty} \\frac {- x}{1 + x} \\\\ = - 1, \\\\ \\end{array}\n$$\n$\\therefore$  原式  $= e^{-1}$  (6分)",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "$$\n\\frac {d y}{d t} = \\frac {t}{\\sqrt {3 + t ^ {2}}} \\tag {3分}\n$$\n$$\n\\therefore \\frac {d y}{d x} = \\frac {y _ {t} ^ {\\prime}}{x _ {t} ^ {\\prime}} = t \\text {(结 果 没 有 化 简 扣 2 分)} \\tag {6分}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "$$\n\\begin{array}{l} f ^ {\\prime} (x) = e ^ {\\frac {\\pi}{4} + \\arctan x} + (x - 1) e ^ {\\frac {\\pi}{4} + \\arctan x} \\cdot \\frac {1}{1 + x ^ {2}} \\\\ = \\frac {x (1 + x)}{1 + x ^ {2}} e ^ {\\frac {\\pi}{4} + \\arctan x}, \\quad (2 \\text {分}) \\\\ \\end{array}\n$$\n令  $f^{\\prime}(x) = 0$  ，解得  $x = 0,x = -1$\n因为在区间  $(- \\infty, -1)$  内， $f'(x) > 0$ ；在区间  $(-1, 0)$  内， $f'(x) < 0$ ；\n在区间  $(0, +\\infty)$  内，  $f^{\\prime}(x) > 0$\n所以  $f(x)$  的递增区间是  $(- \\infty, -1)$  及  $(0, +\\infty)$ ，递减区间是  $(-1, 0)$  （4分）\n$$\nf (x) \\text {的 极 大 值 是} f (- 1) = - 2, f (x) \\text {的 极 小 值} f (0) = - e ^ {\\frac {\\pi}{4}} \\tag {6分}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "$$\n= x \\ln (1 + x ^ {2}) - 2 \\int \\left(1 - \\frac {1}{1 + x ^ {2}}\\right) d x\n$$\n$$\n= x \\ln (1 + x ^ {2}) - 2 x + 2 \\arctan x + C \\quad (6 \\text {分})\n$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "$$\n\\begin{array}{l} = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (t) d t + \\int_ {\\frac {1}{2}} ^ {1} f (t) d t \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} f (x) d x + \\int_ {\\frac {1}{2}} ^ {1} f (x) d x \\\\ = \\int_ {- \\frac {1}{2}} ^ {\\frac {1}{2}} x ^ {3} e ^ {x ^ {4} + 1} d x + \\int_ {\\frac {1}{2}} ^ {1} \\frac {1}{x ^ {2}} d x \\tag {4分} \\\\ = 0 - \\frac {1}{x} \\left| \\begin{array}{c} \\frac {1}{2} \\\\ 1 \\end{array} \\right. \\\\ = 1 \\quad (6 \\text {分}) \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "所以此微分方程的通解为\n$$\ny = e ^ {2 x} \\left(C _ {1} \\cos 3 x + C _ {2} \\sin 3 x\\right) \\quad (4 \\text {分})\n$$\n因为  $y^\\prime = 2e^{2x}(C_1\\cos 3x + C_2\\sin 3x) + e^{2x}(-3C_1\\sin 3x + 3C_2\\cos 3x)$\n由  $y \\big|_{x=0} = C_1 = 1$  及  $y' \\big|_{x=0} = 2C_1 + 3C_2 = 8$\n解得  $C_1 = 1, C_2 = 2$\n故所求特解为  $y = e^{2x}(\\cos 3x + 2\\sin 3x)$  （6分）",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "$$\n\\therefore \\frac {\\partial^ {2} z}{\\partial y \\partial x} = 4 x (2 y + 1) ^ {x - 1} + 2 x ^ {2} (2 y + 1) ^ {x - 1} \\ln (2 y + 1) \\quad \\text {(4 分)}\n$$\n故  $\\frac{\\partial^2z}{\\partial y\\partial x}\\Bigg|_{\\substack{x = 1\\\\ y = 1}} = 4 + 2\\ln 3$  （6分）\n18．解：积分区域D如图：\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/1a1c99b9a1507e725b117736e00bcd908ff44e7f68c812ba87489ff5f439361b.jpg)\n$\\iint_{D} \\sqrt{y^2 - x} d\\sigma = \\int_{0}^{1} dy \\int_{0}^{y^2} \\sqrt{y^2 - x} dx$  (3分)\n$$\n\\begin{array}{l} = \\int_ {0} ^ {1} \\left[ - \\frac {2}{3} \\left(y ^ {2} - x\\right) ^ {\\frac {3}{2}} \\left| \\begin{array}{l} y ^ {2} \\\\ 0 \\end{array} \\right. \\right] d y \\\\ = \\frac {2}{3} \\int_ {0} ^ {1} y ^ {3} d y = \\frac {1}{6} \\tag {6分} \\\\ \\end{array}\n$$",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/1a1c99b9a1507e725b117736e00bcd908ff44e7f68c812ba87489ff5f439361b.jpg",
+                "position": "inline"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "$$\ny ^ {\\prime} - \\frac {y}{x} = a x, \\quad \\text {且} y \\big | _ {x = 1} = 0 \\tag {2分}\n$$\n由  $y^\\prime -\\frac{y}{x} = ax$  得\n$$\n\\begin{array}{l} y = e ^ {\\int_ {x} ^ {1} d x} \\left(\\int a x e ^ {- \\int_ {x} ^ {1} d x} d x + C\\right) = e ^ {\\ln x} \\left(\\int a x e ^ {- \\ln x} d x + C\\right) \\tag {4分} \\\\ = x (\\int a d x + C) = x (a x + C), \\\\ \\end{array}\n$$\n因为  $y \\big|_{x=1} = a + C = 0$ ，解得  $C = -a$\n故曲线  $C$  的方程为  $y = ax^{2} - ax = ax(x - 1)$  （6分）\n（2）如图，\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg)\n由  $ax^2 - ax = ax$  解得  $x = 0, x = 2$  （10分）由题\n意知  $\\int_0^2 (ax - ax^2 + ax) dx = \\frac{8}{3}$\n即  $(ax^2 -\\frac{a}{3} x^3)\\Bigg|_0^2 = 4a - \\frac{8a}{3} = \\frac{8}{3},$\n解得  $a = 2$  （12分）",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg",
+                "position": "inline"
+              }
+            ]
+          },
+          {
+            "question_number": 20,
+            "content": "解：（1）解：由题意知  $\\lim_{x\\to 0}\\frac{\\int_0^x2^{t^3 - 3t + a}dt}{x} = \\lim_{x\\to 0}2^{x^3 -3x + a} = 2^a = 1$\n$$\n\\therefore a = 0 \\quad (4 \\text {分})\n$$\n(2) 证明:  $f(2) = \\int_{0}^{2} 2^{t^3 - 3t} dt = \\int_{0}^{2} 2^{x^3 - 3x} dx$ ,\n设  $g(x) = 2^{x^3 -3x}$  ，则  $g^{\\prime}(x) = 2^{x^{3} - 3x}(3x^{2} - 3)\\ln 2$  （6分）\n令  $g^{\\prime}(x) = 0$  ，在区间(0,2)内解得  $x = 1$\n因为  $g(0) = 1, g(1) = \\frac{1}{4}, g(2) = 4,$\n所以  $g(x)$  在区间  $[0,2]$  上的最大值为4，最小值为  $\\frac{1}{4}$  （8分）\n由定积分的估值定理可得  $\\frac{1}{2} \\leq \\int_{0}^{2} e^{x^3 - 3x} dx \\leq 8$\n所以有  $\\frac{1}{2} \\leq f(2) \\leq 8$  。 (10分)",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

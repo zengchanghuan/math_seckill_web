@@ -1,0 +1,195 @@
+{
+  "description": "广东专升本高等数学真题索引",
+  "total_files": 21,
+  "files": [
+    {
+      "filename": "广东_高数_2023.json",
+      "year": 2023,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "普通专升本",
+      "total_questions": 40,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2022.json",
+      "year": 2022,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "普通专升本",
+      "total_questions": 40,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2021.json",
+      "year": 2021,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "普通专升本",
+      "total_questions": 39,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2020.json",
+      "year": 2020,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 35,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2019.json",
+      "year": 2019,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 32,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2018.json",
+      "year": 2018,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 36,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2017.json",
+      "year": 2017,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 32,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2016.json",
+      "year": 2016,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 36,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2015.json",
+      "year": 2015,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 39,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2014.json",
+      "year": 2014,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 38,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2013.json",
+      "year": 2013,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 28,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2012.json",
+      "year": 2012,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 31,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2011.json",
+      "year": 2011,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 29,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2010.json",
+      "year": 2010,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 31,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2009.json",
+      "year": 2009,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 38,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2008.json",
+      "year": 2008,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 39,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2007.json",
+      "year": 2007,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 40,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2006.json",
+      "year": 2006,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 40,
+      "total_images": 1
+    },
+    {
+      "filename": "广东_高数_2005.json",
+      "year": 2005,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 45,
+      "total_images": 0
+    },
+    {
+      "filename": "广东_高数_2004.json",
+      "year": 2004,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 32,
+      "total_images": 2
+    },
+    {
+      "filename": "广东_高数_2003.json",
+      "year": 2003,
+      "province": "广东",
+      "subject": "高等数学",
+      "exam_type": "专升本",
+      "total_questions": 40,
+      "total_images": 0
+    }
+  ]
+}

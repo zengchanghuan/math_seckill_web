@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2021,
+    "exam_type": "普通专升本",
+    "total_sections": 8,
+    "total_questions": 39,
+    "total_images": 2
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2021,
+    "exam_type": "普通专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "A. 1\nB. 2\nC. 3\nD. 4",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A. 连续点\nB. 可去间断点\nC. 无穷间断点\nD. 跳跃间断点",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "A.  $\\int F(x)dx = f(x)$\nB.  $F^{\\prime}(x) = f(x) + C$\nC.  $f^{\\prime}(x) = F(x) + C$\nD.  $\\int f(x) d x = F(x) + C$",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "A.  $\\sum_{n=1}^{\\infty}\\left(u_{n}+\\frac{1}{n}\\right)$\nB.  $\\sum_{n=1}^{\\infty}\\left(u_{n}+\\frac{1}{2}\\right)$\nC.  $\\sum_{n=1}^{\\infty}\\left(u_{n}+\\frac{1}{3^{n}}\\right)$\nD.  $\\sum_{n=1}^{\\infty}\\left(u_{n}-\\frac{1}{\\sqrt{n}}\\right)$",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "A.  $f(x)$  是比  $g(x)$  低阶的无穷小\nB.  $f(x)$  是比  $g(x)$  高阶的无穷小\nC.  $f(x)$  与  $g(x)$  是等价无穷小\nD.  $f(x)$  与  $g(x)$  是同阶非等价无穷小",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "$\\left\\{ \\begin{array}{l}x = 2t^3 +3\\\\ y = t^2 -4 \\end{array} \\right.$  ，在  $t = 1$  相应的点处的切线斜率为",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "$z = x^{2}y$  的全微分  $dz = \\underline{\\quad}$",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "微分方程  $\\frac{dy}{dx} = y + 2$  满足初值为  $y|_{x=0} = -1$  的特解是",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "已知  $D = \\{(x, y) | 0 \\leq x \\leq 1, 0 \\leq y \\leq 3 - x\\}$ ，则  $\\iint_{D} d\\sigma =$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "连续函数  $f(x)$  满足  $\\int_0^{2x + 1} f(t) dt = -2x^3 - \\frac{1}{4}$ ，则  $f(3) =$  ________.",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "求极限  $\\lim_{x\\to +\\infty}x(\\sqrt{x^2 + 3} -x)$  的值",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "已知  $y = 2^{x} + x^{x} (x > 0)$ ，求  $\\frac{dy}{dx}$ .",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "求不定积分  $\\int (x + 5) \\cos 3x dx$ .",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "求不定积分  $\\int_{-2}^{2}\\frac{x^{2021} + |x|}{x^2 + 1} dx.$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "已知  $z = z(x, y)$  是方程  $e^{yz} - xz = 1$  确定的隐函数，求  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y}$ .",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "已知平面区域  $D$  为  $x^{2} + y^{2} \\leq 4$  在第一象限的部分，求  $\\iint_{D} e^{x^{2} + y^{2}} d\\sigma$",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "判断  $\\sum_{n=1}^{\\infty}\\left(\\frac{n}{2n+1}\\right)^{n}$  的收敛性",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "设  $f(x) = \\begin{cases} x^2, & x \\leq 2, \\\\ 6 - x, & x > 2, \\end{cases} F(x) = \\int_0^x f(t)dt$ . 求  $F(x)$  在点  $x = 2$  处的连续性",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "做一个容程为  $64\\pi$  立方米的圆形无盖容器，底面和侧面材质相同且厚度不计，问：底面半径为何值时，才能使所用材料最省？",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "（1）求切线  $L$  的方程；\n（2）求平面图形  $D$  的面积\n# 参考答案",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "【解析】  $\\lim_{x\\to 0}\\frac{\\tan{6}x}{2x} = \\lim_{x\\to 0}\\frac{6x}{2x} = 3$  ，故选C.",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "【解析】  $f(x) = \\frac{x^2 - x - 6}{x - 3}$  在  $x = 3$  处无定义，且  $\\lim_{x\\to 3}f(x) = \\lim_{x\\to 3}\\frac{(x - 3)(x + 2)}{x - 3} =$\n$\\lim_{x \\to 3}(x + 2) = 5$ ，故  $x = 3$  是  $f(x)$  的可去间断点，故选 B.",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "【解析】根据原函数及不定积分的定义可知，  $F^{\\prime}(x) = f(x), \\int f(x) dx = F(x) + C$ ，A、B、C项错误，故选D.",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "【解析】对于选项A，  $\\sum_{n = 1}^{\\infty}\\frac{1}{n}$  发散，由常项级数的基本性质可知，  $\\sum_{n = 1}^{\\infty}(u_n + \\frac{1}{n})$  发散，对于选项B，因为  $\\sum_{n = 1}^{\\infty}u_{n}$\n收敛，所以  $\\lim_{n\\to \\infty}u_n = 0,\\lim_{n\\to \\infty}(u_n + \\frac{1}{2}) = \\frac{1}{2}\\neq 0,\\sum_{n = 1}^{\\infty}(u_n + \\frac{1}{2})$  不满足级数收敛的必要条件，故发散\n对于选项C，  $\\sum_{n = 1}^{\\infty}\\frac{1}{3^n}$  是  $q = \\frac{1}{3}$  的等比级数，收敛，又  $\\sum_{n = 1}^{\\infty}u_n$  收敛，故  $\\sum_{n = 1}^{\\infty}(u_n + \\frac{1}{3^n})$  收敛\n对于选项D，  $\\sum_{n = 1}^{\\infty}\\frac{1}{\\sqrt{n}}$  是  $p = \\frac{1}{2}$  的  $p$  一级数，发散，又  $\\sum_{n = 1}^{\\infty}u_{n}$  收敛，故  $\\sum_{n = 1}^{\\infty}(u_n - \\frac{1}{\\sqrt{n}})$  发散",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "【解析】  $\\lim_{x\\to 0}\\frac{f(x)}{g(x)} = \\lim_{x\\to 0}\\frac{\\int_{0}^{x^2}\\sin t^2dt}{3x^6 + 4x^5} = \\lim_{x\\to 0}\\frac{2x\\bullet\\sin x^4}{18x^5 + 20x^4} = \\lim_{x\\to 0}\\frac{2x^5}{18x^5 + 20x^4}$\n所以当  $x \\to 0$  时， $f(x)$  是比  $g(x)$  高阶的无穷小",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "【解析】  $\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}} = \\frac{2t}{6t^2} = \\frac{1}{3t}$  则曲线在  $t = 1$  对应点处的切线斜率为  $\\left.\\frac{dy}{dx}\\right|_{t=1} = \\frac{1}{3}$ .",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "【解析】由  $z = x^{2}y$  可得  $\\frac{\\partial z}{\\partial x} = 2xy, \\frac{\\partial z}{\\partial y} = x^2$ ，故  $dz = 2xydx + x^2dy$",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "【解析】方程分离变量得  $\\frac{dy}{y + 2} = dx$  两边积分得  $\\int \\frac{1}{y + 2} dy = \\int dx$  ，即  $\\ln |y + 2| = x + C_1$  ，所以  $y + 2 = Ce^x$  ，当  $x = 0$  时， $y = -1$  ，则  $C = 1$  ，所以微分方程满足初值条件  $y|_{x=0} = -1$  的特解为  $y = e^x - 2$ . 9.  $\\frac{5}{2}$\n【解析】  $\\iint_{D} d\\sigma = S_{D} = \\frac{(2 + 3) \\times 1}{2} \\frac{5}{2}$  其中  $S_{D}$  为  $x = 0, x = 1, y = 0$  与  $y = 3 - x$  所围成的梯形的面积.",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "【解析】  $\\int_0^{2x + 1}f(t)dt = -2x^3 -\\frac{1}{4}$  两边同时对  $x$  求导，得  $2f(2x + 1) = -6x_{2}$  ，令  $2x + 1 = 3$  ，即  $x = 1$  得  $2f(3) = -6$  ，所以  $f(3) = -3$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "$$\n\\begin{array}{l} = \\lim  _ {x \\rightarrow + \\infty} \\frac {x \\left(x ^ {2} + 3 - x ^ {2}\\right)}{\\sqrt {x ^ {2} + 3} + x} = \\lim  _ {x \\rightarrow + \\infty} \\frac {3 x}{\\sqrt {x ^ {2} + 3} + x} \\\\ = \\lim  _ {x \\rightarrow + \\infty} \\frac {3}{\\sqrt {1 + \\frac {3}{x ^ {2}}} + 1} = \\frac {3}{2}. \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "又  $(2^{x})' = 2^{x}\\ln 2$  ，所以\n$$\n\\frac {d y}{d x} = \\left(2 ^ {x}\\right) ^ {\\prime} + \\left(x ^ {x}\\right) ^ {\\prime} = 2 ^ {x} \\ln 2 + x ^ {x} (\\ln x + 1).\n$$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "$$\n\\begin{array}{l} = \\frac {1}{3} \\int x d \\sin 3 x + \\frac {5}{3} \\sin 3 x \\\\ = \\frac {1}{3} (x \\sin 3 x - \\int \\sin 3 x d x) + \\frac {5}{3} \\sin 3 x \\\\ = \\frac {1}{3} x \\sin 3 x + \\frac {1}{9} \\cos 3 x + \\frac {5}{3} \\sin x + C. \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "$$\n\\int_ {- 2} ^ {2} \\frac {x ^ {2 0 2 1} + | x |}{x ^ {2} + 1} d x = \\int_ {- 2} ^ {2} \\frac {x ^ {2 0 2 1}}{x ^ {2} + 1} d x + \\int_ {- 2} ^ {2} \\frac {| x |}{x ^ {2} + 1} d x = 0 + \\int_ {- 2} ^ {2} \\frac {x}{x ^ {2} + 1} d x\n$$\n$$\n= \\int_ {- 2} ^ {2} \\frac {1}{x ^ {2} + 1} d (x ^ {2} + 1) = \\ln (x ^ {2} + 1) \\left| _ {0} ^ {2} = \\ln 5. \\right.\n$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "当  $f_{z}\\neq 0$  时，  $\\frac{\\partial z}{\\partial x} = -\\frac{f_x}{f_z} = \\frac{z}{ye^{yz} - x},\\frac{\\partial z}{\\partial y} = -\\frac{f_y}{f_z} = \\frac{-ze^{yz}}{ye^{yz} - x},$\n所以  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y} = \\frac{z - z e^{yz}}{ye^{yz} - x} = \\frac{z - z(1 + xz)}{ye^{yz} - x} = \\frac{xz^2}{x - ye^{yz}}.$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "$\\left\\{(r,\\theta)\\bigg|0\\leq r\\leq 2,0\\leq \\theta \\leq \\frac{\\pi}{2}\\right\\}$  此时\n原式  $= \\int_{0}^{\\frac{\\pi}{2}} d\\theta \\int_{0}^{2} e^{r^2} \\cdot r dr = \\frac{\\pi}{2} \\cdot \\frac{1}{2} 2 \\int_{0}^{2} e^{r^2} dr^2 = \\frac{\\pi}{4} e^{r^2} \\left| \\begin{array}{l} 2 \\\\ 0 \\end{array} \\right| = \\frac{\\pi}{4} (e^4 - 1)$ .\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/3357e695-50c9-4743-aec4-d8957095f644/c3e8dacfd450ba710a7e868949831cafbd6cba573dc69a00ada410e79bb47c81.jpg)",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/3357e695-50c9-4743-aec4-d8957095f644/c3e8dacfd450ba710a7e868949831cafbd6cba573dc69a00ada410e79bb47c81.jpg",
+                "position": "inline"
+              }
+            ]
+          },
+          {
+            "question_number": 17,
+            "content": "级数的比较审敛法可得  $\\sum_{n = 1}^{\\infty}\\left(\\frac{n}{2n + 1}\\right)^{n}$  收敛.\n方法二 因为  $\\lim_{n\\to \\infty}\\sqrt[n]{\\left(\\frac{n}{2n + 1}\\right)^{n}} = \\lim_{n\\to \\infty}\\frac{n}{2n + 1} = \\frac{1}{2} < 1$  ，因此根据正项级数的根值审敛法知所给级数收敛",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "当  $x > 2$  时，\n$$\n\\begin{array}{l} F (x) = \\int_ {0} ^ {2} t ^ {2} d t + \\int_ {2} ^ {x} (6 - t) d t = \\frac {1}{3} t ^ {3} \\left| _ {0} ^ {2} + (6 t - \\frac {1}{2} t ^ {2}) \\right| _ {2} ^ {x} \\\\ = \\frac {8}{3} + 6 x - \\frac {1}{2} x ^ {2} - 1 2 + 2 = 6 x - \\frac {1}{2} x ^ {2} - \\frac {2 2}{3}. \\\\ \\end{array}\n$$\n所以  $F(x) = \\left\\{ \\begin{array}{ll} \\frac{1}{3} x^3, & x \\leq 2, \\\\ 6x - \\frac{1}{2} x^2 - \\frac{22}{3}, & x > 2, \\end{array} \\right.$\n因为  $\\lim_{x\\to 2^{-}}F(x) = \\lim_{x\\to 2^{-}}\\frac{1}{3} x^{3} = \\frac{8}{3},\\lim_{x\\to 2^{+}}F(x) = \\lim_{x\\to 2^{+}}(6x - \\frac{1}{2} x^{2} - \\frac{22}{3}) = \\frac{8}{3},$\n$F(2) = \\frac{8}{3}$  故  $\\lim_{x\\to 2^{-}}F(x) = \\lim_{x\\to 2^{+}}F(x) = F(2)$ ，则  $F(x)$  在  $x = 2$  处是连续的.",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "$$\nS = \\pi r ^ {2} + 2 \\pi r \\bullet h = \\pi r ^ {2} + 2 \\pi r \\bullet \\frac {6 4}{r ^ {2}} = \\pi r ^ {2} + \\pi r ^ {2}, r > 0,\n$$\n所以  $S^{\\prime} = 2\\pi r - \\frac{128\\pi}{r} = \\frac{2\\pi(r^{3} - 64)}{r^{2}}$  ，  $S'' = 2\\pi +\\frac{256\\pi}{r^3}$\n令  $S^{\\prime} = 0$  ，得  $r = 4$  .因为  $S''(4) = 6\\pi >0$  ，故  $r = 4$  为极小值点\n由于该实际问题表面积最小值必存在且驻点唯一，故  $r = 4$  也为最小值点。故当底面半径为4米时，所用材料最省。",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "【解析】（1）设切点为  $(x_0,\\ln x_0)$  ，则切线斜率为  $(\\ln x)^{\\prime}\\bigg|_{x = x_0} = \\frac{1}{x_0},$\n所以切线方程为  $y - \\ln x_0 = \\frac{1}{x_0} (x - x_0)$\n把点(0,0)代入上式，得  $-\\ln x_0 = \\frac{1}{x_0} \\cdot (-x_0)$ ，所以  $x_0 = e$\n所以切点为  $(e,1)$ ，切线L的方程为  $y = \\frac{1}{e} x$\n(2)  $S_{D} = \\int_{1}^{e}\\left(\\frac{1}{e} x - \\ln x\\right)dx = \\int_{1}^{e}\\frac{1}{e} xdx - \\int_{1}^{e}\\ln xdx$\n$$\n= \\frac {1}{2 e} x ^ {2} \\left| \\begin{array}{l} e \\\\ 1 \\end{array} - (x \\ln x - x) \\right| \\left| \\begin{array}{l} e \\\\ 1 \\end{array} = \\frac {e}{2} - \\frac {1}{2 e} - 1. \\right.\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/3357e695-50c9-4743-aec4-d8957095f644/9fe2b9619232d03706f0685de0a84e00adb15cc139fbb3d90cc51deaf54a012d.jpg)",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/3357e695-50c9-4743-aec4-d8957095f644/9fe2b9619232d03706f0685de0a84e00adb15cc139fbb3d90cc51deaf54a012d.jpg",
+                "position": "inline"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

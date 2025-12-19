@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2010,
+    "exam_type": "专升本",
+    "total_sections": 8,
+    "total_questions": 31,
+    "total_images": 0
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2010,
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "A. 偶函数\nB. 奇函数\nC. 周期函数\nD. 有界函数",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A. 连续点\nB. 第一类可去间断点\nC. 第一类跳跃间断点\nD. 第二类间断点",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "A.  $1 - \\cos x$\nB.  $\\sqrt{1 + x^{2}} - 1$\nC.  $\\ln (1 + x) + x^{2}$\nD.  $e^{x^{2}} - 1$",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "A. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(\\xi) = 0$\nB. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f^{\\prime}(\\xi) = 0$\nC. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $f(a) - f(b) = f'(\\xi)(b - a)$\nD. 在区间  $(a, b)$  内至少存在一点  $\\xi$ , 使得  $\\int_{a}^{b} f(x) d x = f(\\xi)(b - a)$",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "A.  $2y - x$\nB. -1\nC.  $2x - y$\nD. -3",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "设  $a, b$  为常数，若  $\\lim_{x \\to \\infty} \\left( \\frac{ax^2}{x + 1} + bx \\right) = 2$ ，则  $a + b =$  ______。",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "圆  $x^{2} + y^{2} = x + y$  在0,0点处的切线方程是",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "由曲线  $y = \\frac{1}{x}$  和直线  $x = 1, x = 2$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转一周所的旋转体体积  $V =$  ________。",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "微分方程  $y'' - 5y' - 14y = 0$  的通解是  $y =$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "设平面区域  $D = \\left\\{(x, y) \\mid x^2 + y^2 \\leq 1\\right\\}$ ，则二重积分  $\\iint_{D} (x^2 + y^2)^2 d\\sigma =$  ______。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "计算  $\\lim_{x \\to \\frac{\\pi}{2}} \\frac{\\ln \\sin x}{\\left( \\pi - 2x \\right)^{2}}$ 。",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "设函数  $f(x) = \\begin{cases} x^2 \\sin \\frac{2}{x} + \\sin 2x, & x \\neq 0 \\\\ 0, & x = 0 \\end{cases}$ ，用导数定义计算  $f'(0)$ 。",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "已知点（1，1）是曲线  $y = ae^{\\frac{1}{x}} + bx^{2}$  的拐点，求常数  $a, b$  的值。",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "计算不定积分  $\\int \\frac{\\cos x}{1 - \\cos x} dx$ 。",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "计算定积分  $\\int_{\\ln 5}^{\\ln 10} \\sqrt{e^x - 1} dx$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "求微积分方程  $\\frac{dy}{dx} + \\frac{y}{x} = \\sin x$  的通解。",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "已知隐函数  $z = f(x, y)$  由方程  $x^{z} - xy^{2} + z^{3} = 1$  所确定，求  $\\frac{\\partial z}{\\partial x}$  和  $\\frac{\\partial z}{\\partial y}$ 。",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "计算二重积分  $\\iint_{D} 2xy \\, dx \\, dy$ ，其中  $D$  是由抛物线  $y = x^2 + 1$  和直线  $y = 2x$  及  $x = 0$  围成的区域。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "求函数  $\\varphi(x) = \\int_{0}^{x} t(t - 1) dt$  的单调增减区间和极值。",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "（1）求  $f(x)$  ；（2）计算  $\\int_{1}^{+\\infty} f(2x) dx$  。\n2010年试题参考答案：",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "B 2. A 3. C 4. D 5. D",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "0 7.  $x + y = 0$  8.  $\\frac{\\pi}{2}$  9.  $y = C_{1}e^{-2x} + C_{2}e^{7x}$  10.  $\\frac{\\pi}{3}$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "$$\n= \\lim  _ {x \\rightarrow \\frac {\\pi}{2}} \\frac {- \\csc^ {2} x}{8} = - \\frac {1}{8}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "$$\n\\begin{array}{l} = \\lim  _ {\\Delta x \\rightarrow 0} (\\Delta x \\sin \\frac {2}{\\Delta x} + \\frac {\\sin 2 \\Delta x}{\\Delta x}) = 0 + \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{\\Delta x} \\\\ = 2 \\lim  _ {\\Delta x \\rightarrow 0} \\frac {\\sin 2 \\Delta x}{2 \\Delta x} = 2 \\\\ \\end{array}\n$$\n13．解：由题意知  $ae + b = 1$  ①\n又因为  $y^\\prime = -\\frac{a}{x^2} e^{\\frac{1}{x}} + 2bx,y'' = \\frac{2a}{x^3} e^{\\frac{1}{x}} + \\frac{a}{x^4} e^{\\frac{1}{x}} + 2b$\n所以，由题意知  $2ae + ae + 2b = 3ae + 2b = 0$  (2)\n由①和②解得  $a = -\\frac{2}{e}, b = 3$",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "$$\n\\begin{array}{l} = \\int \\frac {1}{\\sin^ {2} x} d \\sin x + \\int (\\csc^ {2} x - 1) d x \\\\ = - \\frac {1}{\\sin x} - \\cot x - x + C \\\\ \\end{array}\n$$\n解二：原式  $= \\int \\frac{1 - 2\\sin^2\\frac{x}{2}}{2\\sin^2\\frac{x}{2}} dx$\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int \\csc^ {2} \\frac {x}{2} d x - \\int d x = \\int \\csc^ {2} \\frac {x}{2} d (\\frac {x}{2}) - \\int d x \\\\ = - \\cot \\frac {x}{2} - x + C \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "所以  $\\int_{\\ln 5}^{\\ln 10}\\sqrt{e^x - 1} dx = \\int_2^3\\frac{2t^2dt}{1 + t^2} = 2\\int_2^3 dt - 2\\int_2^3\\frac{dt}{1 + t^2}$\n$$\n= 2 - 2 (\\arctan 3 - \\arctan 2)\n$$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "$$\n\\begin{array}{l} = e ^ {- \\ln x} \\left(\\int \\sin x e ^ {\\ln x} d x + C\\right) \\\\ = \\frac {1}{x} (- x \\cos x + \\int \\cos x d x + C) \\\\ = - \\cos x + \\frac {\\sin x}{x} + \\frac {C}{x} \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "$$\nF _ {x} ^ {\\prime} = z x ^ {z - 1} - y ^ {2}, F _ {y} ^ {\\prime} = - 2 x y, F _ {z} ^ {\\prime} = x ^ {z} \\ln x + 3 z ^ {2}\n$$\n所以  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x'}{F_z'} = \\frac{y^2 - zx^{z-1}}{x^z\\ln x + 3z^2}, \\frac{\\partial x}{\\partial y} = -\\frac{F_y'}{F_z'} = \\frac{2xy}{x^z\\ln x + 3z^2}$",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "解方程组  $\\left\\{ \\begin{array}{l} y = x^2 + 1, \\\\ y = 2x \\end{array} \\right.$  可求得交点为（1，2）\n$$\n\\begin{array}{l} \\iint_ {D} 2 x y d x d y = \\int_ {0} ^ {1} d x \\int_ {2 x} ^ {x ^ {2} + 1} 2 x y d y \\\\ = \\int_ {0} ^ {1} x y ^ {2} \\left| \\begin{array}{c} x ^ {2} + 1 \\\\ 2 x \\end{array} \\right. d x = \\int_ {0} ^ {1} x \\left(x ^ {4} + 1 - 2 x ^ {2}\\right) d x \\\\ = \\frac {1}{2} \\int_ {0} ^ {1} (x ^ {2} - 1) ^ {2} d x ^ {2} = \\frac {1}{6} (x ^ {2} - 1) ^ {3} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. = \\frac {1}{6} \\\\ \\end{array}\n$$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "$$\n\\Phi^ {\\prime} (x) = x (x - 1)\n$$\n令  $\\Phi'(x) = x(x - 1) = 0$\n得驻点  $x_{1} = 0, x_{2} = 1$\n列表\n<table><tr><td>x</td><td>(−∞,0)</td><td>0</td><td>(0,1)</td><td>1</td><td>(1,+∞)</td></tr><tr><td>Φ&#x27;(x)</td><td>+</td><td>0</td><td>-</td><td>0</td><td>+</td></tr><tr><td>Φ(x)</td><td>单调增</td><td>极大值</td><td>单调减</td><td>极小值</td><td>单调增</td></tr></table>\n极大值  $\\Phi (0) = 0$\n极小值  $\\Phi(1) = \\int_{0}^{1} x(x - 1) dx = -\\frac{1}{6}$",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "解：（1） $f(x) = \\left[\\frac{1 + 2}{x}\\right]^x = \\left[e^{x\\ln \\left(1 + \\frac{2}{x}\\right)}\\right]'$\n$$\n= e ^ {x \\ln \\left(1 + \\frac {2}{x}\\right)} \\left[ \\ln \\left(1 + \\frac {2}{x}\\right) + x \\cdot \\frac {1}{1 + \\frac {2}{x}} \\left(- \\frac {2}{x ^ {2}}\\right) \\right]\n$$\n$$\n= \\left(1 + \\frac {2}{x}\\right) ^ {x} \\left[ \\ln \\left(1 + \\frac {2}{x}\\right) - \\frac {2}{x + 2} \\right],\n$$\n(2)  $\\int_{1}^{+\\infty} f(2x) dx = \\frac{1}{2} \\int_{1}^{+\\infty} f(2x) d(2x) \\quad \\underline{2x} = t \\quad \\frac{1}{2} \\int_{2}^{+\\infty} f(t) dt$\n$$\n= \\frac {1}{2} \\left(1 + \\frac {2}{t}\\right) ^ {t} \\Bigg | _ {2} ^ {+ \\infty} = \\frac {1}{2} \\lim  _ {t \\rightarrow + \\infty} \\left(1 + \\frac {2}{t}\\right) ^ {t} - 2\n$$\n$$\n= \\frac {1}{2} \\lim  _ {t \\rightarrow + \\infty} [ (1 + \\frac {2}{t}) ^ {\\frac {t}{2}} ] ^ {2} - 2 = \\frac {1}{2} e ^ {2} - 2\n$$",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

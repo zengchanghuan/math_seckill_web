@@ -1,0 +1,233 @@
+{
+  "meta": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2017,
+    "exam_type": "专升本",
+    "total_sections": 8,
+    "total_questions": 32,
+    "total_images": 1
+  },
+  "paper": {
+    "province": "广东",
+    "subject": "高等数学",
+    "year": 2017,
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "A.  $\\lim_{n\\to \\infty}e^{-n} = 0$\nB.  $\\lim_{n\\to \\infty}e^{\\frac{1}{n}} = 1$\nC.  $\\lim_{x \\to 1} \\frac{x - 1}{x^2 - 1} = 0$\nD.  $\\lim_{x \\to 0} x \\sin \\frac{1}{x} = 0$",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A. In 2\nB.  $2 \\ln 2$\nC. 1\nD. 4",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "A.  $\\int f^{\\prime}(x)dx = f(x) + C$\nB.  $\\left[\\int f(x) dx\\right]' = f(x)$\nC.  $\\int f(x) dx = F(x) + C$\nD.  $\\int F(x) d x = f(x) + C$",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "A. 2\nB. 4\nC. 6\nD. 8",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "A.  $\\int_0^\\pi d\\theta \\int_0^1 rf(r^2)dr$\nB.  $\\int_0^\\pi d\\theta \\int_0^1 f(r^2)dr$\nC.  $\\int_0^{2\\pi}d\\theta \\int_0^1 rf(r^2)dr$\nD.  $\\int_0^{2\\pi} d\\theta \\int_0^1 f(r^2) dr$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "已知当  $x \\to 0$  时， $f(x) \\sim 2x$ ，则  $\\lim_{x \\to 0} \\frac{\\sin 6x}{f(x)} =$  ________.",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "若常数  $p > 1$ ，则广义积分  $\\int_{1}^{+\\infty} \\frac{1}{x^p} dx =$  ________.",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "设二元函数  $z = f(x, y)$  的全微分  $dz = \\frac{-y}{x^2} dx + \\frac{1}{x} dy$ ，则  $\\frac{\\partial^2 z}{\\partial y \\partial x} =$  ________。",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "微分方程  $y'' - 9y = 0$  的通解为  $y =$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "级数  $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$  的和为",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "求极限  $\\lim_{x\\to 0}\\frac{e^{3x} - 3x - 1}{1 - \\cos{x}}$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "设  $y = x^{x^2} (x > 0)$ ，求  $y'$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "设函数  $f(x) = \\int_{1}^{x}\\sqrt{(t - 1)^{2} + 1} dt$ ，求曲线  $y = f(x)$  的凹凸区间和拐点",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "求不定积分  $\\int x\\cos (x + 2)dx$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "设  $(x - y)^3 + z + \\tan z = 0$ ，计算  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y}$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "求二重积分  $\\iint_{D} e^{x^3} d\\sigma$ ，其中  $D$  是由曲线  $y = x^2$  和直线  $x = 1$  及  $y = 0$  围成的有界闭区域",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "若曲线经过点  $(0,1)$ ，且该曲线上一点  $(x,y)$  处的切线斜率为  $2y + e^{x}$ ，求这条曲线的方程",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "判定级数  $\\sum_{n=1}^{\\infty}\\left(\\frac{1}{n^{2}} + \\frac{4^{n}}{n!}\\right)$  敛散性。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "（1）求曲线  $y = f(x)$  的水平渐近线方程；\n(2) 求由曲线  $y = f(x)$  和直线  $x = 0, x = 1$  及  $y = 0$  围成的平面图形绕  $x$  轴旋转而成的旋转体体积  $V$",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "(1) 证明: 当  $x > 0$  时, 恒有  $f(x) + f\\left(\\frac{1}{x}\\right) = \\frac{\\pi}{2}$ ;\n（2）试问方程  $f(x) = x$  在区间  $(0, +\\infty)$  内有几个实根？\n# 广东省2017年普通高等本科插班生招生考试《高等数学》答案",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "C 2.B 3.D 4.D 5.A",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "3 7.  $\\frac{1}{p - 1}$  8.  $-\\frac{1}{x^2}$  9.  $C_1e^{3x} + C_2e^{-3x}$  10. 1",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "$\\lim_{x\\to 0}\\frac{e^{3x} - 3x - 1}{1 - \\cos{x}} = \\lim_{x\\to 0}\\frac{e^{3x} - 3x - 1}{\\frac{1}{2}x^2} = \\lim_{x\\to 0}\\frac{3e^{3x} - 3}{x} = \\lim_{x\\to 0}\\frac{3\\bullet 3e^{3x}}{1} = 9$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "$y = x^{x^2} = e^{x^2\\ln x}$  ，故  $y^\\prime = e^{x^2\\ln x}\\bullet (2x\\ln x + x^2\\bullet \\frac{1}{x}) = x^{x^2}(2x\\ln x + x) = x^{x^2 +}(2\\ln x + 1)$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "令  $f''(x) = 0$  ，解得  $x = 1$\n当  $x > 1$  时， $f''(x) > 0$ ；当  $x < 1$  时， $f''(x) < 0$\n故函数  $f(x)$  的凹区间为  $(1, +\\infty)$ ，凸区间为  $(- \\infty, 1)$ ；\n拐点为  $(1,0)$  。",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "$$\n= x \\sin (x + 2) + \\cos (x + 2) + C\n$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "$$\nF _ {x} = 3 (x - y) ^ {2}, F _ {y} = - 3 (x - y) ^ {2}, F _ {z} = 1 + \\sec^ {2} z,\n$$\n故  $\\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z} = \\frac{-(x - y)^2}{1 + \\sec^2z},\\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z} = \\frac{3(x - y)^2}{\\sec^2z + 1},$\n因此  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y} = -\\frac{3(x - y)^2}{1 + \\sec^2 z} + \\frac{3(x - y)^2}{\\sec^2 1} = 0$ 。",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "即  $D:0\\leq X\\leq 1,0\\leq y\\leq x^{2}$  。则\n$$\n\\begin{array}{l} \\iint_ {D} e ^ {x ^ {3}} d \\sigma = \\int_ {0} ^ {1} d x \\int_ {0} ^ {x ^ {2}} e ^ {x ^ {3}} d y = \\int_ {0} ^ {1} e ^ {x ^ {3}} \\bullet y \\left| \\begin{array}{l} x ^ {2} \\\\ 0 \\end{array} \\right. d x \\\\ = \\int_ {0} ^ {1} x ^ {2} e ^ {x ^ {3}} d x = \\frac {1}{3} e ^ {x ^ {3}} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. \\\\ = \\frac {1}{3} (e - 1) \\\\ \\end{array}\n$$\n![image](https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg)",
+            "images": [
+              {
+                "alt_text": "image",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-18/c55072ef-bc96-4536-b6f2-72d493c5f5a6/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg",
+                "position": "inline"
+              }
+            ]
+          },
+          {
+            "question_number": 17,
+            "content": "$$\n\\begin{array}{l} y = e ^ {- \\int - 2 d x} \\left(\\int e ^ {x} e ^ {- \\int 2 d x} d x + C\\right) \\\\ = e ^ {2 x} \\left(\\int e ^ {- x} d x + C\\right) \\\\ = e ^ {2 x} \\left(- e ^ {- x} + C\\right) \\\\ = - e ^ {x} + C e ^ {2 x} \\quad (C \\text {为 任 意 常 数}), \\\\ \\end{array}\n$$\n又由  $y(0) = 1$ ，可知  $C = 2$ ，即  $y = -e^{x} + 2e^{2x}$ 。",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "$$\n\\text {令} \\nu_ {n} = \\frac {4 ^ {n}}{n !}, \\lim  _ {n \\rightarrow \\infty} \\frac {\\nu_ {n} + 1}{\\nu_ {n}} = \\lim  _ {n \\rightarrow \\infty} \\frac {4 ^ {n + 1}}{(n + 1) !} \\cdot \\frac {n !}{4 ^ {n}} = \\lim  _ {n \\rightarrow \\infty} \\frac {4}{n + 1} = 0 <   1,\n$$\n可知级数  $\\sum_{n = 1}^{\\infty}\\frac{4^n}{n!}$  收敛，\n而级数  $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$  为  $p > 1$  的  $p^{-}$ 级数，可知其收敛，\n故由级数的基本性质可知原级数收敛。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "$$\n\\lim  _ {x \\rightarrow - \\infty} f (x) = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{\\sqrt {1 + x ^ {2}}} = \\lim  _ {x \\rightarrow - \\infty} \\frac {1 + x}{- x \\sqrt {\\frac {1}{x ^ {2}} + 1}} = - 1\n$$\n故函数  $y = f(x)$  有两条水平渐近线，方程分别为  $y = 1, y = -1$\n(2) 当  $0 \\leq x \\leq 1$  时,  $f(x) > 0$ , 故所求旋转体体积为\n$$\n\\begin{array}{l} V _ {x} = \\pi \\int_ {0} ^ {1} \\left(\\frac {1 + x}{\\sqrt {1 + x ^ {2}}}\\right) ^ {2} d x \\\\ = \\pi \\int_ {0} ^ {1} \\frac {1 + x ^ {2} + 2 x}{1 + x ^ {2}} d x \\\\ = \\pi \\left(\\int_ {0} ^ {1} 1 d x + \\int_ {0} ^ {1} \\frac {2 x}{1 + x ^ {2}} d x\\right) \\\\ = \\pi \\left(1 + \\ln (1 + x ^ {2}) \\Bigg | _ {0} ^ {1}\\right) \\\\ = (1 + \\ln 2) \\pi \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "(1) 令  $F(x) = f(x) + f\\left(\\frac{1}{x}\\right) = \\arctan \\frac{1}{x} + \\arctan x$\n$$\nF ^ {\\prime} (x) = \\frac {1}{1 + \\frac {1}{x ^ {2}}} \\cdot \\left(- \\frac {1}{x ^ {2}}\\right) + \\frac {1}{1 + x ^ {2}}\n$$\n$$\n= - \\frac {1}{x ^ {2} + 1} + \\frac {1}{1 + x ^ {2}} = 0,\n$$\n则可知  $F(x) = C$  ，  $C$  为常数\n当  $x = 1$  时， $F(1) = C = f(1) + f(1) = \\frac{\\pi}{4} + \\frac{\\pi}{4} = \\frac{\\pi}{2}$ ，\n故当  $x > 0$  时， $F(x) = f(x) + f\\left(\\frac{1}{x}\\right) = \\frac{\\pi}{2}$  恒成立；\n(2) 令  $g(x) = f(x) - x$ , 则  $g'(x) = \\left(\\arctan \\frac{1}{x} - x\\right)' = -\\frac{1}{1 + x^2} - 1 < 0$ ,\n故  $g(x)$  在  $(0, +\\infty)$  上单调递减，又\n$$\n\\lim  _ {x \\rightarrow 0 ^ {+}} g (x) = \\lim  _ {x \\rightarrow 0 ^ {+}} \\left(\\arctan \\frac {1}{x} - x\\right) = \\frac {\\pi}{2} > 0,\n$$\n$$\n\\lim  _ {x \\rightarrow + \\infty} g (x) = \\lim  _ {x \\rightarrow + \\infty} \\left(\\arctan \\frac {1}{x} - x\\right) = - \\infty ,\n$$\n则  $g(x) = 0$  在  $(0, +\\infty)$  上有且仅有一个实根，\n即  $f(x) = x$  在  $(0, +\\infty)$  上只有一个实根。",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}
