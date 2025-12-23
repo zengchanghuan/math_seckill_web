@@ -253,3 +253,45 @@ export interface AssessmentQuestion {
   sectionName: string;
   knowledge: string[];
 }
+
+// ========== 填空题转选择题系统 ==========
+
+// 选项
+export interface ChoiceOption {
+  key: 'A' | 'B' | 'C' | 'D';
+  text: string;
+  error_type?: string; // 错误类型（仅干扰项有）
+}
+
+// 干扰项理由
+export interface DistractorRationale {
+  key: 'A' | 'B' | 'C' | 'D';
+  why_wrong_or_right: string;
+}
+
+// 唯一性检查结果
+export interface UniquenessCheck {
+  strategy: string;
+  equivalence_risks: string[];
+  passed: boolean;
+}
+
+// 转换结果
+export interface ConvertToChoiceResult {
+  type: 'single_choice';
+  stem: string;
+  options: ChoiceOption[];
+  correct_key: 'A' | 'B' | 'C' | 'D';
+  correct_text: string;
+  normalize_answer: string;
+  distractor_rationales: DistractorRationale[];
+  uniqueness_check: UniquenessCheck;
+}
+
+// 转换请求
+export interface ConvertToChoiceRequest {
+  stem: string;
+  answer: string;
+  solution?: string;
+  knowledge?: string[];
+}
