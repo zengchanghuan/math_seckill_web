@@ -17,13 +17,13 @@ export default function MathText({
 }: MathTextProps) {
   if (!content) return null;
 
-  // 调试：检查接收到的内容
-  if (content.includes('由题意知')) {
-    console.log('🔍 MathText接收到的第4题解析内容:', {
-      content,
-      'has $': content.includes('$'),
-      'first 100 chars': content.substring(0, 100),
-    });
+  // 修复：如果内容包含 LaTeX 命令但没有 $ 符号，说明 $ 被意外移除了
+  // 尝试自动修复
+  let processedContent = content;
+  if (!content.includes('$') && /\\[a-z]+/.test(content)) {
+    console.warn('检测到 LaTeX 代码缺少 $ 符号，尝试自动修复');
+    // 将整段内容包裹在 $ $ 中
+    processedContent = `$${content}$`;
   }
 
   // 提取 LaTeX 表达式（支持 $...$ 和 $$...$$）
@@ -38,11 +38,10 @@ export default function MathText({
   const inlineMathRegex = /\$((?:[^\$]|\\\$)*?)\$/g;
   
   // 先处理块级数学公式
-  let processedContent = content;
   const blockMatches: Array<{ start: number; end: number; content: string }> = [];
   let match;
   
-  while ((match = blockMathRegex.exec(content)) !== null) {
+  while ((match = blockMathRegex.exec(processedContent)) !== null) {
     blockMatches.push({
       start: match.index,
       end: match.index + match[0].length,
@@ -54,7 +53,7 @@ export default function MathText({
   const inlineMatches: Array<{ start: number; end: number; content: string }> = [];
   blockMathRegex.lastIndex = 0;
   
-  while ((match = inlineMathRegex.exec(content)) !== null) {
+  while ((match = inlineMathRegex.exec(processedContent)) !== null) {
     // 检查是否在块级数学公式内
     const isInBlock = blockMatches.some(
       (block) => match.index >= block.start && match.index < block.end
@@ -79,7 +78,7 @@ export default function MathText({
   for (const match of allMatches) {
     // 添加数学公式前的文本
     if (match.start > lastIndex) {
-      parts.push(content.substring(lastIndex, match.start));
+      parts.push(processedContent.substring(lastIndex, match.start));
     }
     // 添加数学公式
     parts.push({
@@ -91,8 +90,8 @@ export default function MathText({
   }
   
   // 添加剩余文本
-  if (lastIndex < content.length) {
-    parts.push(content.substring(lastIndex));
+  if (lastIndex < processedContent.length) {
+    parts.push(processedContent.substring(lastIndex));
   }
 
   return (
