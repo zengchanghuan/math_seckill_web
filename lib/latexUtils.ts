@@ -32,17 +32,38 @@ export function formatLatexForMarkdown(text: string): string {
 
 /**
  * 修复 LaTeX 中的 limits，确保下标显示在符号下方
+ * 
+ * 行内公式 vs 块级公式的处理策略：
+ * - 行内公式：积分(\int)不添加\limits，保持紧凑的右侧上下标
+ * - 块级公式：积分添加\limits，上下标在积分号上下
+ * - 极限、求和等始终添加\limits（这些符号在行内也应该上下标在下方）
  */
-export function fixLatexLimits(latex: string): string {
+export function fixLatexLimits(latex: string, isInline: boolean = true): string {
   if (!latex) return '';
   
-  // 只添加 \limits，不做其他处理
-  return latex
+  let result = latex;
+  
+  // 极限、求和、求积等：无论行内还是块级都添加 \limits
+  result = result
     .replace(/\\lim(?![a-zA-Z])/g, '\\lim\\limits')
     .replace(/\\max(?![a-zA-Z])/g, '\\max\\limits')
     .replace(/\\min(?![a-zA-Z])/g, '\\min\\limits')
     .replace(/\\sum(?![a-zA-Z])/g, '\\sum\\limits')
-    .replace(/\\prod(?![a-zA-Z])/g, '\\prod\\limits')
-    .replace(/\\int(?![a-zA-Z])/g, '\\int\\limits');
+    .replace(/\\prod(?![a-zA-Z])/g, '\\prod\\limits');
+  
+  // 积分：只在块级公式中添加 \limits
+  if (!isInline) {
+    result = result.replace(/\\int(?![a-zA-Z])/g, '\\int\\limits');
+  }
+  // 行内积分：保持默认行为（上下标在右侧），不添加 \limits
+  
+  // 优化分数显示：行内公式使用紧凑分数 \tfrac
+  if (isInline) {
+    // 将 \frac 替换为 \tfrac (text-style fraction，更紧凑)
+    // 但只替换简单的分数，避免影响复杂的嵌套分数
+    result = result.replace(/\\frac(?=\{[^{}]{1,10}\}\{[^{}]{1,10}\})/g, '\\tfrac');
+  }
+  
+  return result;
 }
 

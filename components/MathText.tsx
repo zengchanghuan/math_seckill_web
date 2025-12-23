@@ -99,8 +99,10 @@ export default function MathText({
           return <span key={index}>{part}</span>;
         } else {
           try {
-            // 添加 \limits 确保下标显示在符号下方
-            const processedContent = fixLatexLimits(part.content);
+            // 根据是否为块级公式决定是否添加 \limits
+            // 行内公式：积分不添加 \limits（上下标在右侧，紧凑）
+            // 块级公式：积分添加 \limits（上下标在上下）
+            const processedContent = fixLatexLimits(part.content, !part.display);
             return part.display ? (
               <BlockMath key={index} math={processedContent} />
             ) : (

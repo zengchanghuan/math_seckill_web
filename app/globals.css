@@ -31,9 +31,24 @@ body {
   font-size: 1.1em;
 }
 
+/* 块级公式样式 */
 .katex-display {
-  margin: 1em 0;
+  margin: 0.5em 0;
+  /* 减小默认的上下间距，避免额外空隙 */
 }
+
+/* 行内公式与文字基线对齐 */
+.katex {
+  /* 确保行内公式与周围文本基线对齐 */
+  vertical-align: baseline;
+}
+
+/* 行内积分符号优化：确保不会过度撑高行高 */
+.katex .mop {
+  /* 积分号等大型运算符在行内时保持紧凑 */
+  vertical-align: -0.2em;
+}
+
 
 /* 自定义滚动条 */
 ::-webkit-scrollbar {

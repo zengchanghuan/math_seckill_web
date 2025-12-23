@@ -85,7 +85,7 @@ export default function QuestionArea({ question, questionNumber, showSkip = fals
       </div>
 
       {/* 题干区域 */}
-      <div className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mt-4">
+      <div className="text-gray-800 dark:text-gray-200 text-lg leading-relaxed mt-4" style={{ display: 'flow-root' }}>
         <MathText content={question.question} />
       </div>
     </div>
