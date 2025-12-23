@@ -228,6 +228,31 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
           )}
         </div>
       )}
+
+      {/* 解析中的图片（如果有） */}
+      {question.images && question.images.length > 0 && question.images.some(img => img.position === 'solution') && (
+        <div className="pl-4 mt-4 space-y-3">
+          {question.images
+            .filter(img => img.position === 'solution')
+            .map((image, idx) => (
+              <div key={idx} className="flex justify-center">
+                <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 max-w-md">
+                  <img
+                    src={image.url}
+                    alt={image.alt_text || `解析配图${idx + 1}`}
+                    className="w-full h-auto max-h-80 object-contain"
+                    loading="lazy"
+                  />
+                  {image.caption && (
+                    <div className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-sm text-gray-600 dark:text-gray-400 text-center">
+                      {image.caption}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 }

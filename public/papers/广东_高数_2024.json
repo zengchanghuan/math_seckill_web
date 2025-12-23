@@ -1,148 +1,159 @@
 {
   "meta": {
-    "year": 2024,
-    "province": "广东",
+    "province": "广东省",
     "subject": "高等数学",
-    "title": "2024年广东专升本高等数学"
+    "year": 2024,
+    "exam_type": "专升本",
+    "total_sections": 4,
+    "total_questions": 20,
+    "total_images": 0
   },
   "paper": {
+    "year": 2024,
+    "province": "广东省",
+    "subject": "高等数学",
+    "exam_type": "专升本",
     "sections": [
       {
+        "section_number": "一",
         "section_name": "单项选择题",
         "questions": [
           {
             "question_number": 1,
-            "content": "$\\lim_{x \\rightarrow 0} \\frac{\\sin 3x}{x} = $ ____\nA. 3  B. 1  C. -1  D. -3",
-            "answer": "A\n【解析】已知重要极限：  \n\\[\n\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1\n\\]  \n本题中分子为 $\\sin 3x$，令 $t = 3x$，则当 $x \\to 0$ 时 $t \\to 0$，于是  \n\\[\n\\lim_{x \\to 0} \\frac{\\sin 3x}{x} = \\lim_{x \\to 0} \\frac{\\sin 3x}{3x} \\cdot 3 = 3 \\cdot \\lim_{t \\to 0} \\frac{\\sin t}{t} = 3 \\times 1 = 3\n\\]  \n\n答案：A",
+            "content": "$\\lim_{x \\rightarrow 0} \\frac{\\sin 3x}{x} = $ ____\nA. 3\nB. 1\nC. -1\nD. -3",
+            "answer": "A\n【精析】$\\lim_{x \\to 0} \\frac{\\sin 3x}{x} = \\lim_{x \\to 0} \\frac{3\\sin 3x}{3x} = 3 \\times 1 = 3.$",
             "images": []
           },
           {
             "question_number": 2,
-            "content": "f(x) = x² - cos x, 则f'$(\\frac{\\pi}{2}) = $\nA. $\\pi - 1$  B. $\\pi$  C. $\\pi + 1$  D. $2\\pi$",
-            "answer": "C\n【解析】已知 $f(x) = x^2 - \\cos x$，  \n先求导：  \n\\[\nf'(x) = \\frac{d}{dx}(x^2) - \\frac{d}{dx}(\\cos x) = 2x - (-\\sin x) = 2x + \\sin x.\n\\]  \n代入 $x = \\frac{\\pi}{2}$：  \n\\[\nf'\\left(\\frac{\\pi}{2}\\right) = 2 \\cdot \\frac{\\pi}{2} + \\sin \\frac{\\pi}{2} = \\pi + 1.\n\\]  \n因此正确答案为 $\\pi + 1$，对应选项 C。  \n\n答案：C",
+            "content": "f(x) = x² - cos x, 则f'$(\\frac{\\pi}{2}) = $\nA. $\\pi - 1$\nB. $\\pi$\nC. $\\pi + 1$\nD. $2\\pi$",
+            "answer": "C\n【精析】$f'(x) = 2x + \\sin x$，则 $f'(\\frac{\\pi}{2}) = 2 \\cdot \\frac{\\pi}{2} + \\sin\\frac{\\pi}{2} = \\pi + 1$。",
             "images": []
           },
           {
             "question_number": 3,
-            "content": "当 $x \\rightarrow 0$ 时，$ax$ 与 $4x^{3} - 3x^{2} + 2x$ 是等价无穷小，则 $a = $ ____\nA. 1  B. 2  C. 3  D. 4",
-            "answer": "B\n【解析】已知当 $x \\to 0$ 时，$ax$ 与 $4x^{3} - 3x^{2} + 2x$ 是等价无穷小，即  \n$$\n\\lim_{x \\to 0} \\frac{4x^{3} - 3x^{2} + 2x}{ax} = 1.\n$$\n\n对分子进行因式分解：  \n$$\n4x^{3} - 3x^{2} + 2x = x(4x^{2} - 3x + 2).\n$$\n\n于是  \n$$\n\\lim_{x \\to 0} \\frac{x(4x^{2} - 3x + 2)}{ax} = \\lim_{x \\to 0} \\frac{4x^{2} - 3x + 2}{a}.\n$$\n\n当 $x \\to 0$ 时，$4x^{2} - 3x + 2 \\to 2$，所以  \n$$\n\\lim_{x \\to 0} \\frac{4x^{2} - 3x + 2}{a} = \\frac{2}{a}.\n$$\n\n令 $\\frac{2}{a} = 1$，解得 $a = 2$。\n\n答案：B",
+            "content": "当 $x \\rightarrow 0$ 时，$ax$ 与 $4x^{3} - 3x^{2} + 2x$ 是等价无穷小，则 $a = $ ____\nA. 1\nB. 2\nC. 3\nD. 4",
+            "answer": "B\n【精析】由等价无穷小定义，$\\lim_{x\\to 0}\\frac{4x^{3}-3x^{2}+2x}{ax}=1$，即 $\\lim_{x\\to 0}\\frac{4x^{2}-3x+2}{a}=\\frac{2}{a}=1$，故 $a=2$。",
             "images": []
           },
           {
             "question_number": 4,
-            "content": "设 $I_1 = \\int_0^1 e^x dx$, $I_2 = \\int_0^1 e^{2x} dx$, $I_3 = \\int_0^1 e^{3x} dx$，则下列关系式成立的是\nA. $I_{1} > I_{2} > I_{3}$  B. $I_{1} > I_{3} > I_{2}$  C. $I_{3} > I_{1} > I_{2}$  D. $I_{3} > I_{2} > I_{1}$",
-            "answer": "D\n【解析】首先计算三个定积分：  \n\n1. 计算 $I_1$：  \n\\[\nI_1 = \\int_0^1 e^x dx = \\left[ e^x \\right]_0^1 = e^1 - e^0 = e - 1.\n\\]\n\n2. 计算 $I_2$：  \n\\[\nI_2 = \\int_0^1 e^{2x} dx = \\left[ \\frac{e^{2x}}{2} \\right]_0^1 = \\frac{e^2}{2} - \\frac{1}{2} = \\frac{e^2 - 1}{2}.\n\\]\n\n3. 计算 $I_3$：  \n\\[\nI_3 = \\int_0^1 e^{3x} dx = \\left[ \\frac{e^{3x}}{3} \\right]_0^1 = \\frac{e^3}{3} - \\frac{1}{3} = \\frac{e^3 - 1}{3}.\n\\]\n\n接下来比较它们的大小。  \n已知 $e \\approx 2.718$，则：  \n\\[\nI_1 \\approx 2.718 - 1 = 1.718,\n\\]  \n\\[\nI_2 \\approx \\frac{7.389 - 1}{2} = \\frac{6.389}{2} = 3.1945,\n\\]  \n\\[\nI_3 \\approx \\frac{20.085 - 1}{3} = \\frac{19.085}{3} \\approx 6.3617.\n\\]  \n显然 $I_3 > I_2 > I_1$。  \n\n为了严格比较，也可以考虑函数 $f(t) = \\frac{e^t - 1}{t}$ 在 $t>0$ 时的单调性，或者直接比较：  \n\\[\nI_1 = \\frac{e - 1}{1}, \\quad I_2 = \\frac{e^2 - 1}{2}, \\quad I_3 = \\frac{e^3 - 1}{3}.\n\\]  \n由于 $e^t$ 增长很快，分子增长比分母快，所以 $t$ 越大，$\\frac{e^t - 1}{t}$ 越大，因此 $I_3 > I_2 > I_1$。  \n\n答案：D",
+            "content": "设 $I_1 = \\int_0^1 e^x dx$, $I_2 = \\int_0^1 e^{2x} dx$, $I_3 = \\int_0^1 e^{3x} dx$，则下列关系式成立的是\nA. $I_{1} > I_{2} > I_{3}$\nB. $I_{1} > I_{3} > I_{2}$\nC. $I_{3} > I_{1} > I_{2}$\nD. $I_{3} > I_{2} > I_{1}$",
+            "answer": "D\n【精析】$I_1 = \\int_0^1 e^x dx = e-1 \\approx 1.718$，$I_2 = \\int_0^1 e^{2x} dx = \\frac{1}{2}(e^2-1) \\approx 3.195$，$I_3 = \\int_0^1 e^{3x} dx = \\frac{1}{3}(e^3-1) \\approx 6.362$，故 $I_3 > I_2 > I_1$。",
             "images": []
           },
           {
             "question_number": 5,
-            "content": "改换二次积分次序：$I = \\int_0^1 dy \\int_{\\sqrt[3]{y}}^{\\sqrt{y}} f(x,y)dx$\n\n好的，我们先一步步分析。\n\n---\n\n## **1. 原积分**\n\\[\n\\int_{0}^{1} dy \\int_{x = \\sqrt[3]{y}}^{\\sqrt{y}} f(x,y) \\, dx\n\\]\n这里对 \\(y\\) 的积分范围是 \\(0 \\le y \\le 1\\)，  \n对固定的 \\(y\\)，\\(x\\) 的范围是：\n\\[\n\\sqrt[3]{y} \\le x \\le \\sqrt{y}.\n\\]\n\n---\n\n## **2. 确定积分区域边界曲线**\n\n由 \\(x = \\sqrt[3]{y}\\) 得 \\(y = x^3\\)（且 \\(y \\ge 0\\)）。  \n由 \\(x = \\sqrt{y}\\) 得 \\(y = x^2\\)（且 \\(y \\ge 0\\)）。\n\n在 \\(y \\in [0,1]\\) 时，比较 \\(x^3\\) 与 \\(x^2\\)：  \n当 \\(0 \\le x \\le 1\\) 时，\\(x^3 \\le x^2\\)。  \n所以对固定的 \\(y\\)，\\(x\\) 的下限是 \\(x^3 = y\\) 即 \\(x = y^{1/3}\\)，上限是 \\(x^2 = y\\) 即 \\(x = y^{1/2}\\)。  \n这意味着在 \\(y\\) 固定时，\\(x\\) 从较小的值（\\(y^{1/3}\\)）到较大的值（\\(y^{1/2}\\)）？  \n等一下，检查：  \n例如 \\(y=0.25\\)，\\(\\sqrt[3]{y} \\approx 0.63\\)，\\(\\sqrt{y} = 0.5\\)，  \n这里 \\(0.63 > 0.5\\)，所以不对——我弄反了大小关系。\n\n---\n\n**重新比较**：  \n\\(y = x^3\\) 与 \\(y = x^2\\) 在 \\(0 \\le x \\le 1\\) 时，  \n对同一个 \\(x\\)，\\(x^3 \\le x^2\\)。  \n但题目给的是 \\(x\\) 的范围：  \n\\[\n\\sqrt[3]{y} \\le x \\le \\sqrt{y}.\n\\]\n即 \\(x_{\\min} = y^{1/3}\\)，\\(x_{\\max} = y^{1/2}\\)。  \n这要求 \\(y^{1/3} \\le y^{1/2}\\)，即 \\(y^{1/6} \\ge 1\\)？ 不对，因为 \\(0<y<1\\) 时 \\(y^{1/6} \\le 1\\)，  \n实际上 \\(y^{1/3} \\ge y^{1/2}\\) 当 \\(0<y<1\\)，因为指数 \\(1/3 < 1/2\\)，所以 \\(y^{1/3} > y^{1/2}\\) 对 \\(0<y<1\\)。  \n例如 \\(y=0.125\\)，\\(y^{1/3}=0.5\\)，\\(y^{1/2} \\approx 0.354\\)，确实 \\(0.5 > 0.354\\)。  \n所以原积分上下限写反了？ 但题目是 \\(\\sqrt[3]{y} \\le x \\le \\sqrt{y}\\)，这不可能，因为 \\(\\sqrt[3]{y} > \\sqrt{y}\\) 当 \\(0<y<1\\)，积分区间为空？  \n\n---\n\n**检查原题**：可能是印刷或理解问题，常见题是  \n\\[\n\\int_{0}^{1} dy \\int_{y^2}^{\\sqrt{y}} f \\, dx\n\\]\n或者 \\(\\int_{y^{1/2}}^{y^{1/3}}\\) ？ 但那样下限大于上限，需交换。  \n不过常见区域是 \\(y\\) 在 \\(x^3\\) 与 \\(x^2\\) 之间，即 \\(x^3 \\le y \\le x^2\\)，对 \\(0 \\le x \\le 1\\)。\n\n---\n\n## **3. 假设常见正确区域**\n常见题是：\n\\[\n\\int_{0}^{1} dy \\int_{x = \\sqrt{y}}^{ \\sqrt[3]{y} } f \\, dx\n\\]\n但这样下限大于上限，所以原题可能故意把上下限交换写成 \\(\\sqrt[3]{y} \\le x \\le \\sqrt{y}\\)，但实际积分区域是 \\(x^2 \\le y \\le x^3\\)？ 不对，因为 \\(x^2 \\le x^3\\) 只在 \\(x \\ge 1\\) 成立，在 \\(0 \\le x \\le 1\\) 时 \\(x^2 \\ge x^3\\)。  \n所以区域应是 \\(x^3 \\le y \\le x^2\\) 对 \\(0 \\le x \\le 1\\)。\n\n---\n\n**画图**：  \n曲线 \\(y = x^3\\) 与 \\(y = x^2\\) 在 \\(x \\in [0,1]\\) 上，  \n交点：\\(x^3 = x^2 \\Rightarrow x^2(x-1)=0\\)，所以 \\(x=0\\) 或 \\(x=1\\)，对应 \\(y=0\\) 和 \\(y=1\\)。  \n在 \\(0<x<1\\) 时，\\(x^3 < x^2\\)。  \n所以区域是 \\(x^3 \\le y \\le x^2\\)，\\(0 \\le x \\le 1\\)。\n\n---\n\n## **4. 原积分次序**\n如果原题是 \\(\\int_{0}^{1} dy \\int_{\\sqrt[3]{y}}^{\\sqrt{y}} f \\, dx\\)，  \n那么对固定的 \\(y\\)，\\(x\\) 从 \\(y^{1/3}\\) 到 \\(y^{1/2}\\)，但 \\(y^{1/3} > y^{1/2}\\) 对 \\(0<y<1\\)，所以这是不可能的，除非积分是负的（交换上下限）。  \n所以可能是原题写反了上下限，实际区域是 \\(x^2 \\le y \\le x^3\\) 吗？ 但 \\(x^2 \\le x^3\\) 要求 \\(x \\ge 1\\)，不在 \\(0 \\le x \\le 1\\)。  \n所以只能是 \\(y\\) 从 \\(x^3\\) 到 \\(x^2\\)，即 \\(x\\) 从 \\(0\\) 到 \\(1\\)，对固定的 \\(x\\)，\\(y\\) 从 \\(x^3\\) 到 \\(x^2\\)。\n\n---\n\n**因此**：原积分若按 \\(dy\\,dx\\) 次序：\n\\[\n\\int_{0}^{1} dx \\int_{y = x^3}^{x^2} f(x,y) \\, dy.\n\\]\n\n---\n\n## **5. 验证**\n原积分若为 \\(\\int_{0}^{1} dy \\int_{x = \\sqrt[3]{y}}^{\\sqrt{y}} f \\, dx\\)，  \n那么 \\(y\\) 从 \\(0\\)\n\n## 二、填空题（本大题共5小题，每小题3分，共15分）",
-            "answer": "",
+            "content": "改换二次积分 $I = \\int_0^1 dy \\int_{\\sqrt[3]{y}}^{\\sqrt{y}} f(x,y)dx$ 的积分次序，则 $I = $ ____\nA. $\\int_0^1 dx \\int_{\\sqrt{x}}^{\\sqrt[3]{x}} f(x,y)dy$\nB. $\\int_0^1 dx \\int_{\\sqrt[3]{x}}^{\\sqrt{x}} f(x,y)dy$\nC. $\\int_0^1 dx \\int_{x^3}^{x^2} f(x,y)dy$\nD. $\\int_0^1 dx \\int_{x^2}^{x^3} f(x,y)dy$",
+            "answer": "C\n【精析】原积分区域为 $0 \\le y \\le 1$，$\\sqrt[3]{y} \\le x \\le \\sqrt{y}$，即 $y=x^3$ 与 $y=x^2$ 之间。交换次序得 $0 \\le x \\le 1$，$x^3 \\le y \\le x^2$，故 $I = \\int_0^1 dx \\int_{x^3}^{x^2} f(x,y)dy$。",
             "images": []
           }
         ]
       },
       {
+        "section_number": "二",
         "section_name": "填空题",
         "questions": [
           {
             "question_number": 6,
             "content": "已知 $y = x^{4}$，则 $y'' = $ ____",
-            "answer": "【解析】已知函数 $y = x^{4}$，需要求二阶导数 $y''$。  \n\n**步骤 1：求一阶导数**  \n对 $y = x^{4}$ 求导：  \n\\[\ny' = \\frac{d}{dx}(x^{4}) = 4x^{3}\n\\]\n\n**步骤 2：求二阶导数**  \n对 $y' = 4x^{3}$ 求导：  \n\\[\ny'' = \\frac{d}{dx}(4x^{3}) = 4 \\cdot 3x^{2} = 12x^{2}\n\\]\n\n**答案**：  \n\\[\ny'' = 12x^{2}\n\\]",
+            "answer": "$12x^{2}$\n【精析】$y' = 4x^{3}$，$y'' = 12x^{2}$",
             "images": []
           },
           {
             "question_number": 7,
             "content": "已知 $y = \\ln(x + 1)$，则 $dy = $ ____",
-            "answer": "【解析】已知函数 $y = \\ln(x + 1)$，求微分 $dy$。  \n微分公式为 $dy = y' \\, dx$，因此先求导数 $y'$。  \n\n对 $y = \\ln(x + 1)$ 求导：  \n$$\ny' = \\frac{1}{x + 1} \\cdot (x + 1)' = \\frac{1}{x + 1} \\cdot 1 = \\frac{1}{x + 1}.\n$$\n\n于是  \n$$\ndy = \\frac{1}{x + 1} \\, dx.\n$$\n\n答案：$\\displaystyle dy = \\frac{1}{x + 1} \\, dx$",
+            "answer": "$\\frac{1}{x + 1} dx$\n【精析】$dy = y' dx = \\frac{1}{x + 1} dx$",
             "images": []
           },
           {
             "question_number": 8,
             "content": "$\\sum_{n=1}^{\\infty} a_n$ 收敛，则 $\\lim_{n \\to \\infty} (a_n + 2)(a_n - 1) = $ ____",
-            "answer": "【解析】已知 $\\sum_{n=1}^{\\infty} a_n$ 收敛，根据级数收敛的必要条件，有  \n$$\n\\lim_{n \\to \\infty} a_n = 0.\n$$\n\n考虑要求的极限  \n$$\n\\lim_{n \\to \\infty} (a_n + 2)(a_n - 1).\n$$\n\n由于 $\\lim_{n \\to \\infty} a_n = 0$，由极限的四则运算法则：  \n$$\n\\lim_{n \\to \\infty} (a_n + 2) = 0 + 2 = 2,\n$$\n$$\n\\lim_{n \\to \\infty} (a_n - 1) = 0 - 1 = -1.\n$$\n\n因此  \n$$\n\\lim_{n \\to \\infty} (a_n + 2)(a_n - 1) = 2 \\times (-1) = -2.\n$$\n\n答案：$-2$",
+            "answer": "$-2$\n【精析】$\\sum a_n$ 收敛 $\\Rightarrow \\lim\\limits_{n \\to \\infty} a_n = 0$，故 $\\lim\\limits_{n \\to \\infty} (a_n + 2)(a_n - 1) = (0+2)(0-1) = -2$。",
             "images": []
           },
           {
             "question_number": 9,
             "content": "$x = \\sin t, y = \\cos 2t$ 在 $t = \\frac{\\pi}{4}$ 处切线斜率是 ____",
-            "answer": "【解析】已知参数方程  \n\\[\nx = \\sin t, \\quad y = \\cos 2t\n\\]  \n切线斜率公式为  \n\\[\n\\frac{dy}{dx} = \\frac{\\frac{dy}{dt}}{\\frac{dx}{dt}}\n\\]  \n计算导数：  \n\\[\n\\frac{dx}{dt} = \\cos t, \\quad \\frac{dy}{dt} = -2\\sin 2t\n\\]  \n因此  \n\\[\n\\frac{dy}{dx} = \\frac{-2\\sin 2t}{\\cos t}\n\\]  \n在 $t = \\frac{\\pi}{4}$ 处：  \n\\[\n\\sin 2t = \\sin \\frac{\\pi}{2} = 1, \\quad \\cos t = \\cos \\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}\n\\]  \n代入得  \n\\[\n\\frac{dy}{dx} = \\frac{-2 \\times 1}{\\frac{\\sqrt{2}}{2}} = \\frac{-2}{\\frac{\\sqrt{2}}{2}} = -2 \\times \\frac{2}{\\sqrt{2}} = -\\frac{4}{\\sqrt{2}} = -2\\sqrt{2}\n\\]  \n\n答案：$-2\\sqrt{2}$",
+            "answer": "$-2\\sqrt{2}$\n【精析】$\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{\\mathrm{d}y/\\mathrm{d}t}{\\mathrm{d}x/\\mathrm{d}t} = \\frac{-2\\sin 2t}{\\cos t}$，当 $t = \\frac{\\pi}{4}$ 时，$\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{-2\\sin (\\pi/2)}{\\cos (\\pi/4)} = \\frac{-2}{\\sqrt{2}/2} = -2\\sqrt{2}$",
             "images": []
           },
           {
             "question_number": 10,
             "content": "$f(t) = \\lim_{n \\to \\infty} (1 + \\frac{1}{n})^{2nt}$, $g(x) = \\int_0^x f''(t)dt$，则 $\\int_0^1 g(x)dx = $ ____",
-            "answer": "【解析】**步骤 1：求 $f(t)$**  \n已知  \n\\[\nf(t) = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^{2nt}.\n\\]  \n因为  \n\\[\n\\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n = e,\n\\]  \n所以  \n\\[\n\\left(1 + \\frac{1}{n}\\right)^{2nt} = \\left[\\left(1 + \\frac{1}{n}\\right)^n\\right]^{2t} \\to e^{2t} \\quad (n \\to \\infty).\n\\]  \n因此  \n\\[\nf(t) = e^{2t}.\n\\]  \n\n**步骤 2：求 $f''(t)$**  \n\\[\nf'(t) = 2e^{2t}, \\quad f''(t) = 4e^{2t}.\n\\]  \n\n**步骤 3：求 $g(x)$**  \n\\[\ng(x) = \\int_0^x f''(t) \\, dt = \\int_0^x 4e^{2t} \\, dt.\n\\]  \n计算积分：  \n\\[\n\\int 4e^{2t} \\, dt = 2e^{2t} + C,\n\\]  \n所以  \n\\[\ng(x) = \\left[ 2e^{2t} \\right]_{t=0}^{t=x} = 2e^{2x} - 2.\n\\]  \n\n**步骤 4：求 $\\int_0^1 g(x) \\, dx$**  \n\\[\n\\int_0^1 g(x) \\, dx = \\int_0^1 \\left( 2e^{2x} - 2 \\right) dx.\n\\]  \n分别积分：  \n\\[\n\\int_0^1 2e^{2x} \\, dx = \\left[ e^{2x} \\right]_{0}^{1} = e^2 - 1,\n\\]  \n\\[\n\\int_0^1 (-2) \\, dx = -2.\n\\]  \n因此  \n\\[\n\\int_0^1 g(x) \\, dx = (e^2 - 1) - 2 = e^2 - 3.\n\\]  \n\n**答案**  \n\\[\n\\boxed{e^2 - 3}\n\\]\n\n## 三、计算题（本大题共8小题，每小题6分，共48分）",
+            "answer": "$e^2 - 3$\n【精析】$f(t) = \\lim_{n \\to \\infty} (1 + \\frac{1}{n})^{2nt} = e^{2t}$，故 $f'(t)=2e^{2t}$，$f''(t)=4e^{2t}$。  \n$g(x) = \\int_0^x f''(t)dt = \\int_0^x 4e^{2t}dt = 2e^{2x}-2$。  \n$\\int_0^1 g(x)dx = \\int_0^1 (2e^{2x}-2)dx = (e^{2x}-2x)\\big|_0^1 = e^2-2-1 = e^2-3$。",
             "images": []
           }
         ]
       },
       {
+        "section_number": "三",
         "section_name": "计算题",
         "questions": [
           {
             "question_number": 11,
             "content": "求极限：$\\lim_{x\\to\\infty}\\frac{x^2+x}{2x^2+1}$",
-            "answer": "【解析】求极限：  \n\\[\n\\lim_{x\\to\\infty}\\frac{x^2+x}{2x^2+1}\n\\]  \n\n当 \\(x \\to \\infty\\) 时，分子和分母都趋于无穷大，属于 \\(\\frac{\\infty}{\\infty}\\) 型极限。  \n处理这种有理函数在无穷远处的极限，常用的方法是分子分母同时除以分母的最高次幂 \\(x^2\\)。  \n\n分子除以 \\(x^2\\)：  \n\\[\nx^2 + x = x^2\\left(1 + \\frac{1}{x}\\right) \\quad \\Rightarrow \\quad \\frac{x^2+x}{x^2} = 1 + \\frac{1}{x}\n\\]  \n\n分母除以 \\(x^2\\)：  \n\\[\n2x^2 + 1 = x^2\\left(2 + \\frac{1}{x^2}\\right) \\quad \\Rightarrow \\quad \\frac{2x^2+1}{x^2} = 2 + \\frac{1}{x^2}\n\\]  \n\n因此原极限化为：  \n\\[\n\\lim_{x\\to\\infty}\\frac{1 + \\frac{1}{x}}{2 + \\frac{1}{x^2}}\n\\]  \n\n当 \\(x \\to \\infty\\) 时，\\(\\frac{1}{x} \\to 0\\)，\\(\\frac{1}{x^2} \\to 0\\)，所以  \n\\[\n\\lim_{x\\to\\infty}\\left(1 + \\frac{1}{x}\\right) = 1, \\quad \\lim_{x\\to\\infty}\\left(2 + \\frac{1}{x^2}\\right) = 2\n\\]  \n\n因此  \n\\[\n\\lim_{x\\to\\infty}\\frac{x^2+x}{2x^2+1} = \\frac{1}{2}\n\\]  \n\n【答案】  \n\\[\n\\boxed{\\frac{1}{2}}\n\\]",
+            "answer": "【精析】$\\lim_{x\\to\\infty}\\frac{x^2+x}{2x^2+1} = \\lim_{x\\to\\infty}\\frac{1+\\frac{1}{x}}{2+\\frac{1}{x^2}} = \\frac{1}{2}.$",
             "images": []
           },
           {
             "question_number": 12,
             "content": "已知 $xy+e^x+\\cos y=0$，求隐函数导数：$\\frac{dy}{dx}$",
-            "answer": "【解析】已知方程  \n\\[\nxy + e^x + \\cos y = 0\n\\]  \n两边对 \\(x\\) 求导（注意 \\(y\\) 是 \\(x\\) 的函数，用隐函数求导法）：  \n\n\\[\n\\frac{d}{dx}(xy) + \\frac{d}{dx}(e^x) + \\frac{d}{dx}(\\cos y) = 0\n\\]  \n\n第一项用乘积法则：  \n\\[\n\\frac{d}{dx}(xy) = y + x \\frac{dy}{dx}\n\\]  \n\n第二项：  \n\\[\n\\frac{d}{dx}(e^x) = e^x\n\\]  \n\n第三项用链式法则：  \n\\[\n\\frac{d}{dx}(\\cos y) = -\\sin y \\cdot \\frac{dy}{dx}\n\\]  \n\n代入得：  \n\\[\ny + x \\frac{dy}{dx} + e^x - \\sin y \\cdot \\frac{dy}{dx} = 0\n\\]  \n\n合并含 \\(\\frac{dy}{dx}\\) 的项：  \n\\[\nx \\frac{dy}{dx} - \\sin y \\cdot \\frac{dy}{dx} + y + e^x = 0\n\\]  \n\\[\n(x - \\sin y) \\frac{dy}{dx} = -y - e^x\n\\]  \n\n解得：  \n\\[\n\\frac{dy}{dx} = \\frac{-y - e^x}{x - \\sin y}\n\\]  \n\n或者写作：  \n\\[\n\\frac{dy}{dx} = -\\frac{y + e^x}{x - \\sin y}\n\\]  \n\n【答案】  \n\\[\n\\boxed{\\dfrac{dy}{dx}=-\\dfrac{y+e^x}{x-\\sin y}}\n\\]",
+            "answer": "【精析】对方程 $xy+e^x+\\cos y=0$ 两边关于 $x$ 求导：\n$$y + x\\frac{dy}{dx} + e^x - \\sin y \\cdot \\frac{dy}{dx} = 0$$\n整理得\n$$(x - \\sin y)\\frac{dy}{dx} = -y - e^x$$\n故\n$$\\frac{dy}{dx} = \\frac{-y - e^x}{x - \\sin y}.$$",
             "images": []
           },
           {
             "question_number": 13,
             "content": "$z=\\sqrt{x^2+y^2}$，求：$\\frac{\\partial^2 z}{\\partial x^2}+\\frac{\\partial^2 z}{\\partial y^2}$",
-            "answer": "【解析】已知 \\( z = \\sqrt{x^2 + y^2} \\)，记 \\( r = \\sqrt{x^2 + y^2} \\)，则 \\( z = r \\)，其中 \\( r > 0 \\)。\n\n---\n\n**1. 求一阶偏导数**\n\n\\[\n\\frac{\\partial z}{\\partial x} = \\frac{x}{\\sqrt{x^2 + y^2}} = \\frac{x}{r},\n\\]\n\\[\n\\frac{\\partial z}{\\partial y} = \\frac{y}{\\sqrt{x^2 + y^2}} = \\frac{y}{r}.\n\\]\n\n---\n\n**2. 求二阶偏导数 \\(\\frac{\\partial^2 z}{\\partial x^2}\\)**\n\n\\[\n\\frac{\\partial^2 z}{\\partial x^2} = \\frac{\\partial}{\\partial x} \\left( \\frac{x}{r} \\right)\n= \\frac{1 \\cdot r - x \\cdot \\frac{x}{r}}{r^2}\n= \\frac{r - \\frac{x^2}{r}}{r^2}.\n\\]\n分子通分：\n\\[\n\\frac{r - \\frac{x^2}{r}}{r^2} = \\frac{\\frac{r^2 - x^2}{r}}{r^2}\n= \\frac{r^2 - x^2}{r^3}.\n\\]\n因为 \\( r^2 = x^2 + y^2 \\)，所以 \\( r^2 - x^2 = y^2 \\)，于是\n\\[\n\\frac{\\partial^2 z}{\\partial x^2} = \\frac{y^2}{r^3}.\n\\]\n\n---\n\n**3. 求二阶偏导数 \\(\\frac{\\partial^2 z}{\\partial y^2}\\)**\n\n对称地，\n\\[\n\\frac{\\partial^2 z}{\\partial y^2} = \\frac{x^2}{r^3}.\n\\]\n\n---\n\n**4. 求和**\n\n\\[\n\\frac{\\partial^2 z}{\\partial x^2} + \\frac{\\partial^2 z}{\\partial y^2}\n= \\frac{y^2}{r^3} + \\frac{x^2}{r^3}\n= \\frac{x^2 + y^2}{r^3}\n= \\frac{r^2}{r^3}\n= \\frac{1}{r}.\n\\]\n由于 \\( r = \\sqrt{x^2 + y^2} = z \\)（注意这里 \\( z \\) 是函数值，不是自变量），所以\n\\[\n\\frac{\\partial^2 z}{\\partial x^2} + \\frac{\\partial^2 z}{\\partial y^2} = \\frac{1}{\\sqrt{x^2 + y^2}}.\n\\]\n\n---\n\n**答案**\n\\[\n\\boxed{\\frac{1}{\\sqrt{x^2+y^2}}}\n\\]",
+            "answer": "【精析】$\\frac{\\partial z}{\\partial x} = \\frac{x}{\\sqrt{x^2+y^2}}$，$\\frac{\\partial^2 z}{\\partial x^2} = \\frac{y^2}{(x^2+y^2)^{3/2}}$\n同理 $\\frac{\\partial^2 z}{\\partial y^2} = \\frac{x^2}{(x^2+y^2)^{3/2}}$\n故 $\\frac{\\partial^2 z}{\\partial x^2}+\\frac{\\partial^2 z}{\\partial y^2} = \\frac{y^2+x^2}{(x^2+y^2)^{3/2}} = \\frac{1}{\\sqrt{x^2+y^2}}.$",
             "images": []
           },
           {
             "question_number": 14,
             "content": "求不定积分：$\\int \\frac{x+1}{\\sqrt{x-4}}dx$",
-            "answer": "【解析】我们要计算不定积分  \n\\[\n\\int \\frac{x+1}{\\sqrt{x-4}} \\, dx\n\\]  \n\n**1. 变量代换**  \n令 \\( t = \\sqrt{x-4} \\)，则  \n\\[\nt^2 = x - 4 \\quad \\Rightarrow \\quad x = t^2 + 4, \\quad dx = 2t \\, dt.\n\\]  \n\n**2. 代入原积分**  \n\\[\n\\int \\frac{x+1}{\\sqrt{x-4}} \\, dx \n= \\int \\frac{(t^2+4)+1}{t} \\cdot 2t \\, dt\n= \\int \\frac{t^2+5}{t} \\cdot 2t \\, dt.\n\\]  \n注意 \\( \\frac{t^2+5}{t} \\cdot 2t = (t^2+5) \\cdot 2 \\)，因此  \n\\[\n= \\int 2(t^2+5) \\, dt.\n\\]  \n\n**3. 逐项积分**  \n\\[\n\\int 2(t^2+5) \\, dt = 2 \\int t^2 \\, dt + 10 \\int 1 \\, dt\n= 2 \\cdot \\frac{t^3}{3} + 10t + C\n= \\frac{2}{3}t^3 + 10t + C.\n\\]  \n\n**4. 代回 \\( x \\)**  \n由 \\( t = \\sqrt{x-4} \\)，得  \n\\[\nt^3 = (x-4)^{3/2}, \\quad t = (x-4)^{1/2}.\n\\]  \n所以  \n\\[\n\\int \\frac{x+1}{\\sqrt{x-4}} \\, dx \n= \\frac{2}{3}(x-4)^{3/2} + 10(x-4)^{1/2} + C.\n\\]  \n\n**5. 可进一步整理（提取公因式）**  \n提取 \\( (x-4)^{1/2} \\)：  \n\\[\n= \\sqrt{x-4} \\left[ \\frac{2}{3}(x-4) + 10 \\right] + C\n= \\sqrt{x-4} \\left( \\frac{2}{3}x - \\frac{8}{3} + 10 \\right) + C\n= \\sqrt{x-4} \\left( \\frac{2}{3}x + \\frac{22}{3} \\right) + C.\n\\]  \n或者写成  \n\\[\n= \\frac{2}{3} \\sqrt{x-4} \\, (x + 11) + C.\n\\]  \n\n---\n\n**答案**  \n\\[\n\\boxed{\\frac{2}{3}\\sqrt{x-4}\\,(x+11) + C}\n\\]",
+            "answer": "【精析】令 $t = \\sqrt{x-4}$，则 $x = t^2 + 4$，$dx = 2t\\, dt$。\n原积分化为\n$$\\int \\frac{t^2 + 4 + 1}{t} \\cdot 2t\\, dt = 2\\int (t^2 + 5)\\, dt = 2\\left( \\frac{t^3}{3} + 5t \\right) + C.$$\n回代 $t = \\sqrt{x-4}$，得\n$$\\int \\frac{x+1}{\\sqrt{x-4}}dx = \\frac{2}{3}(x-4)^{\\frac{3}{2}} + 10\\sqrt{x-4} + C.$$",
             "images": []
           },
           {
             "question_number": 15,
             "content": "求：$\\int_{0}^{\\pi/2}(1+x)\\sin x dx$",
-            "answer": "【解析】我们计算定积分  \n\\[\nI = \\int_{0}^{\\pi/2} (1+x)\\sin x \\, dx\n\\]  \n可以拆成两项：  \n\\[\nI = \\int_{0}^{\\pi/2} \\sin x \\, dx + \\int_{0}^{\\pi/2} x \\sin x \\, dx\n\\]  \n\n**第一项**：  \n\\[\n\\int_{0}^{\\pi/2} \\sin x \\, dx = \\left[ -\\cos x \\right]_{0}^{\\pi/2} = -\\cos\\frac{\\pi}{2} + \\cos 0 = 0 + 1 = 1\n\\]  \n\n**第二项**：  \n用分部积分法，令  \n\\[\nu = x, \\quad dv = \\sin x \\, dx\n\\]  \n则  \n\\[\ndu = dx, \\quad v = -\\cos x\n\\]  \n于是  \n\\[\n\\int_{0}^{\\pi/2} x \\sin x \\, dx = \\left[ -x\\cos x \\right]_{0}^{\\pi/2} + \\int_{0}^{\\pi/2} \\cos x \\, dx\n\\]  \n计算：  \n\\[\n\\left[ -x\\cos x \\right]_{0}^{\\pi/2} = -\\frac{\\pi}{2} \\cdot \\cos\\frac{\\pi}{2} + 0 \\cdot \\cos 0 = -\\frac{\\pi}{2} \\cdot 0 + 0 = 0\n\\]  \n\\[\n\\int_{0}^{\\pi/2} \\cos x \\, dx = \\left[ \\sin x \\right]_{0}^{\\pi/2} = \\sin\\frac{\\pi}{2} - \\sin 0 = 1 - 0 = 1\n\\]  \n所以  \n\\[\n\\int_{0}^{\\pi/2} x \\sin x \\, dx = 0 + 1 = 1\n\\]  \n\n**合并**：  \n\\[\nI = 1 + 1 = 2\n\\]  \n\n**答案**：  \n\\[\n\\boxed{2}\n\\]",
+            "answer": "【精析】$\\int_{0}^{\\pi/2}(1+x)\\sin x dx = \\int_{0}^{\\pi/2}\\sin x dx + \\int_{0}^{\\pi/2}x\\sin x dx$\n$= [-\\cos x]_{0}^{\\pi/2} + \\int_{0}^{\\pi/2}x\\sin x dx$\n$= 1 + \\int_{0}^{\\pi/2}x\\sin x dx$\n对 $\\int x\\sin x dx$ 分部积分：令 $u=x, dv=\\sin x dx$，则\n$\\int x\\sin x dx = -x\\cos x + \\int \\cos x dx = -x\\cos x + \\sin x + C$\n故原式 $= 1 + [-x\\cos x + \\sin x]_{0}^{\\pi/2} = 1 + (0+1) - 0 = 2.$",
             "images": []
           },
           {
             "question_number": 16,
-            "content": "判定级数 $\\sum_{n=1}^{\\infty}\\frac{3n n!}{n^n}$ 的收敛性\n\n好的，我们一步步来判定这个级数的收敛性。  \n\n---\n\n## **1. 题目重写**\n给定级数  \n\\[\n\\sum_{n=1}^{\\infty} \\frac{3n \\cdot n!}{n^n}.\n\\]  \n记通项  \n\\[\na_n = \\frac{3n \\cdot n!}{n^n}.\n\\]  \n因为 \\(3\\) 是常数，收敛性由  \n\\[\nb_n = \\frac{n \\cdot n!}{n^n}\n\\]  \n决定，所以我们可以先分析 \\(b_n\\)，最后乘上常数 \\(3\\) 不影响收敛性。\n\n---\n\n## **2. 使用比值判别法（达朗贝尔判别法）**\n\\[\n\\frac{a_{n+1}}{a_n} \n= \\frac{3(n+1) \\cdot (n+1)!}{(n+1)^{n+1}} \\cdot \\frac{n^n}{3n \\cdot n!}.\n\\]  \n化简：  \n\\[\n\\frac{a_{n+1}}{a_n} \n= \\frac{(n+1) \\cdot (n+1)!}{(n+1)^{n+1}} \\cdot \\frac{n^n}{n \\cdot n!}.\n\\]  \n注意 \\((n+1)! = (n+1) \\cdot n!\\)，所以  \n\\[\n\\frac{(n+1) \\cdot (n+1)!}{(n+1)^{n+1}} \n= \\frac{(n+1) \\cdot (n+1) \\cdot n!}{(n+1)^{n+1}} \n= \\frac{(n+1)^2 \\cdot n!}{(n+1)^{n+1}} \n= \\frac{n!}{(n+1)^{n-1}}.\n\\]  \n于是  \n\\[\n\\frac{a_{n+1}}{a_n} \n= \\frac{n!}{(n+1)^{n-1}} \\cdot \\frac{n^n}{n \\cdot n!}\n= \\frac{n^n}{n \\cdot (n+1)^{n-1}}.\n\\]  \n即  \n\\[\n\\frac{a_{n+1}}{a_n} \n= \\frac{n^{n-1}}{(n+1)^{n-1}} \n= \\left( \\frac{n}{n+1} \\right)^{n-1}.\n\\]\n\n---\n\n## **3. 取极限**\n\\[\n\\lim_{n\\to\\infty} \\frac{a_{n+1}}{a_n} \n= \\lim_{n\\to\\infty} \\left( \\frac{n}{n+1} \\right)^{n-1}.\n\\]  \n我们知道  \n\\[\n\\left( \\frac{n}{n+1} \\right)^{n} = \\frac{1}{\\left(1+\\frac{1}{n}\\right)^n} \\to \\frac{1}{e} \\quad (n\\to\\infty).\n\\]  \n所以  \n\\[\n\\left( \\frac{n}{n+1} \\right)^{n-1} \n= \\left( \\frac{n}{n+1} \\right)^{n} \\cdot \\frac{n+1}{n} \n\\to \\frac{1}{e} \\cdot 1 = \\frac{1}{e}.\n\\]  \n因此  \n\\[\n\\lim_{n\\to\\infty} \\frac{a_{n+1}}{a_n} = \\frac{1}{e} < 1.\n\\]\n\n---\n\n## **4. 结论**\n由比值判别法，极限 \\(L = \\frac{1}{e} < 1\\)，所以原级数收敛。\n\n---\n\n**答案**：  \n\\[\n\\boxed{\\text{收敛}}\n\\]",
-            "answer": "",
+            "content": "判定级数 $\\sum_{n=1}^{\\infty}\\frac{3n n!}{n^n}$ 的收敛性",
+            "answer": "【精析】考虑比值判别法：$\\frac{a_{n+1}}{a_n} = \\frac{3(n+1)(n+1)!}{(n+1)^{n+1}} \\cdot \\frac{n^n}{3n n!} = \\frac{n+1}{n} \\cdot \\frac{n^n}{(n+1)^n} = \\left(1+\\frac{1}{n}\\right) \\cdot \\frac{1}{\\left(1+\\frac{1}{n}\\right)^n}$  \n则 $\\lim_{n\\to\\infty}\\frac{a_{n+1}}{a_n} = 1 \\cdot \\frac{1}{e} = \\frac{1}{e} < 1$，故级数收敛。",
             "images": []
           },
           {
             "question_number": 17,
             "content": "求微分方程 $y''-5y'+6y=0$，满足 $y|_{x=0}=2, y'|_{x=0}=5$ 的特解",
-            "answer": "【解析】题目给出二阶常系数齐次线性微分方程  \n\\[\ny'' - 5y' + 6y = 0\n\\]  \n初始条件为  \n\\[\ny(0) = 2, \\quad y'(0) = 5.\n\\]\n\n---\n\n**第一步：写出特征方程**  \n设解的形式为 \\( y = e^{rx} \\)，代入方程得  \n\\[\nr^2 e^{rx} - 5r e^{rx} + 6 e^{rx} = 0\n\\]  \n消去 \\( e^{rx} \\)（非零），得到特征方程  \n\\[\nr^2 - 5r + 6 = 0.\n\\]\n\n---\n\n**第二步：解特征方程**  \n\\[\nr^2 - 5r + 6 = (r - 2)(r - 3) = 0\n\\]  \n解得  \n\\[\nr_1 = 2, \\quad r_2 = 3.\n\\]\n\n---\n\n**第三步：写出通解**  \n两个不相等的实根，所以通解为  \n\\[\ny(x) = C_1 e^{2x} + C_2 e^{3x}.\n\\]\n\n---\n\n**第四步：利用初始条件确定常数**  \n由 \\( y(0) = 2 \\) 得  \n\\[\nC_1 + C_2 = 2. \\quad (1)\n\\]  \n求导：  \n\\[\ny'(x) = 2C_1 e^{2x} + 3C_2 e^{3x}.\n\\]  \n由 \\( y'(0) = 5 \\) 得  \n\\[\n2C_1 + 3C_2 = 5. \\quad (2)\n\\]\n\n---\n\n**第五步：解方程组**  \n(2) 减去 (1) 的两倍：  \n\\[\n(2C_1 + 3C_2) - 2(C_1 + C_2) = 5 - 4\n\\]  \n\\[\nC_2 = 1.\n\\]  \n代入 (1) 得  \n\\[\nC_1 = 1.\n\\]\n\n---\n\n**第六步：写出特解**  \n\\[\ny(x) = e^{2x} + e^{3x}.\n\\]\n\n---\n\n**答案**  \n\\[\n\\boxed{y = e^{2x} + e^{3x}}\n\\]",
+            "answer": "【精析】特征方程 $r^2 - 5r + 6 = 0$，解得 $r_1 = 2, r_2 = 3$。\n通解为 $y = C_1 e^{2x} + C_2 e^{3x}$。\n由 $y(0) = C_1 + C_2 = 2$，$y'(0) = 2C_1 + 3C_2 = 5$，\n解得 $C_1 = 1, C_2 = 1$。\n故特解为 $y = e^{2x} + e^{3x}$。",
             "images": []
           },
           {
             "question_number": 18,
-            "content": "计算 $\\iint_{D} x d\\sigma$，其中 $D$ 是由 $x^2+y^2=4$ 及坐标轴所围成的在第一象限内的闭区域\n\n好的，我们一步步来解这个题。  \n\n---\n\n**【解析】**\n\n题目给出：  \n\\[\n\\iint_{D} x \\, d\\sigma\n\\]\n其中 \\( D \\) 是圆 \\( x^2 + y^2 = 4 \\) 在第一象限的部分。  \n\n---\n\n**1. 区域描述**  \n圆 \\( x^2 + y^2 = 4 \\) 的半径 \\( R = 2 \\)。  \n第一象限部分：  \n\\[\nD = \\{(x, y) \\mid x \\ge 0, \\, y \\ge 0, \\, x^2 + y^2 \\le 4 \\}\n\\]\n\n---\n\n**2. 化为极坐标**  \n令  \n\\[\nx = r\\cos\\theta, \\quad y = r\\sin\\theta\n\\]  \n\\[\nd\\sigma = r \\, dr \\, d\\theta\n\\]  \n被积函数 \\( x \\) 变为 \\( r\\cos\\theta \\)。  \n\n在极坐标下，区域 \\( D \\) 对应：  \n\\[\n0 \\le r \\le 2, \\quad 0 \\le \\theta \\le \\frac{\\pi}{2}\n\\]\n\n---\n\n**3. 写出极坐标下的二重积分**  \n\\[\n\\iint_{D} x \\, d\\sigma\n= \\int_{\\theta=0}^{\\pi/2} \\int_{r=0}^{2} (r\\cos\\theta) \\cdot r \\, dr \\, d\\theta\n\\]\n\\[\n= \\int_{0}^{\\pi/2} \\cos\\theta \\, d\\theta \\cdot \\int_{0}^{2} r^2 \\, dr\n\\]\n\n---\n\n**4. 分别计算两个定积分**  \n\\[\n\\int_{0}^{\\pi/2} \\cos\\theta \\, d\\theta = \\sin\\theta \\Big|_{0}^{\\pi/2} = 1 - 0 = 1\n\\]  \n\\[\n\\int_{0}^{2} r^2 \\, dr = \\frac{r^3}{3} \\Big|_{0}^{2} = \\frac{8}{3}\n\\]\n\n---\n\n**5. 相乘得结果**  \n\\[\n\\iint_{D} x \\, d\\sigma = 1 \\times \\frac{8}{3} = \\frac{8}{3}\n\\]\n\n---\n\n**答案**  \n\\[\n\\boxed{\\frac{8}{3}}\n\\]\n\n## 四、综合题（本大题共2小题，第19题10分，第20题12分，共22分）",
-            "answer": "",
+            "content": "计算 $\\iint_{D} x d\\sigma$，其中 $D$ 是由 $x^2+y^2=4$ 及坐标轴所围成的在第一象限内的闭区域",
+            "answer": "【精析】积分区域 $D$ 为第一象限内 $x^2+y^2 \\le 4$，采用极坐标：\n$x = r\\cos\\theta,\\ y = r\\sin\\theta,\\ \\mathrm{d}\\sigma = r\\mathrm{d}r\\mathrm{d}\\theta$，\n其中 $0 \\le \\theta \\le \\frac{\\pi}{2},\\ 0 \\le r \\le 2$。\n则\n$$\n\\iint_{D} x \\mathrm{d}\\sigma = \\int_{0}^{\\frac{\\pi}{2}} \\int_{0}^{2} r\\cos\\theta \\cdot r \\mathrm{d}r\\mathrm{d}\\theta = \\int_{0}^{\\frac{\\pi}{2}} \\cos\\theta \\mathrm{d}\\theta \\int_{0}^{2} r^{2} \\mathrm{d}r = 1 \\cdot \\frac{8}{3} = \\frac{8}{3}.\n$$",
             "images": []
           }
         ]
       },
       {
+        "section_number": "四",
         "section_name": "综合题",
         "questions": [
           {
             "question_number": 19,
-            "content": "$f(x) = ae^x - x + a$ $(a > 0)$\n(1) 讨论 $f(x)$ 的单调性\n(2) 证明: 当 $1 + \\ln a + a > 0$ 时，$f(x) = 0$ 在 $(-\\infty, +\\infty)$ 上无实根\n\n好的，我们逐步推理。  \n\n---\n\n## **题目**\n已知  \n\\[\nf(x) = a e^x - x + a, \\quad a > 0\n\\]  \n(1) 讨论 \\( f(x) \\) 的单调性。  \n(2) 证明：当 \\( 1 + \\ln a + a > 0 \\) 时，方程 \\( f(x) = 0 \\) 无实根。\n\n---\n\n## **（1）单调性**\n\n\\[\nf'(x) = a e^x - 1\n\\]\n因为 \\( a > 0 \\)，所以 \\( f'(x) \\) 是增函数（关于 \\( x \\) 单调递增）。\n\n令 \\( f'(x) = 0 \\)：\n\\[\na e^x - 1 = 0 \\quad \\Rightarrow \\quad e^x = \\frac{1}{a} \\quad \\Rightarrow \\quad x = -\\ln a\n\\]\n\n- 当 \\( x < -\\ln a \\) 时，\\( e^x < \\frac{1}{a} \\)，所以 \\( a e^x < 1 \\)，即 \\( f'(x) < 0 \\)，\\( f(x) \\) 单调递减。  \n- 当 \\( x > -\\ln a \\) 时，\\( e^x > \\frac{1}{a} \\)，所以 \\( a e^x > 1 \\)，即 \\( f'(x) > 0 \\)，\\( f(x) \\) 单调递增。\n\n因此：\n\\[\nf(x) \\text{ 在 } (-\\infty, -\\ln a] \\text{ 上递减，在 } [-\\ln a, +\\infty) \\text{ 上递增}.\n\\]\n极小值点 \\( x_0 = -\\ln a \\)。\n\n---\n\n**【解析 (1) 答案】**\n\\[\n\\boxed{f(x) \\text{ 在 } (-\\infty, -\\ln a] \\text{ 单调递减，在 } [-\\ln a, +\\infty) \\text{ 单调递增}}\n\\]\n\n---\n\n## **（2）证明**\n\n由 (1) 知 \\( f(x) \\) 在 \\( x_0 = -\\ln a \\) 处取极小值，极小值为：\n\\[\nf_{\\min} = f(-\\ln a) = a e^{-\\ln a} - (-\\ln a) + a\n\\]\n\\[\n= a \\cdot \\frac{1}{a} + \\ln a + a\n\\]\n\\[\n= 1 + \\ln a + a\n\\]\n\n---\n\n方程 \\( f(x) = 0 \\) 有实根 \\(\\iff\\) 函数 \\( f(x) \\) 的极小值 \\( f_{\\min} \\le 0 \\)（因为 \\( f(x) \\) 两端趋向 \\( +\\infty \\)）。\n\n- 当 \\( x \\to -\\infty \\)，\\( a e^x \\to 0 \\)，\\( -x \\to +\\infty \\)，所以 \\( f(x) \\to +\\infty \\)。\n- 当 \\( x \\to +\\infty \\)，\\( a e^x \\) 主导，\\( f(x) \\to +\\infty \\)。\n\n所以 \\( f(x) \\) 的图像是“先递减后递增”，若极小值 \\( > 0 \\)，则 \\( f(x) > 0 \\) 恒成立，方程无实根。\n\n---\n\n已知条件 \\( 1 + \\ln a + a > 0 \\) 正是 \\( f_{\\min} > 0 \\)，因此 \\( f(x) > 0 \\) 对所有 \\( x \\) 成立，方程 \\( f(x) = 0 \\) 无实根。\n\n---\n\n**【解析 (2) 答案】**\n\\[\n\\boxed{\\text{由 } f_{\\min} = 1 + \\ln a + a > 0 \\text{ 得 } f(x) > 0 \\text{ 恒成立，故 } f(x)=0 \\text{ 无实根}}\n\\]\n\n---\n\n**最终答案：**\n\\[\n\\text{(1) 递减区间 } (-\\infty, -\\ln a], \\text{ 递增区间 } [-\\ln a, +\\infty)\n\\]\n\\[\n\\text{(2) 极小值 } f_{\\min} = 1 + \\ln a + a > 0 \\Rightarrow f(x) > 0 \\Rightarrow \\text{无实根}\n\\]",
-            "answer": "",
+            "content": "$f(x) = ae^x - x + a$ $(a > 0)$\n(1) 讨论 $f(x)$ 的单调性\n(2) 证明: 当 $1 + \\ln a + a > 0$ 时，$f(x) = 0$ 在 $(-\\infty, +\\infty)$ 上无实根",
+            "answer": "【精析】（1）$f'(x) = ae^x - 1$，令 $f'(x)=0$ 得 $x = -\\ln a$。\n当 $x < -\\ln a$ 时 $f'(x) < 0$，$f(x)$ 单调递减；\n当 $x > -\\ln a$ 时 $f'(x) > 0$，$f(x)$ 单调递增。\n\n（2）由（1）知 $f(x)$ 在 $x = -\\ln a$ 处取极小值 $f(-\\ln a) = 1 + \\ln a + a$。\n若 $1 + \\ln a + a > 0$，则 $f(x) \\ge f(-\\ln a) > 0$ 恒成立，故 $f(x)=0$ 无实根。",
             "images": []
           },
           {
             "question_number": 20,
-            "content": "在 $(-\\infty, +\\infty)$ 内的连续函数 $f(x)$ 满足 $f(x)e^{-x} + \\int_{0}^{x} f(t)e^{-t}dt = x^2$\n(1) 求 $f(x)$\n(2) 证明: 当 $x > 0$ 时，$f(x) > 2e^{x}[\\ln(x + 1) - 1]$\n\n好的，我们一步步来解。  \n\n---\n\n## **1. 解方程求 \\( f(x) \\)**\n\n方程是  \n\\[\nf(x)e^{-x} + \\int_0^x f(t)e^{-t} \\, dt = x^2, \\quad x \\ge 0.\n\\]\n\n设  \n\\[\ng(x) = \\int_0^x f(t)e^{-t} \\, dt.\n\\]\n那么 \\( g'(x) = f(x)e^{-x} \\)。\n\n原方程变为  \n\\[\ng'(x) + g(x) = x^2.\n\\]\n\n这是一阶线性常微分方程：\n\\[\n\\frac{d}{dx}\\left( e^x g(x) \\right) = e^x g'(x) + e^x g(x) = e^x \\cdot x^2.\n\\]\n\n所以  \n\\[\ne^x g(x) = \\int e^x x^2 \\, dx + C.\n\\]\n\n计算：\n\\[\n\\int e^x x^2 \\, dx = e^x (x^2 - 2x + 2) + C.\n\\]\n（可用分部积分验证：\\(\\int x^2 e^x dx = e^x(x^2 - 2x + 2)\\)。）\n\n于是  \n\\[\ne^x g(x) = e^x (x^2 - 2x + 2) + C.\n\\]\n\\[\ng(x) = x^2 - 2x + 2 + C e^{-x}.\n\\]\n\n由 \\( g(0) = 0 \\) 得  \n\\[\n0 = 0 - 0 + 2 + C \\implies C = -2.\n\\]\n所以  \n\\[\ng(x) = x^2 - 2x + 2 - 2e^{-x}.\n\\]\n\n但 \\( g(x) = \\int_0^x f(t)e^{-t} dt \\)，且 \\( f(x)e^{-x} = g'(x) \\)：\n\\[\ng'(x) = 2x - 2 + 2e^{-x}.\n\\]\n于是  \n\\[\nf(x)e^{-x} = 2x - 2 + 2e^{-x}.\n\\]\n\\[\nf(x) = 2x e^x - 2e^x + 2.\n\\]\n\n---\n\n**第一问答案：**\n\\[\n\\boxed{f(x) = 2x e^x - 2e^x + 2}\n\\]\n\n---\n\n## **2. 证明 \\( x > 0 \\) 时 \\( f(x) > 2e^x [\\ln(x+1) - 1] \\)**\n\n要证：\n\\[\n2x e^x - 2e^x + 2 > 2e^x [\\ln(x+1) - 1], \\quad x > 0.\n\\]\n\n两边除以 \\( 2 \\)：\n\\[\nx e^x - e^x + 1 > e^x [\\ln(x+1) - 1].\n\\]\n\n整理：\n\\[\nx e^x - e^x + 1 > e^x \\ln(x+1) - e^x.\n\\]\n右边 \\(- e^x\\) 与左边 \\(- e^x\\) 抵消：\n\\[\nx e^x + 1 > e^x \\ln(x+1).\n\\]\n\n即\n\\[\nx e^x + 1 - e^x \\ln(x+1) > 0.\n\\]\n\n---\n\n令  \n\\[\nh(x) = x e^x + 1 - e^x \\ln(x+1), \\quad x \\ge 0.\n\\]\n\\( h(0) = 0 + 1 - 1 \\cdot \\ln 1 = 1 - 0 = 1 > 0 \\)。\n\n求导：\n\\[\nh'(x) = e^x + x e^x - e^x \\ln(x+1) - \\frac{e^x}{x+1}.\n\\]\n\\[\nh'(x) = e^x \\left[ 1 + x - \\ln(x+1) - \\frac{1}{x+1} \\right].\n\\]\n\n令 \\( u(x) = 1 + x - \\ln(x+1) - \\frac{1}{x+1} \\)，则 \\( h'(x) = e^x u(x) \\)。\n\n\\( u(0) = 1 + 0 - 0 - 1 = 0 \\)。\n\n\\[\nu'(x) = 1 - \\frac{1}{x+1} + \\frac{1}{(x+1)^2}.\n\\]\n\\[\nu'(x) = \\frac{x+1 - 1}{(x+1)} + \\frac{1}{(x+1)^2} = \\frac{x}{x+1} + \\frac{1}{(x+1)^2}.\n\\]\n对于 \\( x > 0 \\)，显然 \\( u'(x) > 0 \\)，所以 \\( u(x) > u(0) = 0 \\) 对 \\( x > 0 \\)。\n\n于是 \\( h'(x) > 0 \\) 对 \\( x > 0 \\)，所以 \\( h(x) \\) 在 \\( x > 0 \\) 时严格递增，且 \\( h(0) = 1 > 0 \\)，所以 \\( h(x) > 0 \\) 对所有 \\( x > 0 \\)。\n\n因此原不等式成立。\n\n---\n\n**第二问结论：**\n\\[\n\\boxed{f(x) > 2e^x[\\ln(x+1)-1] \\quad (x>0)}\n\\]\n\n---\n\n**最终答案：**\n\\[\nf(x) = 2x e^x - 2e^x + 2, \\quad x>0 \\text{ 时 } f(x) > 2e^x[\\ln(x+1)-1].\n\\]",
-            "answer": "",
+            "content": "在 $(-\\infty, +\\infty)$ 内的连续函数 $f(x)$ 满足 $f(x)e^{-x} + \\int_{0}^{x} f(t)e^{-t}dt = x^2$\n(1) 求 $f(x)$\n(2) 证明: 当 $x > 0$ 时，$f(x) > 2e^{x}[\\ln(x + 1) - 1]$",
+            "answer": "【精析】（1）原式两边求导得 $f'(x)e^{-x} - f(x)e^{-x} + f(x)e^{-x} = 2x$，即 $f'(x)e^{-x} = 2x$，故 $f'(x) = 2xe^{x}$。积分得 $f(x) = \\int 2xe^{x}dx = 2(x-1)e^{x} + C$。代入原式取 $x=0$ 得 $f(0) = -2 + C = 0$，则 $C=2$，所以 $f(x) = 2(x-1)e^{x} + 2$。\n\n（2）令 $g(x) = f(x) - 2e^{x}[\\ln(x+1)-1] = 2xe^{x} - 2e^{x}\\ln(x+1)$。则 $g'(x) = 2e^{x}\\left(1+x-\\frac{1}{x+1}\\right) = \\frac{2xe^{x}(x+2)}{x+1} > 0 \\ (x>0)$，且 $g(0)=0$，故 $g(x) > 0$，即 $f(x) > 2e^{x}[\\ln(x+1)-1]$。",
             "images": []
           }
         ]
