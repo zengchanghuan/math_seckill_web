@@ -116,10 +116,11 @@ export default function PracticePage() {
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [navFilter, setNavFilter] = useState<'all' | 'unanswered' | 'wrong'>(
+  const [navFilter, setNavFilter] = useState<'all' | 'unanswered' | 'marked'>(
     'all'
   );
   const [isMobile, setIsMobile] = useState(false);
+  const [markedQuestions, setMarkedQuestions] = useState<Set<string>>(new Set());
   const [progress, setProgress] = useState<PaperProgress>({
     paperId,
     currentIndex: 0,
@@ -516,6 +517,28 @@ export default function PracticePage() {
     router.push(`/practice/${paperId}/result`);
   };
 
+  // 标记题目
+  const handleMark = () => {
+    if (!currentQuestion) return;
+    
+    setMarkedQuestions((prev) => {
+      const newMarked = new Set(prev);
+      if (newMarked.has(currentQuestion.questionId)) {
+        newMarked.delete(currentQuestion.questionId);
+      } else {
+        newMarked.add(currentQuestion.questionId);
+      }
+      return newMarked;
+    });
+  };
+
+  // 跳过题目
+  const handleSkip = () => {
+    if (currentIndex < filteredQuestions.length - 1) {
+      handleQuestionClick(currentIndex + 1);
+    }
+  };
+
   if (!paper) {
     return (
       <Layout>
@@ -534,58 +557,59 @@ export default function PracticePage() {
 
   return (
     <Layout>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
         {/* 顶部信息栏 */}
         <TopBar
           paper={paper}
           currentIndex={currentIndex}
           totalQuestions={filteredQuestions.length}
-          currentMode={currentMode}
-          onModeChange={handleModeChange}
           elapsedTime={elapsedTime}
           answeredCount={progress.answeredCount}
           onExit={handleExit}
         />
 
         {/* 主内容区 */}
-        <div className="flex-1 overflow-auto flex flex-col md:flex-row">
+        <div className="flex-1 overflow-hidden flex">
           {/* 左侧/中间：题目 + 作答区 */}
-          <div className="flex-1 p-4 md:p-6 space-y-4 md:w-[70%]">
-            {currentQuestion && (
-              <>
-                <QuestionArea
-                  question={currentQuestion}
-                  questionNumber={currentIndex + 1}
-                />
-
-                <AnswerArea
-                  question={currentQuestion}
-                  userAnswer={userAnswer}
-                  onAnswerChange={setUserAnswer}
-                  submitted={submitted}
-                  isCorrect={isCorrect}
-                  onSubmit={handleSubmit}
-                  onModifyAnswer={submitted ? handleModifyAnswer : undefined}
-                />
-
-                {submitted && (
-                  <SolutionPanel
+          <div className="flex-1 overflow-y-auto p-4 md:p-6">
+            <div className="max-w-4xl mx-auto space-y-4">
+              {currentQuestion && (
+                <>
+                  <QuestionArea
                     question={currentQuestion}
-                    isCorrect={isCorrect}
-                    correctAnswer={currentQuestion.answer}
-                    userAnswer={userAnswer}
+                    questionNumber={currentIndex + 1}
                   />
-                )}
-              </>
-            )}
+
+                  <AnswerArea
+                    question={currentQuestion}
+                    userAnswer={userAnswer}
+                    onAnswerChange={setUserAnswer}
+                    submitted={submitted}
+                    isCorrect={isCorrect}
+                    onSubmit={handleSubmit}
+                    onModifyAnswer={submitted ? handleModifyAnswer : undefined}
+                  />
+
+                  {submitted && (
+                    <SolutionPanel
+                      question={currentQuestion}
+                      isCorrect={isCorrect}
+                      correctAnswer={currentQuestion.answer}
+                      userAnswer={userAnswer}
+                    />
+                  )}
+                </>
+              )}
+            </div>
           </div>
 
           {/* 右侧：题号导航（桌面端） */}
-          <div className="hidden md:block w-[30%] p-4 border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
+          <div className="hidden lg:block w-[360px] border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 overflow-y-auto p-4">
             <QuestionNav
               questions={filteredQuestions}
               currentIndex={currentIndex}
               questionStatus={progress.questionStatus || {}}
+              markedQuestions={markedQuestions}
               onQuestionClick={handleQuestionClick}
               filter={navFilter}
               onFilterChange={setNavFilter}
@@ -602,6 +626,7 @@ export default function PracticePage() {
             questions={filteredQuestions}
             currentIndex={currentIndex}
             questionStatus={progress.questionStatus || {}}
+            markedQuestions={markedQuestions}
             onQuestionClick={handleQuestionClick}
             filter={navFilter}
             onFilterChange={setNavFilter}
@@ -619,9 +644,15 @@ export default function PracticePage() {
           questionStatus={
             currentQuestionStatus as 'unanswered' | 'answered' | 'wrong'
           }
+          isMarked={currentQuestion ? markedQuestions.has(currentQuestion.questionId) : false}
+          canSkip={currentIndex < filteredQuestions.length - 1}
           onPrevious={handlePrevious}
           onNext={handleNext}
           onFinish={handleFinish}
+          onMark={handleMark}
+          onSkip={handleSkip}
+          onSubmit={handleSubmit}
+          hasAnswer={!!userAnswer.trim() || currentQuestion?.type === 'solution'}
         />
       </div>
     </Layout>

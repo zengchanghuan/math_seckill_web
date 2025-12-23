@@ -7,9 +7,10 @@ interface QuestionNavProps {
   questions: Question[];
   currentIndex: number;
   questionStatus: Record<string, 'unanswered' | 'answered' | 'wrong'>;
+  markedQuestions: Set<string>;
   onQuestionClick: (index: number) => void;
-  filter: 'all' | 'unanswered' | 'wrong';
-  onFilterChange: (filter: 'all' | 'unanswered' | 'wrong') => void;
+  filter: 'all' | 'unanswered' | 'marked';
+  onFilterChange: (filter: 'all' | 'unanswered' | 'marked') => void;
   answeredCount: number;
   correctCount: number;
   totalQuestions: number;
@@ -20,6 +21,7 @@ export default function QuestionNav({
   questions,
   currentIndex,
   questionStatus,
+  markedQuestions,
   onQuestionClick,
   filter,
   onFilterChange,
@@ -36,93 +38,121 @@ export default function QuestionNav({
     return questionStatus[question.questionId] || 'unanswered';
   };
 
-  const getStatusColor = (status: 'unanswered' | 'answered' | 'wrong', isCurrent: boolean) => {
+  const isMarked = (index: number): boolean => {
+    const question = questions[index];
+    return question ? markedQuestions.has(question.questionId) : false;
+  };
+
+  const getStatusColor = (status: 'unanswered' | 'answered' | 'wrong', isCurrent: boolean, marked: boolean) => {
     if (isCurrent) {
-      return 'bg-primary-600 dark:bg-primary-400 text-white border-2 border-primary-700 dark:border-primary-300';
+      return 'bg-blue-500 dark:bg-blue-600 text-white shadow-[0_0_0_2px_white,0_0_0_4px_rgb(59,130,246)]';
     }
-    switch (status) {
-      case 'answered':
-        return 'bg-blue-50 dark:bg-blue-900/30 border border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300';
-      case 'wrong':
-        return 'bg-red-50 dark:bg-red-900/30 border border-red-300 dark:border-red-700 text-red-700 dark:text-red-300';
-      default:
-        return 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600';
-    }
+    
+    // 未答题的灰色背景
+    return 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600';
   };
 
   const filteredQuestions = questions.filter((q, idx) => {
     const status = getQuestionStatus(idx);
+    const marked = isMarked(idx);
+    
     if (filter === 'unanswered') return status === 'unanswered';
-    if (filter === 'wrong') return status === 'wrong';
+    if (filter === 'marked') return marked;
     return true;
   });
 
   const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
 
   const navContent = (
-    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-      {/* 筛选按钮 */}
-      <div className="flex space-x-2 mb-4">
-        <button
-          onClick={() => onFilterChange('all')}
-          className={`px-3 py-1 text-xs font-medium rounded ${
-            filter === 'all'
-              ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-          }`}
-        >
-          全部题目
-        </button>
-        <button
-          onClick={() => onFilterChange('unanswered')}
-          className={`px-3 py-1 text-xs font-medium rounded ${
-            filter === 'unanswered'
-              ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-              : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-          }`}
-        >
-          未作答
-        </button>
-        {answeredCount > 0 && (
+    <div className="space-y-4">
+      {/* 题号导航卡片 */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6">
+        {/* 筛选标签 */}
+        <div className="flex gap-2 pb-4 border-b border-gray-100 dark:border-gray-700 mb-4">
           <button
-            onClick={() => onFilterChange('wrong')}
-            className={`px-3 py-1 text-xs font-medium rounded ${
-              filter === 'wrong'
-                ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+            onClick={() => onFilterChange('all')}
+            className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${
+              filter === 'all'
+                ? 'bg-blue-500 dark:bg-blue-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
             }`}
           >
-            答错题
+            全部
           </button>
-        )}
+          <button
+            onClick={() => onFilterChange('unanswered')}
+            className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${
+              filter === 'unanswered'
+                ? 'bg-blue-500 dark:bg-blue-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+            }`}
+          >
+            未作答
+          </button>
+          <button
+            onClick={() => onFilterChange('marked')}
+            className={`px-4 py-2 text-sm font-medium rounded-xl transition-colors ${
+              filter === 'marked'
+                ? 'bg-blue-500 dark:bg-blue-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600'
+            }`}
+          >
+            标记
+          </button>
+        </div>
+
+        {/* 题号网格 */}
+        <div className="grid grid-cols-5 gap-3">
+          {filteredQuestions.map((q, idx) => {
+            const originalIndex = questions.indexOf(q);
+            const status = getQuestionStatus(originalIndex);
+            const isCurrent = originalIndex === currentIndex;
+            const marked = isMarked(originalIndex);
+
+            return (
+              <button
+                key={q.questionId}
+                onClick={() => {
+                  onQuestionClick(originalIndex);
+                  if (isMobile) setShowMobileNav(false);
+                }}
+                className={`relative h-10 rounded-xl text-sm font-medium transition-all ${getStatusColor(status, isCurrent, marked)}`}
+              >
+                {originalIndex + 1}
+                {/* 标记角标 */}
+                {marked && !isCurrent && (
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 dark:bg-yellow-500 rounded-full border-2 border-white dark:border-gray-800" />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* 题号矩阵 */}
-      <div className="grid grid-cols-5 gap-2 mb-4">
-        {filteredQuestions.map((q, idx) => {
-          const originalIndex = questions.indexOf(q);
-          const status = getQuestionStatus(originalIndex);
-          const isCurrent = originalIndex === currentIndex;
-
-          return (
-            <button
-              key={q.questionId}
-              onClick={() => {
-                onQuestionClick(originalIndex);
-                if (isMobile) setShowMobileNav(false);
-              }}
-              className={`w-10 h-10 rounded text-sm font-medium transition-all ${getStatusColor(status, isCurrent)}`}
-            >
-              {originalIndex + 1}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* 统计信息 - 整合成一行 */}
-      <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
-        <div className="text-xs text-gray-700 dark:text-gray-300 text-center">
-          已作答：{answeredCount} / {totalQuestions}　｜　正确：{correctCount} 题　｜　正确率：{accuracy}%
+      {/* 答题统计卡片 */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-6">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
+          答题统计
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600 dark:text-gray-400">已答题</span>
+            <span className="text-base text-gray-900 dark:text-white">
+              {answeredCount} / {totalQuestions}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600 dark:text-gray-400">正确</span>
+            <span className="text-base text-green-600 dark:text-green-400">
+              {correctCount} 题
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-gray-600 dark:text-gray-400">正确率</span>
+            <span className="text-base text-blue-600 dark:text-blue-400">
+              {accuracy}%
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -133,7 +163,7 @@ export default function QuestionNav({
       <>
         <button
           onClick={() => setShowMobileNav(true)}
-          className="fixed bottom-20 left-4 z-40 bg-primary-600 text-white p-3 rounded-full shadow-lg"
+          className="fixed bottom-20 right-4 z-40 bg-primary-600 text-white p-3 rounded-full shadow-lg"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -155,8 +185,8 @@ export default function QuestionNav({
 
         {showMobileNav && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
-            <div className="bg-white dark:bg-gray-800 w-full max-h-[80vh] overflow-y-auto rounded-t-lg">
-              <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-gray-50 dark:bg-gray-900 w-full max-h-[80vh] overflow-y-auto rounded-t-2xl p-4">
+              <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">题号导航</h3>
                 <button
                   onClick={() => setShowMobileNav(false)}

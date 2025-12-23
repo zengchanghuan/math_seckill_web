@@ -1,15 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import ModeSwitch from './ModeSwitch';
 import type { ExamPaper } from '@/types';
 
 interface TopBarProps {
   paper: ExamPaper;
   currentIndex: number;
   totalQuestions: number;
-  currentMode: 'objective' | 'solution';
-  onModeChange: (mode: 'objective' | 'solution') => void;
   elapsedTime: number;
   answeredCount: number;
   onExit: () => void;
@@ -19,8 +16,6 @@ export default function TopBar({
   paper,
   currentIndex,
   totalQuestions,
-  currentMode,
-  onModeChange,
   elapsedTime,
   answeredCount,
   onExit,
@@ -33,75 +28,59 @@ export default function TopBar({
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const progressPercentage = totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
+  const progressPercentage = totalQuestions > 0 ? ((currentIndex + 1) / totalQuestions) * 100 : 0;
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* 第一行：标题和右侧操作 */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex-1 min-w-0">
-              <h2 className="text-base font-semibold text-gray-900 dark:text-white truncate">
-                {paper.name}
-              </h2>
-            </div>
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-3">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-4">
+          {/* 左侧：标题和进度 */}
+          <div className="flex items-center gap-4 flex-1 min-w-0">
+            <h1 className="text-2xl font-medium text-gray-900 dark:text-white truncate">
+              {paper.name}
+            </h1>
+            <span className="text-base text-gray-500 dark:text-gray-400 whitespace-nowrap">
+              {currentIndex + 1}/{totalQuestions}
+            </span>
+          </div>
 
-            <div className="hidden md:flex items-center space-x-3">
-              <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
-              <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
-                <span>⏱</span>
-                <span>{formatTime(elapsedTime)}</span>
-              </div>
-              <button
-                onClick={() => setShowExitConfirm(true)}
-                className="px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-              >
-                退出练习
-              </button>
+          {/* 中间：进度条 */}
+          <div className="hidden md:block flex-1 max-w-md">
+            <div className="h-2 bg-gray-200/50 dark:bg-gray-700/50 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gray-900 dark:bg-white transition-all duration-300"
+                style={{ width: `${progressPercentage}%` }}
+              />
             </div>
           </div>
 
-          {/* 第二行：进度信息 */}
-          <div className="flex items-center space-x-3">
-            <p className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
-              共 {totalQuestions} 题 · 当前第 {currentIndex + 1} 题
-            </p>
-            <div className="flex-1 max-w-xs">
-              <div className="flex items-center space-x-2">
-                <div className="flex-1 h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden relative">
-                  <div
-                    className="h-full bg-primary-600 dark:bg-primary-400 transition-all duration-300"
-                    style={{ width: `${progressPercentage}%` }}
-                  />
-                  {progressPercentage > 0 && (
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] text-gray-500 dark:text-gray-400 font-medium">
-                      {progressPercentage}%
-                    </span>
-                  )}
-                </div>
-                <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                  已做 {answeredCount}/{totalQuestions}
-                </span>
-              </div>
+          {/* 右侧：计时器和退出按钮 */}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-base">{formatTime(elapsedTime)}</span>
             </div>
+            <button
+              onClick={() => setShowExitConfirm(true)}
+              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>退出练习</span>
+            </button>
           </div>
+        </div>
 
-          {/* 移动端：模式切换和操作 */}
-          <div className="md:hidden flex items-center justify-between mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
-            <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
-            <div className="flex items-center space-x-2">
-              <div className="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400">
-                <span>⏱</span>
-                <span>{formatTime(elapsedTime)}</span>
-              </div>
-              <button
-                onClick={() => setShowExitConfirm(true)}
-                className="px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-              >
-                退出
-              </button>
-            </div>
+        {/* 移动端进度条 */}
+        <div className="md:hidden mt-3">
+          <div className="h-2 bg-gray-200/50 dark:bg-gray-700/50 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gray-900 dark:bg-white transition-all duration-300"
+              style={{ width: `${progressPercentage}%` }}
+            />
           </div>
         </div>
       </div>
