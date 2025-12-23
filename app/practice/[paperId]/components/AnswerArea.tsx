@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MathText from '@/components/MathText';
-import type { Question } from '@/types';
+import type { Question, ConvertToChoiceResult } from '@/types';
 
 interface AnswerAreaProps {
   question: Question;
@@ -24,6 +24,48 @@ export default function AnswerArea({
   onModifyAnswer,
 }: AnswerAreaProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [convertedChoice, setConvertedChoice] = useState<ConvertToChoiceResult | null>(null);
+  const [converting, setConverting] = useState(false);
+  const [convertError, setConvertError] = useState<string | null>(null);
+
+  // 转换为选择题
+  const handleConvertToChoice = async () => {
+    setConverting(true);
+    setConvertError(null);
+    
+    try {
+      const response = await fetch('/api/convert-to-choice', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          stem: question.question,
+          answer: question.answer,
+          solution: question.solution,
+          knowledge: question.knowledgePoints,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || '转换失败');
+      }
+
+      setConvertedChoice(data.result);
+    } catch (err) {
+      setConvertError(err instanceof Error ? err.message : '转换失败');
+    } finally {
+      setConverting(false);
+    }
+  };
+
+  // 关闭选择题预览
+  const handleCloseConversion = () => {
+    setConvertedChoice(null);
+    setConvertError(null);
+  };
 
   // 键盘支持：Enter 提交
   useEffect(() => {
@@ -140,9 +182,19 @@ export default function AnswerArea({
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
         <div className="mb-3">
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
-            (1) 填写答案：
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              (1) 填写答案：
+            </label>
+            <button
+              onClick={handleConvertToChoice}
+              disabled={converting}
+              className="px-3 py-1 text-xs bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/40 transition-colors disabled:opacity-50"
+              title="使用AI将此填空题转换为选择题"
+            >
+              {converting ? '转换中...' : '🔄 转为选择题'}
+            </button>
+          </div>
           <input
             ref={inputRef}
             type="text"
@@ -153,6 +205,67 @@ export default function AnswerArea({
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white disabled:opacity-60"
           />
         </div>
+
+        {/* 转换错误提示 */}
+        {convertError && (
+          <div className="mb-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <p className="text-sm text-red-700 dark:text-red-300">
+              ⚠️ {convertError}
+            </p>
+          </div>
+        )}
+
+        {/* 选择题预览 */}
+        {convertedChoice && (
+          <div className="mb-4 p-4 bg-purple-50 dark:bg-purple-900/10 border border-purple-200 dark:border-purple-800 rounded-lg">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="text-sm font-semibold text-purple-900 dark:text-purple-300">
+                ✨ AI转换的选择题
+              </h4>
+              <button
+                onClick={handleCloseConversion}
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="space-y-2">
+              {convertedChoice.options.map((option) => (
+                <div
+                  key={option.key}
+                  className={`p-3 rounded-lg border-2 ${
+                    option.key === convertedChoice.correct_key
+                      ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800'
+                  }`}
+                >
+                  <div className="flex items-start">
+                    <span className="font-semibold mr-2">{option.key}.</span>
+                    <div className="flex-1">
+                      <MathText content={option.text} />
+                      {option.error_type && option.key !== convertedChoice.correct_key && (
+                        <p className="text-xs text-red-600 dark:text-red-400 mt-1">
+                          错误类型：{option.error_type}
+                        </p>
+                      )}
+                    </div>
+                    {option.key === convertedChoice.correct_key && (
+                      <span className="ml-2 text-green-600 dark:text-green-400 font-bold">
+                        ✓
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <p className="text-xs text-purple-700 dark:text-purple-300 mt-3">
+              💡 AI生成的选择题仅供参考，正确答案已标记
+            </p>
+          </div>
+        )}
+
         {!submitted && (
           <div className="flex items-start justify-between">
             <p className="text-xs text-gray-500 dark:text-gray-400 flex-1">
