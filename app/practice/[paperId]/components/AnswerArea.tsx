@@ -1,9 +1,13 @@
 'use client';
 
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import MathText from '@/components/MathText';
 import QuotaModal from './QuotaModal';
 import { getQuotaStatus, consumeQuota } from '@/lib/quota/manager';
+import { getMCQCache, saveMCQCache } from '@/lib/quota/cacheManager';
+import { getOrCreateRequest, hasInFlightRequest } from '@/lib/quota/inFlightManager';
+import { validateMCQResult, tryFixMCQResult } from '@/lib/quota/validator';
+import { trackEvent } from '@/lib/quota/analytics';
 import type { Question, ConvertToChoiceResult } from '@/types';
 import type { QuotaStatus } from '@/lib/quota/types';
 
@@ -18,46 +22,6 @@ interface AnswerAreaProps {
   disableConvert?: boolean; // 禁用转换功能（用于测评/模考场景）
 }
 
-// 缓存Key生成
-const getCacheKey = (questionId: string) => `convert_choice_${questionId}`;
-
-// 从localStorage读取缓存
-const getCachedConversion = (questionId: string): ConvertToChoiceResult | null => {
-  if (typeof window === 'undefined') return null;
-  try {
-    const cached = localStorage.getItem(getCacheKey(questionId));
-    if (cached) {
-      const data = JSON.parse(cached);
-      // 检查缓存是否在24小时内
-      if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
-        return data.result;
-      } else {
-        // 过期则删除
-        localStorage.removeItem(getCacheKey(questionId));
-      }
-    }
-  } catch (e) {
-    console.error('读取缓存失败:', e);
-  }
-  return null;
-};
-
-// 保存到localStorage
-const saveCachedConversion = (questionId: string, result: ConvertToChoiceResult) => {
-  if (typeof window === 'undefined') return;
-  try {
-    localStorage.setItem(
-      getCacheKey(questionId),
-      JSON.stringify({
-        result,
-        timestamp: Date.now(),
-      })
-    );
-  } catch (e) {
-    console.error('保存缓存失败:', e);
-  }
-};
-
 export default function AnswerArea({
   question,
   userAnswer,
@@ -70,18 +34,23 @@ export default function AnswerArea({
 }: AnswerAreaProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   
-  // 先从缓存读取
-  const cachedResult = useMemo(() => {
-    return getCachedConversion(question.id);
-  }, [question.id]);
-  
-  const [convertedChoice, setConvertedChoice] = useState<ConvertToChoiceResult | null>(cachedResult);
+  const [convertedChoice, setConvertedChoice] = useState<ConvertToChoiceResult | null>(null);
   const [converting, setConverting] = useState(false);
   const [convertError, setConvertError] = useState<string | null>(null);
   const [showAnswer, setShowAnswer] = useState(false); // 控制是否显示答案
   const [showQuotaModal, setShowQuotaModal] = useState(false);
   const [quotaStatus, setQuotaStatus] = useState<QuotaStatus | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+
+  // 初始化：检查缓存
+  useEffect(() => {
+    const cached = getMCQCache(question.id, question.answer);
+    if (cached) {
+      setConvertedChoice(cached);
+      trackEvent('mcq_cache_hit', { questionId: question.id });
+    }
+  }, [question.id, question.answer]);
 
   // 检查额度状态
   const checkQuota = () => {
@@ -90,61 +59,124 @@ export default function AnswerArea({
     return status;
   };
 
-  // 点击转换按钮
-  const handleConvertClick = () => {
-    // 如果已有缓存，直接展示（不扣额度，不弹窗）
-    if (convertedChoice) {
-      setShowAnswer(false); // 重新打开时隐藏答案
-      return;
+  // 调用API生成选择题（带重试）
+  const callGenerateAPI = async (attemptNum: number = 1): Promise<ConvertToChoiceResult> => {
+    console.log(`[MCQ Generate] 尝试 ${attemptNum}/2`);
+    
+    const response = await fetch('/api/convert-to-choice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        stem: question.question,
+        answer: question.answer,
+        solution: question.solution,
+        knowledge: question.knowledgePoints,
+      }),
+    });
+
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
+      throw new Error(data.error || `HTTP ${response.status}`);
     }
 
-    // 如果已展示过（关闭后再打开），也不扣额度
-    const cached = getCachedConversion(question.id);
-    if (cached) {
-      setConvertedChoice(cached);
+    const data = await response.json();
+    const result = data.result;
+
+    // 校验结果
+    const validation = validateMCQResult(result);
+    if (!validation.valid) {
+      console.error('[MCQ Validate] 校验失败:', validation.errors);
+      
+      // 尝试修复
+      const fixed = tryFixMCQResult(result);
+      if (fixed) {
+        console.log('[MCQ Validate] 自动修复成功');
+        return fixed;
+      }
+      
+      // 第一次失败，重试一次
+      if (attemptNum < 2) {
+        console.log('[MCQ Generate] 校验失败，重试...');
+        return callGenerateAPI(attemptNum + 1);
+      }
+      
+      throw new Error(`校验失败: ${validation.errors.join(', ')}`);
+    }
+
+    return result;
+  };
+
+  // 点击转换按钮
+  const handleConvertClick = () => {
+    trackEvent('mcq_click', { questionId: question.id });
+
+    // 1. 如果已展示，直接显示（不扣额度）
+    if (convertedChoice) {
       setShowAnswer(false);
       return;
     }
 
-    // Cache miss：检查额度并打开弹窗
-    const status = checkQuota();
+    // 2. 检查in-flight
+    if (hasInFlightRequest(question.id)) {
+      console.log('[MCQ] 已有请求进行中，等待...');
+      setConverting(true);
+      return;
+    }
+
+    // 3. 检查缓存
+    const cached = getMCQCache(question.id, question.answer);
+    if (cached) {
+      setConvertedChoice(cached);
+      setShowAnswer(false);
+      trackEvent('mcq_cache_hit', { questionId: question.id });
+      return;
+    }
+
+    // 4. Cache miss
+    trackEvent('mcq_cache_miss', { questionId: question.id });
+    
+    // 检查额度并打开弹窗
+    checkQuota();
     setShowQuotaModal(true);
   };
 
-  // 确认转换（从弹窗）- 只有cache miss才会走到这里
+  // 确认转换（从弹窗）
   const handleConfirmConvert = async () => {
     setShowQuotaModal(false);
-
-    // 执行转换
     setConverting(true);
     setConvertError(null);
-    
+    setRetryCount(0);
+
     try {
-      const response = await fetch('/api/convert-to-choice', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          stem: question.question,
-          answer: question.answer,
-          solution: question.solution,
-          knowledge: question.knowledgePoints,
-        }),
+      // 使用in-flight管理器（防止并发重复请求）
+      const result = await getOrCreateRequest(question.id, async () => {
+        return await callGenerateAPI(1);
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || '转换失败');
+      // 5. 写缓存（必须成功）
+      const cacheSaved = saveMCQCache(question.id, question.answer, result);
+      if (!cacheSaved) {
+        throw new Error('缓存保存失败，可能存储空间不足');
       }
 
-      // API调用成功后才消耗额度
+      // 6. 扣额度（只在缓存成功后）
       const consumeResult = consumeQuota();
       if (!consumeResult.success) {
-        // 理论上不应该走到这里，因为弹窗前已检查过
-        console.warn('额度不足，但API已调用:', consumeResult.message);
+        // 理论上不应该走到这里
+        console.warn('[MCQ] 额度扣除失败（但已生成）:', consumeResult.message);
+        trackEvent('mcq_generate_success', { 
+          questionId: question.id,
+          quotaDeductFailed: true,
+        });
       } else {
+        // 成功扣费
+        trackEvent('mcq_quota_deduct_success', { 
+          questionId: question.id,
+          quotaRemaining: getQuotaStatus().proRemaining || getQuotaStatus().freeRemaining,
+        });
+
         // 显示成功提示
         setSuccessMessage(consumeResult.message);
         setTimeout(() => setSuccessMessage(null), 5000);
@@ -153,13 +185,37 @@ export default function AnswerArea({
         window.dispatchEvent(new Event('quotaUpdate'));
       }
 
-      // 保存到缓存
-      saveCachedConversion(question.id, data.result);
-      setConvertedChoice(data.result);
+      // 7. 展示结果
+      setConvertedChoice(result);
       setShowAnswer(false);
+      
+      trackEvent('mcq_generate_success', { questionId: question.id });
+
     } catch (err) {
-      setConvertError(err instanceof Error ? err.message : '转换失败');
-      // API调用失败，不消耗额度
+      const errorMessage = err instanceof Error ? err.message : '转换失败';
+      setConvertError(errorMessage);
+
+      // 埋点记录失败原因
+      let reason = 'unknown';
+      if (errorMessage.includes('timeout') || errorMessage.includes('超时')) {
+        reason = 'timeout';
+      } else if (errorMessage.includes('JSON') || errorMessage.includes('json')) {
+        reason = 'json_invalid';
+      } else if (errorMessage.includes('校验')) {
+        reason = 'judge_fail';
+      } else if (errorMessage.includes('网络') || errorMessage.includes('network')) {
+        reason = 'network_error';
+      }
+
+      trackEvent('mcq_generate_fail', { 
+        questionId: question.id,
+        reason,
+        message: errorMessage,
+      });
+
+      // 失败不扣费（已在逻辑中保证）
+      console.error('[MCQ] 生成失败（未扣费）:', errorMessage);
+
     } finally {
       setConverting(false);
     }
@@ -181,21 +237,18 @@ export default function AnswerArea({
   // 获取额度状态文案
   const getQuotaText = () => {
     if (convertedChoice) return '已转换';
-    if (!quotaStatus) return '';
     
-    if (quotaStatus.hasFreeTries) {
-      return `今日免费：剩余 ${quotaStatus.freeRemaining} 次`;
+    // 实时获取最新状态
+    const status = getQuotaStatus();
+    
+    if (status.hasFreeTries) {
+      return `今日免费：剩余 ${status.freeRemaining} 次`;
     }
-    if (quotaStatus.hasPro && quotaStatus.proRemaining > 0) {
-      return `AI 额度：剩余 ${quotaStatus.proRemaining} 次`;
+    if (status.hasPro && status.proRemaining > 0) {
+      return `AI 额度：剩余 ${status.proRemaining} 次`;
     }
     return '需要 AI 额度';
   };
-
-  // 初始化额度状态
-  useEffect(() => {
-    checkQuota();
-  }, []);
 
   // 键盘支持：Enter 提交
   useEffect(() => {

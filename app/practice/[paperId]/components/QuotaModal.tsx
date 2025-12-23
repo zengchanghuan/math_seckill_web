@@ -8,6 +8,7 @@ import { useState } from 'react';
 import type { QuotaStatus, PlanType } from '@/lib/quota/types';
 import { PLAN_CONFIG } from '@/lib/quota/types';
 import { unlockPro } from '@/lib/quota/manager';
+import { trackEvent } from '@/lib/quota/analytics';
 
 interface QuotaModalProps {
   isOpen: boolean;
@@ -34,14 +35,22 @@ export default function QuotaModal({
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
             免输入练习
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="text-gray-700 dark:text-gray-300 mb-2">
             将本题转换为 4 选 1 选择题（更快做完）。
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-            本次将消耗：<span className="font-semibold">1 次今日免费额度</span>
+          <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+            <p className="text-sm text-blue-800 dark:text-blue-300 mb-1">
+              本次将消耗：<span className="font-semibold">1 次今日免费额度</span>
+            </p>
+            <p className="text-xs text-blue-600 dark:text-blue-400">
+              ✓ 成功才扣费，失败不扣费
+            </p>
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
+            转换后可免输入练习（4选1），更适合碎片时间刷题
             {status.isFirstTime && (
-              <span className="ml-2 text-green-600 dark:text-green-400">
-                （首次体验免费）
+              <span className="ml-2 text-green-600 dark:text-green-400 font-semibold">
+                ·首次体验
               </span>
             )}
           </p>
@@ -56,7 +65,7 @@ export default function QuotaModal({
               onClick={onConfirm}
               className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
             >
-              立即转换
+              确认并转换
             </button>
           </div>
         </div>
@@ -72,12 +81,20 @@ export default function QuotaModal({
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
             使用 AI 额度转换
           </h3>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
+          <p className="text-gray-700 dark:text-gray-300 mb-2">
             将本题转换为 4 选 1 选择题，并提供"易错干扰项"。
           </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-            本次将消耗：<span className="font-semibold">1 次 AI 额度</span>
-            （剩余 <span className="font-semibold text-purple-600 dark:text-purple-400">{status.proRemaining}</span> 次）
+          <div className="mb-4 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-800">
+            <p className="text-sm text-purple-800 dark:text-purple-300 mb-1">
+              本次将消耗：<span className="font-semibold">1 次 AI 额度</span>
+              （剩余 <span className="font-semibold text-purple-600 dark:text-purple-400">{status.proRemaining}</span> 次）
+            </p>
+            <p className="text-xs text-purple-600 dark:text-purple-400">
+              ✓ 成功才扣费，失败不扣费
+            </p>
+          </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
+            转换后可免输入练习（4选1），更适合碎片时间刷题
           </p>
           <div className="flex gap-3">
             <button
@@ -90,7 +107,7 @@ export default function QuotaModal({
               onClick={onConfirm}
               className="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
             >
-              消耗 1 次额度并转换
+              确认并转换
             </button>
           </div>
         </div>
@@ -101,8 +118,13 @@ export default function QuotaModal({
   // 状态C：需要付费
   const handleUnlock = (plan: PlanType) => {
     setUnlocking(true);
+    
+    trackEvent('paywall_open', { plan });
+    
     const result = unlockPro(plan);
     if (result.success) {
+      trackEvent('unlock_success', { plan });
+      
       // 解锁成功后自动转换
       setTimeout(() => {
         setUnlocking(false);
