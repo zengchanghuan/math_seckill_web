@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import MathText from '@/components/MathText';
+import { detectLatexErrors } from '@/lib/latexValidator';
 import type { Question } from '@/types';
 
 interface SolutionPanelProps {
@@ -13,6 +14,9 @@ interface SolutionPanelProps {
 
 export default function SolutionPanel({ question, isCorrect, correctAnswer, userAnswer }: SolutionPanelProps) {
   const [showDetailed, setShowDetailed] = useState(false);
+  const [isFixing, setIsFixing] = useState(false);
+  const [fixedSolution, setFixedSolution] = useState<string | null>(null);
+  const [errorDetected, setErrorDetected] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   // 提交后自动滚动到解析区
@@ -24,8 +28,59 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
     }
   }, [isCorrect]);
 
+  // 检测解析内容是否有错误
+  useEffect(() => {
+    if (question.solution) {
+      const { hasError, errors } = detectLatexErrors(question.solution);
+      if (hasError) {
+        setErrorDetected(true);
+        console.warn('检测到答案解析有误:', errors);
+        // 自动触发修复
+        handleAutoFix();
+      }
+    }
+  }, [question.questionId]);
+
+  // 自动修复解析
+  const handleAutoFix = async () => {
+    if (isFixing) return;
+    
+    setIsFixing(true);
+    try {
+      const response = await fetch('/api/fix-solution', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          question: question.question || question.content,
+          answer: correctAnswer,
+          errorType: 'LaTeX语法错误',
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFixedSolution(data.solution);
+        setErrorDetected(false);
+        console.log('✅ 解析已自动修复');
+      } else {
+        console.error('自动修复失败:', await response.text());
+      }
+    } catch (error) {
+      console.error('自动修复出错:', error);
+    } finally {
+      setIsFixing(false);
+    }
+  };
+
   // 获取简短解析（去除"关键思路："前缀）
   const getShortSolution = () => {
+    // 优先使用修复后的解析
+    if (fixedSolution) {
+      return fixedSolution.replace(/^【精析】/, '');
+    }
+    
     if (question.shortSolution) {
       // 如果包含"关键思路："，去掉它
       return question.shortSolution.replace(/^关键思路[：:]\s*/, '');
@@ -40,6 +95,11 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
 
   // 获取详细解析
   const getDetailedSolution = () => {
+    // 优先使用修复后的解析
+    if (fixedSolution) {
+      return fixedSolution.replace(/^【精析】/, '');
+    }
+    
     if (question.detailedSolution) {
       return question.detailedSolution;
     }
@@ -71,6 +131,20 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
 
   return (
     <div ref={panelRef} className="mt-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+      {/* 自动修复提示 */}
+      {isFixing && (
+        <div className="mb-3 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center gap-2">
+          <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+          <span className="text-sm text-blue-700 dark:text-blue-300">正在使用 AI 修正答案解析...</span>
+        </div>
+      )}
+      
+      {fixedSolution && !isFixing && (
+        <div className="mb-3 px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+          <span className="text-sm text-green-700 dark:text-green-300">✓ 答案解析已自动修正</span>
+        </div>
+      )}
+      
       {/* 结果提示 - 白底 + 左侧色条 */}
       <div className={`flex border-l-4 ${
         question.type === 'solution' 
