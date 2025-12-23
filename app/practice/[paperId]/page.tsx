@@ -105,7 +105,14 @@ const mockQuestions: Question[] = [
 export default function PracticePage() {
   const params = useParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const paperId = params.paperId as string;
+
+  // 检测plan模式
+  const mode = searchParams.get('mode');
+  const isPlanMode = mode === 'plan';
+  const planDay = searchParams.get('day') ? parseInt(searchParams.get('day')!) : null;
+  const planId = searchParams.get('planId');
 
   const [paper, setPaper] = useState<ExamPaper | null>(null);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
@@ -121,6 +128,7 @@ export default function PracticePage() {
     'all'
   );
   const [isMobile, setIsMobile] = useState(false);
+  const [showPlanComplete, setShowPlanComplete] = useState(false);
   const [progress, setProgress] = useState<PaperProgress>({
     paperId,
     currentIndex: 0,
@@ -189,7 +197,45 @@ export default function PracticePage() {
   useEffect(() => {
     const loadPaper = async () => {
       try {
-        // 从paperId提取年份（格式：paper_2023_1）
+        // Plan模式：从dayTask加载题目
+        if (isPlanMode && planDay && planId) {
+          const dayTask = getDayTask(planId, planDay);
+          if (!dayTask) {
+            alert('未找到训练计划');
+            router.push('/assessment/report');
+            return;
+          }
+
+          if (!dayTask.itemIds || dayTask.itemIds.length === 0) {
+            alert('该计划暂无题目');
+            router.push('/assessment/report');
+            return;
+          }
+
+          // 创建虚拟paper
+          const planPaper: ExamPaper = {
+            paperId: `plan_day${planDay}`,
+            name: `Day${planDay}: ${dayTask.title}`,
+            year: new Date().getFullYear(),
+            region: '测评计划',
+            examType: '专项训练',
+            subject: '高数',
+            questionIds: dayTask.itemIds,
+            suggestedTime: Math.ceil(dayTask.totalQuestions * 2), // 每题2分钟
+            totalQuestions: dayTask.totalQuestions,
+            questionTypes: { choice: 0, fill: 0, solution: 0 },
+          };
+
+          setPaper(planPaper);
+
+          // TODO: 从题库加载dayTask.itemIds对应的题目
+          // 暂时使用mock数据
+          setAllQuestions(mockQuestions.slice(0, dayTask.totalQuestions));
+          
+          return;
+        }
+
+        // 原有逻辑：从paperId提取年份（格式：paper_2023_1）
         const yearMatch = paperId.match(/paper_(\d{4})_/);
         if (!yearMatch) {
           console.error('无效的试卷ID格式');
@@ -302,7 +348,7 @@ export default function PracticePage() {
     };
 
     loadPaper();
-  }, [paperId]);
+  }, [paperId, isPlanMode, planDay, planId, router]);
 
   // 从题目内容中提取选项（用于选择题）
   // 从content中提取纯题干（去除选项）
@@ -454,6 +500,11 @@ export default function PracticePage() {
         (s) => s === 'answered'
       ).length;
 
+      // Plan模式：检查是否完成所有题目
+      if (isPlanMode && answeredQuestions === filteredQuestions.length) {
+        setTimeout(() => setShowPlanComplete(true), 500);
+      }
+
       return {
         ...prev,
         answers: newAnswers,
@@ -548,6 +599,31 @@ export default function PracticePage() {
           onExit={handleExit}
         />
 
+        {/* Plan模式：今日任务条 */}
+        {isPlanMode && planDay && planId && (
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800 px-4 py-3">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-300 mb-1">
+                    今日目标：{paper?.name || `Day${planDay}训练`}
+                  </h3>
+                  <p className="text-xs text-blue-700 dark:text-blue-400">
+                    任务：{filteredQuestions.length}题 | 
+                    进度：{progress.answeredCount}/{filteredQuestions.length} | 
+                    正确率：{progress.accuracy.toFixed(0)}%
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-blue-600 dark:text-blue-400">
+                    Day{planDay}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* 主内容区 */}
         <div className="flex-1 overflow-auto flex flex-col md:flex-row">
           {/* 左侧/中间：题目 + 作答区 */}
@@ -623,6 +699,58 @@ export default function PracticePage() {
             totalQuestions={filteredQuestions.length}
             isMobile={true}
           />
+        )}
+
+        {/* Plan模式完成弹窗 */}
+        {showPlanComplete && isPlanMode && planDay && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full p-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                🎉 Day{planDay} 完成！
+              </h3>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                  <span className="text-gray-600 dark:text-gray-400">正确率</span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {progress.accuracy.toFixed(0)}%
+                  </span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                  <span className="text-gray-600 dark:text-gray-400">完成题数</span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {progress.answeredCount}/{filteredQuestions.length}
+                  </span>
+                </div>
+                <div className="flex justify-between p-3 bg-gray-50 dark:bg-gray-900 rounded-lg">
+                  <span className="text-gray-600 dark:text-gray-400">平均用时</span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    {Math.round(elapsedTime / progress.answeredCount)}秒/题
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <button
+                  onClick={() => {
+                    setShowPlanComplete(false);
+                    if (planDay && planDay < 7) {
+                      router.push(`/assessment/report`);
+                    }
+                  }}
+                  className="w-full px-4 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
+                >
+                  {planDay && planDay < 7 ? '继续 Day' + (planDay + 1) + '（Pro）' : '返回报告页'}
+                </button>
+                <button
+                  onClick={() => router.push('/assessment/report')}
+                  className="w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  返回提分报告
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </Layout>
