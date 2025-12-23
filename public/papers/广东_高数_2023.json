@@ -39,7 +39,7 @@
           {
             "question_number": 4,
             "content": "设 $2x$ 是 $f(x)$ 的一个原函数，则 $\\int_0^{\\frac{\\pi}{2}}[f(x) - \\sin x]\\mathrm{d}x =$ （）\nA. $\\pi - 1$\nB. $\\pi + 1$\nC. $\\frac{\\pi^2}{4} - 1$\nD. $\\frac{\\pi^2}{4} + 1$",
-            "answer": "A\n【精析】由题意知 $\\int_{0}^{\\frac{\\pi}{2}}[f(x) - \\sin x]\\mathrm{d}x = \\int_{0}^{\\frac{\\pi}{2}}f(x)\\mathrm{d}x - \\int_{0}^{\\frac{\\pi}{2}}\\sin x\\mathrm{d}x = 2x\\left|\\limits_{0}^{\\frac{\\pi}{2}} + \\cos x\\right|_{0}^{\\frac{\\pi}{2}} = \\pi -1.$",
+            "answer": "A\n【精析】由题意知 $2x$ 是 $f(x)$ 的一个原函数，因此 $f(x) = (2x)' = 2$。于是所求积分为 $\\int_{0}^{\\frac{\\pi}{2}} [f(x) - \\sin x] \\, dx = \\int_{0}^{\\frac{\\pi}{2}} (2 - \\sin x) \\, dx$。计算得 $\\int_{0}^{\\frac{\\pi}{2}} 2 \\, dx = 2x \\big|_{0}^{\\frac{\\pi}{2}} = \\pi$，而 $\\int_{0}^{\\frac{\\pi}{2}} \\sin x \\, dx = -\\cos x \\big|_{0}^{\\frac{\\pi}{2}} = -\\left(0 - 1\\right) = 1$。因此原积分 $= \\pi - 1$，故正确答案为 A。",
             "images": []
           },
           {
@@ -169,4 +169,3 @@
     ]
   }
 }
-

@@ -17,11 +17,9 @@ export default function MathText({
 }: MathTextProps) {
   if (!content) return null;
 
-  // 修复：如果内容包含 LaTeX 命令但没有 $ 符号，说明 $ 被意外移除了
-  // 尝试自动修复
+  // 修复：如果内容包含 LaTeX 命令但没有 $ 符号，自动添加包裹
   let processedContent = content;
   if (!content.includes('$') && /\\[a-z]+/.test(content)) {
-    console.warn('检测到 LaTeX 代码缺少 $ 符号，尝试自动修复');
     // 将整段内容包裹在 $ $ 中
     processedContent = `$${content}$`;
   }
