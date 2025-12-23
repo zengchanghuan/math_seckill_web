@@ -29,24 +29,60 @@ body {
 /* KaTeX 样式调整 */
 .katex {
   font-size: 1.1em;
-}
-
-/* 块级公式样式 */
-.katex-display {
-  margin: 0.5em 0;
-  /* 减小默认的上下间距，避免额外空隙 */
-}
-
-/* 行内公式与文字基线对齐 */
-.katex {
-  /* 确保行内公式与周围文本基线对齐 */
   vertical-align: baseline;
+}
+
+/* 块级公式样式 - 增强版 */
+.katex-display {
+  margin: 1em 0;
+  padding: 0.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* 行内积分符号优化：确保不会过度撑高行高 */
 .katex .mop {
-  /* 积分号等大型运算符在行内时保持紧凑 */
   vertical-align: -0.2em;
+}
+
+/* 数学解析排版优化 */
+.prose {
+  /* 优化的字体堆栈 - 中文优先使用系统字体 */
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 
+               'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #374151;
+}
+
+.dark .prose {
+  color: #d1d5db;
+}
+
+.prose p {
+  margin-bottom: 0.875em;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.dark .prose strong {
+  color: #f3f4f6;
+}
+
+/* 改进行内代码/变量显示 */
+.prose code:not(.katex code) {
+  background-color: #f3f4f6;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.dark .prose code:not(.katex code) {
+  background-color: #374151;
 }
 
 

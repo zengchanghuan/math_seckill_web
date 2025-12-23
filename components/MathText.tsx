@@ -8,12 +8,14 @@ interface MathTextProps {
   content: string;
   displayMode?: boolean;
   className?: string;
+  enhanced?: boolean; // 启用增强模式：智能判断公式是否应该块级显示
 }
 
 export default function MathText({
   content,
   displayMode = false,
   className = '',
+  enhanced = false,
 }: MathTextProps) {
   if (!content) return null;
 
@@ -23,6 +25,40 @@ export default function MathText({
     // 将整段内容包裹在 $ $ 中
     processedContent = `$${content}$`;
   }
+
+  /**
+   * 智能判断公式是否应该块级显示（enhanced 模式）
+   * 判断规则：
+   * 1. 包含多个等号（= 出现2次以上）
+   * 2. 包含积分符号 \int
+   * 3. 包含求和/乘积符号 \sum \prod
+   * 4. 包含分式且较复杂 \frac{...}{...} 
+   * 5. 公式长度超过60个字符
+   * 6. 包含对齐环境的关键词
+   */
+  const shouldBeDisplayMode = (latex: string): boolean => {
+    if (!enhanced) return false;
+    
+    // 规则1: 多个等号
+    const equalsCount = (latex.match(/=/g) || []).length;
+    if (equalsCount >= 2) return true;
+    
+    // 规则2-3: 积分/求和/乘积
+    if (/\\int|\\sum|\\prod/.test(latex)) return true;
+    
+    // 规则4: 复杂分式（嵌套或长分式）
+    const fracMatch = latex.match(/\\frac/g);
+    if (fracMatch && fracMatch.length >= 2) return true;
+    if (/\\frac\{[^}]{15,}\}/.test(latex)) return true;
+    
+    // 规则5: 长公式
+    if (latex.length > 60) return true;
+    
+    // 规则6: 对齐环境
+    if (/\\begin\{(align|aligned|gather)\}/.test(latex)) return true;
+    
+    return false;
+  };
 
   // 提取 LaTeX 表达式（支持 $...$ 和 $$...$$）
   const parts: (
@@ -68,7 +104,11 @@ export default function MathText({
   // 合并所有匹配并排序
   const allMatches = [
     ...blockMatches.map((m) => ({ ...m, display: true })),
-    ...inlineMatches.map((m) => ({ ...m, display: false })),
+    ...inlineMatches.map((m) => ({ 
+      ...m, 
+      // 在 enhanced 模式下，智能判断是否应该块级显示
+      display: enhanced ? shouldBeDisplayMode(m.content) : false 
+    })),
   ].sort((a, b) => a.start - b.start);
   
   // 构建parts数组

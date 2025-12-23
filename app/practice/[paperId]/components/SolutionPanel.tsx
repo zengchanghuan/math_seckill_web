@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import MathText from '@/components/MathText';
+import FormattedSolution from '@/components/FormattedSolution';
 import { detectLatexErrors } from '@/lib/latexValidator';
 import type { Question } from '@/types';
 
@@ -138,121 +139,132 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
   };
 
   return (
-    <div ref={panelRef} className="mt-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
-      {/* 自动修复提示 */}
-      {isFixing && (
-        <div className="mb-3 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center gap-2">
-          <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
-          <span className="text-sm text-blue-700 dark:text-blue-300">正在使用 AI 修正答案解析...</span>
-        </div>
-      )}
-      
-      {fixedSolution && !isFixing && (
-        <div className="mb-3 px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-green-700 dark:text-green-300">
-              ✓ 答案解析已自动修正
-              {verificationInfo && verificationInfo.verified && (
-                <span className="ml-2 text-xs">
-                  (已验证: {verificationInfo.method === 'choice_comparison' ? '选项匹配' : 
-                    verificationInfo.method === 'symbolic_comparison' ? '符号计算验证' : 
-                    verificationInfo.method === 'numerical_comparison' ? '数值计算验证' : '已通过验证'})
+    <div ref={panelRef} className="mt-6">
+      {/* 容器：最大宽度限制 + 居中 */}
+      <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+        {/* 内边距容器 */}
+        <div className="px-6 py-5 md:px-8 md:py-6">
+          {/* 自动修复提示 */}
+          {isFixing && (
+            <div className="mb-4 px-4 py-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg flex items-center gap-2">
+              <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+              <span className="text-sm text-blue-700 dark:text-blue-300">正在使用 AI 修正答案解析...</span>
+            </div>
+          )}
+          
+          {fixedSolution && !isFixing && (
+            <div className="mb-4 px-4 py-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-green-700 dark:text-green-300">
+                  ✓ 答案解析已自动修正
+                  {verificationInfo && verificationInfo.verified && (
+                    <span className="ml-2 text-xs">
+                      (已验证: {verificationInfo.method === 'choice_comparison' ? '选项匹配' : 
+                        verificationInfo.method === 'symbolic_comparison' ? '符号计算验证' : 
+                        verificationInfo.method === 'numerical_comparison' ? '数值计算验证' : '已通过验证'})
+                    </span>
+                  )}
                 </span>
-              )}
-            </span>
-            {verificationInfo && verificationInfo.attempts && (
-              <span className="text-xs text-green-600 dark:text-green-400">
-                {verificationInfo.attempts > 1 ? `重试${verificationInfo.attempts}次` : ''}
+                {verificationInfo && verificationInfo.attempts && (
+                  <span className="text-xs text-green-600 dark:text-green-400">
+                    {verificationInfo.attempts > 1 ? `重试${verificationInfo.attempts}次` : ''}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+          
+          {/* 标题区域：【精析】徽标 + 标题 */}
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-md text-sm font-semibold shadow-sm">
+                精析
               </span>
-            )}
+              <h3 className={`text-lg font-bold ${
+                question.type === 'solution'
+                  ? 'text-blue-700 dark:text-blue-300'
+                  : isCorrect
+                  ? 'text-green-700 dark:text-green-300'
+                  : 'text-red-700 dark:text-red-300'
+              }`}>
+                {question.type === 'solution' 
+                  ? '📖 参考解答' 
+                  : isCorrect ? '✅ 回答正确' : '❌ 回答错误'
+                }
+              </h3>
+            </div>
+            
+            {/* 评价和正确答案 */}
+            <div className="pl-2 border-l-3 border-l-gray-300 dark:border-l-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {getEvaluation()}
+              </p>
+              {!isCorrect && question.type !== 'solution' && (
+                <p className="text-sm text-gray-700 dark:text-gray-300 mt-2 font-medium">
+                  正确答案：<MathText content={correctAnswer} />
+                </p>
+              )}
+            </div>
           </div>
-        </div>
-      )}
-      
-      {/* 结果提示 - 白底 + 左侧色条 */}
-      <div className={`flex border-l-4 ${
-        question.type === 'solution' 
-          ? 'border-l-blue-500 dark:border-l-blue-400'
-          : isCorrect
-          ? 'border-l-green-500 dark:border-l-green-400'
-          : 'border-l-red-500 dark:border-l-red-400'
-      } pl-4 py-2 mb-3`}>
-        <div className="flex-1">
-          <p className={`text-sm font-semibold mb-1 ${
-            question.type === 'solution'
-              ? 'text-blue-700 dark:text-blue-300'
-              : isCorrect
-              ? 'text-green-700 dark:text-green-300'
-              : 'text-red-700 dark:text-red-300'
-          }`}>
-            {question.type === 'solution' 
-              ? '📖 参考解答' 
-              : isCorrect ? '✅ 回答正确' : '✗ 回答错误'
-            } · {getEvaluation()}
-          </p>
-          {!isCorrect && question.type !== 'solution' && (
-            <p className="text-sm text-gray-700 dark:text-gray-300">
-              正确答案：<MathText content={correctAnswer} />
-            </p>
-          )}
-          {isCorrect && question.type !== 'solution' && (
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-              这类基础计算已经掌握得不错，可以稍微加快刷题速度。
-            </p>
-          )}
-        </div>
-      </div>
 
-      {/* 关键思路（免费） */}
-      {shortSolution && (
-        <div className="pl-4 mb-3">
-          <div className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-            <MathText content={shortSolution} />
+          {/* 解析内容 - 使用 FormattedSolution 组件 */}
+          <div className="prose prose-gray dark:prose-invert max-w-none">
+            <FormattedSolution 
+              content={shortSolution || detailedSolution} 
+            />
           </div>
-        </div>
-      )}
 
-      {/* 详细解析（Pro功能） */}
-      {detailedSolution && detailedSolution !== shortSolution && (
-        <div className="pl-4">
-          <button
-            onClick={() => setShowDetailed(!showDetailed)}
-            className="text-primary-600 dark:text-primary-400 font-medium hover:underline text-sm"
-          >
-            {showDetailed ? '收起' : '展开'}完整解析
-          </button>
-          {showDetailed && (
-            <div className="mt-2 text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-              <MathText content={detailedSolution} />
+          {/* 展开详细解析 */}
+          {detailedSolution && detailedSolution !== shortSolution && shortSolution && (
+            <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <button
+                onClick={() => setShowDetailed(!showDetailed)}
+                className="text-primary-600 dark:text-primary-400 font-medium hover:underline text-sm flex items-center gap-1"
+              >
+                {showDetailed ? '收起' : '展开'}完整解析
+                <svg 
+                  className={`w-4 h-4 transition-transform ${showDetailed ? 'rotate-180' : ''}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {showDetailed && (
+                <div className="mt-4 prose prose-gray dark:prose-invert max-w-none">
+                  <FormattedSolution content={detailedSolution} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 解析中的图片（如果有） */}
+          {question.images && question.images.length > 0 && question.images.some(img => img.position === 'solution') && (
+            <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
+              {question.images
+                .filter(img => img.position === 'solution')
+                .map((image, idx) => (
+                  <div key={idx} className="flex justify-center">
+                    <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 max-w-md">
+                      <img
+                        src={image.url}
+                        alt={image.alt_text || `解析配图${idx + 1}`}
+                        className="w-full h-auto max-h-80 object-contain"
+                        loading="lazy"
+                      />
+                      {image.caption && (
+                        <div className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-sm text-gray-600 dark:text-gray-400 text-center">
+                          {image.caption}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
             </div>
           )}
         </div>
-      )}
-
-      {/* 解析中的图片（如果有） */}
-      {question.images && question.images.length > 0 && question.images.some(img => img.position === 'solution') && (
-        <div className="pl-4 mt-4 space-y-3">
-          {question.images
-            .filter(img => img.position === 'solution')
-            .map((image, idx) => (
-              <div key={idx} className="flex justify-center">
-                <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 max-w-md">
-                  <img
-                    src={image.url}
-                    alt={image.alt_text || `解析配图${idx + 1}`}
-                    className="w-full h-auto max-h-80 object-contain"
-                    loading="lazy"
-                  />
-                  {image.caption && (
-                    <div className="px-3 py-2 bg-gray-50 dark:bg-gray-700 text-sm text-gray-600 dark:text-gray-400 text-center">
-                      {image.caption}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 }
