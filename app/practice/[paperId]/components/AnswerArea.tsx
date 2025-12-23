@@ -2,7 +2,10 @@
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import MathText from '@/components/MathText';
+import QuotaModal from './QuotaModal';
+import { getQuotaStatus, consumeQuota } from '@/lib/quota/manager';
 import type { Question, ConvertToChoiceResult } from '@/types';
+import type { QuotaStatus } from '@/lib/quota/types';
 
 interface AnswerAreaProps {
   question: Question;
@@ -12,6 +15,7 @@ interface AnswerAreaProps {
   isCorrect: boolean | null;
   onSubmit: () => void;
   onModifyAnswer?: () => void;
+  disableConvert?: boolean; // 禁用转换功能（用于测评/模考场景）
 }
 
 // 缓存Key生成
@@ -62,6 +66,7 @@ export default function AnswerArea({
   isCorrect,
   onSubmit,
   onModifyAnswer,
+  disableConvert = false,
 }: AnswerAreaProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   
@@ -74,15 +79,49 @@ export default function AnswerArea({
   const [converting, setConverting] = useState(false);
   const [convertError, setConvertError] = useState<string | null>(null);
   const [showAnswer, setShowAnswer] = useState(false); // 控制是否显示答案
+  const [showQuotaModal, setShowQuotaModal] = useState(false);
+  const [quotaStatus, setQuotaStatus] = useState<QuotaStatus | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // 转换为选择题
-  const handleConvertToChoice = async () => {
+  // 检查额度状态
+  const checkQuota = () => {
+    const status = getQuotaStatus();
+    setQuotaStatus(status);
+    return status;
+  };
+
+  // 点击转换按钮
+  const handleConvertClick = () => {
     // 如果已有缓存，直接展示
     if (convertedChoice) {
       setShowAnswer(false); // 重新打开时隐藏答案
       return;
     }
 
+    // 检查额度并打开弹窗
+    const status = checkQuota();
+    setShowQuotaModal(true);
+  };
+
+  // 确认转换（从弹窗）
+  const handleConfirmConvert = async () => {
+    setShowQuotaModal(false);
+
+    // 消耗额度
+    const consumeResult = consumeQuota();
+    if (!consumeResult.success) {
+      setConvertError(consumeResult.message);
+      return;
+    }
+
+    // 显示成功提示
+    setSuccessMessage(consumeResult.message);
+    setTimeout(() => setSuccessMessage(null), 5000);
+
+    // 触发额度更新事件
+    window.dispatchEvent(new Event('quotaUpdate'));
+
+    // 执行转换
     setConverting(true);
     setConvertError(null);
     
@@ -123,6 +162,31 @@ export default function AnswerArea({
     setConvertError(null);
     setShowAnswer(false);
   };
+
+  // 切回输入模式
+  const handleSwitchBackToInput = () => {
+    setConvertedChoice(null);
+    setSuccessMessage(null);
+  };
+
+  // 获取额度状态文案
+  const getQuotaText = () => {
+    if (convertedChoice) return '已转换';
+    if (!quotaStatus) return '';
+    
+    if (quotaStatus.hasFreeTries) {
+      return `今日免费：剩余 ${quotaStatus.freeRemaining} 次`;
+    }
+    if (quotaStatus.hasPro && quotaStatus.proRemaining > 0) {
+      return `AI 额度：剩余 ${quotaStatus.proRemaining} 次`;
+    }
+    return '需要 AI 额度';
+  };
+
+  // 初始化额度状态
+  useEffect(() => {
+    checkQuota();
+  }, []);
 
   // 键盘支持：Enter 提交
   useEffect(() => {
@@ -238,19 +302,46 @@ export default function AnswerArea({
   if (question.type === 'fill') {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+        {/* 成功提示条 */}
+        {successMessage && (
+          <div className="mb-3 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg flex items-center justify-between">
+            <div className="flex-1">
+              <p className="text-sm text-green-700 dark:text-green-300 font-medium">
+                ✓ 已切换为选择模式（免输入）
+              </p>
+              <p className="text-xs text-green-600 dark:text-green-400 mt-1">
+                {successMessage}
+              </p>
+            </div>
+            <button
+              onClick={handleSwitchBackToInput}
+              className="ml-4 text-xs text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 underline"
+            >
+              切回输入模式
+            </button>
+          </div>
+        )}
+
         <div className="mb-3">
           <div className="flex items-center justify-between mb-2">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               (1) 填写答案：
             </label>
-            <button
-              onClick={handleConvertToChoice}
-              disabled={converting}
-              className="px-3 py-1 text-xs bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/40 transition-colors disabled:opacity-50"
-              title="使用AI将此填空题转换为选择题"
-            >
-              {converting ? '转换中...' : '🔄 转为选择题'}
-            </button>
+            {!disableConvert && (
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  {getQuotaText()}
+                </span>
+                <button
+                  onClick={handleConvertClick}
+                  disabled={converting}
+                  className="px-3 py-1 text-xs bg-purple-100 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 rounded-lg font-medium hover:bg-purple-200 dark:hover:bg-purple-900/40 transition-colors disabled:opacity-50"
+                  title="使用AI将此填空题转换为选择题"
+                >
+                  {converting ? '转换中...' : convertedChoice ? '✓ 已转换' : '🔄 一键转选择题'}
+                </button>
+              </div>
+            )}
           </div>
           <input
             ref={inputRef}
@@ -270,6 +361,16 @@ export default function AnswerArea({
               ⚠️ {convertError}
             </p>
           </div>
+        )}
+
+        {/* 额度弹窗 */}
+        {quotaStatus && (
+          <QuotaModal
+            isOpen={showQuotaModal}
+            onClose={() => setShowQuotaModal(false)}
+            onConfirm={handleConfirmConvert}
+            status={quotaStatus}
+          />
         )}
 
         {/* 选择题预览 */}

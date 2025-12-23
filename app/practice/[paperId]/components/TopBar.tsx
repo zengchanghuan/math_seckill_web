@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ModeSwitch from './ModeSwitch';
+import QuotaBadge from './QuotaBadge';
 import type { ExamPaper } from '@/types';
 
 interface TopBarProps {
@@ -48,6 +49,7 @@ export default function TopBar({
             </div>
 
             <div className="hidden md:flex items-center space-x-3">
+              <QuotaBadge />
               <ModeSwitch currentMode={currentMode} onModeChange={onModeChange} />
               <div className="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-400">
                 <span>⏱</span>
