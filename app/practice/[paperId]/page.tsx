@@ -576,6 +576,18 @@ export default function PracticePage() {
                     userAnswer={userAnswer}
                   />
                 )}
+
+                {/* 底部操作条 - 移到题目区域内 */}
+                <BottomBar
+                  currentIndex={currentIndex}
+                  totalQuestions={filteredQuestions.length}
+                  questionStatus={
+                    currentQuestionStatus as 'unanswered' | 'answered' | 'wrong'
+                  }
+                  onPrevious={handlePrevious}
+                  onNext={handleNext}
+                  onFinish={handleFinish}
+                />
               </>
             )}
           </div>
@@ -611,18 +623,6 @@ export default function PracticePage() {
             isMobile={true}
           />
         )}
-
-        {/* 底部操作条 */}
-        <BottomBar
-          currentIndex={currentIndex}
-          totalQuestions={filteredQuestions.length}
-          questionStatus={
-            currentQuestionStatus as 'unanswered' | 'answered' | 'wrong'
-          }
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-          onFinish={handleFinish}
-        />
       </div>
     </Layout>
   );

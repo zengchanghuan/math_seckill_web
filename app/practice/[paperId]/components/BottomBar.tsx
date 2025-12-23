@@ -34,8 +34,8 @@ export default function BottomBar({
 
   return (
     <>
-      <div className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 px-4 py-3 z-20 md:relative md:border-t-0">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 px-4 py-3 mt-4 rounded-lg">
+        <div className="flex items-center justify-between">
           <button
             onClick={onPrevious}
             disabled={currentIndex === 0}
