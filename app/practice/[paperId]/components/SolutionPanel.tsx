@@ -16,6 +16,7 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
   const [showDetailed, setShowDetailed] = useState(false);
   const [isFixing, setIsFixing] = useState(false);
   const [fixedSolution, setFixedSolution] = useState<string | null>(null);
+  const [verificationInfo, setVerificationInfo] = useState<any>(null);
   const [errorDetected, setErrorDetected] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -61,9 +62,16 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
 
       if (response.ok) {
         const data = await response.json();
-        setFixedSolution(data.solution);
-        setErrorDetected(false);
-        console.log('✅ 解析已自动修复');
+        
+        if (data.success) {
+          setFixedSolution(data.solution);
+          setVerificationInfo(data.verification);
+          setErrorDetected(false);
+          console.log('✅ 解析已自动修复', data.verification);
+        } else {
+          console.error('自动修复失败（验证未通过）:', data);
+          setVerificationInfo(data.verification);
+        }
       } else {
         console.error('自动修复失败:', await response.text());
       }
@@ -141,7 +149,23 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
       
       {fixedSolution && !isFixing && (
         <div className="mb-3 px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-          <span className="text-sm text-green-700 dark:text-green-300">✓ 答案解析已自动修正</span>
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-green-700 dark:text-green-300">
+              ✓ 答案解析已自动修正
+              {verificationInfo && verificationInfo.verified && (
+                <span className="ml-2 text-xs">
+                  (已验证: {verificationInfo.method === 'choice_comparison' ? '选项匹配' : 
+                    verificationInfo.method === 'symbolic_comparison' ? '符号计算验证' : 
+                    verificationInfo.method === 'numerical_comparison' ? '数值计算验证' : '已通过验证'})
+                </span>
+              )}
+            </span>
+            {verificationInfo && verificationInfo.attempts && (
+              <span className="text-xs text-green-600 dark:text-green-400">
+                {verificationInfo.attempts > 1 ? `重试${verificationInfo.attempts}次` : ''}
+              </span>
+            )}
+          </div>
         </div>
       )}
       
