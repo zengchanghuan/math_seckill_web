@@ -49,14 +49,6 @@ export default function SolutionPanel({ question, isCorrect, correctAnswer, user
   const shortSolution = getShortSolution();
   const detailedSolution = getDetailedSolution();
 
-  // 调试：打印解析内容
-  console.log('🔍 SolutionPanel Debug:', {
-    questionId: question.questionId,
-    shortSolution,
-    detailedSolution,
-    originalSolution: question.solution,
-  });
-
   if (isCorrect === null) {
     return null;
   }

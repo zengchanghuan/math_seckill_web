@@ -252,6 +252,17 @@ export default function PracticePage() {
               extractedAnswer = answerParts[0].trim();
               extractedSolution =
                 answerParts.length > 1 ? answerParts[1].trim() : '';
+              
+              // 调试日志
+              if (questionCounter === 4) {
+                console.log('🔍 Question 4 Debug:', {
+                  original_answer: q.answer,
+                  answerParts,
+                  extractedAnswer,
+                  extractedSolution,
+                  'has $ in solution': extractedSolution.includes('$'),
+                });
+              }
             }
 
             const question: Question = {
