@@ -69,7 +69,7 @@ export function saveResult(result: AssessmentResult): void {
 export function getResult(): AssessmentResult | null {
   if (typeof window === 'undefined') return null;
   try {
-    const stored = localStorage.setItem(STORAGE_KEYS.RESULT);
+    const stored = localStorage.getItem(STORAGE_KEYS.RESULT);
     return stored ? JSON.parse(stored) : null;
   } catch (e) {
     console.error('读取result失败:', e);
