@@ -60,12 +60,12 @@ export default function QuestionNav({
   const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
 
   const navContent = (
-    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+    <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-3">
       {/* 筛选按钮 */}
-      <div className="flex space-x-2 mb-4">
+      <div className="flex space-x-2 mb-3">
         <button
           onClick={() => onFilterChange('all')}
-          className={`px-3 py-1 text-xs font-medium rounded ${
+          className={`px-2.5 py-1 text-xs font-medium rounded ${
             filter === 'all'
               ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
               : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
@@ -75,7 +75,7 @@ export default function QuestionNav({
         </button>
         <button
           onClick={() => onFilterChange('unanswered')}
-          className={`px-3 py-1 text-xs font-medium rounded ${
+          className={`px-2.5 py-1 text-xs font-medium rounded ${
             filter === 'unanswered'
               ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
               : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
@@ -86,7 +86,7 @@ export default function QuestionNav({
         {answeredCount > 0 && (
           <button
             onClick={() => onFilterChange('wrong')}
-            className={`px-3 py-1 text-xs font-medium rounded ${
+            className={`px-2.5 py-1 text-xs font-medium rounded ${
               filter === 'wrong'
                 ? 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
                 : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
@@ -98,7 +98,7 @@ export default function QuestionNav({
       </div>
 
       {/* 题号矩阵 */}
-      <div className="grid grid-cols-5 gap-2 mb-4">
+      <div className="grid grid-cols-5 gap-2 mb-3">
         {filteredQuestions.map((q, idx) => {
           const originalIndex = questions.indexOf(q);
           const status = getQuestionStatus(originalIndex);
@@ -120,7 +120,7 @@ export default function QuestionNav({
       </div>
 
       {/* 统计信息 - 整合成一行 */}
-      <div className="border-t border-gray-200 dark:border-gray-700 pt-3">
+      <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
         <div className="text-xs text-gray-700 dark:text-gray-300 text-center">
           已作答：{answeredCount} / {totalQuestions}　｜　正确：{correctCount} 题　｜　正确率：{accuracy}%
         </div>

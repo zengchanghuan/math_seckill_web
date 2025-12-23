@@ -581,7 +581,7 @@ export default function PracticePage() {
           </div>
 
           {/* 右侧：题号导航（桌面端） */}
-          <div className="hidden md:block w-[30%] p-4 border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
+          <div className="hidden md:block w-[30%] p-3 border-l border-gray-200 dark:border-gray-700 overflow-y-auto">
             <QuestionNav
               questions={filteredQuestions}
               currentIndex={currentIndex}
