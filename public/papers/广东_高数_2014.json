@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "province": "广东省",
+    "subject": "高等数学",
+    "year": 2014,
+    "exam_type": "专升本",
+    "total_sections": 4,
+    "total_questions": 20,
+    "total_images": 1
+  },
+  "paper": {
+    "year": 2014,
+    "province": "广东省",
+    "subject": "高等数学",
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单项选择题",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "设函数  $f(x) = \\begin{cases} x + 2, & x < 0 \\\\ 1, & x = 0 \\\\ 2 + 3x, & x > 0 \\end{cases}$  则下列结论正确的是\nA.  $\\lim_{x \\to 0} f(x) = 1$\nB.  $\\lim_{x\\to 0}f(x) = 2$\nC.  $\\lim_{x \\to 0} f(x) = 3$\nD.  $\\lim_{x \\to 0} f(x)$  不存在",
+            "answer": "B",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "函数  $y = \\frac{x}{x + 2\\sin x}$  的图形的水平渐近线是\nA.  $y = 0$\nB.  $y = \\frac{1}{3}$\nC.  $y = \\frac{1}{2}$\nD.  $y = 1$",
+            "answer": "D",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "曲线  $y = \\ln x + \\frac{1}{2} x^2 + 1$  的凸区间是\nA.  $(- \\infty, -1)$\nB. (-1,0)\nC. (0,1)\nD.  $(1, + \\infty)$",
+            "answer": "C",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "已知  $\\arctan x^{2}$  是函数  $f(x)$  的一个原函数, 则下列结论中, 不正确的是\nA.  $f(x) = \\frac{2 x}{1 + x^{4}}$\nB. 当  $x \\to 0$  时,  $f(x)$  和  $x$  是同阶无穷小量\nC.  $\\int_0^{+\\infty}f(x)dx = \\frac{\\pi}{2}$\nD.  $\\int f(2x) dx = \\arctan 4x^{2} + C$",
+            "answer": "D",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "交换二次积分  $I = \\int_{0}^{1} dx \\int_{x^2}^{1} f(x, y) dy$  和积分次序，则  $I =$\nA.  $\\int_0^1 dy\\int_0^{\\sqrt{y}}f(x,y)dx$\nB.  $\\int_0^1 dy\\int_{\\sqrt{y}}^1 f(x,y)dx$\nC.  $\\int_0^1 dy\\int_{y^2}^1 f(x,y)dx$\nD.  $\\int_0^1 dy\\int_0^{y^2}f(x,y)dx$",
+            "answer": "A",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填空题",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "$\\lim_{n\\to \\infty}\\frac{\\sqrt{4n^2 + 3n + 1}}{n} = \\underline{\\quad}$",
+            "answer": "2",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "$f(x) = x^{2} + 2x - 1$  在区间  $[0,2]$  上应用拉格朗日（Langrange）中值定理时，满足定理要求的  $\\xi =$",
+            "answer": "1",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "若由参数方程  $\\left\\{ \\begin{array}{l} x = \\ln \\cos t \\\\ y = a \\sec t \\end{array} \\right.$  所确定的函数  $y = y(x)$  是微分方程  $\\frac{dy}{dx} = y + e^{-x}$  的解，则常数  $a =$",
+            "answer": "$-\\frac{1}{2}$",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "设二元函数  $z = \\ln (xy)$  ，则  $\\frac{\\partial^2z}{\\partial x\\partial y} =$",
+            "answer": "0",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "微积分方程  $y'' + y' - 12y = 0$  的通解是  $y =$  ________。",
+            "answer": "$C_1e^{-4x} + C_2e^{3x}$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计算题",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "求极限  $\\lim_{x\\to 0}\\left(\\frac{1}{x} +\\frac{1}{e^{-x} - 1}\\right)$ 。",
+            "answer": "解：原式  $= \\lim_{x\\to 0}\\frac{e^{-x} - 1 + x}{x(e^{-x} - 1)} = \\lim_{x\\to 0}\\frac{-e^{-x} + 1}{e^{-x} - 1 - xe^{-x}}$  （3分）\n$$= \\lim  _ {x \\rightarrow 0} \\frac {e ^ {- x}}{- e ^ {- x} - e ^ {- x} + x e ^ {- x}} = - \\frac {1}{2} 。 \\tag {6分}$$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "设  $y = x \\arcsin x - \\sqrt{1 - x^2}$ ，求  $y'' \\Bigg|_{x = 0}$ 。",
+            "answer": "解：  $y' = \\arcsin x + \\frac{2x}{\\sqrt{1 - x^2}}$ ， (3分)\n$$y ^ {\\prime \\prime} = \\frac {1}{\\sqrt {1 - x ^ {2}}} + \\frac {2}{(1 - x ^ {2}) ^ {\\frac {3}{2}}}, \\tag {5分}$$\n$$\\therefore y ^ {\\prime \\prime} \\Bigg | _ {x = 0} = 3 \\tag {6分}$$",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "求函数  $f(x) = \\log_4(4^x + 1) - \\frac{1}{2} x - \\log_4 2$  的单调区间和极值。",
+            "answer": "解： $f(x)$  的定义域为  $(- \\infty, + \\infty)$\n$$f ^ {\\prime} (x) = \\frac {4 ^ {x} \\ln 4}{\\left(4 ^ {x} + 1\\right) \\ln 4} - \\frac {1}{2} = \\frac {4 ^ {x} - 1}{2 \\left(4 ^ {x} + 1\\right)} \\tag {3分}$$\n令  $f^{\\prime}(x) = 0$ ，解得  $x = 0$\n当  $x <   0$  时，  $f^{\\prime}(x) <   0$  ，当  $x > 0$  时，  $f^{\\prime}(x) > 0$  (6分）\n所以  $f(x)$  在区间  $(- \\infty, 0]$  内递减，在  $(0, +\\infty)$  内递增； $f(0) = 0$  是  $f(x)$  的极小值。\n(6分)",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "计算不定积分  $\\int \\frac{1}{(x + 2)\\sqrt{x + 3}} dx$  。",
+            "answer": "解：令  $\\sqrt{3 + x} = t$  ，则  $x = t^2 - 3, dx = 2t dt$  ，（2分）\n原式  $= 2\\int \\frac{1}{t^2 - 1} dt = \\int \\left(\\frac{1}{t - 1} -\\frac{1}{t + 1}\\right)dt$\n$$= \\ln | t - 1 | - \\ln | t + 1 | + C = \\ln \\left| \\frac {t - 1}{t + 1} \\right| + C = \\ln \\left| \\frac {\\sqrt {3 + x} - 1}{\\sqrt {3 + x} + 1} + C \\right| \\quad (6 \\text {分})$$",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "设函数  $f((x) = \\frac{2}{3} x^{\\frac{3}{2}}$ 。\n（1）求曲线  $y = f(x)$  上相应于  $0 \\leq x \\leq 1$  的弧段长度  $s$ ；\n(2) 求由曲线  $y = f(x)$  和直线  $x = 0$ ,  $x = 1$  及  $y = 0$  围成的平面图绕  $x$  轴旋转而成的旋转体体积  $V_{x}$  。",
+            "answer": "解：（1） $s = \\int_{0}^{1}\\sqrt{1 + x} dx = \\frac{2}{3}(1 + x)^{\\frac{3}{2}}\\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right| = \\frac{2}{3}(2\\sqrt{2} - 1)$ ；（3分）\n(2)  $V_{x} = \\pi \\int_{0}^{1} \\frac{4}{9} x^{3} dx = \\frac{\\pi}{9} x^{4} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. = \\frac{\\pi}{9}$  (6分)",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "已知三元函数  $f(u, v, w)$  具有连续偏导数，且  $f_v - f_w \\neq 0$  。若二元函数  $z = z(x, y)$  是由三元方程  $f(x - y, y - z, z - x) = 0$  所确定的隐函数，计算  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y}$  。",
+            "answer": "解：设  $F(x,y,z) = f(x - y,y - z,z - x) = f(u,v,w)$\n其中  $u = x - y, v = y - z, w = z - x$\n则  $F_{x} = f_{u} - f_{w}, F_{y} = -f_{u} + f_{v}, F_{z} = -f_{v} + f_{w}$  (2分）\n$$\\therefore \\frac {\\partial z}{\\partial x} = - \\frac {F _ {x}}{F _ {z}} = \\frac {f _ {u} - f _ {w}}{f _ {v} - f _ {w}}, \\frac {\\partial z}{\\partial y} = - \\frac {F _ {y}}{F _ {z}} = \\frac {- f _ {u} + f _ {v}}{f _ {v} - f _ {w}}$$\n故  $\\frac{\\partial z}{\\partial x} + \\frac{\\partial z}{\\partial y} = \\frac{f_u - f_w - f_u + f_v}{f_v - f_w} = 1$  （6分）",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "计算二重积分  $\\iint_{D}(x^{2} + y^{2})d\\sigma$  ，其中积分区域  $D = \\left\\{(x,y)\\bigg|x^2 +y^2\\geq 1,\\big|x\\big|\\leq 2,\\big|y\\big|\\leq 2\\right\\}$",
+            "answer": "解：  $D$  如图：\n记圆域  $x^{2} + y^{2}\\leq 1$  为  $D_{1}$\n$$\\begin{array}{l} \\text {原 式} = \\iint_ {D + D _ {1}} \\left(x ^ {2} + y ^ {2}\\right) d \\sigma - \\iint_ {D _ {1}} \\left(x ^ {2} + y ^ {2}\\right) d \\sigma \\quad (2 \\text {分}) \\\\ = \\int_ {- 2} ^ {2} d x \\int_ {- 2} ^ {2} \\left(x ^ {2} + y ^ {2}\\right) d y - \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {3} d r \\quad (4 \\text {分}) \\\\ \\end{array}$$\n$$\\begin{array}{l} = \\int_ {- 2} ^ {2} \\left(4 x ^ {2} + \\frac {1 6}{3}\\right) d x - \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {3} d r \\\\ = \\int_ {- 2} ^ {2} (4 x ^ {2} + \\frac {1 6}{3}) d x - \\frac {1}{4} \\int_ {0} ^ {2 \\pi} d \\theta = \\frac {1 2 8}{3} - \\frac {\\pi}{2} \\quad (6 \\text {分}) \\\\ \\end{array}$$",
+            "images": [
+              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/b9bf5d9f7204d0758aa7cde9c080e2a4ac2ecaafcacf296e5c1f2ee97850ac25.jpg)"
+            ]
+          },
+          {
+            "question_number": 18,
+            "content": "求微分方程  $(1 + x^{2})dy - (x - x\\sin^{2}y)dx = 0$  满足初始条件  $y \\Big|_{x=0} = 0$  的特解。",
+            "answer": "解：将原方程变形为  $\\frac{dy}{\\cos^2 y} = \\frac{x}{1 + x^2} dx$\n(2分)\n两边积分得:  $\\int \\frac{dy}{\\cos^2 y} = \\int \\frac{x}{1 + x^2} dx$\n即  $\\tan y = \\frac{1}{2}\\ln (1 + x^2) + C$\n(5分)\n又  $\\because x = 0$  时，  $y = 0$  ，  $\\therefore C = 0$\n故原方程的特解为  $\\tan y = \\frac{1}{2}\\ln (1 + x^2)$  （6分）",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综合题",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "已知函数  $f(x) = \\left\\{ \\begin{array}{ll} (1 + 3x^2)^{\\frac{1}{x^2}} & \\sin 3x + 1, x \\neq 0 \\\\ a, & x = 0 \\end{array} \\right.$  在  $x = 0$  处连续。\n（1）求常数  $a$  的值；\n（2）求曲线  $y = f(x)$  在点  $(0,a)$  处的切线方程。",
+            "answer": "解：（1）  $\\lim_{x\\to 0}(1 + 3x^2)^{\\frac{1}{x^2}} = \\lim_{x\\to 0}\\left[(1 + 3x^2)^{\\frac{1}{3x^2}}\\right]^3 = e^3$  （2分）\n$$\\therefore \\lim  _ {x \\rightarrow 0} f (x) = \\lim  _ {x \\rightarrow 0} \\left[\\left(1 + 3 x ^ {2}\\right) ^ {\\frac {1}{x ^ {2}}} \\sin 3 x + 1 \\right] = e ^ {3} \\times 0 + 1 = 1$$\n又  $\\because f(0) = a$  ，由  $f(x)$  在  $x = 0$  处连续知  $a = 1$  （4分）\n(2)  $\\because \\lim_{\\Delta x \\to 0} \\frac{f(\\Delta x) - f(0)}{\\Delta x} = \\lim_{\\Delta x \\to 0} \\frac{(1 + 3\\Delta x^2)^{\\frac{1}{\\Delta x^2}} \\sin 3\\Delta x + 1 - 1}{\\Delta x}$\n$$= \\lim  _ {\\Delta x \\rightarrow 0} \\left(1 + 3 \\Delta x ^ {2}\\right) ^ {\\frac {1}{\\Delta x ^ {2}}} \\frac {\\sin 3 \\Delta x}{3 \\Delta x} \\times 3 = 3 e \\tag {4分}$$\n故曲线  $y = f(x)$  在点(0,a)即(0,1)处的切线方程为  $y = 3ex + 1$  （10分）",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "设函数  $f(x) = \\int_{\\ln x}^{2} e^{t^2} dt$ 。\n（1）求  $f^{\\prime}(e^{2})$\n(2) 计算定积分  $\\int_{1}^{e^{2}} \\frac{1}{x} f(x) dx$ 。",
+            "answer": "解：（1） $\\because f'(x) = -e^{\\ln^2 x} \\frac{1}{x}$ ，\n$$\\therefore f ^ {\\prime} \\left(e ^ {2}\\right) = - e ^ {\\ln^ {2} e ^ {2}} \\frac {1}{e ^ {2}} = - e ^ {2}$$\n(2) 解一:  $\\int_{1}^{e^2} \\frac{1}{x} f(x) dx = \\int_{1}^{e^2} f(x) d\\ln x = f(x) \\ln x \\left| \\begin{array}{c} e^2 \\\\ 1 \\end{array} - \\int_{1}^{e^2} \\ln x f'(x) dx \\right.$\n$$\\begin{array}{l} = \\int_ {1} ^ {e ^ {2}} \\ln x e ^ {\\ln^ {2} x} \\frac {1}{x} d x \\tag {9分} \\\\ = \\frac {1}{2} \\int_ {1} ^ {e ^ {2}} e ^ {\\ln^ {2} x} d \\ln^ {2} x = \\frac {1}{2} e ^ {\\ln^ {2} x} \\left| _ {1} ^ {e ^ {2}} = \\frac {1}{2} e ^ {4} - \\frac {1}{2} = \\frac {1}{2} \\left(e ^ {4} - 1\\right) \\quad (1 2 分) \\right. \\\\ \\end{array}$$\n解二：  $\\int_{1}^{e^2}\\frac{1}{x} f(x)dx = \\int_{1}^{e^2}\\left(\\frac{1}{x}\\int_{\\ln x}^{2}e^{y^2}dy\\right)dx = \\int_{1}^{e^2}dx\\int_{\\ln x}^{2}\\frac{1}{x} e^{y^2}dy$  （7分）\n$$\\begin{array}{l} = \\int_ {0} ^ {2} d y \\int_ {1} ^ {e ^ {y}} \\frac {1}{x} e ^ {y ^ {2}} d x (10分) \\\\ = \\int_ {0} ^ {2} \\left(l n x e ^ {y ^ {2}} \\right| _ {1} ^ {e ^ {y}} d y \\\\ = \\int_ {0} ^ {2} y e ^ {y ^ {2}} d y = \\frac {1}{2} e ^ {y ^ {2}} \\left| \\begin{array}{l} 2 \\\\ 0 \\end{array} \\right. = \\frac {1}{2} \\left(e ^ {4} - 1\\right) (12分) \\\\ \\end{array}$$",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

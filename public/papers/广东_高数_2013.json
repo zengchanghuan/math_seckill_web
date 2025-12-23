@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "province": "广东省",
+    "subject": "高等数学",
+    "year": 2013,
+    "exam_type": "专升本",
+    "total_sections": 4,
+    "total_questions": 20,
+    "total_images": 1
+  },
+  "paper": {
+    "year": 2013,
+    "province": "广东省",
+    "subject": "高等数学",
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单项选择题",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "当  $x \\to 0$  时，下列无穷小量中，与  $x$  不等价的无穷小量是 （）\nA.  $\\ln (x + 1)$\nB.  $\\arcsin x$\nC.  $1 - \\cos x$\nD.  $\\sqrt{1 + 2 x} - 1$",
+            "answer": "C",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "曲线  $y = \\frac{x^2}{x^2 - 1}$  （）\nA. 只有水平渐近线\nB. 只有铅垂渐进线\nC. 既有水平渐近线也有铅垂渐近线\nD. 无渐近线",
+            "answer": "B",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "下列函数中，在区间  $[-1,1]$  上满足罗尔（Rolle）定理条件的是 （）\nA.  $y = x^{\\frac{2}{3}}$\nB.  $y = |x|$\nC.  $y = x^{\\frac{4}{3}}$\nD.  $y = x^{\\frac{5}{3}}$",
+            "answer": "C",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "设函数  $f(x) = x \\sin x + \\cos x$ ，则下列结论正确的是 （）\nA.  $f(0)$  是  $f(x)$  的极小值,  $f\\left(\\frac{\\pi}{2}\\right)$  是  $f(x)$  的极大值  \nB.  $f(0)$  是  $f(x)$  的极大值,  $f\\left(\\frac{\\pi}{2}\\right)$  是  $f(x)$  的极小值  \nC.  $f(0)$  和  $f\\left(\\frac{\\pi}{2}\\right)$  都是  $f(x)$  的极小值\nD.  $f(0)$  和  $f\\left(\\frac{\\pi}{2}\\right)$  都是  $f(x)$  的极大值",
+            "answer": "A",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "若函数  $f(x)$  和  $F(x)$  满足  $F^{\\prime}(x) = f(x)(x\\in R)$  ，则下列等式成立的是 （）\nA.  $\\int \\frac{1}{x} F(2\\ln x + 1)dx = 2f(2\\ln x + 1) + C$  \nB.  $\\int \\frac{1}{x} F(2 \\ln x + 1) dx = \\frac{1}{2} f(2 \\ln x + 1) + C$  \nC.  $\\int \\frac{1}{x} f(2\\ln x + 1) dx = 2F(2\\ln x + 1) + C$  \nD.  $\\int \\frac{1}{x} f(2 \\ln x + 1) dx = \\frac{1}{2} F(2 \\ln x + 1) + C$",
+            "answer": "D",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填空题",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "要使函数  $f(x) = \\frac{1}{x - 1} - \\frac{2}{x^2 - 1}$  在  $x = 1$  处连续，应补充定义  $f(1) =$  ________。",
+            "answer": "$\\frac{1}{2}$",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "曲线  $\\left\\{ \\begin{array}{l} x = 3^t \\\\ y = \\tan t \\end{array} \\right.$  在  $t = 0$  相应的点处的切线方程是  $y =$",
+            "answer": "$\\frac{1}{\\ln 3} (x - 1)$",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "函数  $f(x) = \\begin{cases} x(1 - x)^{\\frac{1}{x}}, & x < 0 \\\\ 0, & x \\geq 0 \\end{cases}$  在  $x = 0$  处的左导数  $f_{-}^{\\prime}(0)$  ________。",
+            "answer": "$e^{-1}$",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "已知平面图形  $G = \\left\\{(x, y) \\mid x \\geq 1, 0 \\leq y \\leq \\frac{1}{x}\\right\\}$ , 将图形  $G$  绕  $x$  轴旋转一周而成的旋转体体积  $V =$  ________。",
+            "answer": "$\\pi$",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "设  $\\mathrm{D}$  为圆环域：  $1 \\leq x^{2} + y^{2} \\leq 4$  ，则二重积分  $\\iint_{D} \\frac{1}{\\sqrt{x^{2} + y^{2}}} d\\sigma =$",
+            "answer": "$2\\pi$",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计算题",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "计算  $\\lim_{x\\to \\infty}x\\sin (e^{\\frac{1}{x}} - 1)$  。",
+            "answer": "原式  $= \\lim_{x\\to \\infty}\\frac{\\sin(e^{\\frac{1}{x}} - 1)}{\\frac{1}{x}} = \\lim_{x\\to \\infty}\\frac{\\cos(e^{\\frac{1}{x}} - 1)\\cdot e^{\\frac{1}{x}}\\cdot(-\\frac{1}{x^{2}})}{-\\frac{1}{x^{2}}} = \\lim_{x\\to \\infty}\\cos (e^{\\frac{1}{x}} - 1)e^{\\frac{1}{x}} = 1$",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "已知函数  $f(x)$  具有连续的一阶导数，且  $f(0) \\cdot f'(0) \\neq 0$ ，求常数  $a$  和  $b$  的值，使  $\\lim_{x \\to 0} \\frac{af(x) + bf(2x) - f(0)}{x} = 0$ 。",
+            "answer": "由题意知:  $a f(0) + b f(0) - f(0) = 0, a f'(0) + 2 b f'(0) = 0$ ,\n因为  $f(0)\\cdot f^{\\prime}(0)\\neq 0$  ，即  $f(0)\\neq 0$  且  $f^{\\prime}(0)\\neq 0$\n由此解得  $a = 2, b = -1$ 。",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "求由方程  $xy \\ln y + y = e^{2x}$  所确定的隐函数在  $x = 0$  处的导数  $\\left. \\frac{dy}{dx} \\right|_{x=0}$ 。",
+            "answer": "方法一\n等式两边对  $x$  求导数得：  $(y + xy')\\ln y + xy' + y' = 2e^{2x}$\n即  $y^\\prime (1 + x + x\\ln y) = 2e^{2x} - y\\ln y$\n所以  $y^\\prime = \\frac{dy}{dx} = \\frac{2e^{2x} - y\\ln ny}{1 + x + x\\ln y}$\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。\n方法二\n设  $F(x) = xy\\ln y + y - e^{2x}$ ，则\n$$\nF _ {x} ^ {\\prime} = y \\ln y - 2 e ^ {2 x}, F _ {y} ^ {\\prime} = x \\ln y + x + 1,\n$$\n所以  $\\frac{dy}{dx} = -\\frac{F_x'}{F_y'} = -\\frac{y \\ln y - 2e^{2x}}{x \\ln y + x + 1} = \\frac{2e^{2x} - y \\ln y}{x \\ln y + x + 1}$ 。\n又因为  $x = 0$  时， $y = 1$ ，故  $\\left.\\frac{dy}{dx}\\right|_{x=0} = 2$ 。",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "求曲线  $y = \\ln (\\sqrt{x^2 + 4} + x)$  的凹、凸区间及其拐点坐标。",
+            "answer": "函数的定义域为  $(- \\infty, + \\infty)$ ,\n$$\n\\begin{array}{l} y ^ {\\prime} = \\frac {1}{\\sqrt {x ^ {2} + 4} + x} (\\frac {x}{\\sqrt {x ^ {2} + 4}} + 1) = \\frac {1}{\\sqrt {x ^ {2} + 4}}, \\\\ y ^ {\\prime \\prime} = \\frac {- x}{(x ^ {2} + 4) ^ {\\frac {3}{2}}} 。 \\\\ \\end{array}\n$$\n令  $y'' = 0$  ，解得  $x = 0$\n当  $x < 0$  时  $y'' > 0$ ；当  $x > 0$  时  $y'' < 0$ 。\n故曲线的凹区间为  $(- \\infty, 0)$ ；曲线的凸区间为  $(0, +\\infty)$ ；\n曲线的拐点为  $(0, \\ln 2)$  。",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "计算不定积分  $\\int \\frac{\\sin^3 x}{\\cos^2 x} dx$ 。",
+            "answer": "原式  $= -\\int \\frac{\\sin^2 x}{\\cos^2 x} d(\\cos x) = -\\int \\frac{1 - \\cos^2 x}{\\cos^2 x} d(\\cos x)$\n$$\n\\begin{array}{l} = - \\int \\frac {1}{\\cos^ {2} x} d (\\cos x) + \\int d (\\cos x) \\\\ = \\frac {1}{\\cos x} + \\cos x + C 。 \\\\ \\end{array}\n$$",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "计算定积分  $\\int_{0}^{2} \\frac{x}{(x + 2)\\sqrt{x + 1}} dx$ 。",
+            "answer": "令  $\\sqrt{x + 1} = t$ ，则  $x = t^2 - 1, dx = 2t dt$\n原式  $= \\int_{1}^{\\sqrt{3}}\\frac{t^{2} - 1}{(t^{2} + 1)t}\\cdot 2tdt = 2\\int_{1}^{\\sqrt{3}}(1 - \\frac{2}{t^{2} + 1})dt$\n$$\n= 2 (t - 2 \\arctan t) \\left| \\begin{array}{l} \\sqrt {3} \\\\ 1 \\end{array} \\right. = 2 (\\sqrt {3} - 1) - \\frac {\\pi}{3} 。\n$$",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "求二元函数  $z = \\int_{0}^{xy} e^{-t^2} dt$  的全微分  $dz$  及二阶偏导数  $\\frac{\\partial^2 z}{\\partial x \\partial y}$ 。",
+            "answer": "因为  $\\frac{\\partial z}{\\partial x} = y e^{-x^2 y^2}, \\frac{\\partial z}{\\partial y} = x e^{-x^2 y^2}$\n所以  $dz = \\frac{\\partial z}{\\partial x} dx + \\frac{\\partial z}{\\partial y} dy = ye^{-x^2 y^2}dx + xe^{-x^2 y^2}dy$\n$$\n\\frac {\\partial^ {2} z}{\\partial x \\partial y} = e ^ {- x ^ {2} y ^ {2}} + y e ^ {- x ^ {2} y ^ {2}} (- 2 x ^ {2} y) = e ^ {- x ^ {2} y ^ {2}} (1 - 2 x ^ {2} y ^ {2}) 。\n$$",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "求微分方程  $y'' - 2y' + (1 - k)y = 0$  （其中常数  $k \\geq 0$  ）的通解。",
+            "answer": "由微分方程的特征方程  $r^2 - 2r + 1 - k = 0$  解得\n$$\nr _ {1, 2} = \\frac {2 \\pm \\sqrt {4 - 4 (1 - k)}}{2} = 1 \\pm \\sqrt {k},\n$$\n所以当  $k > 0$  时，方程有两个不相等的实根  $1 + \\sqrt{k}$  和  $1 - \\sqrt{k}$ ；\n当  $k = 0$  时，方程有唯一实根。\n故当  $k > 0$  时，通解为  $y = C_{1}e^{(1 + \\sqrt{k})x} + C_{2}e^{(1 - \\sqrt{k})x}$\n当  $k = 0$  时，通解为  $y = (C_1 + C_2x)e^x$  。",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综合题",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "交换二次积分  $I = \\int_{0}^{1} dx \\int_{e^{x}}^{e} \\frac{(2x + 1)(2y + 1)}{\\ln y + 1} dy$  的积分次序，并求  $I$  的值。",
+            "answer": "由题设条件知，积分区域\n$D = \\left\\{(x, \\cdot, \\cdot) \\mid 0 \\leq x \\leq 1, e^{x} \\leq y \\leq e\\right\\}$ , 如图:\n交换积分次序得\n$$\n\\begin{array}{l} I = \\int_ {1} ^ {e} d y \\int_ {0} ^ {\\ln y} \\frac {(2 x + 1) (2 y + 1)}{\\ln y + 1} d x \\\\ = \\int_ {1} ^ {e} \\left[ \\frac {(x ^ {2} + x) (2 y + 1)}{\\ln y + 1} \\left| \\begin{array}{c} \\ln y \\\\ 0 \\end{array} \\right. \\right] d y = \\int_ {1} ^ {e} (2 y + 1) \\ln y d y \\\\ = \\int_ {1} ^ {e} \\ln y d \\left(y ^ {2} + y\\right) = \\left(y ^ {2} + y\\right) \\ln y \\left| _ {1} ^ {e} - \\int_ {1} ^ {e} \\left(y ^ {2} + y\\right) \\frac {1}{y} d y \\right. \\\\ = \\left(e ^ {2} + e\\right) - \\left(\\frac {y 2}{2} + y\\right) \\Bigg | _ {1} ^ {e} = \\frac {e ^ {2}}{2} + \\frac {3}{2} 。 \\\\ \\end{array}\n$$",
+            "images": [
+              "![第19题图](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/3aa8b3a1723fffd7b1a01c19595e796c23f1c7aa593be4be3bd972b41bc182a6.jpg)"
+            ]
+          },
+          {
+            "question_number": 20,
+            "content": "已知  $f(x)$  是定义在区间  $[0, +\\infty)$  上的非负可导函数，且曲线  $y = f(x)$  与直线  $y = 0, x = 0$  及  $x = t (t \\geq 0)$  围成的曲边梯形的面积为  $f(t) - t^2$ 。\n（1）求函数  $f(x)$  \n(2) 证明: 当  $x > 0$  时,  $f(x) > x^{2} + \\frac{x^{3}}{3}$ 。",
+            "answer": "(1) 由题意知  $\\int_0^t f(x) dx = f(t) - t^2$ ,\n两边对  $t$  求导数得：  $f(t) = f^{\\prime}(t) - 2t$  ，且  $f(0) = 0$\n由  $f^{\\prime}(x) - f(t) = 2t$  解得\n$$\n\\begin{array}{l} f (t) = e ^ {\\int d t} \\left(\\int 2 t e ^ {- \\int d t} d t + C\\right) = e ^ {t} \\left(\\int 2 t e ^ {- t} d t + C\\right) \\\\ = e ^ {t} \\left(- 2 t e ^ {- t} - 2 e ^ {- t} + C\\right) = - 2 t - 2 + C e ^ {t} 。 \\\\ \\end{array}\n$$\n由  $f(0) = -2 + C = 0$  得  $C = 2$\n所以  $f(t) = -2t - 2 + 2e^{t} = 2(e^{t} - t - 1)$\n故  $f(x) = 2(e^{x} - x - 1),(x\\geq 0)$\n(2) 设  $F(x) = f(x) - x^{2} - \\frac{x^{3}}{3}, (x \\geq 0)$ ,\n则  $F^{\\prime}(x) = 2(e^{x} - 1) - 2x - x^{2}$\n$$\nF ^ {\\prime \\prime} (x) = 2 e ^ {x} - 2 - 2 x = 2 \\left(e ^ {x} - x - 1\\right) = f (x) > 0, (x > 0),\n$$\n所以  $F^{\\prime}(x)$  在  $(0, + \\infty)$  内单调递增，因此，当  $x > 0$  时，有\n$$\nF ^ {\\prime} (x) > F ^ {\\prime} (0) = 0,\n$$\n由此可知  $F(x)$  在  $(0, +\\infty)$  内单调递增，\n故当  $x > 0$  时，有  $F(x) > F(0) = 0$  ，即  $F(x) = f(x) - x^{2} - \\frac{x^{3}}{3} > 0$\n所以  $f(x) > x^{2} + \\frac{x^{3}}{3} (x > 0)$  。",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "province": "广东省",
+    "subject": "高等数学",
+    "year": 2015,
+    "exam_type": "专升本",
+    "total_sections": 8,
+    "total_questions": 39,
+    "total_images": 1
+  },
+  "paper": {
+    "year": 2015,
+    "province": "广东省",
+    "subject": "高等数学",
+    "exam_type": "专升本",
+    "sections": [
+      {
+        "section_number": "一",
+        "section_name": "单项选择题",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "若当  $x \\to 0$  时， $kx - 2x^{2} + 3x^{3}$  与  $x$  是等价无穷小，则常数  $k =$\nA. 0\nB. 1\nC. 2\nD. 3",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "已知函数  $f(x)$  在  $x_0$  处有二阶导数, 且  $f'(x_0) = 0$ ,  $f''(x_0) = 1$ , 则下列结论正确的是\nA.  $x_{0}$  为  $f(x)$  的极小值点\nB.  $x_{0}$  为  $f(x)$  的极大值点\nC.  $x_{0}$  为  $f(x)$  的极值点\nD.  $(x_{0}, f(x_{0}))$  是曲线  $y = f(x)$  的拐点",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "设  $F(x)$  是  $f(x)$  的一个原函数， $C$  为任意实数，则  $\\int f(2x) dx =$\nA.  $F(x) + C$\nB.  $F(2x) + C$\nC.  $\\frac{1}{2} F(2 x) + C$\nD.  $2F(2x) + C$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "若函数  $f(x) = \\sqrt{1 - x^2} + kx$  数在区间  $[0, 1]$  上满足罗尔（Rolle）定理的条件，则常数  $k =$\nA. -1\nB. 0\nC. 1\nD. 2",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "下列级数中，收敛的是\nA.  $\\sum_{n=1}^{\\infty} \\frac{2}{n}$\nB.  $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{n^{2} + 1}$\nC.  $\\sum_{n=1}^{\\infty} \\frac{1}{\\sqrt{n}}$\nD.  $\\sum_{n=1}^{\\infty}\\left[\\left(\\frac{3}{4}\\right)^{n}+\\frac{1}{n^{2}}\\right]$",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填空题",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "曲线  $y = \\left(1 - \\frac{5}{x}\\right)^x$  的水平渐进线为  $y =$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "设函数  $y = f(x)$  由参数方程  $\\left\\{ \\begin{array}{l} x = \\tan t \\\\ y = t^3 + 2t \\end{array} \\right.$  所确定，则  $\\frac{dy}{dx}\\bigg|_t = 0$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "广义积分  $\\int_{1}^{+\\infty}\\frac{1}{x^6} dx =$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "微分方程  $y' - xy = 0$  满足初始条件  $y$  的特解为  $y =$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "设函数  $f(x) = \\log_2 x (x > 0)$ ，则  $\\lim_{\\Delta x \\to 0} \\frac{f(x - \\Delta x) - f(x)}{\\Delta x} =$  ________。",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计算题",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "已知函数  $f(x) = \\left\\{ \\begin{array}{ll} \\frac{\\sin 2(x - 1)}{x - 1}, & x < 1 \\\\ a, & x = 1 \\\\ x + b, & x > 1 \\end{array} \\right.$  在点  $x = 1$  处连续，求常数  $a$  和  $b$  的值。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "求极限  $\\lim_{x\\to 0}\\frac{\\arctan{x} - x}{x^3}$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "设  $y = \\ln \\frac{e^x}{e^x + 1}$ ，求  $y'' \\Bigg|_{x = 0}$ 。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "计算不定积分  $\\int \\frac{\\sqrt{x + 2}}{x + 3} dx$ 。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "求由曲线  $y = x \\cos 2x$  和直线  $y = 0, x = 0$  及  $\\frac{\\pi}{4}$  围成的平面图形的面积。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 16,
+            "content": "将二次积分  $I = \\int_{-1}^{1} dx \\int_{0}^{\\sqrt{1 - x^2}} e^{x^2 + y^2} dy$  化为极坐标形式的二次积分，并计算  $I$  的值。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 17,
+            "content": "求微分方程  $y^{\\prime \\prime} + 2y^{\\prime} + 5y = 0$  满足初始条件  $y \\left|_{x=0} = 2, \\quad y^{\\prime} \\right|_{x=0} = 0$  的特解。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "判定级数  $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{3^{n} + 1}$  的收敛性。",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综合题",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "设二元函数  $z = f(x, y) = x^{y} \\ln x (x > 0, x \\neq 1)$ ，平面区域  $D = \\{(x, y) | 2 \\leq x \\leq e, -1 \\leq y \\leq 1\\}$ 。\n（1）求全微分  $dz$\n(2) 求  $\\iint_{D} f(x, y) d\\sigma$  。",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "已知  $f(x)$  是定义在  $R$  上的单调递减的可导函数，且  $f(1) = 2$ ，\n函数  $F(x) = \\int_0^x f(t)dt - x^2 -1$\n（1）判别曲线  $y = F(x)$  在  $R$  上的凹凸性，并说明理由；\n（2）证明：方程  $F(x) = 0$  在区间(0,1)内有且仅有一个实根。\n# 2015年广东省普通高校本科插班生招生考试\n# 《高等数学》参考答案及评分标准",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "一",
+        "section_name": "单项选择题",
+        "questions": [
+          {
+            "question_number": 1,
+            "content": "B",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 2,
+            "content": "A",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 3,
+            "content": "C",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 4,
+            "content": "C",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 5,
+            "content": "D",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "二",
+        "section_name": "填空题",
+        "questions": [
+          {
+            "question_number": 6,
+            "content": "$e^{-5}$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 7,
+            "content": "2",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 8,
+            "content": "$\\frac{1}{5}$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 9,
+            "content": "$e^{\\frac{1}{2} x^2}$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 10,
+            "content": "$-\\frac{1}{x\\ln 2}$",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "三",
+        "section_name": "计算题",
+        "questions": [
+          {
+            "question_number": 11,
+            "content": "解： $\\lim_{x \\to 1^{-}} f(x) \\lim_{x \\to 1^{-}} \\frac{\\sin 2(x - 1)}{x - 1} = \\lim_{x \\to 1^{-}} \\frac{\\sin 2(x - 1)}{2(x - 1)} \\times 2 = 2$ ，（3分）\n$$\n\\lim  _ {x \\rightarrow \\Gamma^ {\\prime}} f (x) = \\lim  _ {x \\rightarrow \\Gamma^ {\\prime}} (x + b) = 1 + b,\n$$\n$$\nf (1) = a, \\quad (4 \\text {分})\n$$\n∴当  $a = 1 + b = 2$  ，即  $a = 2,b = 1$  时，  $f(x)$  在  $x = 1$  处连续。（6分）",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 12,
+            "content": "解法一：  $\\lim_{x\\to 0}\\frac{\\arctan{x} - x}{x^3} = \\lim_{x\\to 0}\\frac{\\frac{1}{1 + x^2} - 1}{3x^2}$  （3分）\n$$\n= \\lim  _ {x \\rightarrow 0} \\frac {\\frac {- 2 x}{\\left(1 + x ^ {2}\\right) ^ {2}}}{6 x} = - \\frac {1}{3} \\lim  _ {x \\rightarrow 0} \\frac {1}{\\left(1 + x ^ {2}\\right) ^ {2}} = - \\frac {1}{3} 。 \\tag {6分}\n$$\n解法二：  $\\lim_{x\\to 0}\\frac{\\arctan{x} - x}{x^3} = \\lim_{x\\to 0}\\frac{\\frac{-1}{1 + x^2} - 1}{3x^2}$  （3分）\n$$\n= \\lim  _ {x \\rightarrow 0} \\frac {- 1}{3 \\left(1 + x ^ {2}\\right)} = - \\frac {1}{3} \\tag {6分}\n$$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 13,
+            "content": "解：  $y = x - \\ln (e^{x} + 1)$\n$$\n\\therefore y ^ {\\prime} = 1 - \\frac {e ^ {x}}{e ^ {x} + 1} = \\frac {1}{e ^ {x} + 1}, \\tag {3分}\n$$\n$$\ny ^ {\\prime \\prime} = \\frac {- e ^ {x}}{\\left(1 + e ^ {x}\\right) ^ {2}},\n$$\n故  $y^{\\prime \\prime}\\bigg|_{x = 0} = -\\frac{1}{4}$  （6分）",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 14,
+            "content": "解：设  $\\sqrt{x + 2} = t$ ，则  $x = t^2 - 2, dx = 2t dt,$  （2分）\n$$\n\\begin{array}{l} \\therefore \\int \\frac {\\sqrt {x + 2}}{x + 3} d x = \\int \\frac {t}{t ^ {2} + 1} \\cdot 2 t d t (2分) \\\\ = 2 \\int \\frac {t ^ {2}}{t ^ {2} + 1} d t = 2 \\int \\left(1 - \\frac {1}{1 + t ^ {2}}\\right) d t (4分) \\\\ = 2 (t - \\arctan t) + C = 2 (\\sqrt {x + 2} - \\arctan \\sqrt {x + 2}) + C \\quad (6 \\text {分}) \\\\ \\end{array}\n$$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 15,
+            "content": "解：所求面积：  $A = \\int_{0}^{\\frac{\\pi}{4}} x \\cos 2x dx$  （2分）\n$$\n\\begin{array}{l} = \\frac {1}{2} \\int_ {0} ^ {\\frac {\\pi}{4}} x d \\sin 2 x = \\frac {1}{2} \\left(x \\sin 2 x \\Big | _ {0} ^ {\\frac {\\pi}{4}} - \\int_ {0} ^ {\\frac {\\pi}{4}} \\sin 2 x d x\\right) \\quad (4 \\text {分}) \\\\ = \\frac {\\pi}{8} + \\frac {1}{4} \\cos 2 x \\left| \\begin{array}{l} \\frac {\\pi}{4} = \\frac {\\pi}{8} - \\frac {1}{4} \\\\ 0 \\end{array} \\right. \\tag {6分} \\\\ \\end{array}\n$$\n16．解：由给定的二次积分知，积分区域  $D = \\left\\{(x,y)\\bigg| - 1\\leq x\\leq 1,0\\leq y\\leq \\sqrt{1 - x^2}\\right\\} ,$\n![](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/b0c51333d8c6e9ea17d298c56ec98a09cf13f0c1ad36095882819a3dc96b50c7.jpg)\n如图：\n$$\n\\begin{array}{l} \\therefore I = \\int_ {0} ^ {\\pi} d \\theta \\int_ {0} ^ {1} e ^ {r ^ {2}} r d r (4分) \\\\ = \\int_ {0} ^ {\\pi} \\left(\\frac {1}{2} e ^ {r ^ {2}} \\mid_ {0} ^ {1}\\right) d \\theta \\\\ = \\int_ {0} ^ {\\pi} \\left(\\frac {1}{2} e - \\frac {1}{2}\\right) d \\theta \\\\ = \\frac {\\pi}{2} (e - 1) (6分) \\\\ \\end{array}\n$$",
+            "answer": "",
+            "images": [
+              {
+                "alt_text": "",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/b0c51333d8c6e9ea17d298c56ec98a09cf13f0c1ad36095882819a3dc96b50c7.jpg",
+                "position": "inline"
+              }
+            ]
+          },
+          {
+            "question_number": 17,
+            "content": "解：微分方程的特征方程为  $r^2 + 2r + 5 = 0$\n解得  $r = -1\\pm 2i$  ， (2分）\n微分方程的通解为  $y = e^{-x}(C_1\\cos 2x + C_2\\sin 2x)$  （4分）\n$$\n\\because y ^ {\\prime} = - e ^ {- x} \\left(C _ {1} \\cos 2 x + C _ {2} \\sin 2 x\\right) + e ^ {- x} \\left(- 2 C _ {1} \\sin 2 x + 2 C _ {2} \\cos 2 x\\right),\n$$\n$\\therefore y \\bigg|_{x=0} = C_1 = 2, y' \\bigg|_{x=0} = -C_1 + 2C_2 = 0,$  解得  $C_1 = 2, C_2 = 1$\n故微分方程的特解为  $y = e^{-x}(2\\cos 2x + \\sin 2x)$  （6分）",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 18,
+            "content": "解法一：显然  $\\frac{n^2}{3^n + 1} < \\frac{n^2}{3^n}$\n$$\n\\because \\lim  _ {n \\rightarrow \\infty} \\frac {(n + 1) ^ {2}}{3 ^ {n} + 1} \\cdot \\frac {3 ^ {n}}{n ^ {2}} = \\lim  _ {n \\rightarrow \\infty} \\frac {(n + 1) ^ {2}}{3 n ^ {2}} = \\frac {1}{3} <   1,\n$$\n则由比值审敛法知，级数  $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{3^{n}}$  收敛，（3分）\n由比较审敛法知，级数  $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{3^{n} + 1}$  收敛。（6分）\n解法二：  $\\lim_{n\\to \\infty}\\frac{(n + 1)^2}{3^{n + 1} + 1}\\cdot \\frac{3^n + 1}{n^2} = \\lim_{n\\to \\infty}\\frac{(n + 1)^2}{n^2}\\cdot \\frac{1 + \\frac{1}{3^n}}{3 + \\frac{1}{3^n}} = \\frac{1}{3} < 1,$  （3分）\n由比较审敛法知，级数  $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{3^{n} + 1}$  收敛。 (6分)",
+            "answer": "",
+            "images": []
+          }
+        ]
+      },
+      {
+        "section_number": "四",
+        "section_name": "综合题",
+        "questions": [
+          {
+            "question_number": 19,
+            "content": "解：（1） $\\because \\frac{\\partial z}{\\partial x} = x^{y - 1} + yx^{y - 1}\\ln x = x^{y - 1}(1 + y\\ln x),\\frac{\\partial z}{\\partial y} = x^y\\ln^2 x,$  （4分）\n$$\n\\therefore d z = \\frac {\\partial z}{\\partial x} d x + \\frac {\\partial z}{\\partial y} d y = x ^ {y - 1} (1 + y \\ln x) d x + x ^ {y} \\ln^ {2} x d y 。 \\tag {6分}\n$$\n(2)  $\\iint_{D} f(x, y) d\\theta = \\int_{2}^{e} dx \\int_{-1}^{1} x^y \\ln x dy$  (8 分)\n$$\n\\begin{array}{l} = \\int_ {2} ^ {e} \\left(x ^ {y} \\Big | _ {- 1} ^ {1}\\right) d x (10分) \\\\ = \\int_ {2} ^ {e} (x - \\frac {1}{x}) d x = \\left(\\frac {1}{2} x ^ {2} - \\ln x\\right) \\Big | _ {2} ^ {e} = \\frac {1}{2} e ^ {2} + \\ln 2 - 3 。 (12分) \\\\ \\end{array}\n$$",
+            "answer": "",
+            "images": []
+          },
+          {
+            "question_number": 20,
+            "content": "(1) 解:  $\\because F^{\\prime}(x) = f(x) - 2x, F^{\\prime \\prime}(x) = f^{\\prime}(x) - 2$ , 且由题意知  $f^{\\prime}(x) \\leq 0 (x \\in R)$ , (3 分)\n$$\n\\therefore F ^ {\\prime \\prime} (x) <   0 (x \\in R),\n$$\n故曲线  $y = F(x)$  在  $R$  上是凸的。（4分）\n（2）证：显然  $F(x)$  在  $[0,1]$  上连续，且  $F(0) = -1 < 0$\n$$\nF (1) = \\int_ {0} ^ {1} f (t) d t - 2 > \\int_ {0} ^ {1} 2 d t - 2 = 0,\n$$\n$\\therefore$  方程  $F(x) = 0$  在区间  $(0,1)$  内至少有一个实根。（7分）\n由  $F''(x) < 0$  知  $F'(x)$  在  $R$  上单调递减，\n$\\therefore x < 1$  时，有  $F^{\\prime}(x) > F^{\\prime}(1) = f(1) - 2 = 0$\n由此知  $F(x)$  在  $(0,1)$  内单调递增。\n因此方程  $F(x) = 0$  在  $(0,1)$  内至多只有一个实根，\n故方程  $F(x) = 0$  在区间(0,1)内有且仅有一个实根。（10分）",
+            "answer": "",
+            "images": []
+          }
+        ]
+      }
+    ]
+  }
+}

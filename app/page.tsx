@@ -22,6 +22,7 @@ export default function HomePage() {
   const [examPapers, setExamPapers] = useState<ExamPaper[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const [formData, setFormData] = useState({
     willingToPay: '',
     priceRange: '',
@@ -37,9 +38,10 @@ export default function HomePage() {
         setError(null);
         
         // 所有可用的年份（按倒序排列）
-        // 只保留2020-2023年的完整数据
+        // 2003-2018(16年) + 2020-2023(4年) = 20年
         const allYears = [
-          2023, 2022, 2021, 2020
+          2023, 2022, 2021, 2020, 2018, 2017, 2016, 2015, 2014, 2013, 
+          2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003
         ];
         
         // 加载所有JSON文件
@@ -79,47 +81,7 @@ export default function HomePage() {
       } catch (err) {
         console.error('加载试卷失败:', err);
         setError(err instanceof Error ? err.message : '加载失败');
-        
-        // 降级使用模拟数据
-        const fallbackPapers: ExamPaper[] = [
-          {
-            paperId: 'paper_2023_1',
-            name: '2023年广东专升本高等数学真题',
-            year: 2023,
-            region: '广东',
-            examType: '专升本',
-            subject: '高等数学',
-            questionIds: [],
-            suggestedTime: 90,
-            totalQuestions: 20,
-            questionTypes: { choice: 5, fill: 5, solution: 10 },
-          },
-          {
-            paperId: 'paper_2022_1',
-            name: '2022年广东专升本高等数学真题',
-            year: 2022,
-            region: '广东',
-            examType: '专升本',
-            subject: '高等数学',
-            questionIds: [],
-            suggestedTime: 90,
-            totalQuestions: 20,
-            questionTypes: { choice: 5, fill: 5, solution: 10 },
-          },
-          {
-            paperId: 'paper_2021_1',
-            name: '2021年广东专升本高等数学真题',
-            year: 2021,
-            region: '广东',
-            examType: '专升本',
-            subject: '高等数学',
-            questionIds: [],
-            suggestedTime: 90,
-            totalQuestions: 20,
-            questionTypes: { choice: 5, fill: 5, solution: 10 },
-          },
-        ];
-        setExamPapers(fallbackPapers);
+        setExamPapers([]);
       } finally {
         setLoading(false);
       }
@@ -238,10 +200,10 @@ export default function HomePage() {
               选择一套真题，开始练习
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-2 text-sm">
-              已收录 <strong className="text-primary-600 dark:text-primary-400">{examPapers.length} 套</strong> 广东专升本高数真题（2020-2023）
+              已收录 <strong className="text-primary-600 dark:text-primary-400">{examPapers.length} 套</strong> 广东专升本高数真题（2003-2023）
             </p>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-sm">
-              当前内测版本已收录2020-2023年广东专升本高数真题，
+              已收录2003-2023年广东专升本高数真题（共20年），
               <br />
               所有题目均包含完整的题目、答案和详细解析。
             </p>
@@ -265,24 +227,38 @@ export default function HomePage() {
 
             {/* 试卷列表 */}
             {!loading && examPapers.length > 0 && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                {examPapers.map((paper) => (
-                  <Link
-                    key={paper.paperId}
-                    href={`/practice/${paper.paperId}`}
-                    className="bg-white dark:bg-gray-800 p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all text-center group"
-                  >
-                    <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1 group-hover:scale-110 transition-transform">
-                      {paper.year}
-                    </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                      共 {paper.totalQuestions} 题
-                    </div>
-                    <div className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">
-                      开始练习 →
-                    </div>
-                  </Link>
-                ))}
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {(showAll ? examPapers : examPapers.slice(0, 3)).map((paper) => (
+                    <Link
+                      key={paper.paperId}
+                      href={`/practice/${paper.paperId}`}
+                      className="bg-white dark:bg-gray-800 p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-400 hover:shadow-lg transition-all text-center group"
+                    >
+                      <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1 group-hover:scale-110 transition-transform">
+                        {paper.year}
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                        共 {paper.totalQuestions} 题
+                      </div>
+                      <div className="text-xs font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                        开始练习 →
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                
+                {/* 显示更多按钮 */}
+                {examPapers.length > 3 && (
+                  <div className="text-center">
+                    <button
+                      onClick={() => setShowAll(!showAll)}
+                      className="px-6 py-2 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-600 dark:border-primary-400 rounded-lg font-medium hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-sm"
+                    >
+                      {showAll ? '收起' : `展开查看全部 ${examPapers.length} 套试卷`}
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
