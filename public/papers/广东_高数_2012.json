@@ -137,7 +137,11 @@
             "content": "计算二重积分 $\\iint_{D} \\sqrt{y^2 - x}d\\sigma$ ，其中 D 是由曲线 $y = \\sqrt{x}$ 及直线 $y = 1, x = 0$ 围成的闭区域",
             "answer": "解：积分区域D如图：\n$\\iint_{D} \\sqrt{y^2 - x} d\\sigma = \\int_{0}^{1} dy \\int_{0}^{y^2} \\sqrt{y^2 - x} dx$ (3分)\n$$\\begin{array}{l} = \\int_ {0} ^ {1} \\left[ - \\frac {2}{3} \\left(y ^ {2} - x\\right) ^ {\\frac {3}{2}} \\left| \\begin{array}{l} y ^ {2} \\\\ 0 \\end{array} \\right. \\right] d y \\\\ = \\frac {2}{3} \\int_ {0} ^ {1} y ^ {3} d y = \\frac {1}{6} \\tag {6分} \\\\ \\end{array}$$",
             "images": [
-              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/1a1c99b9a1507e725b117736e00bcd908ff44e7f68c812ba87489ff5f439361b.jpg)"
+              {
+                "alt_text": "alt",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/1a1c99b9a1507e725b117736e00bcd908ff44e7f68c812ba87489ff5f439361b.jpg",
+                "position": "inline"
+              }
             ]
           }
         ]
@@ -151,7 +155,11 @@
             "content": "已知 $C$ 经过点 $M(1,0)$ , 且曲线 $C$ 上任意点 $P(x, \\nu) (x \\neq 0)$ 处的切线斜率与直线 $OP$ ( $O$ 为坐标原点) 的斜率之差等于 $ax$ (常数 $a > 0$ )。\n（1）求曲线 $C$ 的方程；\n(2) 试确定 $a$ 的值, 使曲线 $C$ 与直线 $y = ax$ 围成的平面图形的面积等于 $\\frac{3}{8}$ 。",
             "answer": "解：（1）设曲线 $C$ 的方程为 $y = f(x)$ 由题意知\n$$y ^ {\\prime} - \\frac {y}{x} = a x, \\quad \\text {且} y \\big | _ {x = 1} = 0 \\tag {2分}$$\n由 $y^\\prime -\\frac{y}{x} = ax$ 得\n$$\\begin{array}{l} y = e ^ {\\int_ {x} ^ {1} d x} \\left(\\int a x e ^ {- \\int_ {x} ^ {1} d x} d x + C\\right) = e ^ {\\ln x} \\left(\\int a x e ^ {- \\ln x} d x + C\\right) \\quad (4 \\text {分}) \\\\ = x (\\int a d x + C) = x (a x + C), \\\\ \\end{array}$$\n因为 $y \\big|_{x=1} = a + C = 0$ ，解得 $C = -a$\n故曲线 $C$ 的方程为 $y = ax^{2} - ax = ax(x - 1)$ （6分）\n（2）如图，\n由 $ax^2 - ax = ax$ 解得 $x = 0, x = 2$ （10分）由题意知 $\\int_0^2 (ax - ax^2 + ax) dx = \\frac{8}{3}$\n即 $(ax^2 -\\frac{a}{3} x^3)\\bigg|_0^2 = 4a - \\frac{8a}{3} = \\frac{8}{3},$\n解得 $a = 2$ （12分）",
             "images": [
-              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg)"
+              {
+                "alt_text": "alt",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/fbc2ea56131fc30318fb9430add53d98631436a2ea1542dfe3f8d4f18def5ad9.jpg",
+                "position": "inline"
+              }
             ]
           },
           {

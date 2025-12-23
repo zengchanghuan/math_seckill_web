@@ -125,7 +125,11 @@
             "content": "求二重积分 $\\iint_{D} e^{x^3} d\\sigma$ ，其中 $D$ 是由曲线 $y = x^2$ 和直线 $x = 1$ 及 $y = 0$ 围成的有界闭区域",
             "answer": "积分区域 $D$ 如图所示，由被积函数的特点选择先 $y$ 后 $x$ 的积分，\n即 $D:0\\leq X\\leq 1,0\\leq y\\leq x^2$ 。则\n$$\\begin{array}{l} \\iint_ {D} e ^ {x ^ {3}} d \\sigma = \\int_ {0} ^ {1} d x \\int_ {0} ^ {x ^ {2}} e ^ {x ^ {3}} d y = \\int_ {0} ^ {1} e ^ {x ^ {3}} \\bullet y \\left| \\begin{array}{l} x ^ {2} \\\\ 0 \\end{array} \\right. d x \\\\ = \\int_ {0} ^ {1} x ^ {2} e ^ {x ^ {3}} d x = \\frac {1}{3} e ^ {x ^ {3}} \\left| \\begin{array}{l} 1 \\\\ 0 \\end{array} \\right. \\\\ = \\frac {1}{3} (e - 1) \\\\ \\end{array}$$",
             "images": [
-              "![积分区域图](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg)"
+              {
+                "alt_text": "积分区域图",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/e41ad9edf1df7d5472d5f0f6d50c734983ee7cb405a27415fa239129384c662b.jpg",
+                "position": "inline"
+              }
             ]
           },
           {

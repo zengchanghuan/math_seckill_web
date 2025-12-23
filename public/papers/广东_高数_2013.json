@@ -149,7 +149,11 @@
             "content": "交换二次积分  $I = \\int_{0}^{1} dx \\int_{e^{x}}^{e} \\frac{(2x + 1)(2y + 1)}{\\ln y + 1} dy$  的积分次序，并求  $I$  的值。",
             "answer": "由题设条件知，积分区域\n$D = \\left\\{(x, \\cdot, \\cdot) \\mid 0 \\leq x \\leq 1, e^{x} \\leq y \\leq e\\right\\}$ , 如图:\n交换积分次序得\n$$\n\\begin{array}{l} I = \\int_ {1} ^ {e} d y \\int_ {0} ^ {\\ln y} \\frac {(2 x + 1) (2 y + 1)}{\\ln y + 1} d x \\\\ = \\int_ {1} ^ {e} \\left[ \\frac {(x ^ {2} + x) (2 y + 1)}{\\ln y + 1} \\left| \\begin{array}{c} \\ln y \\\\ 0 \\end{array} \\right. \\right] d y = \\int_ {1} ^ {e} (2 y + 1) \\ln y d y \\\\ = \\int_ {1} ^ {e} \\ln y d \\left(y ^ {2} + y\\right) = \\left(y ^ {2} + y\\right) \\ln y \\left| _ {1} ^ {e} - \\int_ {1} ^ {e} \\left(y ^ {2} + y\\right) \\frac {1}{y} d y \\right. \\\\ = \\left(e ^ {2} + e\\right) - \\left(\\frac {y 2}{2} + y\\right) \\Bigg | _ {1} ^ {e} = \\frac {e ^ {2}}{2} + \\frac {3}{2} 。 \\\\ \\end{array}\n$$",
             "images": [
-              "![第19题图](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/3aa8b3a1723fffd7b1a01c19595e796c23f1c7aa593be4be3bd972b41bc182a6.jpg)"
+              {
+                "alt_text": "第19题图",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/3aa8b3a1723fffd7b1a01c19595e796c23f1c7aa593be4be3bd972b41bc182a6.jpg",
+                "position": "inline"
+              }
             ]
           },
           {

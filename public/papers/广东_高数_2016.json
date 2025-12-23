@@ -125,7 +125,11 @@
             "content": "设平面区域  $D$  由曲线  $xy = 1$  和直线  $y = x$  及  $x = 2$  围成, 计算  $\\iint_{D} \\frac{x}{y^2} d\\sigma$",
             "answer": "解：\n$$\\begin{array}{l} \\iint_ {D} \\frac {x}{y ^ {2}} d \\delta = \\int_ {1} ^ {2} d x \\int_ {\\frac {1}{x}} ^ {x} \\frac {x}{y ^ {2}} d y = \\int_ {1} ^ {2} \\left(- \\frac {x}{y} \\Bigg | _ {\\frac {1}{x}} ^ {x}\\right) d x = \\int_ {1} ^ {2} (- 1 + x ^ {2}) d x \\\\ = (- x + \\frac {x ^ {3}}{3}) \\bigg | _ {1} ^ {2} = \\frac {4}{3} \\\\ \\end{array}$$",
             "images": [
-              "![区域D示意图](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/483c72f7781239e1658fe255676358602d51a6053eb46ce85c8bc9c7f9db19b9.jpg)"
+              {
+                "alt_text": "区域D示意图",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/483c72f7781239e1658fe255676358602d51a6053eb46ce85c8bc9c7f9db19b9.jpg",
+                "position": "inline"
+              }
             ]
           },
           {

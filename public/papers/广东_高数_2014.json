@@ -131,7 +131,11 @@
             "content": "计算二重积分  $\\iint_{D}(x^{2} + y^{2})d\\sigma$  ，其中积分区域  $D = \\left\\{(x,y)\\bigg|x^2 +y^2\\geq 1,\\big|x\\big|\\leq 2,\\big|y\\big|\\leq 2\\right\\}$",
             "answer": "解：  $D$  如图：\n记圆域  $x^{2} + y^{2}\\leq 1$  为  $D_{1}$\n$$\\begin{array}{l} \\text {原 式} = \\iint_ {D + D _ {1}} \\left(x ^ {2} + y ^ {2}\\right) d \\sigma - \\iint_ {D _ {1}} \\left(x ^ {2} + y ^ {2}\\right) d \\sigma \\quad (2 \\text {分}) \\\\ = \\int_ {- 2} ^ {2} d x \\int_ {- 2} ^ {2} \\left(x ^ {2} + y ^ {2}\\right) d y - \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {3} d r \\quad (4 \\text {分}) \\\\ \\end{array}$$\n$$\\begin{array}{l} = \\int_ {- 2} ^ {2} \\left(4 x ^ {2} + \\frac {1 6}{3}\\right) d x - \\int_ {0} ^ {2 \\pi} d \\theta \\int_ {0} ^ {1} r ^ {3} d r \\\\ = \\int_ {- 2} ^ {2} (4 x ^ {2} + \\frac {1 6}{3}) d x - \\frac {1}{4} \\int_ {0} ^ {2 \\pi} d \\theta = \\frac {1 2 8}{3} - \\frac {\\pi}{2} \\quad (6 \\text {分}) \\\\ \\end{array}$$",
             "images": [
-              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/b9bf5d9f7204d0758aa7cde9c080e2a4ac2ecaafcacf296e5c1f2ee97850ac25.jpg)"
+              {
+                "alt_text": "alt",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/b9bf5d9f7204d0758aa7cde9c080e2a4ac2ecaafcacf296e5c1f2ee97850ac25.jpg",
+                "position": "inline"
+              }
             ]
           },
           {

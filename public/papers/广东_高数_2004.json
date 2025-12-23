@@ -125,8 +125,16 @@
             "content": "由  $y = 0, x = 8, y = x^{2}$  所围成的曲边三角形 OAB（如图所示），在曲边  $\\overline{OB}$  上，求一点 C，使得过此点所作  $y = x^{2}$  之切线与 OA、AB 所围成的三角形面积最大。",
             "answer": "当过点  $(\\frac{16}{3}, \\frac{256}{9})$  作切线，所围三角形面积最大。\n【解析】先过点  $C(x_0, y_0)$  的切线方程\n\n$$\n\\begin{array}{l} y (x) = x ^ {2} \\\\ \\therefore \\quad y ^ {\\prime} (x) = 2 x \\\\ \\end{array}\n$$\n\n于是过点 c 的切线斜率为  $2x_{0}$ , 其中  $0 \\leq x_{0} \\leq 8$\n\n$\\cdot \\cdot$  切线方程为:  $S - x_{0}^{2} = 2x_{0}\\left(t - x_{0}\\right)$ ,\n\n即  $S = 2x_{0}t - x_{0}^{2}$\n\n此切线与  $y = 0$  和  $x = 8$  分别交于点  $P\\left(\\frac{x_0}{2}, 0\\right)$  和  $Q\\left(8, 16x_0 - x_0^2\\right)$\n\n$\\cdot \\cdot$  所围三角形面积  $h$  为\n\n$$\nh \\left(x _ {0}\\right) = \\frac {1}{2} \\left(8 - \\frac {x _ {0}}{2}\\right) \\left(1 6 x _ {0} - x _ {0} ^ {2}\\right)\n$$\n\n即  $h(x_0) = \\frac{1}{4} x_0 (16 - x_0^2), 0 \\leq x_0 \\leq 8$\n\n对  $h$  求导，得\n\n$$\nh ^ {\\prime} \\left(x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) ^ {2} - \\frac {1}{2} x _ {0} \\left(1 6 - x _ {0}\\right) = \\frac {1}{4} \\left(1 6 - x _ {0}\\right) \\left(1 6 - 3 x _ {0}\\right)\n$$\n\n令  $h'(x_0) = 0$  ，得\n\n$$\nx _ {0} = \\frac {1 6}{3}, x _ {0} = 1 6 (\\text {舍 去}, \\text {因} 0 \\leq x _ {0} \\leq 8)\n$$\n\n又  $h^{\\prime}(x_0) = 0, h(8) = 128, h(\\frac{16}{3}) = \\frac{128 \\times 32}{27} \\succ h(8) \\succ h(0)$\n\n$\\therefore$  当过点  $(\\frac{16}{3}, \\frac{256}{9})$  作切线，所围三角形面积最大。",
             "images": [
-              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/dd4580069845e07ef0a42b1caa95e676febe177d671ae95dc12e48bd5d22f12b.jpg)",
-              "![alt](https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/1a74c63d3b651e9957bbf981ae9ac3a3d92396b6bb7c41c6ada3fa398f2eceaa.jpg)"
+              {
+                "alt_text": "alt",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/dd4580069845e07ef0a42b1caa95e676febe177d671ae95dc12e48bd5d22f12b.jpg",
+                "position": "inline"
+              },
+              {
+                "alt_text": "alt",
+                "url": "https://cdn-mineru.openxlab.org.cn/result/2025-12-22/78eb9ff9-2dd4-47bf-a82a-a76e89e6de18/1a74c63d3b651e9957bbf981ae9ac3a3d92396b6bb7c41c6ada3fa398f2eceaa.jpg",
+                "position": "inline"
+              }
             ]
           },
           {
