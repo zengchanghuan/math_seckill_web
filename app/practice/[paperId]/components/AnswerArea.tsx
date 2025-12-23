@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import MathText from '@/components/MathText';
 import type { Question, ConvertToChoiceResult } from '@/types';
 
@@ -14,6 +14,46 @@ interface AnswerAreaProps {
   onModifyAnswer?: () => void;
 }
 
+// 缓存Key生成
+const getCacheKey = (questionId: string) => `convert_choice_${questionId}`;
+
+// 从localStorage读取缓存
+const getCachedConversion = (questionId: string): ConvertToChoiceResult | null => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const cached = localStorage.getItem(getCacheKey(questionId));
+    if (cached) {
+      const data = JSON.parse(cached);
+      // 检查缓存是否在24小时内
+      if (Date.now() - data.timestamp < 24 * 60 * 60 * 1000) {
+        return data.result;
+      } else {
+        // 过期则删除
+        localStorage.removeItem(getCacheKey(questionId));
+      }
+    }
+  } catch (e) {
+    console.error('读取缓存失败:', e);
+  }
+  return null;
+};
+
+// 保存到localStorage
+const saveCachedConversion = (questionId: string, result: ConvertToChoiceResult) => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(
+      getCacheKey(questionId),
+      JSON.stringify({
+        result,
+        timestamp: Date.now(),
+      })
+    );
+  } catch (e) {
+    console.error('保存缓存失败:', e);
+  }
+};
+
 export default function AnswerArea({
   question,
   userAnswer,
@@ -24,12 +64,25 @@ export default function AnswerArea({
   onModifyAnswer,
 }: AnswerAreaProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [convertedChoice, setConvertedChoice] = useState<ConvertToChoiceResult | null>(null);
+  
+  // 先从缓存读取
+  const cachedResult = useMemo(() => {
+    return getCachedConversion(question.id);
+  }, [question.id]);
+  
+  const [convertedChoice, setConvertedChoice] = useState<ConvertToChoiceResult | null>(cachedResult);
   const [converting, setConverting] = useState(false);
   const [convertError, setConvertError] = useState<string | null>(null);
+  const [showAnswer, setShowAnswer] = useState(false); // 控制是否显示答案
 
   // 转换为选择题
   const handleConvertToChoice = async () => {
+    // 如果已有缓存，直接展示
+    if (convertedChoice) {
+      setShowAnswer(false); // 重新打开时隐藏答案
+      return;
+    }
+
     setConverting(true);
     setConvertError(null);
     
@@ -53,7 +106,10 @@ export default function AnswerArea({
         throw new Error(data.error || '转换失败');
       }
 
+      // 保存到缓存
+      saveCachedConversion(question.id, data.result);
       setConvertedChoice(data.result);
+      setShowAnswer(false);
     } catch (err) {
       setConvertError(err instanceof Error ? err.message : '转换失败');
     } finally {
@@ -65,6 +121,7 @@ export default function AnswerArea({
   const handleCloseConversion = () => {
     setConvertedChoice(null);
     setConvertError(null);
+    setShowAnswer(false);
   };
 
   // 键盘支持：Enter 提交
@@ -225,44 +282,66 @@ export default function AnswerArea({
               <button
                 onClick={handleCloseConversion}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                title="关闭"
               >
                 ✕
               </button>
             </div>
             
             <div className="space-y-2">
-              {convertedChoice.options.map((option) => (
-                <div
-                  key={option.key}
-                  className={`p-3 rounded-lg border-2 ${
-                    option.key === convertedChoice.correct_key
-                      ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
-                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800'
-                  }`}
-                >
-                  <div className="flex items-start">
-                    <span className="font-semibold mr-2">{option.key}.</span>
-                    <div className="flex-1">
-                      <MathText content={option.text} />
-                      {option.error_type && option.key !== convertedChoice.correct_key && (
-                        <p className="text-xs text-red-600 dark:text-red-400 mt-1">
-                          错误类型：{option.error_type}
-                        </p>
+              {convertedChoice.options.map((option) => {
+                const isCorrect = option.key === convertedChoice.correct_key;
+                const shouldShowFeedback = showAnswer;
+                
+                return (
+                  <div
+                    key={option.key}
+                    className={`p-3 rounded-lg border-2 transition-colors ${
+                      shouldShowFeedback && isCorrect
+                        ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
+                        : shouldShowFeedback && !isCorrect
+                        ? 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800/50 opacity-60'
+                        : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800'
+                    }`}
+                  >
+                    <div className="flex items-start">
+                      <span className="font-semibold text-gray-700 dark:text-gray-300 mr-3 min-w-[24px]">
+                        {option.key}.
+                      </span>
+                      <div className="flex-1 text-gray-800 dark:text-gray-200">
+                        <MathText content={option.text} />
+                        
+                        {/* 只有在显示答案时才展示错误类型 */}
+                        {shouldShowFeedback && !isCorrect && option.error_type && (
+                          <p className="text-xs text-red-600 dark:text-red-400 mt-1">
+                            错误原因：{option.error_type}
+                          </p>
+                        )}
+                      </div>
+                      
+                      {/* 只有在显示答案时才展示正确标记 */}
+                      {shouldShowFeedback && isCorrect && (
+                        <span className="ml-2 text-green-600 dark:text-green-400 font-bold">
+                          ✓
+                        </span>
                       )}
                     </div>
-                    {option.key === convertedChoice.correct_key && (
-                      <span className="ml-2 text-green-600 dark:text-green-400 font-bold">
-                        ✓
-                      </span>
-                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             
-            <p className="text-xs text-purple-700 dark:text-purple-300 mt-3">
-              💡 AI生成的选择题仅供参考，正确答案已标记
-            </p>
+            <div className="mt-3 flex items-center justify-between">
+              <p className="text-xs text-purple-700 dark:text-purple-300">
+                💡 AI生成的选择题仅供参考
+              </p>
+              <button
+                onClick={() => setShowAnswer(!showAnswer)}
+                className="px-3 py-1 text-xs bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
+              >
+                {showAnswer ? '隐藏答案' : '查看答案'}
+              </button>
+            </div>
           </div>
         )}
 
