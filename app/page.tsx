@@ -38,9 +38,9 @@ export default function HomePage() {
         setError(null);
         
         // 所有可用的年份（按倒序排列）
-        // 2003-2018(16年) + 2020-2023(4年) = 20年
+        // 2024 + 2003-2018(16年) + 2020-2023(4年) = 21年
         const allYears = [
-          2023, 2022, 2021, 2020, 2018, 2017, 2016, 2015, 2014, 2013, 
+          2024, 2023, 2022, 2021, 2020, 2018, 2017, 2016, 2015, 2014, 2013, 
           2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003
         ];
         
@@ -200,10 +200,10 @@ export default function HomePage() {
               选择一套真题，开始练习
             </h2>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-2 text-sm">
-              已收录 <strong className="text-primary-600 dark:text-primary-400">{examPapers.length} 套</strong> 广东专升本高数真题（2003-2023）
+              已收录 <strong className="text-primary-600 dark:text-primary-400">{examPapers.length} 套</strong> 广东专升本高数真题（2003-2024）
             </p>
             <p className="text-center text-gray-600 dark:text-gray-400 mb-8 text-sm">
-              已收录2003-2023年广东专升本高数真题（共20年），
+              已收录2003-2024年广东专升本高数真题（共21年），
               <br />
               所有题目均包含完整的题目、答案和详细解析。
             </p>
