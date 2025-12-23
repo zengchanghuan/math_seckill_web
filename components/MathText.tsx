@@ -96,7 +96,18 @@ export default function MathText({
     <span className={className}>
       {parts.map((part, index) => {
         if (typeof part === 'string') {
-          return <span key={index}>{part}</span>;
+          // 将换行符转换为<br/>标签
+          const lines = part.split('\n');
+          return (
+            <span key={index}>
+              {lines.map((line, lineIndex) => (
+                <span key={lineIndex}>
+                  {line}
+                  {lineIndex < lines.length - 1 && <br />}
+                </span>
+              ))}
+            </span>
+          );
         } else {
           try {
             // 根据是否为块级公式决定是否添加 \limits
