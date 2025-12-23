@@ -68,4 +68,3 @@ export default function Paper2BankReviewPage({
     </div>
   );
 }
-
