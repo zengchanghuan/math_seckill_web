@@ -92,34 +92,28 @@ export default function AnswerArea({
 
   // 点击转换按钮
   const handleConvertClick = () => {
-    // 如果已有缓存，直接展示
+    // 如果已有缓存，直接展示（不扣额度，不弹窗）
     if (convertedChoice) {
       setShowAnswer(false); // 重新打开时隐藏答案
       return;
     }
 
-    // 检查额度并打开弹窗
+    // 如果已展示过（关闭后再打开），也不扣额度
+    const cached = getCachedConversion(question.id);
+    if (cached) {
+      setConvertedChoice(cached);
+      setShowAnswer(false);
+      return;
+    }
+
+    // Cache miss：检查额度并打开弹窗
     const status = checkQuota();
     setShowQuotaModal(true);
   };
 
-  // 确认转换（从弹窗）
+  // 确认转换（从弹窗）- 只有cache miss才会走到这里
   const handleConfirmConvert = async () => {
     setShowQuotaModal(false);
-
-    // 消耗额度
-    const consumeResult = consumeQuota();
-    if (!consumeResult.success) {
-      setConvertError(consumeResult.message);
-      return;
-    }
-
-    // 显示成功提示
-    setSuccessMessage(consumeResult.message);
-    setTimeout(() => setSuccessMessage(null), 5000);
-
-    // 触发额度更新事件
-    window.dispatchEvent(new Event('quotaUpdate'));
 
     // 执行转换
     setConverting(true);
@@ -145,12 +139,27 @@ export default function AnswerArea({
         throw new Error(data.error || '转换失败');
       }
 
+      // API调用成功后才消耗额度
+      const consumeResult = consumeQuota();
+      if (!consumeResult.success) {
+        // 理论上不应该走到这里，因为弹窗前已检查过
+        console.warn('额度不足，但API已调用:', consumeResult.message);
+      } else {
+        // 显示成功提示
+        setSuccessMessage(consumeResult.message);
+        setTimeout(() => setSuccessMessage(null), 5000);
+
+        // 触发额度更新事件
+        window.dispatchEvent(new Event('quotaUpdate'));
+      }
+
       // 保存到缓存
       saveCachedConversion(question.id, data.result);
       setConvertedChoice(data.result);
       setShowAnswer(false);
     } catch (err) {
       setConvertError(err instanceof Error ? err.message : '转换失败');
+      // API调用失败，不消耗额度
     } finally {
       setConverting(false);
     }
