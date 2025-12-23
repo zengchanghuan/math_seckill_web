@@ -17,6 +17,15 @@ export default function MathText({
 }: MathTextProps) {
   if (!content) return null;
 
+  // 调试：检查接收到的内容
+  if (content.includes('由题意知')) {
+    console.log('🔍 MathText接收到的第4题解析内容:', {
+      content,
+      'has $': content.includes('$'),
+      'first 100 chars': content.substring(0, 100),
+    });
+  }
+
   // 提取 LaTeX 表达式（支持 $...$ 和 $$...$$）
   const parts: (
     | string
