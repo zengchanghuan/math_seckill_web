@@ -229,7 +229,7 @@ export default function HomePage() {
             {!loading && examPapers.length > 0 && (
               <div className="space-y-4">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                  {(showAll ? examPapers : examPapers.slice(0, 3)).map((paper) => (
+                  {(showAll ? examPapers : examPapers.slice(0, 8)).map((paper) => (
                     <Link
                       key={paper.paperId}
                       href={`/practice/${paper.paperId}`}
@@ -249,13 +249,13 @@ export default function HomePage() {
                 </div>
                 
                 {/* 显示更多按钮 */}
-                {examPapers.length > 3 && (
+                {examPapers.length > 8 && (
                   <div className="text-center">
                     <button
                       onClick={() => setShowAll(!showAll)}
                       className="px-6 py-2 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-600 dark:border-primary-400 rounded-lg font-medium hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-sm"
                     >
-                      {showAll ? '收起' : `展开查看全部 ${examPapers.length} 套试卷`}
+                      {showAll ? '收起 ↑' : `查看更早年份（2003-2014）↓`}
                     </button>
                   </div>
                 )}
