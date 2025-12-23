@@ -1,0 +1,126 @@
+{
+  "setId": "assessment_set_v1",
+  "version": "1.0",
+  "totalQuestions": 10,
+  "description": "精选10道测评题，覆盖高数核心知识点",
+  "questions": [
+    {
+      "id": "2024_q1",
+      "year": 2024,
+      "questionNumber": 1,
+      "sectionName": "单项选择题",
+      "knowledge": ["基本极限", "三角函数极限"]
+    },
+    {
+      "id": "2024_q2",
+      "year": 2024,
+      "questionNumber": 2,
+      "sectionName": "单项选择题",
+      "knowledge": ["导数求法", "求导法则"]
+    },
+    {
+      "id": "2024_q3",
+      "year": 2024,
+      "questionNumber": 3,
+      "sectionName": "单项选择题",
+      "knowledge": ["等价无穷小", "极限运算"]
+    },
+    {
+      "id": "2023_q4",
+      "year": 2023,
+      "questionNumber": 4,
+      "sectionName": "单项选择题",
+      "knowledge": ["定积分计算", "不定积分"]
+    },
+    {
+      "id": "2023_q5",
+      "year": 2023,
+      "questionNumber": 5,
+      "sectionName": "单项选择题",
+      "knowledge": ["级数收敛", "级数性质"]
+    },
+    {
+      "id": "2024_q6",
+      "year": 2024,
+      "questionNumber": 6,
+      "sectionName": "填空题",
+      "knowledge": ["高阶导数", "导数运算"]
+    },
+    {
+      "id": "2024_q7",
+      "year": 2024,
+      "questionNumber": 7,
+      "sectionName": "填空题",
+      "knowledge": ["微分运算", "基本微分公式"]
+    },
+    {
+      "id": "2024_q8",
+      "year": 2024,
+      "questionNumber": 8,
+      "sectionName": "填空题",
+      "knowledge": ["级数收敛", "极限性质"]
+    },
+    {
+      "id": "2023_q7",
+      "year": 2023,
+      "questionNumber": 7,
+      "sectionName": "填空题",
+      "knowledge": ["偏导数", "多元函数微分"]
+    },
+    {
+      "id": "2024_q9",
+      "year": 2024,
+      "questionNumber": 9,
+      "sectionName": "填空题",
+      "knowledge": ["参数方程求导", "切线斜率"]
+    }
+  ],
+  "knowledgeMap": {
+    "基本极限": {
+      "freq": "高频",
+      "prereq": "三角恒等变形",
+      "suggestion": "建议：先补「三角恒等变形」，再做 6 题闭环"
+    },
+    "导数求法": {
+      "freq": "高频",
+      "prereq": "基本初等函数",
+      "suggestion": "建议：做 6 题闭环提速"
+    },
+    "等价无穷小": {
+      "freq": "高频",
+      "prereq": "极限概念",
+      "suggestion": "建议：掌握常见等价无穷小公式，做 8 题巩固"
+    },
+    "定积分计算": {
+      "freq": "高频",
+      "prereq": "不定积分",
+      "suggestion": "建议：先熟练不定积分，再做 10 题定积分练习"
+    },
+    "级数收敛": {
+      "freq": "中频",
+      "prereq": "极限概念",
+      "suggestion": "建议：掌握收敛判定法则，做 6 题训练"
+    },
+    "高阶导数": {
+      "freq": "中频",
+      "prereq": "导数定义",
+      "suggestion": "建议：从一阶导数开始，逐步推导高阶"
+    },
+    "微分运算": {
+      "freq": "高频",
+      "prereq": "导数概念",
+      "suggestion": "建议：理解微分与导数关系，做 6 题练习"
+    },
+    "偏导数": {
+      "freq": "中频",
+      "prereq": "一元函数导数",
+      "suggestion": "建议：3 分钟衔接卡 + 8 题训练"
+    },
+    "参数方程求导": {
+      "freq": "中频",
+      "prereq": "复合函数求导",
+      "suggestion": "建议：掌握参数方程求导公式，做 6 题巩固"
+    }
+  }
+}
+

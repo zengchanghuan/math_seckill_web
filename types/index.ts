@@ -185,3 +185,71 @@ export interface PaperResult {
   weakPoints: string[];
   wrongQuestionIds: string[];
 }
+
+// ========== 测评系统类型 ==========
+
+// 测评配置
+export interface AssessmentConfig {
+  timeBudget: '<30天' | '30-60天' | '60天+';
+  selfEval?: '偏弱' | '一般' | '较好';
+}
+
+// 测评答题记录
+export interface AssessmentAnswer {
+  questionId: string;
+  userAnswer: string;
+  isCorrect: boolean;
+  timeSpent: number; // 秒
+  skipped: boolean;
+}
+
+// 薄弱点
+export interface WeaknessItem {
+  knowledge: string; // 知识点名称
+  freqTag: '高频' | '中频';
+  status: '易错' | '用时偏长' | '概念不稳';
+  suggestion: string;
+  prereq?: string; // 先修知识点
+}
+
+// 训练日计划
+export interface DayPlan {
+  day: number;
+  title: string;
+  topic: string;
+  prereq?: string;
+  taskCount: number;
+  targetAccuracy: number; // 0.8 = 80%
+  targetAvgTime: number; // 秒
+  locked: boolean;
+  questionIds?: string[]; // Day1的题目ID列表
+}
+
+// 测评报告
+export interface AssessmentReport {
+  reportId: string;
+  accuracy: number;
+  avgTime: number;
+  level: '偏弱' | '一般' | '较好';
+  scoreGapMin: number;
+  scoreGapMax: number;
+  weaknessTop3: WeaknessItem[];
+  planDays: DayPlan[]; // 7天
+  completedAt: string;
+}
+
+// 解锁状态
+export interface UnlockStatus {
+  isPro: boolean;
+  unlockedAt?: string;
+  expiresAt?: string; // Pro到期时间
+}
+
+// 测评题目数据（从题集JSON加载）
+export interface AssessmentQuestion {
+  id: string;
+  year: number;
+  questionNumber: number;
+  sectionName: string;
+  knowledge: string[];
+}

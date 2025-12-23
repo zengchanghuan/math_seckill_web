@@ -47,3 +47,4 @@ export function needsAutoFix(content: string): boolean {
   return hasError;
 }
 
+

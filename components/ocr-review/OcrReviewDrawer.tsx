@@ -124,7 +124,7 @@ export function OcrReviewDrawer({
     });
   }
 
-  function useModel(id: string, which: 'final' | 'deepseek' | 'qwen') {
+  function applyModel(id: string, which: 'final' | 'deepseek' | 'qwen') {
     if (!state) return;
     const q = state.questions.find((x) => x.id === id);
     if (!q) return;
@@ -247,9 +247,15 @@ export function OcrReviewDrawer({
                   };
                 });
               }}
-              onUseFinal={() => useModel(activeQuestion.id, 'final')}
-              onUseDeepseek={() => useModel(activeQuestion.id, 'deepseek')}
-              onUseQwen={() => useModel(activeQuestion.id, 'qwen')}
+              onUseFinal={() => {
+                applyModel(activeQuestion.id, 'final');
+              }}
+              onUseDeepseek={() => {
+                applyModel(activeQuestion.id, 'deepseek');
+              }}
+              onUseQwen={() => {
+                applyModel(activeQuestion.id, 'qwen');
+              }}
               needsReview={flaggedIds.has(activeQuestion.id)}
               onToggleNeedsReview={() => toggleFlag(activeQuestion.id)}
             />

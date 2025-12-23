@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Layout from '@/components/Layout';
 import Link from 'next/link';
 import type { ExamPaper } from '@/types';
@@ -19,6 +20,7 @@ interface PaperSummary {
 }
 
 export default function HomePage() {
+  const router = useRouter();
   const [examPapers, setExamPapers] = useState<ExamPaper[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -124,18 +126,21 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-2 mb-4">
             <button
-              onClick={scrollToPapers}
+              onClick={() => router.push('/assessment/start')}
               className="px-5 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors text-sm"
             >
-              开始刷真题
+              5分钟测评 → 生成提分路线
             </button>
             <button
-              onClick={scrollToPayment}
+              onClick={scrollToPapers}
               className="px-5 py-2 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-600 dark:border-primary-400 rounded-lg font-medium hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors text-sm"
             >
-              了解 Pro 计划
+              继续刷真题（{examPapers.length > 0 ? examPapers[0]?.year : '2024'}）
             </button>
           </div>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">
+            做 10 道题，自动找出薄弱点 + 7 天游标路线（约 5 分钟）
+          </p>
           <div className="text-xs text-gray-500 dark:text-gray-400 space-y-0.5">
             <p>当前为内测版：</p>
             <p>✅ 真题 & 基础解析永久免费</p>
@@ -163,7 +168,7 @@ export default function HomePage() {
               {/* Card 2 */}
               <div className="bg-gray-50 dark:bg-gray-900 p-3 rounded-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-1.5">
-                  专门做"高中 → 大学"这一步
+                  专门做&ldquo;高中 → 大学&rdquo;这一步
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed">
                   不卷怪题，而是回到函数、方程、三角、排列组合、复数、参数方程这些高数必用模块。

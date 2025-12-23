@@ -49,3 +49,4 @@ export function normalizeAnswerText(v: string | undefined | null): string {
   s = s.replace(/\s+/g, ' ').trim();
   return s;
 }
+
