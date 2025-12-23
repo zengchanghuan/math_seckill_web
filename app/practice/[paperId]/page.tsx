@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Layout from '@/components/Layout';
 import { apiClient } from '@/lib/api/client';
 import type { Question, ExamPaper, PaperProgress } from '@/types';
+import { getDayTask } from '@/storage/planStorage';
 import TopBar from './components/TopBar';
 import QuestionArea from './components/QuestionArea';
 import AnswerArea from './components/AnswerArea';
