@@ -5,3 +5,5 @@ declare module 'react-katex' {
   export const BlockMath: ComponentType<{ math: string; errorColor?: string }>;
 }
 
+
+

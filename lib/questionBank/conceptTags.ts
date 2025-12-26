@@ -109,13 +109,25 @@ export function generateQuestionId(
     '广东': 'GD',
     '广东省': 'GD',
     '江苏': 'JS',
+    '江苏省': 'JS',
     '浙江': 'ZJ',
+    '浙江省': 'ZJ',
     '山东': 'SD',
-    '河南': 'HN',
+    '山东省': 'SD',
+    '河南': 'HEN',     // Henan
+    '河南省': 'HEN',
     '四川': 'SC',
-    '湖北': 'HB',
-    '湖南': 'HN2',
+    '四川省': 'SC',
+    '湖北': 'HUB',     // Hubei
+    '湖北省': 'HUB',
+    '湖南': 'HUN',     // Hunan
+    '湖南省': 'HUN',
     '福建': 'FJ',
+    '福建省': 'FJ',
+    '安徽': 'AH',
+    '安徽省': 'AH',
+    '江西': 'JX',
+    '江西省': 'JX',
   };
 
   const provinceCode = provinceMap[province] || 'XX';
@@ -144,4 +156,6 @@ export function parseQuestionId(questionId: string): {
     questionNum: parseInt(match[4]),
   };
 }
+
+
 

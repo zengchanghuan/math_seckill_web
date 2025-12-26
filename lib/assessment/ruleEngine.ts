@@ -143,3 +143,5 @@ export function getSpeedRating(timeSpent: number): '快' | '正常' | '慢' {
   return '慢';
 }
 
+
+

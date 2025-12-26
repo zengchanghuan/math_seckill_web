@@ -239,3 +239,5 @@ export async function initializeQuestionBank(years: number[]): Promise<void> {
   console.log('[QuestionBank] 题库统计:', stats);
 }
 
+
+
