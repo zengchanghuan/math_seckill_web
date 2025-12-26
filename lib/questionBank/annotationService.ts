@@ -37,48 +37,69 @@ function generateAnnotationPrompt(request: AnnotationRequest): string {
     .map(([key, label]) => `${key}: ${label}`)
     .join('\n');
 
-  return `你是专升本高数题库标注专家。请为以下题目生成精准的元数据标注。
+  return `你是专升本高数题库标注专家。请为以下题目生成精准、稳定、可复现的元数据标注。
 
 【题目信息】
 题型：${request.sectionName}
 题干：${request.content}
 答案：${request.answer}
 
+【核心原则】
+- 优先选择最直接、最明显的知识点（避免过度解读）
+- 难度判定基于"专升本考生平均水平"（不要过高或过低）
+- 用时估算要符合真实考试场景（不要理想化）
+- 标注要稳定一致，避免模棱两可的边界判断
+
 【标注要求】
 1. concept_tags：从以下枚举表中选择1-3个最核心的知识点
+   - 优先选择"必考知识点"（标注有"必考X"的）
+   - 如果题目综合多个知识点，选择"占分最多"的那个
+   - 避免选择过于宽泛或过于细节的知识点
 ${conceptList}
 
-2. prereq_tags：从上述枚举表中选择0-3个先修知识点（做此题需要先掌握的前置知识）
+2. prereq_tags：从上述枚举表中选择0-3个先修知识点
+   - 只选择"做此题必须先掌握"的前置知识
+   - 如果此题是基础题，可以为空
+   - 不要选择"相关但非必须"的知识点
 
-3. difficulty：难度等级1-5
-   - 1: 基础概念/直接套用公式
-   - 2: 简单计算/单一知识点应用
-   - 3: 中等难度/需要2步变形
-   - 4: 综合应用/多知识点结合
-   - 5: 高难度/需要创新思维
+3. difficulty：难度等级1-5（基于专升本考生平均水平）
+   - 1: 送分题，直接套公式（如 lim(x→0) sinx/x）
+   - 2: 简单题，一步计算（如 求 f'(x) = x²）
+   - 3: 中等题，2-3步变形（如 换元积分、分部积分）
+   - 4: 偏难题，需要技巧（如 凹凸性判断、二重积分换序）
+   - 5: 压轴题，需要综合应用（如 微分方程应用题）
+   【提示】约70%的题目应在2-3难度，避免极端化
 
-4. time_estimate_sec：预估学生完成时间（秒），考虑题型和难度
+4. time_estimate_sec：预估学生完成时间（秒）
+   - 选择题：60-120秒（简单60，中等90，偏难120）
+   - 填空题：90-180秒（简单90，中等120，偏难180）
+   - 解答题：180-300秒（简单180，中等240，偏难300）
+   【提示】考虑"写步骤"的时间，不只是"算出来"
 
-5. skills：能力要求，从中选择1-3个
+5. skills：能力要求，从中选择1-2个最核心的
    - "记忆": 背诵公式定理
    - "理解": 概念理解
-   - "计算": 数值计算
+   - "计算": 数值计算（最常见）
    - "推理": 逻辑推导
    - "应用": 实际问题建模
    - "综合": 多知识点整合
+   【提示】大部分题目是"计算"或"计算+推理"
 
 6. confidence：你对此标注的置信度（0-1）
+   - 0.9-1.0: 非常确定（知识点明确、难度清晰）
+   - 0.7-0.9: 比较确定（可能有小的歧义）
+   - <0.7: 不太确定（建议人工复审）
 
 【输出格式】
 严格输出JSON，不要任何其他文本：
 {
-  "concept_tags": ["limit-basic", "deriv-chain"],
+  "concept_tags": ["limit-calculation", "limit-special"],
   "prereq_tags": ["func-basic"],
-  "difficulty": 3,
-  "time_estimate_sec": 120,
-  "skills": ["计算", "推理"],
+  "difficulty": 2,
+  "time_estimate_sec": 60,
+  "skills": ["计算"],
   "confidence": 0.95,
-  "reasoning": "简短说明标注理由"
+  "reasoning": "此题考查重要极限，属于必考点，难度为送分题级别"
 }`;
 }
 
@@ -147,30 +168,38 @@ async function callDeepSeekAnnotation(
 
 /**
  * 计算两次标注的一致性
+ * 优化版：放宽阈值，降低人工审核率
  */
 function checkConsistency(
   attempt1: AnnotationResponse,
   attempt2: AnnotationResponse
 ): boolean {
-  // 核心知识点一致性（至少50%重合）
+  // 知识点一致性（降低到40%重合即可，因为AI可能从不同角度标注）
   const tags1 = new Set(attempt1.conceptTags);
   const tags2 = new Set(attempt2.conceptTags);
   const intersection = [...tags1].filter((t) => tags2.has(t));
   const conceptMatch =
-    intersection.length >= Math.min(tags1.size, tags2.size) * 0.5;
+    intersection.length >= Math.min(tags1.size, tags2.size) * 0.4;
 
-  // 难度一致性（相差不超过1）
+  // 难度一致性（放宽到相差≤2，因为难度本身有主观性）
   const difficultyMatch =
-    Math.abs(attempt1.difficulty - attempt2.difficulty) <= 1;
+    Math.abs(attempt1.difficulty - attempt2.difficulty) <= 2;
 
-  // 用时一致性（相差不超过30%）
+  // 用时一致性（放宽到相差≤40%）
   const timeRatio = Math.max(
     attempt1.timeEstimateSec / attempt2.timeEstimateSec,
     attempt2.timeEstimateSec / attempt1.timeEstimateSec
   );
-  const timeMatch = timeRatio <= 1.3;
+  const timeMatch = timeRatio <= 1.4;
 
-  // 综合判断：必须conceptMatch；difficultyMatch与timeMatch至少满足一个
+  // 置信度检查（新增）：如果两次置信度都≥0.85，直接通过
+  const highConfidence =
+    attempt1.confidence >= 0.85 && attempt2.confidence >= 0.85;
+  if (highConfidence && conceptMatch) {
+    return true; // 高置信度 + 知识点匹配 = 直接通过
+  }
+
+  // 综合判断：知识点匹配 + (难度或用时至少一个匹配)
   return conceptMatch && (difficultyMatch || timeMatch);
 }
 
@@ -188,7 +217,8 @@ function mergeAnnotations(
 }
 
 /**
- * 完整标注流程：双温度+一致性校验
+ * 完整标注流程：双温度+一致性校验+智能仲裁
+ * 优化版：最大化降低人工审核
  */
 export async function annotateQuestion(
   request: AnnotationRequest
@@ -207,13 +237,47 @@ export async function annotateQuestion(
   console.log('[Annotation] 第二次标注完成');
 
   // 一致性检查
-  const consistent = checkConsistency(attempt1, attempt2);
+  let consistent = checkConsistency(attempt1, attempt2);
   console.log(`[Annotation] 一致性检查: ${consistent ? '一致' : '不一致'}`);
 
-  // 合并结果
-  const finalResult = consistent
-    ? mergeAnnotations(attempt1, attempt2)
-    : attempt1;
+  let finalResult = attempt1;
+  let thirdAttempt = null;
+
+  // 【新增】如果不一致，尝试第三次仲裁（温度0.25，中等确定性）
+  if (!consistent) {
+    console.log('[Annotation] 启动第三次仲裁标注...');
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    thirdAttempt = await callDeepSeekAnnotation(request, 0.25);
+    console.log('[Annotation] 第三次标注完成');
+
+    // 三选二：找出最接近的两次
+    const pairs = [
+      { a: attempt1, b: attempt2, consistent: checkConsistency(attempt1, attempt2) },
+      { a: attempt1, b: thirdAttempt, consistent: checkConsistency(attempt1, thirdAttempt) },
+      { a: attempt2, b: thirdAttempt, consistent: checkConsistency(attempt2, thirdAttempt) },
+    ];
+
+    // 找到一致性最高的pair
+    const bestPair = pairs.find((p) => p.consistent);
+    if (bestPair) {
+      // 有任意两次一致，使用置信度更高的那次
+      finalResult = bestPair.a.confidence >= bestPair.b.confidence ? bestPair.a : bestPair.b;
+      consistent = true; // 三次中有两次一致，认为可以通过
+      console.log('[Annotation] 仲裁成功：三次中有两次一致');
+    } else {
+      // 三次都不一致，使用置信度最高的
+      const allAttempts = [attempt1, attempt2, thirdAttempt];
+      finalResult = allAttempts.reduce((prev, curr) =>
+        curr.confidence > prev.confidence ? curr : prev
+      );
+      consistent = false; // 仍然需要人工复审
+      console.log('[Annotation] 仲裁失败：三次均不一致，需人工复审');
+    }
+  } else {
+    // 两次一致，使用置信度高的
+    finalResult = attempt1.confidence >= attempt2.confidence ? attempt1 : attempt2;
+  }
 
   // 生成元数据
   const metadata: QuestionMetadata = {
@@ -224,13 +288,14 @@ export async function annotateQuestion(
     timeEstimateSec: finalResult.timeEstimateSec,
     skills: finalResult.skills,
     confidence: finalResult.confidence,
-    needsReview: !consistent, // 不一致则需要人工复审
+    needsReview: !consistent, // 只有三次都不一致才需要复审
     annotationVersion: ANNOTATION_VERSION,
     annotatedAt: Date.now(),
     consistencyCheck: {
       attempt1,
       attempt2,
       consistent,
+      ...(thirdAttempt && { attempt3: thirdAttempt }), // 记录第三次尝试
     },
   };
 
