@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { exec } from 'child_process';
 import { promisify } from 'util';
@@ -5,9 +7,16 @@ import path from 'path';
 
 const execAsync = promisify(exec);
 
-const DEEPSEEK_API_KEY = 'sk-78c5eab3420c4135bc14691c936d6bad';
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 const MAX_RETRIES = 2; // 最多重试2次
+
+function getDeepSeekApiKey(): string {
+  const key = process.env.DEEPSEEK_API_KEY;
+  if (!key) {
+    throw new Error('Missing DEEPSEEK_API_KEY. Please set it in server env (.env.local).');
+  }
+  return key;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -106,7 +115,7 @@ ${errorType ? `原解析存在以下问题：${errorType}` : ''}
   const response = await fetch(DEEPSEEK_API_URL, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+      Authorization: `Bearer ${getDeepSeekApiKey()}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({

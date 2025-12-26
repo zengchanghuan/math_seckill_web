@@ -3,11 +3,20 @@
  * POST /api/convert-to-choice
  */
 
+import 'server-only';
+
 import { NextRequest, NextResponse } from 'next/server';
 import type { ConvertToChoiceRequest, ConvertToChoiceResult } from '@/types';
 
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || 'sk-78c5eab3420c4135bc14691c936d6bad';
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+function getDeepSeekApiKey(): string {
+  const key = process.env.DEEPSEEK_API_KEY;
+  if (!key) {
+    throw new Error('Missing DEEPSEEK_API_KEY. Please set it in server env (.env.local).');
+  }
+  return key;
+}
 
 // 系统prompt
 const SYSTEM_PROMPT = `你是"高等数学填空题转选择题"的命题与校验引擎。
@@ -91,7 +100,7 @@ knowledge: <<<${knowledgeStr}>>>
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+        Authorization: `Bearer ${getDeepSeekApiKey()}`,
       },
       body: JSON.stringify({
         model: 'deepseek-chat',

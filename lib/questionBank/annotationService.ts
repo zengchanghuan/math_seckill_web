@@ -3,6 +3,8 @@
  * 支持双温度一致性校验
  */
 
+import 'server-only';
+
 import type {
   AnnotationRequest,
   AnnotationResponse,
@@ -11,8 +13,16 @@ import type {
 import type { ConceptTag } from './conceptTags';
 import { CONCEPT_TAGS } from './conceptTags';
 
-const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || 'sk-78c5eab3420c4135bc14691c936d6bad';
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+function getDeepSeekApiKey(): string {
+  const key = process.env.DEEPSEEK_API_KEY;
+  if (!key) {
+    // 不要提供默认值，避免泄漏与误用
+    throw new Error('Missing DEEPSEEK_API_KEY. Please set it in server env (.env.local).');
+  }
+  return key;
+}
 
 // 标注版本（修改prompt时递增）
 export const ANNOTATION_VERSION = 1;
@@ -83,7 +93,7 @@ async function callDeepSeekAnnotation(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+      Authorization: `Bearer ${getDeepSeekApiKey()}`,
     },
     body: JSON.stringify({
       model: 'deepseek-chat',

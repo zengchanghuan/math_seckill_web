@@ -8,10 +8,16 @@ import json
 import time
 import requests
 import sys
+import os
+
 sys.path.append('/Users/zengchanghuan/Desktop/workspace/flutter/math_seckill_web/scripts')
 from math_verifier import MathVerifier
 
-API_KEY = "sk-78c5eab3420c4135bc14691c936d6bad"
+# 从环境变量获取API Key
+API_KEY = os.environ.get('DEEPSEEK_API_KEY')
+if not API_KEY:
+    raise ValueError('Missing DEEPSEEK_API_KEY environment variable. Please set it before running this script.')
+
 API_URL = "https://api.deepseek.com/v1/chat/completions"
 
 class Question2024Solver:
