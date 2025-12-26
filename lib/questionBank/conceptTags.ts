@@ -1,11 +1,11 @@
 /**
  * 专升本高数核心知识点枚举表
- * 基于广东专升本考纲必考知识点整理
- * 覆盖15个必考点 + 常考点，用于题目标注和智能抽题
+ * 基于广东专升本考纲的15个必考知识点整理
+ * 总计43个知识点，分7大模块，适合知识图谱分层展示
  */
 
 export const CONCEPT_TAGS = {
-  // 函数与极限 (6个)
+  // ========== 模块1：函数与极限 (6个) ==========
   'func-basic': '函数基本性质',
   'func-composite': '复合函数',
   'limit-calculation': '极限计算(六种方法)', // 必考1
@@ -13,7 +13,7 @@ export const CONCEPT_TAGS = {
   'limit-continuous': '连续性',
   'limit-asymptote': '渐近线',
 
-  // 导数与微分 (9个)
+  // ========== 模块2：导数与微分 - 规则层 (9个) ==========
   'deriv-definition': '导数定义',
   'deriv-calculation': '导数与微分计算', // 必考2
   'deriv-chain': '链式法则',
@@ -24,21 +24,21 @@ export const CONCEPT_TAGS = {
   differential: '微分',
   'multi-partial-calc': '偏导数与全微分计算', // 必考3
 
-  // 导数应用 (5个)
+  // ========== 模块3：导数应用 - 应用层 (5个) ==========
   'deriv-monotone-extreme': '单调区间与极值', // 必考6
   'deriv-concave-inflection': '凹凸区间与拐点', // 必考7
   'deriv-curve': '曲线渐近线',
   'deriv-optimization': '实际应用优化',
   'multi-extreme': '多元函数极值',
 
-  // 不定积分 (5个) - 必考8/9
+  // ========== 模块4：积分 (11个) ==========
+  // 不定积分 (5个)
   'integ-primitive': '原函数与不定积分', // 必考8
   'integ-substitution': '换元积分法', // 必考9
   'integ-parts': '分部积分法', // 必考9
   'integ-by-diff': '凑微分法', // 必考9
   'integ-rational': '有理函数积分',
-
-  // 定积分 (6个) - 必考10/11
+  // 定积分 (6个)
   'integ-definite': '定积分计算', // 必考10
   'integ-piecewise': '分段函数定积分', // 必考10
   'integ-symmetry': '定积分对称性(偶倍奇零)', // 必考10
@@ -46,20 +46,20 @@ export const CONCEPT_TAGS = {
   'integ-volume': '旋转体体积', // 必考11
   'integ-arc-length': '弧长', // 必考11
 
-  // 二重积分 (4个) - 必考12/13
+  // ========== 模块5：多元函数与二重积分 (4个) ==========
   'multi-double-integral': '二重积分计算', // 必考13
   'multi-integral-order': '二次积分换序', // 必考12
   'multi-polar-coord': '极坐标二重积分', // 必考13
   'multi-coord-transform': '坐标变换', // 必考12
 
-  // 微分方程 (5个) - 必考14
+  // ========== 模块6：微分方程 (5个) ==========
   'de-separable': '可分离变量型', // 必考14
   'de-homogeneous': '一阶齐次微分方程', // 必考14
   'de-linear': '一阶线性微分方程', // 必考14
   'de-second-order': '二阶齐次微分方程', // 必考14
   'de-application': '微分方程应用',
 
-  // 级数 (3个) - 必考15
+  // ========== 模块7：级数 (3个) ==========
   'series-convergence': '级数判敛', // 必考15
   'series-comparison': '级数比较判别法', // 必考15
   'series-ratio': '级数比值/根值判别法', // 必考15
