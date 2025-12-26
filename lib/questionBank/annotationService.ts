@@ -130,8 +130,12 @@ function parseDeepSeekResult(raw: any): AnnotationResponse {
  * 生成标注prompt
  */
 function generateAnnotationPrompt(request: AnnotationRequest): string {
+  // 生成更紧凑、信息量更大的知识点列表
   const conceptList = Object.entries(CONCEPT_TAGS)
-    .map(([key, label]) => `${key}: ${label}`)
+    .map(([key, config]) => {
+      const aliasStr = config.aliases.length > 0 ? ` [触发词: ${config.aliases.join(', ')}]` : '';
+      return `${key}: ${config.label}${aliasStr}\n   (判定: ${config.notes})`;
+    })
     .join('\n');
 
   return `你是专升本高数题库标注专家。请为以下题目生成精准、稳定、可复现的元数据标注。
