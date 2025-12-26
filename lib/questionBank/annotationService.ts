@@ -29,6 +29,103 @@ function getDeepSeekApiKey(): string {
 // 标注版本（修改prompt时递增）
 export const ANNOTATION_VERSION = 1;
 
+// 白名单集合
+const VALID_CONCEPT = new Set(Object.keys(CONCEPT_TAGS));
+const VALID_SKILLS = new Set(['记忆', '理解', '计算', '推理', '应用', '综合']);
+
+/**
+ * 数值夹逼（整数）
+ */
+function clampInt(v: any, min: number, max: number, fallback: number): number {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return fallback;
+  const i = Math.round(n);
+  return Math.min(max, Math.max(min, i));
+}
+
+/**
+ * 数值夹逼（浮点数）
+ */
+function clampNum(v: any, min: number, max: number, fallback: number): number {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.min(max, Math.max(min, n));
+}
+
+/**
+ * 数组去重
+ */
+function uniq(arr: string[]): string[] {
+  return [...new Set(arr)];
+}
+
+/**
+ * 规范化知识点标签（concept/prereq）
+ */
+function normalizeTags(v: any, maxLen: number): string[] {
+  const arr = Array.isArray(v) ? v : [];
+  const cleaned = arr
+    .map((x) => String(x).trim())
+    .filter((x) => VALID_CONCEPT.has(x));
+  return uniq(cleaned).slice(0, maxLen);
+}
+
+/**
+ * 规范化能力标签
+ */
+function normalizeSkills(v: any, maxLen: number): string[] {
+  const arr = Array.isArray(v) ? v : [];
+  const cleaned = arr
+    .map((x) => String(x).trim())
+    .filter((x) => VALID_SKILLS.has(x));
+  return uniq(cleaned).slice(0, maxLen);
+}
+
+/**
+ * DeepSeek输出强校验与净化
+ * 确保所有字段在合法范围内、去重、夹逼
+ */
+function parseDeepSeekResult(raw: any): AnnotationResponse {
+  if (!raw || typeof raw !== 'object') {
+    throw new Error('DeepSeek result is not an object');
+  }
+
+  // 1. 核心知识点：必须1-3个，在枚举内
+  const conceptTags = normalizeTags(raw.concept_tags, 3);
+  if (conceptTags.length < 1) {
+    throw new Error('No valid concept_tags found in DeepSeek output');
+  }
+
+  // 2. 先修知识点：0-3个，在枚举内
+  const prereqTags = normalizeTags(raw.prereq_tags, 3);
+
+  // 3. 难度：强制1-5，默认3
+  const difficulty = clampInt(raw.difficulty, 1, 5, 3);
+
+  // 4. 预估用时：强制20-1800秒（0.3分钟-30分钟），默认120秒
+  const timeEstimateSec = clampInt(raw.time_estimate_sec, 20, 1800, 120);
+
+  // 5. 能力要求：最多3个，在白名单内
+  const skills = normalizeSkills(raw.skills, 3);
+
+  // 6. 置信度：强制0-1，默认0.8
+  const confidence = clampNum(raw.confidence, 0, 1, 0.8);
+
+  // 7. 理由：截断到200字符
+  const reasoning =
+    typeof raw.reasoning === 'string' ? raw.reasoning.trim().slice(0, 200) : '';
+
+  return {
+    conceptTags: conceptTags as ConceptTag[],
+    prereqTags: prereqTags as ConceptTag[],
+    difficulty: difficulty as 1 | 2 | 3 | 4 | 5,
+    timeEstimateSec,
+    skills,
+    confidence,
+    reasoning,
+  };
+}
+
 /**
  * 生成标注prompt
  */
@@ -148,22 +245,11 @@ async function callDeepSeekAnnotation(
     throw new Error('Empty response from DeepSeek');
   }
 
-  const result = JSON.parse(content);
+  // 解析JSON并强校验
+  const raw = JSON.parse(content);
+  const result = parseDeepSeekResult(raw);
 
-  // 验证必需字段
-  if (!result.concept_tags || !Array.isArray(result.concept_tags)) {
-    throw new Error('Invalid concept_tags in response');
-  }
-
-  return {
-    conceptTags: result.concept_tags,
-    prereqTags: result.prereq_tags || [],
-    difficulty: result.difficulty,
-    timeEstimateSec: result.time_estimate_sec,
-    skills: result.skills || [],
-    confidence: result.confidence || 0.8,
-    reasoning: result.reasoning,
-  };
+  return result;
 }
 
 /**
@@ -253,16 +339,31 @@ export async function annotateQuestion(
 
     // 三选二：找出最接近的两次
     const pairs = [
-      { a: attempt1, b: attempt2, consistent: checkConsistency(attempt1, attempt2) },
-      { a: attempt1, b: thirdAttempt, consistent: checkConsistency(attempt1, thirdAttempt) },
-      { a: attempt2, b: thirdAttempt, consistent: checkConsistency(attempt2, thirdAttempt) },
+      {
+        a: attempt1,
+        b: attempt2,
+        consistent: checkConsistency(attempt1, attempt2),
+      },
+      {
+        a: attempt1,
+        b: thirdAttempt,
+        consistent: checkConsistency(attempt1, thirdAttempt),
+      },
+      {
+        a: attempt2,
+        b: thirdAttempt,
+        consistent: checkConsistency(attempt2, thirdAttempt),
+      },
     ];
 
     // 找到一致性最高的pair
     const bestPair = pairs.find((p) => p.consistent);
     if (bestPair) {
       // 有任意两次一致，使用置信度更高的那次
-      finalResult = bestPair.a.confidence >= bestPair.b.confidence ? bestPair.a : bestPair.b;
+      finalResult =
+        bestPair.a.confidence >= bestPair.b.confidence
+          ? bestPair.a
+          : bestPair.b;
       consistent = true; // 三次中有两次一致，认为可以通过
       console.log('[Annotation] 仲裁成功：三次中有两次一致');
     } else {
@@ -276,7 +377,8 @@ export async function annotateQuestion(
     }
   } else {
     // 两次一致，使用置信度高的
-    finalResult = attempt1.confidence >= attempt2.confidence ? attempt1 : attempt2;
+    finalResult =
+      attempt1.confidence >= attempt2.confidence ? attempt1 : attempt2;
   }
 
   // 生成元数据
