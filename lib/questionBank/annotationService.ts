@@ -19,7 +19,9 @@ function getDeepSeekApiKey(): string {
   const key = process.env.DEEPSEEK_API_KEY;
   if (!key) {
     // 不要提供默认值，避免泄漏与误用
-    throw new Error('Missing DEEPSEEK_API_KEY. Please set it in server env (.env.local).');
+    throw new Error(
+      'Missing DEEPSEEK_API_KEY. Please set it in server env (.env.local).'
+    );
   }
   return key;
 }
@@ -100,7 +102,8 @@ async function callDeepSeekAnnotation(
       messages: [
         {
           role: 'system',
-          content: '你是专业的题目标注专家。必须输出严格的JSON格式，不要任何额外文本。',
+          content:
+            '你是专业的题目标注专家。必须输出严格的JSON格式，不要任何额外文本。',
         },
         {
           role: 'user',
@@ -125,7 +128,7 @@ async function callDeepSeekAnnotation(
   }
 
   const result = JSON.parse(content);
-  
+
   // 验证必需字段
   if (!result.concept_tags || !Array.isArray(result.concept_tags)) {
     throw new Error('Invalid concept_tags in response');
@@ -153,10 +156,12 @@ function checkConsistency(
   const tags1 = new Set(attempt1.conceptTags);
   const tags2 = new Set(attempt2.conceptTags);
   const intersection = [...tags1].filter((t) => tags2.has(t));
-  const conceptMatch = intersection.length >= Math.min(tags1.size, tags2.size) * 0.5;
+  const conceptMatch =
+    intersection.length >= Math.min(tags1.size, tags2.size) * 0.5;
 
   // 难度一致性（相差不超过1）
-  const difficultyMatch = Math.abs(attempt1.difficulty - attempt2.difficulty) <= 1;
+  const difficultyMatch =
+    Math.abs(attempt1.difficulty - attempt2.difficulty) <= 1;
 
   // 用时一致性（相差不超过30%）
   const timeRatio = Math.max(
@@ -165,8 +170,8 @@ function checkConsistency(
   );
   const timeMatch = timeRatio <= 1.3;
 
-  // 综合判断：核心知识点+难度都一致，或者所有维度都较接近
-  return (conceptMatch && difficultyMatch) || (conceptMatch && difficultyMatch && timeMatch);
+  // 综合判断：必须conceptMatch；difficultyMatch与timeMatch至少满足一个
+  return conceptMatch && (difficultyMatch || timeMatch);
 }
 
 /**
@@ -190,15 +195,15 @@ export async function annotateQuestion(
 ): Promise<QuestionMetadata> {
   console.log(`[Annotation] 开始标注题目: ${request.questionNum}`);
 
-  // 第一次标注（温度0.1）
-  const attempt1 = await callDeepSeekAnnotation(request, 0.1);
+  // 第一次标注（温度0.05，偏确定）
+  const attempt1 = await callDeepSeekAnnotation(request, 0.05);
   console.log('[Annotation] 第一次标注完成');
 
   // 延迟1秒避免API限流
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  // 第二次标注（温度0.15）
-  const attempt2 = await callDeepSeekAnnotation(request, 0.15);
+  // 第二次标注（温度0.45，制造合理扰动）
+  const attempt2 = await callDeepSeekAnnotation(request, 0.45);
   console.log('[Annotation] 第二次标注完成');
 
   // 一致性检查
@@ -206,7 +211,9 @@ export async function annotateQuestion(
   console.log(`[Annotation] 一致性检查: ${consistent ? '一致' : '不一致'}`);
 
   // 合并结果
-  const finalResult = consistent ? mergeAnnotations(attempt1, attempt2) : attempt1;
+  const finalResult = consistent
+    ? mergeAnnotations(attempt1, attempt2)
+    : attempt1;
 
   // 生成元数据
   const metadata: QuestionMetadata = {
@@ -243,7 +250,7 @@ export async function batchAnnotateQuestions(
     try {
       const metadata = await annotateQuestion(requests[i]);
       results.push(metadata);
-      
+
       if (onProgress) {
         onProgress(i + 1, requests.length);
       }
@@ -254,7 +261,7 @@ export async function batchAnnotateQuestions(
       }
     } catch (error) {
       console.error(`[Annotation] 标注失败: ${requests[i].questionNum}`, error);
-      
+
       // 失败时创建需要复审的元数据
       results.push({
         questionId: '',
@@ -278,6 +285,3 @@ export async function batchAnnotateQuestions(
 
   return results;
 }
-
-
-
