@@ -6,7 +6,9 @@
 
 ## 核心功能
 
-### 1. 知识点枚举表 (30个核心概念)
+### 1. 知识点枚举表 (43个核心概念)
+
+基于广东专升本考纲的15个必考知识点 + 常考点整理：
 
 ```typescript
 // lib/questionBank/conceptTags.ts
@@ -14,51 +16,61 @@ export const CONCEPT_TAGS = {
   // 函数与极限 (6)
   'func-basic': '函数基本性质',
   'func-composite': '复合函数',
-  'limit-basic': '极限基本运算',
+  'limit-calculation': '极限计算(六种方法)', // 必考1
   'limit-special': '特殊极限',
   'limit-continuous': '连续性',
   'limit-asymptote': '渐近线',
   
-  // 导数与微分 (7)
+  // 导数与微分 (9)
   'deriv-definition': '导数定义',
-  'deriv-basic': '基本导数公式',
+  'deriv-calculation': '导数与微分计算', // 必考2
   'deriv-chain': '链式法则',
-  'deriv-implicit': '隐函数求导',
+  'deriv-implicit': '隐函数求导公式', // 必考4
   'deriv-parametric': '参数方程求导',
   'deriv-higher': '高阶导数',
+  'deriv-tangent': '切线方程', // 必考5
   'differential': '微分',
+  'multi-partial-calc': '偏导数与全微分计算', // 必考3
   
   // 导数应用 (5)
-  'deriv-monotone': '单调性',
-  'deriv-extreme': '极值与最值',
-  'deriv-concave': '凹凸性与拐点',
+  'deriv-monotone-extreme': '单调区间与极值', // 必考6
+  'deriv-concave-inflection': '凹凸区间与拐点', // 必考7
   'deriv-curve': '曲线渐近线',
   'deriv-optimization': '实际应用优化',
+  'multi-extreme': '多元函数极值',
   
-  // 积分 (8)
-  'integ-indefinite': '不定积分基本',
-  'integ-substitution': '换元积分法',
-  'integ-parts': '分部积分法',
+  // 不定积分 (5) - 必考8/9
+  'integ-primitive': '原函数与不定积分', // 必考8
+  'integ-substitution': '换元积分法', // 必考9
+  'integ-parts': '分部积分法', // 必考9
+  'integ-by-diff': '凑微分法', // 必考9
   'integ-rational': '有理函数积分',
-  'integ-definite': '定积分计算',
-  'integ-improper': '广义积分',
-  'integ-application': '积分应用',
-  'integ-geometry': '几何应用',
   
-  // 微分方程 (3)
-  'de-first-order': '一阶微分方程',
-  'de-second-order': '二阶微分方程',
+  // 定积分 (6) - 必考10/11
+  'integ-definite': '定积分计算', // 必考10
+  'integ-piecewise': '分段函数定积分', // 必考10
+  'integ-symmetry': '定积分对称性(偶倍奇零)', // 必考10
+  'integ-area': '平面图形面积', // 必考11
+  'integ-volume': '旋转体体积', // 必考11
+  'integ-arc-length': '弧长', // 必考11
+  
+  // 二重积分 (4) - 必考12/13
+  'multi-double-integral': '二重积分计算', // 必考13
+  'multi-integral-order': '二次积分换序', // 必考12
+  'multi-polar-coord': '极坐标二重积分', // 必考13
+  'multi-coord-transform': '坐标变换', // 必考12
+  
+  // 微分方程 (5) - 必考14
+  'de-separable': '可分离变量型', // 必考14
+  'de-homogeneous': '一阶齐次微分方程', // 必考14
+  'de-linear': '一阶线性微分方程', // 必考14
+  'de-second-order': '二阶齐次微分方程', // 必考14
   'de-application': '微分方程应用',
   
-  // 多元函数 (4)
-  'multi-partial': '偏导数',
-  'multi-extreme': '多元函数极值',
-  'multi-double-integral': '二重积分',
-  'multi-application': '多元函数应用',
-  
-  // 级数 (2)
-  'series-number': '数项级数',
-  'series-power': '幂级数',
+  // 级数 (3) - 必考15
+  'series-convergence': '级数判敛', // 必考15
+  'series-comparison': '级数比较判别法', // 必考15
+  'series-ratio': '级数比值/根值判别法', // 必考15
 };
 ```
 
