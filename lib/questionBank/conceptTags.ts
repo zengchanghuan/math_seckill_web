@@ -1,19 +1,18 @@
 /**
  * 专升本高数核心知识点枚举表
  * 基于广东专升本考纲的15个必考知识点整理
- * 总计43个知识点，分7大模块，适合知识图谱分层展示
+ * 总计41个知识点，分7大模块，适合知识图谱分层展示
  */
 
 export const CONCEPT_TAGS = {
-  // ========== 模块1：函数与极限 (6个) ==========
+  // ========== 模块1：函数与极限 (5个) ==========
   'func-basic': '函数基本性质',
   'func-composite': '复合函数',
   'limit-calculation': '极限计算(六种方法)', // 必考1
   'limit-special': '特殊极限',
   'limit-continuous': '连续性',
-  'limit-asymptote': '渐近线',
 
-  // ========== 模块2：导数与微分 - 规则层 (9个) ==========
+  // ========== 模块2：导数与微分 - 规则层 (8个) ==========
   'deriv-definition': '导数定义',
   'deriv-calculation': '导数与微分计算', // 必考2
   'deriv-chain': '链式法则',
@@ -21,13 +20,12 @@ export const CONCEPT_TAGS = {
   'deriv-parametric': '参数方程求导',
   'deriv-higher': '高阶导数',
   'deriv-tangent': '切线方程', // 必考5
-  differential: '微分',
   'multi-partial-calc': '偏导数与全微分计算', // 必考3
 
   // ========== 模块3：导数应用 - 应用层 (5个) ==========
   'deriv-monotone-extreme': '单调区间与极值', // 必考6
   'deriv-concave-inflection': '凹凸区间与拐点', // 必考7
-  'deriv-curve': '曲线渐近线',
+  'func-asymptote': '渐近线(水平/垂直/斜)', // 合并优化
   'deriv-optimization': '实际应用优化',
   'multi-extreme': '多元函数极值',
 
